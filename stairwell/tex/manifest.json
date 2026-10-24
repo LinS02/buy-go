@@ -1,0 +1,6 @@
+{
+ "stickman":   {"file": "stickman.png",   "kind": "chalk", "size": 512, "aspect": 1, "note": "粉筆火柴人，長手、無臉"},
+ "arrow-down": {"file": "arrow-down.png", "kind": "chalk", "size": 512, "aspect": 1, "note": "粉筆箭頭朝下"},
+ "handprint":  {"file": "handprint.png",  "kind": "wet",   "size": 512, "aspect": 1, "note": "濕泥手印，下緣滴"},
+ "waterstain": {"file": "waterstain.png", "kind": "wet",   "size": 512, "aspect": 1, "note": "水漬塊＋垂直滴痕，貼時上緣朝上"}
+}

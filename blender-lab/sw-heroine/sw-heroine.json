@@ -1,0 +1,160 @@
+{
+ "glb": "blender-lab/sw-heroine/sw-heroine.glb",
+ "S": 0.7,
+ "height_m": 1.711,
+ "heads": 2.66,
+ "tris": 35256,
+ "materials": [
+  "sweater",
+  "shirt",
+  "skirt",
+  "robe",
+  "lining",
+  "bow",
+  "skin",
+  "tights",
+  "shoe",
+  "eye",
+  "blush",
+  "hair",
+  "hair_dk",
+  "hair_back"
+ ],
+ "bones": [
+  "mixamorig:Hips",
+  "mixamorig:Spine",
+  "mixamorig:Spine1",
+  "mixamorig:Spine2",
+  "mixamorig:Neck",
+  "mixamorig:Head",
+  "sw_pony",
+  "mixamorig:RightShoulder",
+  "mixamorig:RightArm",
+  "mixamorig:RightForeArm",
+  "mixamorig:RightHand",
+  "mixamorig:LeftShoulder",
+  "mixamorig:LeftArm",
+  "mixamorig:LeftForeArm",
+  "mixamorig:LeftHand",
+  "mixamorig:RightUpLeg",
+  "mixamorig:RightLeg",
+  "mixamorig:RightFoot",
+  "mixamorig:RightToeBase",
+  "mixamorig:LeftUpLeg",
+  "mixamorig:LeftLeg",
+  "mixamorig:LeftFoot",
+  "mixamorig:LeftToeBase"
+ ],
+ "joints": {
+  "Hips": [
+   0.0,
+   0.0,
+   1.0427
+  ],
+  "Spine": [
+   0.0,
+   -0.0013,
+   1.1446
+  ],
+  "Spine1": [
+   0.0,
+   0.0134,
+   1.2435
+  ],
+  "Spine2": [
+   0.0,
+   0.0271,
+   1.3357
+  ],
+  "Neck": [
+   0.0,
+   0.0476,
+   1.5031
+  ],
+  "Head": [
+   0.0,
+   0.0307,
+   1.5993
+  ],
+  "RightShoulder": [
+   -0.0457,
+   0.0487,
+   1.4459
+  ],
+  "RightArm": [
+   -0.1516,
+   0.071,
+   1.4406
+  ],
+  "RightForeArm": [
+   -0.43,
+   0.071,
+   1.4406
+  ],
+  "RightHand": [
+   -0.7133,
+   0.071,
+   1.4406
+  ],
+  "LeftShoulder": [
+   0.0457,
+   0.0487,
+   1.4459
+  ],
+  "LeftArm": [
+   0.1516,
+   0.071,
+   1.4406
+  ],
+  "LeftForeArm": [
+   0.43,
+   0.071,
+   1.4406
+  ],
+  "LeftHand": [
+   0.7133,
+   0.071,
+   1.4406
+  ],
+  "RightUpLeg": [
+   -0.0821,
+   0.016,
+   0.9752
+  ],
+  "RightLeg": [
+   -0.0821,
+   0.0125,
+   0.5315
+  ],
+  "RightFoot": [
+   -0.0821,
+   0.043,
+   0.0873
+  ],
+  "RightToeBase": [
+   -0.0821,
+   -0.0641,
+   0.0
+  ],
+  "LeftUpLeg": [
+   0.0821,
+   0.016,
+   0.9752
+  ],
+  "LeftLeg": [
+   0.0821,
+   0.0125,
+   0.5315
+  ],
+  "LeftFoot": [
+   0.0821,
+   0.043,
+   0.0873
+  ],
+  "LeftToeBase": [
+   0.0821,
+   -0.0641,
+   0.0
+  ]
+ }
+}

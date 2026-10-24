@@ -1,0 +1,295 @@
+樓梯間（Stairwell）— 素材來源與授權
+本作免費、非商業發行。以下逐一列出輸出資料夾裡每個檔案的來源與授權。
+
+構想參考（未使用其文字、圖像、聲音或程式碼）：
+  - SCP-087，作者 Zaeyde，SCP Foundation Wiki（https://scp-wiki.wikidot.com/scp-087），CC BY-SA 3.0
+  - SCP-087-B，作者 Joonas Rikkonen（Regalis），CC BY-SA 3.0
+  本作與 SCP Foundation、上述作者無關，亦未經其背書。
+
+■ 程式（本作）＋打包進 bundle.js 的開源函式庫
+  本作程式碼。bundle.js 內含第三方函式庫，授權註解保留在 bundle.js 檔尾（esbuild legalComments），見下方「bundle.js 內的授權註解」。
+  - three.js — MIT License, Copyright 2010-2026 Three.js Authors
+  - Phaser — MIT License, Copyright 2013-2026 Phaser Studio Inc.
+  檔案（2）：
+    bundle.js
+    index.html
+
+■ 主角（人偶）模型與動作
+  模型：本作原創（tools/art/blender/lab/sw01_heroine.py 程式建模，網格、貼色全部自製）。
+  骨架：骨名、階層與關節位置照 Adobe Mixamo 的 X Bot 骨架（mixamorig 22 骨）。
+  動作：以下 9 支 Adobe Mixamo 動作，已併進 sw-heroine.glb 作為這個角色的動作（不單獨散布動作檔）：
+    scroll/Breathing Idle
+    film/Female Locomotion Pack - walking
+    scroll/Female Locomotion Pack - running
+    horror/Pro Magic Pack - Crouch Idle
+    horror/Pro Magic Pack - Crouch Walk Forward
+    horror/Terrified
+    horror/Nervously Look Around
+    horror/Dying
+    horror/Farming Pack - kneeling idle
+  Mixamo 授權：可用於遊戲等專案（含商用、免權利金）；不得把 Mixamo 角色或動作檔單獨再散布。
+  請勿從本作抽出動作檔另行散布。https://helpx.adobe.com/creative-cloud/faq/mixamo-faq.html
+  檔案（2）：
+    blender-lab/sw-heroine/sw-heroine.glb
+    blender-lab/sw-heroine/sw-heroine.json
+
+■ 紙娃娃像素圖（地圖套件預設主角，樓梯間不直接顯示）
+  本作原創像素圖（apps/game paper-doll 男性紙娃娃，tools/art/blender/doll_sword.py 重畫四肢）。
+  四肢關節取自 CC0 動作：KayKit Character Animations（Kay Lousberg, CC0 1.0）、Quaternius Universal Animation Library（CC0 1.0）。
+  檔案（5）：
+    anim-demo/kh-hero-duel/Dual_Chop.png
+    anim-demo/kh-hero-duel/Dual_Slice.png
+    anim-demo/kh-hero-duel/Idle_Loop.png
+    anim-demo/kh-hero-duel/Run_Loop.png
+    anim-demo/kh-hero-duel/manifest.json
+
+■ 音效（程式合成）
+  本作原創：stair_synth.py 以物理模態／雜訊合成，未使用任何第三方取樣。
+  檔案（160）：
+    stairwell/audio/sfx/apple-1.m4a
+    stairwell/audio/sfx/apple-1.ogg
+    stairwell/audio/sfx/apple-2.m4a
+    stairwell/audio/sfx/apple-2.ogg
+    stairwell/audio/sfx/apple-3.m4a
+    stairwell/audio/sfx/apple-3.ogg
+    stairwell/audio/sfx/apple-4.m4a
+    stairwell/audio/sfx/apple-4.ogg
+    stairwell/audio/sfx/cloth-1.m4a
+    stairwell/audio/sfx/cloth-1.ogg
+    stairwell/audio/sfx/cloth-2.m4a
+    stairwell/audio/sfx/cloth-2.ogg
+    stairwell/audio/sfx/cloth-3.m4a
+    stairwell/audio/sfx/cloth-3.ogg
+    stairwell/audio/sfx/cloth-4.m4a
+    stairwell/audio/sfx/cloth-4.ogg
+    stairwell/audio/sfx/creak-1.m4a
+    stairwell/audio/sfx/creak-1.ogg
+    stairwell/audio/sfx/creak-2.m4a
+    stairwell/audio/sfx/creak-2.ogg
+    stairwell/audio/sfx/creak-3.m4a
+    stairwell/audio/sfx/creak-3.ogg
+    stairwell/audio/sfx/creak-4.m4a
+    stairwell/audio/sfx/creak-4.ogg
+    stairwell/audio/sfx/door-1.m4a
+    stairwell/audio/sfx/door-1.ogg
+    stairwell/audio/sfx/door-2.m4a
+    stairwell/audio/sfx/door-2.ogg
+    stairwell/audio/sfx/door-3.m4a
+    stairwell/audio/sfx/door-3.ogg
+    stairwell/audio/sfx/door-4.m4a
+    stairwell/audio/sfx/door-4.ogg
+    stairwell/audio/sfx/drip-1.m4a
+    stairwell/audio/sfx/drip-1.ogg
+    stairwell/audio/sfx/drip-2.m4a
+    stairwell/audio/sfx/drip-2.ogg
+    stairwell/audio/sfx/drip-3.m4a
+    stairwell/audio/sfx/drip-3.ogg
+    stairwell/audio/sfx/drip-4.m4a
+    stairwell/audio/sfx/drip-4.ogg
+    stairwell/audio/sfx/glasstap-1.m4a
+    stairwell/audio/sfx/glasstap-1.ogg
+    stairwell/audio/sfx/glasstap-2.m4a
+    stairwell/audio/sfx/glasstap-2.ogg
+    stairwell/audio/sfx/glasstap-3.m4a
+    stairwell/audio/sfx/glasstap-3.ogg
+    stairwell/audio/sfx/glasstap-4.m4a
+    stairwell/audio/sfx/glasstap-4.ogg
+    stairwell/audio/sfx/knock-1.m4a
+    stairwell/audio/sfx/knock-1.ogg
+    stairwell/audio/sfx/knock-2.m4a
+    stairwell/audio/sfx/knock-2.ogg
+    stairwell/audio/sfx/knock-3.m4a
+    stairwell/audio/sfx/knock-3.ogg
+    stairwell/audio/sfx/knock-4.m4a
+    stairwell/audio/sfx/knock-4.ogg
+    stairwell/audio/sfx/lampfall-1.m4a
+    stairwell/audio/sfx/lampfall-1.ogg
+    stairwell/audio/sfx/lampfall-2.m4a
+    stairwell/audio/sfx/lampfall-2.ogg
+    stairwell/audio/sfx/lampfall-3.m4a
+    stairwell/audio/sfx/lampfall-3.ogg
+    stairwell/audio/sfx/lampfall-4.m4a
+    stairwell/audio/sfx/lampfall-4.ogg
+    stairwell/audio/sfx/loudstep-1.m4a
+    stairwell/audio/sfx/loudstep-1.ogg
+    stairwell/audio/sfx/loudstep-2.m4a
+    stairwell/audio/sfx/loudstep-2.ogg
+    stairwell/audio/sfx/loudstep-3.m4a
+    stairwell/audio/sfx/loudstep-3.ogg
+    stairwell/audio/sfx/loudstep-4.m4a
+    stairwell/audio/sfx/loudstep-4.ogg
+    stairwell/audio/sfx/match-1.m4a
+    stairwell/audio/sfx/match-1.ogg
+    stairwell/audio/sfx/match-2.m4a
+    stairwell/audio/sfx/match-2.ogg
+    stairwell/audio/sfx/match-3.m4a
+    stairwell/audio/sfx/match-3.ogg
+    stairwell/audio/sfx/match-4.m4a
+    stairwell/audio/sfx/match-4.ogg
+    stairwell/audio/sfx/plip-1.m4a
+    stairwell/audio/sfx/plip-1.ogg
+    stairwell/audio/sfx/plip-2.m4a
+    stairwell/audio/sfx/plip-2.ogg
+    stairwell/audio/sfx/plip-3.m4a
+    stairwell/audio/sfx/plip-3.ogg
+    stairwell/audio/sfx/plip-4.m4a
+    stairwell/audio/sfx/plip-4.ogg
+    stairwell/audio/sfx/rail-1.m4a
+    stairwell/audio/sfx/rail-1.ogg
+    stairwell/audio/sfx/rail-2.m4a
+    stairwell/audio/sfx/rail-2.ogg
+    stairwell/audio/sfx/rail-3.m4a
+    stairwell/audio/sfx/rail-3.ogg
+    stairwell/audio/sfx/rail-4.m4a
+    stairwell/audio/sfx/rail-4.ogg
+    stairwell/audio/sfx/roots-1.m4a
+    stairwell/audio/sfx/roots-1.ogg
+    stairwell/audio/sfx/roots-2.m4a
+    stairwell/audio/sfx/roots-2.ogg
+    stairwell/audio/sfx/roots-3.m4a
+    stairwell/audio/sfx/roots-3.ogg
+    stairwell/audio/sfx/roots-4.m4a
+    stairwell/audio/sfx/roots-4.ogg
+    stairwell/audio/sfx/scrape-1.m4a
+    stairwell/audio/sfx/scrape-1.ogg
+    stairwell/audio/sfx/scrape-2.m4a
+    stairwell/audio/sfx/scrape-2.ogg
+    stairwell/audio/sfx/scrape-3.m4a
+    stairwell/audio/sfx/scrape-3.ogg
+    stairwell/audio/sfx/scrape-4.m4a
+    stairwell/audio/sfx/scrape-4.ogg
+    stairwell/audio/sfx/step-1.m4a
+    stairwell/audio/sfx/step-1.ogg
+    stairwell/audio/sfx/step-2.m4a
+    stairwell/audio/sfx/step-2.ogg
+    stairwell/audio/sfx/step-3.m4a
+    stairwell/audio/sfx/step-3.ogg
+    stairwell/audio/sfx/step-4.m4a
+    stairwell/audio/sfx/step-4.ogg
+    stairwell/audio/sfx/stone-1.m4a
+    stairwell/audio/sfx/stone-1.ogg
+    stairwell/audio/sfx/stone-2.m4a
+    stairwell/audio/sfx/stone-2.ogg
+    stairwell/audio/sfx/stone-3.m4a
+    stairwell/audio/sfx/stone-3.ogg
+    stairwell/audio/sfx/stone-4.m4a
+    stairwell/audio/sfx/stone-4.ogg
+    stairwell/audio/sfx/stones-1.m4a
+    stairwell/audio/sfx/stones-1.ogg
+    stairwell/audio/sfx/stones-2.m4a
+    stairwell/audio/sfx/stones-2.ogg
+    stairwell/audio/sfx/stones-3.m4a
+    stairwell/audio/sfx/stones-3.ogg
+    stairwell/audio/sfx/stones-4.m4a
+    stairwell/audio/sfx/stones-4.ogg
+    stairwell/audio/sfx/straw-1.m4a
+    stairwell/audio/sfx/straw-1.ogg
+    stairwell/audio/sfx/straw-2.m4a
+    stairwell/audio/sfx/straw-2.ogg
+    stairwell/audio/sfx/straw-3.m4a
+    stairwell/audio/sfx/straw-3.ogg
+    stairwell/audio/sfx/straw-4.m4a
+    stairwell/audio/sfx/straw-4.ogg
+    stairwell/audio/sfx/thud-1.m4a
+    stairwell/audio/sfx/thud-1.ogg
+    stairwell/audio/sfx/thud-2.m4a
+    stairwell/audio/sfx/thud-2.ogg
+    stairwell/audio/sfx/thud-3.m4a
+    stairwell/audio/sfx/thud-3.ogg
+    stairwell/audio/sfx/thud-4.m4a
+    stairwell/audio/sfx/thud-4.ogg
+    stairwell/audio/sfx/wetstep-1.m4a
+    stairwell/audio/sfx/wetstep-1.ogg
+    stairwell/audio/sfx/wetstep-2.m4a
+    stairwell/audio/sfx/wetstep-2.ogg
+    stairwell/audio/sfx/wetstep-3.m4a
+    stairwell/audio/sfx/wetstep-3.ogg
+    stairwell/audio/sfx/wetstep-4.m4a
+    stairwell/audio/sfx/wetstep-4.ogg
+
+■ 人聲（語音合成）
+  以 Qwen3-TTS-12Hz-1.7B-VoiceDesign（Alibaba Qwen，Apache-2.0）由文字描述生成的聲音（非仿製真人聲音），再經本作的後製（耳語化、遠化、撕裂）。
+  檔案（55）：
+    stairwell/audio/voice/breath-01.m4a
+    stairwell/audio/voice/breath-01.ogg
+    stairwell/audio/voice/breath-02.m4a
+    stairwell/audio/voice/breath-02.ogg
+    stairwell/audio/voice/breath-03.m4a
+    stairwell/audio/voice/breath-03.ogg
+    stairwell/audio/voice/breath-04.m4a
+    stairwell/audio/voice/breath-04.ogg
+    stairwell/audio/voice/breath-05.m4a
+    stairwell/audio/voice/breath-05.ogg
+    stairwell/audio/voice/breath-behind-01.m4a
+    stairwell/audio/voice/breath-behind-01.ogg
+    stairwell/audio/voice/breath-behind-02.m4a
+    stairwell/audio/voice/breath-behind-02.ogg
+    stairwell/audio/voice/breath-behind-03.m4a
+    stairwell/audio/voice/breath-behind-03.ogg
+    stairwell/audio/voice/call-above-01.m4a
+    stairwell/audio/voice/call-above-01.ogg
+    stairwell/audio/voice/call-above-02.m4a
+    stairwell/audio/voice/call-above-02.ogg
+    stairwell/audio/voice/call-above-03.m4a
+    stairwell/audio/voice/call-above-03.ogg
+    stairwell/audio/voice/call-below-01.m4a
+    stairwell/audio/voice/call-below-01.ogg
+    stairwell/audio/voice/call-below-02.m4a
+    stairwell/audio/voice/call-below-02.ogg
+    stairwell/audio/voice/call-below-03.m4a
+    stairwell/audio/voice/call-below-03.ogg
+    stairwell/audio/voice/cry-torn.m4a
+    stairwell/audio/voice/cry-torn.ogg
+    stairwell/audio/voice/exhale-01.m4a
+    stairwell/audio/voice/exhale-01.ogg
+    stairwell/audio/voice/exhale-02.m4a
+    stairwell/audio/voice/exhale-02.ogg
+    stairwell/audio/voice/exhale-03.m4a
+    stairwell/audio/voice/exhale-03.ogg
+    stairwell/audio/voice/exhale-04.m4a
+    stairwell/audio/voice/exhale-04.ogg
+    stairwell/audio/voice/gasp-01.m4a
+    stairwell/audio/voice/gasp-01.ogg
+    stairwell/audio/voice/gasp-02.m4a
+    stairwell/audio/voice/gasp-02.ogg
+    stairwell/audio/voice/gasp-03.m4a
+    stairwell/audio/voice/gasp-03.ogg
+    stairwell/audio/voice/gasp-04.m4a
+    stairwell/audio/voice/gasp-04.ogg
+    stairwell/audio/voice/manifest.json
+    stairwell/audio/voice/whisper-01.m4a
+    stairwell/audio/voice/whisper-01.ogg
+    stairwell/audio/voice/whisper-02.m4a
+    stairwell/audio/voice/whisper-02.ogg
+    stairwell/audio/voice/whisper-03.m4a
+    stairwell/audio/voice/whisper-03.ogg
+    stairwell/audio/voice/whisper-04.m4a
+    stairwell/audio/voice/whisper-04.ogg
+
+■ 素材清單（本作）
+  檔案（2）：
+    stairwell/audio/manifest.json
+    stairwell/tex/manifest.json
+
+■ 牆面記號貼圖
+  以 FLUX.1 [dev]（Black Forest Labs，FLUX.1 [dev] Non-Commercial License）生成，再由本作後製成單色 alpha 貼圖。
+  依授權的 Outputs 條款，產出可自由使用；本作免費、非商業發行。
+  檔案（4）：
+    stairwell/tex/arrow-down.png
+    stairwell/tex/handprint.png
+    stairwell/tex/stickman.png
+    stairwell/tex/waterstain.png
+
+■ bundle.js 內的授權註解（去重）
+    @copyright 2013-2026 Phaser Studio Inc.
+    @license {@link https://opensource.org/licenses/MIT|MIT License}
+    @copyright 2018 Photon Storm Ltd.
+    @license {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+    @copyright 2021 Photon Storm Ltd.
+    @copyright 2021 RoboWhale
+    @copyright 2025 Phaser Studio Inc.
+    @copyright 2018 CodeAndWeb GmbH
+    @license {@link https://github.com/photonstorm/phaser3-plugin-template/blob/master/LICENSE|MIT License}
+    @license None
+    @license
+    Copyright 2010-2026 Three.js Authors

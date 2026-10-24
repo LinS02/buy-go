@@ -2,29 +2,37 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
-<title>沉闕城・王座之廳</title>
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>樓梯間</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="theme-color" content="#000000">
+<style>html,body{touch-action:none;overscroll-behavior:none;-webkit-text-size-adjust:100%}</style>
 <style>
   html, body { margin: 0; background: #16161e; color: #f0e6c8; font: 13px "Microsoft JhengHei", sans-serif; }
   #stage canvas { display: block; image-rendering: pixelated; }
   #hud { padding: 4px 8px; }
 </style>
 <!-- 前置：固定種子的亂數、虛擬時鐘。必須在任何遊戲程式之前跑（doc/sandbox.md「時間控制」） -->
+<script>window.__STAIR_PROC_FIGS = 1;</script>
 <script>
-if (!new URLSearchParams(location.search).get('scene')) location.replace('?scene=cq-throne&play=1' + location.hash);
+if (!new URLSearchParams(location.search).get('scene')) location.replace('?scene=scroll-hide&play=1' + location.search.replace(/^\?/, '&').replace(/^&$/, '') + location.hash);
 </script>
 <script>
 (function () {
   var q = new URLSearchParams(location.search);
   var s = (Number(q.get('seed')) || 1) >>> 0;
-  Math.random = function () {
+  // 公開版：只有網址帶 ?seed= 才固定亂數（publish-stairwell.js）
+  if (q.get('seed')) Math.random = function () {
     s = (s + 0x6d2b79f5) | 0;
     var t = Math.imul(s ^ (s >>> 15), 1 | s);
     t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
   // 每頁從乾淨的偏好開始（紙娃娃 v2、光影開關都存在 localStorage；不清的話上一個情境開的光影會漏到下一個）
-  try { localStorage.clear(); } catch (e) {}
+  // 例外：keep. 開頭的是可玩情境的存檔（Scrollwright 起始村），要留著
+  try { Object.keys(localStorage).forEach(function (k) { if (k.indexOf('keep.') !== 0) localStorage.removeItem(k); }); } catch (e) {}
 
   var clock = { now: 1000 };
   window.__clock = clock;
@@ -61,43 +69,8 @@ if (!new URLSearchParams(location.search).get('scene')) location.replace('?scene
 </script>
 </head>
 <body>
-<style>
-  #boot { position: fixed; inset: 0; z-index: 10; background: #0b0a0e; color: #d9cfb4; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px;
-    font-family: "Songti TC", "Noto Serif TC", "Noto Serif CJK TC", "PMingLiU", serif; transition: opacity .7s; user-select: none; }
-  #boot .t { font-size: clamp(26px, 5vw, 44px); letter-spacing: .35em; padding-left: .35em; }
-  #boot .bar { width: min(320px, 70vw); height: 2px; background: #2a2630; overflow: hidden; }
-  #boot .bar i { display: block; height: 100%; width: 0; background: #b8893a; transition: width .2s; }
-  #boot .m { font-size: 14px; letter-spacing: .15em; color: #8f8778; min-height: 1.4em; }
-  #boot.ready { cursor: pointer; }
-  #boot.ready .m { color: #e8dcc0; animation: bootPulse 1.6s ease-in-out infinite; }
-  #boot.gone { opacity: 0; pointer-events: none; }
-  @keyframes bootPulse { 50% { opacity: .45; } }
-</style>
-<div id="boot"><div class="t">沉闕城・王座之廳</div><div class="bar"><i id="boot-bar"></i></div><div class="m" id="boot-msg">下載中…</div></div>
 <div id="stage"></div>
 <div id="hud"></div>
-<script>
-(function () {
-  var bar = document.getElementById('boot-bar'), msg = document.getElementById('boot-msg');
-  var x = new XMLHttpRequest();
-  x.open('GET', 'bundle.js?v=6d1c61e371');
-  x.onprogress = function (e) { var t = e.total || 4000000; var p = Math.min(1, e.loaded / t); bar.style.width = (p * 70) + '%'; msg.textContent = '下載中… ' + Math.round(p * 100) + '%'; };
-  x.onload = function () { bar.style.width = '75%'; msg.textContent = '建立大殿…'; var s = document.createElement('script'); s.textContent = x.responseText; document.body.appendChild(s); };
-  x.onerror = function () { msg.textContent = '下載失敗，請重新整理'; };
-  // 保險：遊戲已經好了（__cq.ready）但 4 秒內沒人把預讀畫面換成「點一下開始」（例：瀏覽器拿到舊的 bundle）→ 這裡自己換
-  var since = 0;
-  var guard = setInterval(function () {
-    var el = document.getElementById('boot');
-    if (!el) return clearInterval(guard);
-    if (!(window.__cq && window.__cq.ready) || el.classList.contains('ready')) return;
-    if (!since) since = Date.now();
-    if (Date.now() - since < 4000) return;
-    clearInterval(guard);
-    bar.style.width = '100%'; msg.textContent = '點一下開始'; el.classList.add('ready');
-    el.addEventListener('pointerdown', function () { el.classList.add('gone'); setTimeout(function () { el.remove(); }, 800); }, { once: true });
-  }, 250);
-  x.send();
-})();
-</script>
+<script src="bundle.js"></script>
 </body>
 </html>
