@@ -270,6 +270,14 @@
     stairwell/audio/voice/whisper-04.m4a
     stairwell/audio/voice/whisper-04.ogg
 
+■ 牆上粉筆字的字型
+  辰宇落雁體 Thin（Copyright (c) 2022, Wang, Li-Yu and Liu, Wei-Chen；SIL Open Font License 1.1，全文見 stairwell/fonts/OFL.txt）。
+  本作只取用到的字做成子集；依 OFL 的保留字型名條款，子集改名為 Stairwell Scrawl。
+  連結預覽縮圖 og.jpg 的標題字也用同一字型繪製。
+  檔案（2）：
+    stairwell/fonts/OFL.txt
+    stairwell/fonts/scrawl.woff2
+
 ■ 素材清單（本作）
   檔案（2）：
     stairwell/audio/manifest.json
