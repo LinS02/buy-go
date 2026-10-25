@@ -18,6 +18,13 @@
   檔案（1）：
     og.jpg
 
+■ 加入主畫面用的 App 設定與圖示（本作遊戲截圖＋牆上字型）
+  檔案（4）：
+    apple-touch-icon.png
+    icon-192.png
+    icon-512.png
+    manifest.webmanifest
+
 ■ 主角（人偶）模型與動作
   模型：本作原創（tools/art/blender/lab/sw01_heroine.py 程式建模，網格、貼色全部自製）。
   骨架：骨名、階層與關節位置照 Adobe Mixamo 的 X Bot 骨架（mixamorig 22 骨）。
