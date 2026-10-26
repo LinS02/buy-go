@@ -290,6 +290,72 @@
     stairwell/audio/manifest.json
     stairwell/tex/manifest.json
 
+■ 終點那扇門後面的村子（薩姆吉爾村散步）
+  地圖、圖像、角色與音樂取自線上遊戲《石器時代》（StoneAge）的遊戲客戶端與地圖資料，版權屬原著作權人所有；本作未獲授權，僅作免費、非商業的同人重現展示。
+  權利人如要求移除，會立即撤下。頁面程式（samugiru/index.html）為本作撰寫。
+  檔案（61）：
+    samugiru/bgm.wav
+    samugiru/char_0.png
+    samugiru/data.js
+    samugiru/ground_0_3.png
+    samugiru/ground_0_4.png
+    samugiru/ground_10_3.png
+    samugiru/ground_1_2.png
+    samugiru/ground_1_3.png
+    samugiru/ground_1_4.png
+    samugiru/ground_1_5.png
+    samugiru/ground_2_1.png
+    samugiru/ground_2_2.png
+    samugiru/ground_2_3.png
+    samugiru/ground_2_4.png
+    samugiru/ground_2_5.png
+    samugiru/ground_2_6.png
+    samugiru/ground_3_0.png
+    samugiru/ground_3_1.png
+    samugiru/ground_3_2.png
+    samugiru/ground_3_3.png
+    samugiru/ground_3_4.png
+    samugiru/ground_3_5.png
+    samugiru/ground_3_6.png
+    samugiru/ground_4_0.png
+    samugiru/ground_4_1.png
+    samugiru/ground_4_2.png
+    samugiru/ground_4_3.png
+    samugiru/ground_4_4.png
+    samugiru/ground_4_5.png
+    samugiru/ground_4_6.png
+    samugiru/ground_4_7.png
+    samugiru/ground_5_0.png
+    samugiru/ground_5_1.png
+    samugiru/ground_5_2.png
+    samugiru/ground_5_3.png
+    samugiru/ground_5_4.png
+    samugiru/ground_5_5.png
+    samugiru/ground_5_6.png
+    samugiru/ground_5_7.png
+    samugiru/ground_6_0.png
+    samugiru/ground_6_1.png
+    samugiru/ground_6_2.png
+    samugiru/ground_6_3.png
+    samugiru/ground_6_4.png
+    samugiru/ground_6_5.png
+    samugiru/ground_6_6.png
+    samugiru/ground_7_1.png
+    samugiru/ground_7_2.png
+    samugiru/ground_7_3.png
+    samugiru/ground_7_4.png
+    samugiru/ground_7_5.png
+    samugiru/ground_7_6.png
+    samugiru/ground_8_2.png
+    samugiru/ground_8_3.png
+    samugiru/ground_8_4.png
+    samugiru/ground_8_5.png
+    samugiru/ground_9_3.png
+    samugiru/ground_9_4.png
+    samugiru/index.html
+    samugiru/obj_0.png
+    samugiru/obj_1.png
+
 ■ 牆面記號貼圖
   以 FLUX.1 [dev]（Black Forest Labs，FLUX.1 [dev] Non-Commercial License）生成，再由本作後製成單色 alpha 貼圖。
   依授權的 Outputs 條款，產出可自由使用；本作免費、非商業發行。
