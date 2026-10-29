@@ -8,6 +8,14 @@
     manifest.webmanifest
     tangcheng/manifest.json
 
+■ 連結預覽縮圖（og.jpg）與加入主畫面圖示（本作遊戲截圖：中庭俯瞰、VHS 效果；畫面無人形）
+  授權：本作。標題字「走失」與副標以 Noto Serif TC Black 繪製（SIL OFL 1.1，Adobe/Google；全文見 tangcheng/fonts/NotoSerifTC-OFL.txt）
+  檔案（4）：
+    apple-touch-icon.png
+    icon-192.png
+    icon-512.png
+    og.jpg
+
 ■ 本專案程式合成（numpy／scipy；synth2.py 延伸 synth_amb.py），無取樣、無參考音檔、無人聲
   授權：本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型、無人聲；可商用
   模型：無生成模型；純程式波形（CLAP 只用來挑選）
