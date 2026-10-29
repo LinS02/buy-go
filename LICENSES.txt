@@ -1,4 +1,4 @@
-走失 — 素材來源與授權
+買夠 — 素材來源與授權
 本作免費、非商業發行。以下逐一列出輸出資料夾裡每個檔案的來源與授權。
 
 ■ 程式（本作）＋打包進 bundle.js 的開源函式庫（three.js — MIT；Phaser — MIT；授權註解見檔尾）
@@ -9,7 +9,7 @@
     tangcheng/manifest.json
 
 ■ 連結預覽縮圖（og.jpg）與加入主畫面圖示（本作遊戲截圖：中庭俯瞰、VHS 效果；畫面無人形）
-  授權：本作。標題字「走失」與副標以 Noto Serif TC Black 繪製（SIL OFL 1.1，Adobe/Google；全文見 tangcheng/fonts/NotoSerifTC-OFL.txt）
+  授權：本作。標題字「買夠」與副標以 Noto Serif TC Black 繪製（SIL OFL 1.1，Adobe/Google；全文見 tangcheng/fonts/NotoSerifTC-OFL.txt）
   檔案（4）：
     apple-touch-icon.png
     icon-192.png
