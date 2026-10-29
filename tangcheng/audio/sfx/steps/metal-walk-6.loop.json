@@ -1,0 +1,57 @@
+{
+ "title": "walk-lost footstep: stopped aluminium escalator step, hollow step box (walk 6)",
+ "key": "n/a (sfx)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 52800,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [
+  0.0265
+ ],
+ "risers": [],
+ "firstSoundSample": 2,
+ "lufsIn": -23.67,
+ "gainDb": -3.33,
+ "lufs": -27.0,
+ "truePeakDb": -6.42,
+ "clipped": 0,
+ "files": {
+  "ogg": "metal-walk-6.ogg",
+  "m4a": "metal-walk-6.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 22329,
+   "decoded_samples": 52800,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 2,
+   "err_db": -32.0
+  },
+  "m4a": {
+   "bytes": 29158,
+   "decoded_samples": 54208,
+   "tail_padding": 1408,
+   "offset_samples": 0,
+   "first_sound_sample": 2,
+   "err_db": -36.0
+  }
+ },
+ "kind": "footstep",
+ "surface": "metal",
+ "mode": "walk",
+ "heel": 0.0265,
+ "note": "單發腳步聲。heel＝腳跟落地（最大振幅）的時間（秒）：引擎在腳落地那一刻減掉 heel 起播，才對得上步伐。同一地面的 1–8（跑步 1–4）隨機輪流放、不連續重複同一個，每次再隨機 ±1.5 dB、±3% 播放速率。近乎乾聲（只留空心台階箱的鏗和很淡的鋼構空腔聲，DRR 26–30 dB），場景別再加殘響。"
+}

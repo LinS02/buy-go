@@ -1,0 +1,83 @@
+{
+ "title": "failing tube pop 3: flicker stutter, four bursts",
+ "key": "n/a (sfx)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 40350,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [
+  0.01,
+  0.1367,
+  0.31,
+  0.4737,
+  0.7293
+ ],
+ "risers": [],
+ "firstSoundSample": 0,
+ "lufsIn": -27.89,
+ "gainDb": 2.09,
+ "lufs": -25.79,
+ "truePeakDb": -1.0,
+ "clipped": 0,
+ "files": {
+  "ogg": "lamp-pop-3.ogg",
+  "m4a": "lamp-pop-3.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 30610,
+   "decoded_samples": 40350,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -19.2
+  },
+  "m4a": {
+   "bytes": 22966,
+   "decoded_samples": 41920,
+   "tail_padding": 1570,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -37.4
+  }
+ },
+ "kind": "lamp-pop",
+ "snaps": [
+  0.01,
+  0.1367,
+  0.31,
+  0.4737,
+  0.7293
+ ],
+ "lampOn": [
+  [
+   0.01,
+   0.0546
+  ],
+  [
+   0.1367,
+   0.2697
+  ],
+  [
+   0.31,
+   0.3975
+  ],
+  [
+   0.4737,
+   0.6388
+  ]
+ ],
+ "note": "hits/snaps＝每聲「啪」的時間（秒），lampOn＝燈管亮著的時段 [開, 關]；燈的閃爍照這兩個欄位同步。"
+}

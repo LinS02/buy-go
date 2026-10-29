@@ -1,0 +1,187 @@
+{
+ "generator": "CPU numpy 程式生成（scipy cKDTree 週期 Voronoi、FFT 週期濾波），無生成模型、無 GPU",
+ "license": "本專案程式生成，CPU numpy，無生成模型、無參考照進貼圖；可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色，沒有當貼圖、沒有 img2img、沒有切圖、沒有複製進專案（照片不進 repo、不進 build）",
+ "spec": "doc/design/tangcheng-site-spec.md（照片勘查規格書：尺寸、顏色以它為準）",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "所有濾波週期邊界（FFT／np.roll／mod 座標），四方連續；驗證見 verify_images",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "jpg sRGB 4:2:0",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有鐵捲門有）",
+  "mask": "見各組 mask_notes（jpg 4:4:4 或 png）",
+  "shade": "jpg 線性灰階，值×2＝亮度倍率（只有磨石子有）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化，mask.png 用最近鄰）"
+ },
+ "set": "terrazzo-mint",
+ "title": "拋光磨石子：粉綠格（主走道）",
+ "queue_item": 25,
+ "candidate": "terrazzo-mint-s101",
+ "seed": 101,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_terrazzo.py（指令：python gen_terrazzo.py mint 101 <out>）",
+ "span_m": 2.4,
+ "why_picked": "兩個種子都過；s101 的補土塊與裂紋落在格中間偏邊，3×3 拼起來不成排，s202 的換磚剛好在對角，拼開後成斜線。",
+ "rejected": [
+  "terrazzo-mint-s202"
+ ],
+ "photos_referenced": [
+  "~/Desktop/game/閾限空間台灣/02_亮著燈但沒人/粉綠格地板反光__yt-xfK_eVJkgCQ-t606.jpg",
+  "~/Desktop/game/閾限空間台灣/02_亮著燈但沒人/家樂福鐵捲門與綠格地板__yt-6vyiGU8q8f0-t1383.jpg",
+  "~/Desktop/game/閾限空間台灣/01_童年招牌還在/地板貼紙_玩具反斗城麥當勞指標_近照__blog島國拾影.jpg",
+  "~/Desktop/game/閾限空間台灣/02_亮著燈但沒人/黑白地板與鐵捲門__yt-6vyiGU8q8f0-t1873.jpg",
+  "~/Desktop/game/閾限空間台灣/03_中庭與玻璃天幕/百鳥朝鳳與黑白棋盤地__vocus.jpg",
+  "~/Desktop/game/閾限空間台灣/04_停止的手扶梯/停用的手扶梯__yt-RFfHOelgvOE-t604.jpg"
+ ],
+ "recolor_formula": "linear：cell＝UV 所在格的奇偶（checker：(floor(u·n)+floor(v·n))&1；stripe：floor(u·n)&1，n＝tiles_per_tex）；W＝mask.png RGB/255（三類石子權重）；base＝(1−ΣW)·matrix[cell]＋Σ W_k·chips[cell][k]；albedo＝base × (shade.jpg×2)。albedo.jpg 是預設色票烘好的，不換色時直接用。",
+ "mask_notes": "mask.png RGB＝三類石子權重（6 階量化，0/51/…/255）；shade.jpg×2＝亮度倍率",
+ "files": {
+  "2k/albedo.jpg": 1158910,
+  "2k/normal.jpg": 94791,
+  "2k/roughness.jpg": 524547,
+  "2k/ao.jpg": 55031,
+  "2k/shade.jpg": 749681,
+  "2k/mask.png": 1727167,
+  "1k/albedo.jpg": 282091,
+  "1k/normal.jpg": 30975,
+  "1k/roughness.jpg": 145288,
+  "1k/ao.jpg": 20135,
+  "1k/shade.jpg": 162015,
+  "1k/mask.png": 470762
+ },
+ "params": {
+  "pattern": "mint",
+  "size": 2048,
+  "span_m": 2.4,
+  "tiles_per_tex": 4,
+  "tile_m": 0.6,
+  "layout": "checker",
+  "mm_per_px": 1.171875,
+  "palette_srgb": [
+   {
+    "matrix": [
+     224,
+     226,
+     223
+    ],
+    "chips": [
+     [
+      236,
+      237,
+      234
+     ],
+     [
+      150,
+      154,
+      158
+     ],
+     [
+      112,
+      110,
+      108
+     ]
+    ]
+   },
+   {
+    "matrix": [
+     190,
+     220,
+     214
+    ],
+    "chips": [
+     [
+      200,
+      227,
+      221
+     ],
+     [
+      174,
+      203,
+      197
+     ],
+     [
+      152,
+      176,
+      171
+     ]
+    ]
+   }
+  ],
+  "chip_class_p": [
+   0.86,
+   0.09,
+   0.05
+  ],
+  "layers": {
+   "big": {
+    "points": 71111,
+    "cell_mm": 9.0,
+    "keep": 0.3,
+    "gap_mm": [
+     1.6,
+     3.0
+    ],
+    "clear_mm": 0,
+    "kept": 20054
+   },
+   "med": {
+    "points": 326530,
+    "cell_mm": 4.2,
+    "keep": 0.65,
+    "gap_mm": [
+     0.8,
+     1.6
+    ],
+    "clear_mm": 0.9,
+    "kept": 109067
+   },
+   "small": {
+    "points": 1440000,
+    "cell_mm": 2.0,
+    "keep": 0.7,
+    "gap_mm": [
+     0.5,
+     0.9
+    ],
+    "clear_mm": 0.5,
+    "kept": 330067
+   }
+  },
+  "replacement_tile": [
+   1,
+   3
+  ],
+  "patch_centers_px": [
+   [
+    1534.7745486127963,
+    1539.428509111485
+   ],
+   [
+    445.3826515253861,
+    1574.413629452285
+   ]
+  ],
+  "crack_tile": [
+   1,
+   1
+  ],
+  "coverage_chips": 0.4108871809893135
+ },
+ "verify_images": [
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/terrazzo-mint-s101-floor.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/terrazzo-mint-s101-top3x3.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/terrazzo-mint-s101-seam.jpg"
+ ],
+ "threshold_strip_srgb": [
+  217,
+  178,
+  74
+ ],
+ "threshold_strip_hex": "#d9b24a",
+ "threshold_note": "規格書：店門口黃色門檻條，不另做一組；幾何拉一條 0.05 m 寬，材質用本組 roughness／normal、albedo 換成這個色。"
+}

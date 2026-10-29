@@ -1,0 +1,67 @@
+{
+ "title": "walk-lost trace bed: distant objects stirred by a draft, 30 s loop",
+ "key": "n/a (ambience)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 1440000,
+ "oneshot": false,
+ "loopStart": 0.0,
+ "loopEnd": 30.0,
+ "loopStartSample": 0,
+ "loopEndSample": 1440000,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 70888,
+ "lufsIn": -18.64,
+ "gainDb": -17.36,
+ "lufs": -35.79,
+ "truePeakDb": -20.44,
+ "clipped": 0,
+ "files": {
+  "ogg": "trace-far-objects.ogg",
+  "m4a": "trace-far-objects.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 466388,
+   "decoded_samples": 1440000,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 70888,
+   "err_db": -28.9,
+   "main_loop": {
+    "jump_ratio": 0.01,
+    "level_before_db": -79.1,
+    "level_after_db": -85.3
+   }
+  },
+  "m4a": {
+   "bytes": 728261,
+   "decoded_samples": 1441728,
+   "tail_padding": 1728,
+   "offset_samples": 0,
+   "first_sound_sample": 70888,
+   "err_db": -39.9,
+   "main_loop": {
+    "jump_ratio": 0.01,
+    "level_before_db": -78.8,
+    "level_after_db": -84.3
+   }
+  },
+  "source_main_loop": {
+   "jump_ratio": 0.01,
+   "level_before_db": -79.2,
+   "level_after_db": -85.8
+  }
+ },
+ "kind": "trace-loop",
+ "note": "痕跡底層循環（第 19 項）：很遠的地方東西被風動到——三陣衣架互碰、兩次塑膠袋翻動、四下金屬「滴」，低通 2.6 kHz、RT60 3.2 s 循環摺積殘響。立體聲，整檔即循環（loopStart 0，環狀放置＋循環摺積，接縫逐樣本連續）。直接接 destination，疊在空間底噪上，極淡。"
+}

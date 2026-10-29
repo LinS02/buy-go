@@ -1,0 +1,65 @@
+{
+ "title": "walk-lost mall BGM C 2000 variety era (mall-2000-a)",
+ "key": "C major",
+ "tempo": 106.0,
+ "meter": "4/4",
+ "barSec": 2.2641509433962264,
+ "sr": 48000,
+ "samples": 6195000,
+ "oneshot": false,
+ "loopStart": 0.0,
+ "loopEnd": 129.0625,
+ "loopStartSample": 0,
+ "loopEndSample": 6195000,
+ "introBars": 0.0,
+ "loopBars": 57.003,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 0,
+ "lufsIn": -12.4,
+ "gainDb": -5.6,
+ "lufs": -18.0,
+ "truePeakDb": -6.16,
+ "clipped": 0,
+ "files": {
+  "ogg": "mall-2000-a.ogg",
+  "m4a": "mall-2000-a.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 2861264,
+   "decoded_samples": 6195000,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -21.5,
+   "main_loop": {
+    "jump_ratio": 0.81,
+    "level_before_db": -19.2,
+    "level_after_db": -19.8
+   }
+  },
+  "m4a": {
+   "bytes": 3124081,
+   "decoded_samples": 6196160,
+   "tail_padding": 1160,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -24.5,
+   "main_loop": {
+    "jump_ratio": 0.91,
+    "level_before_db": -19.2,
+    "level_after_db": -19.8
+   }
+  },
+  "source_main_loop": {
+   "jump_ratio": 0.75,
+   "level_before_db": -19.2,
+   "level_after_db": -19.8
+  }
+ }
+}

@@ -1,0 +1,57 @@
+{
+ "title": "walk-lost footstep: polished terrazzo, atrium reverb tail (run 1)",
+ "key": "n/a (sfx)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 57600,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [
+  0.0355
+ ],
+ "risers": [],
+ "firstSoundSample": 0,
+ "lufsIn": -25.69,
+ "gainDb": 1.69,
+ "lufs": -24.0,
+ "truePeakDb": -1.4,
+ "clipped": 0,
+ "files": {
+  "ogg": "terrazzo-run-1.ogg",
+  "m4a": "terrazzo-run-1.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 22643,
+   "decoded_samples": 57600,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -31.5
+  },
+  "m4a": {
+   "bytes": 31738,
+   "decoded_samples": 59328,
+   "tail_padding": 1728,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -36.3
+  }
+ },
+ "kind": "footstep",
+ "surface": "terrazzo",
+ "mode": "run",
+ "heel": 0.0355,
+ "note": "單發腳步聲。heel＝腳跟落地（最大振幅）的時間（秒）：引擎在腳落地那一刻減掉 heel 起播，才對得上步伐。同一地面的 1–8（跑步 1–4）隨機輪流放、不連續重複同一個，每次再隨機 ±1.5 dB、±3% 播放速率。檔內含中庭殘響尾巴，場景別再加殘響。"
+}

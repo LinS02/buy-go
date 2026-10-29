@@ -1,0 +1,28 @@
+{
+ "set": "cardboard-box",
+ "title": "紙箱一面（牛皮紙纖維、壓扁的邊與磨白的角、瓦楞透出的淡橫紋、上緣封箱膠帶、虛構物流標籤＝灰條＋條碼狀豎線、向上箭頭、水漬圈；沒有字、沒有品牌、沒有人形）",
+ "generator": "CPU numpy 程式生成（無生成模型、無照片）",
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-terrain/gen_fix9.py（python3 gen_fix9.py cardboard；seed 7）",
+ "license": "本專案程式生成，可商用、可公開",
+ "photo_rule": "沒有使用任何照片",
+ "people_rule": "不畫人形；標籤只有灰條與條碼狀豎線、沒有可讀文字",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "seamless": "不平鋪：一面一張（BoxGeometry 每面 uv 0..1；_tc-site boxes() 用 uv keep）",
+ "tiling": "UV 0..1＝一個箱面",
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 縮後重新正規化）"
+ },
+ "seed": 7,
+ "queue_item": "model-texture-queue #13（10-29 第十二批）",
+ "files": {
+  "2k/albedo.jpg": 557135,
+  "2k/normal.jpg": 1240247,
+  "2k/roughness.jpg": 218004,
+  "2k/ao.jpg": 85466,
+  "1k/albedo.jpg": 166289,
+  "1k/normal.jpg": 366905,
+  "1k/roughness.jpg": 58110,
+  "1k/ao.jpg": 25147
+ }
+}

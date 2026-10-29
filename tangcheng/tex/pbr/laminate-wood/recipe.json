@@ -1,0 +1,30 @@
+{
+ "license": "ambientCG CC0 1.0（公有領域，可商用、可再散布；不需署名）；本專案去色／加工",
+ "photo_rule": "照片只用眼睛看＋取色，沒有當貼圖、沒有 img2img、沒有切圖、沒有複製進專案",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "seamless": "ambientCG 原圖四方連續；加工只用週期濾波（FFT／np.roll）",
+ "tiling": "UV＝世界座標 / span_m",
+ "color": "去色（灰階 albedo，平均值見 albedo_mean）：顏色一律由材質 color／withPalette 決定，貼圖不帶色",
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機）"
+ },
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/install_acg.py（python install_acg.py <ambientCG 解壓根> <tex/pbr>）",
+ "queue_item": "T1-14",
+ "set": "laminate-wood",
+ "title": "美耐板木紋（去色）",
+ "files": {
+  "2k/albedo.jpg": 973093,
+  "2k/normal.jpg": 1240640,
+  "2k/roughness.jpg": 722542,
+  "2k/ao.jpg": 16545,
+  "1k/albedo.jpg": 251631,
+  "1k/normal.jpg": 214964,
+  "1k/roughness.jpg": 202515,
+  "1k/ao.jpg": 4257
+ },
+ "albedo_mean": 0.72,
+ "source": "ambientCG Wood058（https://ambientcg.com/a/Wood058）",
+ "span_m": 2.4,
+ "process": "亮度取出、對比 ×1.25、平均 0.72；法線壓到 0.6（美耐板是平的，只有一點壓紋）"
+}

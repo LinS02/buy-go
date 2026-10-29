@@ -1,371 +1,2331 @@
-樓梯間（Stairwell）— 素材來源與授權
+走失 — 素材來源與授權
 本作免費、非商業發行。以下逐一列出輸出資料夾裡每個檔案的來源與授權。
 
-構想參考（未使用其文字、圖像、聲音或程式碼）：
-  - SCP-087，作者 Zaeyde，SCP Foundation Wiki（https://scp-wiki.wikidot.com/scp-087），CC BY-SA 3.0
-  - SCP-087-B，作者 Joonas Rikkonen（Regalis），CC BY-SA 3.0
-  本作與 SCP Foundation、上述作者無關，亦未經其背書。
-
-■ 程式（本作）＋打包進 bundle.js 的開源函式庫
-  本作程式碼。bundle.js 內含第三方函式庫，授權註解保留在 bundle.js 檔尾（esbuild legalComments），見下方「bundle.js 內的授權註解」。
-  - three.js — MIT License, Copyright 2010-2026 Three.js Authors
-  - Phaser — MIT License, Copyright 2013-2026 Phaser Studio Inc.
-  檔案（2）：
+■ 程式（本作）＋打包進 bundle.js 的開源函式庫（three.js — MIT；Phaser — MIT；授權註解見檔尾）
+    LICENSES.txt
     bundle.js
     index.html
-
-■ 連結預覽縮圖（本作遊戲截圖）
-  檔案（1）：
-    og.jpg
-
-■ 加入主畫面用的 App 設定與圖示（本作遊戲截圖＋牆上字型）
-  檔案（4）：
-    apple-touch-icon.png
-    icon-192.png
-    icon-512.png
     manifest.webmanifest
+    tangcheng/manifest.json
 
-■ 主角（人偶）模型與動作
-  模型：本作原創（tools/art/blender/lab/sw01_heroine.py 程式建模，網格、貼色全部自製）。
-  骨架：骨名、階層與關節位置照 Adobe Mixamo 的 X Bot 骨架（mixamorig 22 骨）。
-  動作：以下 9 支 Adobe Mixamo 動作，已併進 sw-heroine.glb 作為這個角色的動作（不單獨散布動作檔）：
-    scroll/Breathing Idle
-    film/Female Locomotion Pack - walking
-    scroll/Female Locomotion Pack - running
-    horror/Pro Magic Pack - Crouch Idle
-    horror/Pro Magic Pack - Crouch Walk Forward
-    horror/Terrified
-    horror/Nervously Look Around
-    horror/Dying
-    horror/Farming Pack - kneeling idle
-  Mixamo 授權：可用於遊戲等專案（含商用、免權利金）；不得把 Mixamo 角色或動作檔單獨再散布。
-  請勿從本作抽出動作檔另行散布。https://helpx.adobe.com/creative-cloud/faq/mixamo-faq.html
-  檔案（2）：
-    blender-lab/sw-heroine/sw-heroine.glb
-    blender-lab/sw-heroine/sw-heroine.json
+■ 本專案程式合成（numpy／scipy；synth2.py 延伸 synth_amb.py），無取樣、無參考音檔、無人聲
+  授權：本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型、無人聲；可商用
+  模型：無生成模型；純程式波形（CLAP 只用來挑選）
+  檔案（9）：
+    tangcheng/audio/amb/amb-atrium.loop.json
+    tangcheng/audio/amb/amb-atrium.m4a
+    tangcheng/audio/amb/amb-atrium.ogg
+    tangcheng/audio/amb/amb-b2-dark.loop.json
+    tangcheng/audio/amb/amb-b2-dark.m4a
+    tangcheng/audio/amb/amb-b2-dark.ogg
+    tangcheng/audio/amb/amb-corridor.loop.json
+    tangcheng/audio/amb/amb-corridor.m4a
+    tangcheng/audio/amb/amb-corridor.ogg
 
-■ 紙娃娃像素圖（地圖套件預設主角，樓梯間不直接顯示）
-  本作原創像素圖（apps/game paper-doll 男性紙娃娃，tools/art/blender/doll_sword.py 重畫四肢）。
-  四肢關節取自 CC0 動作：KayKit Character Animations（Kay Lousberg, CC0 1.0）、Quaternius Universal Animation Library（CC0 1.0）。
-  檔案（5）：
-    anim-demo/kh-hero-duel/Dual_Chop.png
-    anim-demo/kh-hero-duel/Dual_Slice.png
-    anim-demo/kh-hero-duel/Idle_Loop.png
-    anim-demo/kh-hero-duel/Run_Loop.png
-    anim-demo/kh-hero-duel/manifest.json
-
-■ 音效（程式合成）
-  本作原創：stair_synth.py 以物理模態／雜訊合成，未使用任何第三方取樣。
-  檔案（160）：
-    stairwell/audio/sfx/apple-1.m4a
-    stairwell/audio/sfx/apple-1.ogg
-    stairwell/audio/sfx/apple-2.m4a
-    stairwell/audio/sfx/apple-2.ogg
-    stairwell/audio/sfx/apple-3.m4a
-    stairwell/audio/sfx/apple-3.ogg
-    stairwell/audio/sfx/apple-4.m4a
-    stairwell/audio/sfx/apple-4.ogg
-    stairwell/audio/sfx/cloth-1.m4a
-    stairwell/audio/sfx/cloth-1.ogg
-    stairwell/audio/sfx/cloth-2.m4a
-    stairwell/audio/sfx/cloth-2.ogg
-    stairwell/audio/sfx/cloth-3.m4a
-    stairwell/audio/sfx/cloth-3.ogg
-    stairwell/audio/sfx/cloth-4.m4a
-    stairwell/audio/sfx/cloth-4.ogg
-    stairwell/audio/sfx/creak-1.m4a
-    stairwell/audio/sfx/creak-1.ogg
-    stairwell/audio/sfx/creak-2.m4a
-    stairwell/audio/sfx/creak-2.ogg
-    stairwell/audio/sfx/creak-3.m4a
-    stairwell/audio/sfx/creak-3.ogg
-    stairwell/audio/sfx/creak-4.m4a
-    stairwell/audio/sfx/creak-4.ogg
-    stairwell/audio/sfx/door-1.m4a
-    stairwell/audio/sfx/door-1.ogg
-    stairwell/audio/sfx/door-2.m4a
-    stairwell/audio/sfx/door-2.ogg
-    stairwell/audio/sfx/door-3.m4a
-    stairwell/audio/sfx/door-3.ogg
-    stairwell/audio/sfx/door-4.m4a
-    stairwell/audio/sfx/door-4.ogg
-    stairwell/audio/sfx/drip-1.m4a
-    stairwell/audio/sfx/drip-1.ogg
-    stairwell/audio/sfx/drip-2.m4a
-    stairwell/audio/sfx/drip-2.ogg
-    stairwell/audio/sfx/drip-3.m4a
-    stairwell/audio/sfx/drip-3.ogg
-    stairwell/audio/sfx/drip-4.m4a
-    stairwell/audio/sfx/drip-4.ogg
-    stairwell/audio/sfx/glasstap-1.m4a
-    stairwell/audio/sfx/glasstap-1.ogg
-    stairwell/audio/sfx/glasstap-2.m4a
-    stairwell/audio/sfx/glasstap-2.ogg
-    stairwell/audio/sfx/glasstap-3.m4a
-    stairwell/audio/sfx/glasstap-3.ogg
-    stairwell/audio/sfx/glasstap-4.m4a
-    stairwell/audio/sfx/glasstap-4.ogg
-    stairwell/audio/sfx/knock-1.m4a
-    stairwell/audio/sfx/knock-1.ogg
-    stairwell/audio/sfx/knock-2.m4a
-    stairwell/audio/sfx/knock-2.ogg
-    stairwell/audio/sfx/knock-3.m4a
-    stairwell/audio/sfx/knock-3.ogg
-    stairwell/audio/sfx/knock-4.m4a
-    stairwell/audio/sfx/knock-4.ogg
-    stairwell/audio/sfx/lampfall-1.m4a
-    stairwell/audio/sfx/lampfall-1.ogg
-    stairwell/audio/sfx/lampfall-2.m4a
-    stairwell/audio/sfx/lampfall-2.ogg
-    stairwell/audio/sfx/lampfall-3.m4a
-    stairwell/audio/sfx/lampfall-3.ogg
-    stairwell/audio/sfx/lampfall-4.m4a
-    stairwell/audio/sfx/lampfall-4.ogg
-    stairwell/audio/sfx/loudstep-1.m4a
-    stairwell/audio/sfx/loudstep-1.ogg
-    stairwell/audio/sfx/loudstep-2.m4a
-    stairwell/audio/sfx/loudstep-2.ogg
-    stairwell/audio/sfx/loudstep-3.m4a
-    stairwell/audio/sfx/loudstep-3.ogg
-    stairwell/audio/sfx/loudstep-4.m4a
-    stairwell/audio/sfx/loudstep-4.ogg
-    stairwell/audio/sfx/match-1.m4a
-    stairwell/audio/sfx/match-1.ogg
-    stairwell/audio/sfx/match-2.m4a
-    stairwell/audio/sfx/match-2.ogg
-    stairwell/audio/sfx/match-3.m4a
-    stairwell/audio/sfx/match-3.ogg
-    stairwell/audio/sfx/match-4.m4a
-    stairwell/audio/sfx/match-4.ogg
-    stairwell/audio/sfx/plip-1.m4a
-    stairwell/audio/sfx/plip-1.ogg
-    stairwell/audio/sfx/plip-2.m4a
-    stairwell/audio/sfx/plip-2.ogg
-    stairwell/audio/sfx/plip-3.m4a
-    stairwell/audio/sfx/plip-3.ogg
-    stairwell/audio/sfx/plip-4.m4a
-    stairwell/audio/sfx/plip-4.ogg
-    stairwell/audio/sfx/rail-1.m4a
-    stairwell/audio/sfx/rail-1.ogg
-    stairwell/audio/sfx/rail-2.m4a
-    stairwell/audio/sfx/rail-2.ogg
-    stairwell/audio/sfx/rail-3.m4a
-    stairwell/audio/sfx/rail-3.ogg
-    stairwell/audio/sfx/rail-4.m4a
-    stairwell/audio/sfx/rail-4.ogg
-    stairwell/audio/sfx/roots-1.m4a
-    stairwell/audio/sfx/roots-1.ogg
-    stairwell/audio/sfx/roots-2.m4a
-    stairwell/audio/sfx/roots-2.ogg
-    stairwell/audio/sfx/roots-3.m4a
-    stairwell/audio/sfx/roots-3.ogg
-    stairwell/audio/sfx/roots-4.m4a
-    stairwell/audio/sfx/roots-4.ogg
-    stairwell/audio/sfx/scrape-1.m4a
-    stairwell/audio/sfx/scrape-1.ogg
-    stairwell/audio/sfx/scrape-2.m4a
-    stairwell/audio/sfx/scrape-2.ogg
-    stairwell/audio/sfx/scrape-3.m4a
-    stairwell/audio/sfx/scrape-3.ogg
-    stairwell/audio/sfx/scrape-4.m4a
-    stairwell/audio/sfx/scrape-4.ogg
-    stairwell/audio/sfx/step-1.m4a
-    stairwell/audio/sfx/step-1.ogg
-    stairwell/audio/sfx/step-2.m4a
-    stairwell/audio/sfx/step-2.ogg
-    stairwell/audio/sfx/step-3.m4a
-    stairwell/audio/sfx/step-3.ogg
-    stairwell/audio/sfx/step-4.m4a
-    stairwell/audio/sfx/step-4.ogg
-    stairwell/audio/sfx/stone-1.m4a
-    stairwell/audio/sfx/stone-1.ogg
-    stairwell/audio/sfx/stone-2.m4a
-    stairwell/audio/sfx/stone-2.ogg
-    stairwell/audio/sfx/stone-3.m4a
-    stairwell/audio/sfx/stone-3.ogg
-    stairwell/audio/sfx/stone-4.m4a
-    stairwell/audio/sfx/stone-4.ogg
-    stairwell/audio/sfx/stones-1.m4a
-    stairwell/audio/sfx/stones-1.ogg
-    stairwell/audio/sfx/stones-2.m4a
-    stairwell/audio/sfx/stones-2.ogg
-    stairwell/audio/sfx/stones-3.m4a
-    stairwell/audio/sfx/stones-3.ogg
-    stairwell/audio/sfx/stones-4.m4a
-    stairwell/audio/sfx/stones-4.ogg
-    stairwell/audio/sfx/straw-1.m4a
-    stairwell/audio/sfx/straw-1.ogg
-    stairwell/audio/sfx/straw-2.m4a
-    stairwell/audio/sfx/straw-2.ogg
-    stairwell/audio/sfx/straw-3.m4a
-    stairwell/audio/sfx/straw-3.ogg
-    stairwell/audio/sfx/straw-4.m4a
-    stairwell/audio/sfx/straw-4.ogg
-    stairwell/audio/sfx/thud-1.m4a
-    stairwell/audio/sfx/thud-1.ogg
-    stairwell/audio/sfx/thud-2.m4a
-    stairwell/audio/sfx/thud-2.ogg
-    stairwell/audio/sfx/thud-3.m4a
-    stairwell/audio/sfx/thud-3.ogg
-    stairwell/audio/sfx/thud-4.m4a
-    stairwell/audio/sfx/thud-4.ogg
-    stairwell/audio/sfx/wetstep-1.m4a
-    stairwell/audio/sfx/wetstep-1.ogg
-    stairwell/audio/sfx/wetstep-2.m4a
-    stairwell/audio/sfx/wetstep-2.ogg
-    stairwell/audio/sfx/wetstep-3.m4a
-    stairwell/audio/sfx/wetstep-3.ogg
-    stairwell/audio/sfx/wetstep-4.m4a
-    stairwell/audio/sfx/wetstep-4.ogg
-
-■ 人聲（語音合成）
-  以 Qwen3-TTS-12Hz-1.7B-VoiceDesign（Alibaba Qwen，Apache-2.0）由文字描述生成的聲音（非仿製真人聲音），再經本作的後製（耳語化、遠化、撕裂）。
-  檔案（55）：
-    stairwell/audio/voice/breath-01.m4a
-    stairwell/audio/voice/breath-01.ogg
-    stairwell/audio/voice/breath-02.m4a
-    stairwell/audio/voice/breath-02.ogg
-    stairwell/audio/voice/breath-03.m4a
-    stairwell/audio/voice/breath-03.ogg
-    stairwell/audio/voice/breath-04.m4a
-    stairwell/audio/voice/breath-04.ogg
-    stairwell/audio/voice/breath-05.m4a
-    stairwell/audio/voice/breath-05.ogg
-    stairwell/audio/voice/breath-behind-01.m4a
-    stairwell/audio/voice/breath-behind-01.ogg
-    stairwell/audio/voice/breath-behind-02.m4a
-    stairwell/audio/voice/breath-behind-02.ogg
-    stairwell/audio/voice/breath-behind-03.m4a
-    stairwell/audio/voice/breath-behind-03.ogg
-    stairwell/audio/voice/call-above-01.m4a
-    stairwell/audio/voice/call-above-01.ogg
-    stairwell/audio/voice/call-above-02.m4a
-    stairwell/audio/voice/call-above-02.ogg
-    stairwell/audio/voice/call-above-03.m4a
-    stairwell/audio/voice/call-above-03.ogg
-    stairwell/audio/voice/call-below-01.m4a
-    stairwell/audio/voice/call-below-01.ogg
-    stairwell/audio/voice/call-below-02.m4a
-    stairwell/audio/voice/call-below-02.ogg
-    stairwell/audio/voice/call-below-03.m4a
-    stairwell/audio/voice/call-below-03.ogg
-    stairwell/audio/voice/cry-torn.m4a
-    stairwell/audio/voice/cry-torn.ogg
-    stairwell/audio/voice/exhale-01.m4a
-    stairwell/audio/voice/exhale-01.ogg
-    stairwell/audio/voice/exhale-02.m4a
-    stairwell/audio/voice/exhale-02.ogg
-    stairwell/audio/voice/exhale-03.m4a
-    stairwell/audio/voice/exhale-03.ogg
-    stairwell/audio/voice/exhale-04.m4a
-    stairwell/audio/voice/exhale-04.ogg
-    stairwell/audio/voice/gasp-01.m4a
-    stairwell/audio/voice/gasp-01.ogg
-    stairwell/audio/voice/gasp-02.m4a
-    stairwell/audio/voice/gasp-02.ogg
-    stairwell/audio/voice/gasp-03.m4a
-    stairwell/audio/voice/gasp-03.ogg
-    stairwell/audio/voice/gasp-04.m4a
-    stairwell/audio/voice/gasp-04.ogg
-    stairwell/audio/voice/manifest.json
-    stairwell/audio/voice/whisper-01.m4a
-    stairwell/audio/voice/whisper-01.ogg
-    stairwell/audio/voice/whisper-02.m4a
-    stairwell/audio/voice/whisper-02.ogg
-    stairwell/audio/voice/whisper-03.m4a
-    stairwell/audio/voice/whisper-03.ogg
-    stairwell/audio/voice/whisper-04.m4a
-    stairwell/audio/voice/whisper-04.ogg
-
-■ 牆上粉筆字的字型
-  辰宇落雁體 Thin（Copyright (c) 2022, Wang, Li-Yu and Liu, Wei-Chen；SIL Open Font License 1.1，全文見 stairwell/fonts/OFL.txt）。
-  本作只取用到的字做成子集；依 OFL 的保留字型名條款，子集改名為 Stairwell Scrawl。
-  連結預覽縮圖 og.jpg 的標題字也用同一字型繪製。
-  檔案（2）：
-    stairwell/fonts/OFL.txt
-    stairwell/fonts/scrawl.woff2
-
-■ 素材清單（本作）
-  檔案（2）：
-    stairwell/audio/manifest.json
-    stairwell/tex/manifest.json
-
-■ 終點那扇門後面的村子（薩姆吉爾村散步）
-  地圖、圖像、角色與音樂取自線上遊戲《石器時代》（StoneAge）的遊戲客戶端與地圖資料，版權屬原著作權人所有；本作未獲授權，僅作免費、非商業的同人重現展示。
-  權利人如要求移除，會立即撤下。頁面程式（samugiru/index.html）為本作撰寫。
-  檔案（61）：
-    samugiru/bgm.wav
-    samugiru/char_0.png
-    samugiru/data.js
-    samugiru/ground_0_3.png
-    samugiru/ground_0_4.png
-    samugiru/ground_10_3.png
-    samugiru/ground_1_2.png
-    samugiru/ground_1_3.png
-    samugiru/ground_1_4.png
-    samugiru/ground_1_5.png
-    samugiru/ground_2_1.png
-    samugiru/ground_2_2.png
-    samugiru/ground_2_3.png
-    samugiru/ground_2_4.png
-    samugiru/ground_2_5.png
-    samugiru/ground_2_6.png
-    samugiru/ground_3_0.png
-    samugiru/ground_3_1.png
-    samugiru/ground_3_2.png
-    samugiru/ground_3_3.png
-    samugiru/ground_3_4.png
-    samugiru/ground_3_5.png
-    samugiru/ground_3_6.png
-    samugiru/ground_4_0.png
-    samugiru/ground_4_1.png
-    samugiru/ground_4_2.png
-    samugiru/ground_4_3.png
-    samugiru/ground_4_4.png
-    samugiru/ground_4_5.png
-    samugiru/ground_4_6.png
-    samugiru/ground_4_7.png
-    samugiru/ground_5_0.png
-    samugiru/ground_5_1.png
-    samugiru/ground_5_2.png
-    samugiru/ground_5_3.png
-    samugiru/ground_5_4.png
-    samugiru/ground_5_5.png
-    samugiru/ground_5_6.png
-    samugiru/ground_5_7.png
-    samugiru/ground_6_0.png
-    samugiru/ground_6_1.png
-    samugiru/ground_6_2.png
-    samugiru/ground_6_3.png
-    samugiru/ground_6_4.png
-    samugiru/ground_6_5.png
-    samugiru/ground_6_6.png
-    samugiru/ground_7_1.png
-    samugiru/ground_7_2.png
-    samugiru/ground_7_3.png
-    samugiru/ground_7_4.png
-    samugiru/ground_7_5.png
-    samugiru/ground_7_6.png
-    samugiru/ground_8_2.png
-    samugiru/ground_8_3.png
-    samugiru/ground_8_4.png
-    samugiru/ground_8_5.png
-    samugiru/ground_9_3.png
-    samugiru/ground_9_4.png
-    samugiru/index.html
-    samugiru/obj_0.png
-    samugiru/obj_1.png
-
-■ 牆面記號貼圖
-  以 FLUX.1 [dev]（Black Forest Labs，FLUX.1 [dev] Non-Commercial License）生成，再由本作後製成單色 alpha 貼圖。
-  依授權的 Outputs 條款，產出可自由使用；本作免費、非商業發行。
+■ 本專案程式合成（numpy／scipy），無取樣、無參考音檔、無人聲
+  授權：本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型、無人聲；可商用
+  模型：無生成模型；純程式波形（CLAP 只用來挑選）
   檔案（4）：
-    stairwell/tex/arrow-down.png
-    stairwell/tex/handprint.png
-    stairwell/tex/stickman.png
-    stairwell/tex/waterstain.png
+    tangcheng/audio/amb/amb-roof-wind.loop.json
+    tangcheng/audio/amb/amb-roof-wind.m4a
+    tangcheng/audio/amb/amb-roof-wind.ogg
+    tangcheng/audio/amb/recipe.json
+
+■ CC0／公有領域實錄剪接＋本專案程式合成
+  授權：BigSoundBank（Joseph SARDIN）CC0 1.0，可商用、免署名；其餘本專案程式合成；可商用、無人聲
+  模型：無生成模型；純程式處理（numpy／scipy）
+  檔案（13）：
+    tangcheng/audio/amb/recipe-trace.json
+    tangcheng/audio/amb/trace-far-machines.loop.json
+    tangcheng/audio/amb/trace-far-machines.m4a
+    tangcheng/audio/amb/trace-far-machines.ogg
+    tangcheng/audio/amb/trace-shutter-stall.loop.json
+    tangcheng/audio/amb/trace-shutter-stall.m4a
+    tangcheng/audio/amb/trace-shutter-stall.ogg
+    tangcheng/audio/amb/trace-starter.loop.json
+    tangcheng/audio/amb/trace-starter.m4a
+    tangcheng/audio/amb/trace-starter.ogg
+    tangcheng/audio/amb/trace-vending.loop.json
+    tangcheng/audio/amb/trace-vending.m4a
+    tangcheng/audio/amb/trace-vending.ogg
+
+■ CC0／公有領域實錄剪接＋本專案程式合成
+  授權：Public domain；其餘本專案程式合成；可商用、無人聲
+  模型：無生成模型；純程式處理（numpy／scipy）
+  檔案（6）：
+    tangcheng/audio/amb/trace-bag.loop.json
+    tangcheng/audio/amb/trace-bag.m4a
+    tangcheng/audio/amb/trace-bag.ogg
+    tangcheng/audio/amb/trace-far-objects.loop.json
+    tangcheng/audio/amb/trace-far-objects.m4a
+    tangcheng/audio/amb/trace-far-objects.ogg
+
+■ CC0／公有領域實錄剪接＋本專案程式合成
+  授權：本專案程式合成；其餘本專案程式合成；可商用、無人聲
+  模型：無生成模型；純程式處理（numpy／scipy）
+  檔案（3）：
+    tangcheng/audio/amb/trace-escalator-wake.loop.json
+    tangcheng/audio/amb/trace-escalator-wake.m4a
+    tangcheng/audio/amb/trace-escalator-wake.ogg
+
+■ CC0／公有領域實錄剪接＋本專案程式合成
+  授權：CC0 1.0；其餘本專案程式合成；可商用、無人聲
+  模型：無生成模型；純程式處理（numpy／scipy）
+  檔案（3）：
+    tangcheng/audio/amb/trace-freezer-defrost.loop.json
+    tangcheng/audio/amb/trace-freezer-defrost.m4a
+    tangcheng/audio/amb/trace-freezer-defrost.ogg
+
+■ 本專案程式合成
+  授權：本專案程式合成；可商用、無人聲
+  模型：無生成模型；純程式處理（numpy／scipy）
+  檔案（6）：
+    tangcheng/audio/amb/trace-hangers.loop.json
+    tangcheng/audio/amb/trace-hangers.m4a
+    tangcheng/audio/amb/trace-hangers.ogg
+    tangcheng/audio/amb/trace-tv-static.loop.json
+    tangcheng/audio/amb/trace-tv-static.m4a
+    tangcheng/audio/amb/trace-tv-static.ogg
+
+■ BigSoundBank（Joseph SARDIN）Falling sheet steel bar #1，https://bigsoundbank.com/falling-sheet-steel-bar-1-s1771.html
+  授權：CC0 1.0；再加工後可商用、免署名
+  模型：無生成模型；純程式處理（numpy／scipy）
+  檔案（3）：
+    tangcheng/audio/amb/vast/far-clang.loop.json
+    tangcheng/audio/amb/vast/far-clang.m4a
+    tangcheng/audio/amb/vast/far-clang.ogg
+
+■ 本專案程式合成
+  授權：本專案程式合成（numpy／scipy），無生成模型、無人聲；可商用
+  模型：無生成模型；純程式處理（numpy／scipy）
+  檔案（12）：
+    tangcheng/audio/amb/vast/far-escalator.loop.json
+    tangcheng/audio/amb/vast/far-escalator.m4a
+    tangcheng/audio/amb/vast/far-escalator.ogg
+    tangcheng/audio/amb/vast/far-pipe.loop.json
+    tangcheng/audio/amb/vast/far-pipe.m4a
+    tangcheng/audio/amb/vast/far-pipe.ogg
+    tangcheng/audio/amb/vast/vast-abyss.loop.json
+    tangcheng/audio/amb/vast/vast-abyss.m4a
+    tangcheng/audio/amb/vast/vast-abyss.ogg
+    tangcheng/audio/amb/vast/vast-deep.loop.json
+    tangcheng/audio/amb/vast/vast-deep.m4a
+    tangcheng/audio/amb/vast/vast-deep.ogg
+
+■ BigSoundBank（Joseph SARDIN）Metal barrier: Closure #1，https://bigsoundbank.com/grinding-metal-barrier-closure-1-s2358.html
+  授權：CC0 1.0；再加工後可商用、免署名
+  模型：無生成模型；純程式處理（numpy／scipy）
+  檔案（3）：
+    tangcheng/audio/amb/vast/far-firedoor.loop.json
+    tangcheng/audio/amb/vast/far-firedoor.m4a
+    tangcheng/audio/amb/vast/far-firedoor.ogg
+
+■ 本專案自產 sfx/steps/terrazzo-walk-3（第 16 項）再加工
+  授權：本專案自產（來源 CC0）；可商用
+  模型：無生成模型；純程式處理（numpy／scipy）
+  檔案（7）：
+    tangcheng/audio/amb/vast/far-self-echo-atrium.loop.json
+    tangcheng/audio/amb/vast/far-self-echo-atrium.m4a
+    tangcheng/audio/amb/vast/far-self-echo-atrium.ogg
+    tangcheng/audio/amb/vast/far-self-echo-corridor.loop.json
+    tangcheng/audio/amb/vast/far-self-echo-corridor.m4a
+    tangcheng/audio/amb/vast/far-self-echo-corridor.ogg
+    tangcheng/audio/amb/vast/recipe.json
+
+■ 本專案自產 sfx/shutter-down-a 再加工
+  授權：本專案自產；可商用
+  模型：無生成模型；純程式處理（numpy／scipy）
+  檔案（3）：
+    tangcheng/audio/amb/vast/far-shutter.loop.json
+    tangcheng/audio/amb/vast/far-shutter.m4a
+    tangcheng/audio/amb/vast/far-shutter.ogg
+
+■ 本機生成（ACE-Step 1.5 text2music），本專案自產
+  授權：ACE-Step 1.5（MIT）本機生成，輸出可商用；無取樣、無參考音檔
+  模型：ACE-Step 1.5 turbo（acestep-v15-turbo）＋ 5Hz LM 1.7B，MLX，text2music，steps 8，shift 3.0
+  檔案（12）：
+    tangcheng/audio/bgm/mall-1996-a.loop.json
+    tangcheng/audio/bgm/mall-1996-a.m4a
+    tangcheng/audio/bgm/mall-1996-a.ogg
+    tangcheng/audio/bgm/mall-1996-b.loop.json
+    tangcheng/audio/bgm/mall-1996-b.m4a
+    tangcheng/audio/bgm/mall-1996-b.ogg
+    tangcheng/audio/bgm/mall-2007-a.loop.json
+    tangcheng/audio/bgm/mall-2007-a.m4a
+    tangcheng/audio/bgm/mall-2007-a.ogg
+    tangcheng/audio/bgm/mall-2007-b.loop.json
+    tangcheng/audio/bgm/mall-2007-b.m4a
+    tangcheng/audio/bgm/mall-2007-b.ogg
+
+■ ACE-Step 1.5 本機生成（text2music，seed 2600）
+  授權：ACE-Step 1.5（MIT）本機生成，輸出可商用；無取樣、無參考音檔
+  模型：ACE-Step 1.5 turbo＋5Hz LM 1.7B（MLX）
+  檔案（4）：
+    tangcheng/audio/bgm/mall-2000-a.loop.json
+    tangcheng/audio/bgm/mall-2000-a.m4a
+    tangcheng/audio/bgm/mall-2000-a.ogg
+    tangcheng/audio/bgm/recipe.json
+
+■ 本專案自產：mall-1996-a（第 1 項）的 DSP 後製，未重新生成
+  授權：來源 mall-1996-a（ACE-Step 1.5 MIT 本機生成，可商用）；後製外掛 Dragonfly Reverb（GPL-3，只用來處理音訊，輸出不受 GPL 約束）；無取樣、無參考音檔
+  模型：無生成模型；pedalboard 0.9.25 內建效果＋Dragonfly Hall Reverb VST3（GPL-3）
+  檔案（6）：
+    tangcheng/audio/bgm/mall-2026-pa-a.loop.json
+    tangcheng/audio/bgm/mall-2026-pa-a.m4a
+    tangcheng/audio/bgm/mall-2026-pa-a.ogg
+    tangcheng/audio/bgm/mall-2026-pa-b.loop.json
+    tangcheng/audio/bgm/mall-2026-pa-b.m4a
+    tangcheng/audio/bgm/mall-2026-pa-b.ogg
+
+■ 本專案程式合成（numpy／scipy），無生成模型、無人聲；遠處鐵捲門與腳步的乾聲取自本專案自產的 sfx/shutter-down-a、sfx/steps/terrazzo-walk-3 再加工；可商用
+  授權：本專案程式合成（numpy／scipy），無生成模型、無人聲；遠處鐵捲門與腳步的乾聲取自本專案自產的 sfx/shutter-down-a、sfx/steps/terrazzo-walk-3 再加工；可商用
+  模型：無生成模型；純程式合成
+  檔案（4）：
+    tangcheng/audio/ir/recipe.json
+    tangcheng/audio/ir/vast-abyss.wav
+    tangcheng/audio/ir/vast-corridor.wav
+    tangcheng/audio/ir/vast-escalator-well.wav
+
+■ 本專案程式合成（numpy／scipy），無取樣、無參考音檔（art-src/_reference/audio/ 沒有可用的）
+  授權：本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型；可商用
+  模型：無生成模型；純程式波形（CLAP 只用來挑選）
+  檔案（28）：
+    tangcheng/audio/sfx/escalator-a.loop.json
+    tangcheng/audio/sfx/escalator-a.m4a
+    tangcheng/audio/sfx/escalator-a.ogg
+    tangcheng/audio/sfx/escalator-b.loop.json
+    tangcheng/audio/sfx/escalator-b.m4a
+    tangcheng/audio/sfx/escalator-b.ogg
+    tangcheng/audio/sfx/fountain-a.loop.json
+    tangcheng/audio/sfx/fountain-a.m4a
+    tangcheng/audio/sfx/fountain-a.ogg
+    tangcheng/audio/sfx/fountain-b.loop.json
+    tangcheng/audio/sfx/fountain-b.m4a
+    tangcheng/audio/sfx/fountain-b.ogg
+    tangcheng/audio/sfx/recipe-machines.json
+    tangcheng/audio/sfx/shutter-down-b.loop.json
+    tangcheng/audio/sfx/shutter-down-b.m4a
+    tangcheng/audio/sfx/shutter-down-b.ogg
+    tangcheng/audio/sfx/shutter-up-a.loop.json
+    tangcheng/audio/sfx/shutter-up-a.m4a
+    tangcheng/audio/sfx/shutter-up-a.ogg
+    tangcheng/audio/sfx/shutter-up-b.loop.json
+    tangcheng/audio/sfx/shutter-up-b.m4a
+    tangcheng/audio/sfx/shutter-up-b.ogg
+    tangcheng/audio/sfx/vent-a.loop.json
+    tangcheng/audio/sfx/vent-a.m4a
+    tangcheng/audio/sfx/vent-a.ogg
+    tangcheng/audio/sfx/vent-b.loop.json
+    tangcheng/audio/sfx/vent-b.m4a
+    tangcheng/audio/sfx/vent-b.ogg
+
+■ 本專案程式合成（numpy／scipy），無取樣、無參考音檔
+  授權：本專案程式合成（numpy／scipy 波形＋pedalboard 0.9.25 內建效果；喇叭版另用 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無取樣、無參考音檔、無生成模型；可商用
+  模型：無生成模型；純程式波形
+  檔案（37）：
+    tangcheng/audio/sfx/lamp-hum-a.loop.json
+    tangcheng/audio/sfx/lamp-hum-a.m4a
+    tangcheng/audio/sfx/lamp-hum-a.ogg
+    tangcheng/audio/sfx/lamp-hum-b.loop.json
+    tangcheng/audio/sfx/lamp-hum-b.m4a
+    tangcheng/audio/sfx/lamp-hum-b.ogg
+    tangcheng/audio/sfx/lamp-hum-c.loop.json
+    tangcheng/audio/sfx/lamp-hum-c.m4a
+    tangcheng/audio/sfx/lamp-hum-c.ogg
+    tangcheng/audio/sfx/lamp-pop-1.loop.json
+    tangcheng/audio/sfx/lamp-pop-1.m4a
+    tangcheng/audio/sfx/lamp-pop-1.ogg
+    tangcheng/audio/sfx/lamp-pop-2.loop.json
+    tangcheng/audio/sfx/lamp-pop-2.m4a
+    tangcheng/audio/sfx/lamp-pop-2.ogg
+    tangcheng/audio/sfx/lamp-pop-3.loop.json
+    tangcheng/audio/sfx/lamp-pop-3.m4a
+    tangcheng/audio/sfx/lamp-pop-3.ogg
+    tangcheng/audio/sfx/lamp-pop-4.loop.json
+    tangcheng/audio/sfx/lamp-pop-4.m4a
+    tangcheng/audio/sfx/lamp-pop-4.ogg
+    tangcheng/audio/sfx/lamp-pop-5.loop.json
+    tangcheng/audio/sfx/lamp-pop-5.m4a
+    tangcheng/audio/sfx/lamp-pop-5.ogg
+    tangcheng/audio/sfx/pa-chime-a-speaker.loop.json
+    tangcheng/audio/sfx/pa-chime-a-speaker.m4a
+    tangcheng/audio/sfx/pa-chime-a-speaker.ogg
+    tangcheng/audio/sfx/pa-chime-a.loop.json
+    tangcheng/audio/sfx/pa-chime-a.m4a
+    tangcheng/audio/sfx/pa-chime-a.ogg
+    tangcheng/audio/sfx/pa-chime-b-speaker.loop.json
+    tangcheng/audio/sfx/pa-chime-b-speaker.m4a
+    tangcheng/audio/sfx/pa-chime-b-speaker.ogg
+    tangcheng/audio/sfx/pa-chime-b.loop.json
+    tangcheng/audio/sfx/pa-chime-b.m4a
+    tangcheng/audio/sfx/pa-chime-b.ogg
+    tangcheng/audio/sfx/recipe.json
+
+■ 本專案程式合成（numpy／scipy；shut2.py 延伸 synth.py），無取樣、無參考音檔
+  授權：本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型；可商用
+  模型：無生成模型；純程式波形（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/shutter-down-a.loop.json
+    tangcheng/audio/sfx/shutter-down-a.m4a
+    tangcheng/audio/sfx/shutter-down-a.ogg
+
+■ Fast Steps on Concrete（奔跑） by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1319.html（切出單步 run-000）
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/carpet-run-1.loop.json
+    tangcheng/audio/sfx/steps/carpet-run-1.m4a
+    tangcheng/audio/sfx/steps/carpet-run-1.ogg
+
+■ Fast Steps on Concrete（奔跑） by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1319.html（切出單步 run-019）
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（6）：
+    tangcheng/audio/sfx/steps/carpet-run-2.loop.json
+    tangcheng/audio/sfx/steps/carpet-run-2.m4a
+    tangcheng/audio/sfx/steps/carpet-run-2.ogg
+    tangcheng/audio/sfx/steps/wet-run-4.loop.json
+    tangcheng/audio/sfx/steps/wet-run-4.m4a
+    tangcheng/audio/sfx/steps/wet-run-4.ogg
+
+■ Fast Steps on Concrete（奔跑） by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1319.html（切出單步 run-026）
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/carpet-run-3.loop.json
+    tangcheng/audio/sfx/steps/carpet-run-3.m4a
+    tangcheng/audio/sfx/steps/carpet-run-3.ogg
+
+■ Fast Steps on Concrete（奔跑） by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1319.html（切出單步 run-015）
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（7）：
+    tangcheng/audio/sfx/steps/carpet-run-4.loop.json
+    tangcheng/audio/sfx/steps/carpet-run-4.m4a
+    tangcheng/audio/sfx/steps/carpet-run-4.ogg
+    tangcheng/audio/sfx/steps/recipe.json
+    tangcheng/audio/sfx/steps/wet-run-1.loop.json
+    tangcheng/audio/sfx/steps/wet-run-1.m4a
+    tangcheng/audio/sfx/steps/wet-run-1.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-048）
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/carpet-walk-1.loop.json
+    tangcheng/audio/sfx/steps/carpet-walk-1.m4a
+    tangcheng/audio/sfx/steps/carpet-walk-1.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-038）
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（6）：
+    tangcheng/audio/sfx/steps/carpet-walk-2.loop.json
+    tangcheng/audio/sfx/steps/carpet-walk-2.m4a
+    tangcheng/audio/sfx/steps/carpet-walk-2.ogg
+    tangcheng/audio/sfx/steps/wet-walk-8.loop.json
+    tangcheng/audio/sfx/steps/wet-walk-8.m4a
+    tangcheng/audio/sfx/steps/wet-walk-8.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-035）
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/carpet-walk-3.loop.json
+    tangcheng/audio/sfx/steps/carpet-walk-3.m4a
+    tangcheng/audio/sfx/steps/carpet-walk-3.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-066）
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（6）：
+    tangcheng/audio/sfx/steps/carpet-walk-4.loop.json
+    tangcheng/audio/sfx/steps/carpet-walk-4.m4a
+    tangcheng/audio/sfx/steps/carpet-walk-4.ogg
+    tangcheng/audio/sfx/steps/wet-walk-6.loop.json
+    tangcheng/audio/sfx/steps/wet-walk-6.m4a
+    tangcheng/audio/sfx/steps/wet-walk-6.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-036）
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/carpet-walk-5.loop.json
+    tangcheng/audio/sfx/steps/carpet-walk-5.m4a
+    tangcheng/audio/sfx/steps/carpet-walk-5.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-025）
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（6）：
+    tangcheng/audio/sfx/steps/carpet-walk-6.loop.json
+    tangcheng/audio/sfx/steps/carpet-walk-6.m4a
+    tangcheng/audio/sfx/steps/carpet-walk-6.ogg
+    tangcheng/audio/sfx/steps/wet-walk-5.loop.json
+    tangcheng/audio/sfx/steps/wet-walk-5.m4a
+    tangcheng/audio/sfx/steps/wet-walk-5.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-022）
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（6）：
+    tangcheng/audio/sfx/steps/carpet-walk-7.loop.json
+    tangcheng/audio/sfx/steps/carpet-walk-7.m4a
+    tangcheng/audio/sfx/steps/carpet-walk-7.ogg
+    tangcheng/audio/sfx/steps/wet-walk-2.loop.json
+    tangcheng/audio/sfx/steps/wet-walk-2.m4a
+    tangcheng/audio/sfx/steps/wet-walk-2.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-018）
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（6）：
+    tangcheng/audio/sfx/steps/carpet-walk-8.loop.json
+    tangcheng/audio/sfx/steps/carpet-walk-8.m4a
+    tangcheng/audio/sfx/steps/carpet-walk-8.ogg
+    tangcheng/audio/sfx/steps/wet-walk-3.loop.json
+    tangcheng/audio/sfx/steps/wet-walk-3.m4a
+    tangcheng/audio/sfx/steps/wet-walk-3.ogg
+
+■ Fast Steps on Concrete（奔跑） by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1319.html（切出單步 run-009）；金屬脈衝響應 Metal Impact Sounds（bong1.wav） by BMacZero, CC0, https://opengameart.org/content/metal-impact-sounds；階梯箱體空腔共鳴、鬆動踏板回彈、防滑齒條為程式模態合成
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/metal-run-1.loop.json
+    tangcheng/audio/sfx/steps/metal-run-1.m4a
+    tangcheng/audio/sfx/steps/metal-run-1.ogg
+
+■ Fast Steps on Concrete（奔跑） by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1319.html（切出單步 run-023）；金屬脈衝響應 Metal Impact Sounds（bong1.wav） by BMacZero, CC0, https://opengameart.org/content/metal-impact-sounds；階梯箱體空腔共鳴、鬆動踏板回彈、防滑齒條為程式模態合成
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/metal-run-2.loop.json
+    tangcheng/audio/sfx/steps/metal-run-2.m4a
+    tangcheng/audio/sfx/steps/metal-run-2.ogg
+
+■ Fast Steps on Concrete（奔跑） by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1319.html（切出單步 run-015）；金屬脈衝響應 Metal Impact Sounds（bong1.wav） by BMacZero, CC0, https://opengameart.org/content/metal-impact-sounds；階梯箱體空腔共鳴、鬆動踏板回彈、防滑齒條為程式模態合成
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/metal-run-3.loop.json
+    tangcheng/audio/sfx/steps/metal-run-3.m4a
+    tangcheng/audio/sfx/steps/metal-run-3.ogg
+
+■ Fast Steps on Concrete（奔跑） by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1319.html（切出單步 run-000）；金屬脈衝響應 Metal Impact Sounds（bong1.wav） by BMacZero, CC0, https://opengameart.org/content/metal-impact-sounds；階梯箱體空腔共鳴、鬆動踏板回彈、防滑齒條為程式模態合成
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/metal-run-4.loop.json
+    tangcheng/audio/sfx/steps/metal-run-4.m4a
+    tangcheng/audio/sfx/steps/metal-run-4.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-036）；金屬脈衝響應 Metal Impact Sounds（bong1.wav） by BMacZero, CC0, https://opengameart.org/content/metal-impact-sounds；階梯箱體空腔共鳴、鬆動踏板回彈、防滑齒條為程式模態合成
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/metal-walk-1.loop.json
+    tangcheng/audio/sfx/steps/metal-walk-1.m4a
+    tangcheng/audio/sfx/steps/metal-walk-1.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-031）；金屬脈衝響應 Metal Impact Sounds（bong1.wav） by BMacZero, CC0, https://opengameart.org/content/metal-impact-sounds；階梯箱體空腔共鳴、鬆動踏板回彈、防滑齒條為程式模態合成
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/metal-walk-2.loop.json
+    tangcheng/audio/sfx/steps/metal-walk-2.m4a
+    tangcheng/audio/sfx/steps/metal-walk-2.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-022）；金屬脈衝響應 Metal Impact Sounds（bong1.wav） by BMacZero, CC0, https://opengameart.org/content/metal-impact-sounds；階梯箱體空腔共鳴、鬆動踏板回彈、防滑齒條為程式模態合成
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/metal-walk-3.loop.json
+    tangcheng/audio/sfx/steps/metal-walk-3.m4a
+    tangcheng/audio/sfx/steps/metal-walk-3.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-025）；金屬脈衝響應 Metal Impact Sounds（bong1.wav） by BMacZero, CC0, https://opengameart.org/content/metal-impact-sounds；階梯箱體空腔共鳴、鬆動踏板回彈、防滑齒條為程式模態合成
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/metal-walk-4.loop.json
+    tangcheng/audio/sfx/steps/metal-walk-4.m4a
+    tangcheng/audio/sfx/steps/metal-walk-4.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-038）；金屬脈衝響應 Metal Impact Sounds（bong1.wav） by BMacZero, CC0, https://opengameart.org/content/metal-impact-sounds；階梯箱體空腔共鳴、鬆動踏板回彈、防滑齒條為程式模態合成
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/metal-walk-5.loop.json
+    tangcheng/audio/sfx/steps/metal-walk-5.m4a
+    tangcheng/audio/sfx/steps/metal-walk-5.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-051）；金屬脈衝響應 Metal Impact Sounds（bong1.wav） by BMacZero, CC0, https://opengameart.org/content/metal-impact-sounds；階梯箱體空腔共鳴、鬆動踏板回彈、防滑齒條為程式模態合成
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/metal-walk-6.loop.json
+    tangcheng/audio/sfx/steps/metal-walk-6.m4a
+    tangcheng/audio/sfx/steps/metal-walk-6.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-018）；金屬脈衝響應 Metal Impact Sounds（bong1.wav） by BMacZero, CC0, https://opengameart.org/content/metal-impact-sounds；階梯箱體空腔共鳴、鬆動踏板回彈、防滑齒條為程式模態合成
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/metal-walk-7.loop.json
+    tangcheng/audio/sfx/steps/metal-walk-7.m4a
+    tangcheng/audio/sfx/steps/metal-walk-7.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-066）；金屬脈衝響應 Metal Impact Sounds（bong1.wav） by BMacZero, CC0, https://opengameart.org/content/metal-impact-sounds；階梯箱體空腔共鳴、鬆動踏板回彈、防滑齒條為程式模態合成
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/metal-walk-8.loop.json
+    tangcheng/audio/sfx/steps/metal-walk-8.m4a
+    tangcheng/audio/sfx/steps/metal-walk-8.ogg
+
+■ Fast Steps on Concrete（奔跑） by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1319.html（切出單步 run-023）；線性處理（不限幅），早期反射 ×2、低於 1 kHz 全通相位
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/terrazzo-run-1.loop.json
+    tangcheng/audio/sfx/steps/terrazzo-run-1.m4a
+    tangcheng/audio/sfx/steps/terrazzo-run-1.ogg
+
+■ Footsteps, Shoe on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/footsteps-shoe-on-concrete-s0514.html（切出單步 snk-037）；線性處理（不限幅），早期反射 ×2、低於 1 kHz 全通相位
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/terrazzo-run-2.loop.json
+    tangcheng/audio/sfx/steps/terrazzo-run-2.m4a
+    tangcheng/audio/sfx/steps/terrazzo-run-2.ogg
+
+■ Fast Steps on Concrete（奔跑） by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1319.html（切出單步 run-008）；線性處理（不限幅），早期反射 ×2、低於 1 kHz 全通相位
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/terrazzo-run-3.loop.json
+    tangcheng/audio/sfx/steps/terrazzo-run-3.m4a
+    tangcheng/audio/sfx/steps/terrazzo-run-3.ogg
+
+■ Fast Steps on Concrete（奔跑） by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1319.html（切出單步 run-013）；線性處理（不限幅），早期反射 ×2、低於 1 kHz 全通相位
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/terrazzo-run-4.loop.json
+    tangcheng/audio/sfx/steps/terrazzo-run-4.m4a
+    tangcheng/audio/sfx/steps/terrazzo-run-4.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-002）；線性處理（不限幅），早期反射 ×2、低於 1 kHz 全通相位
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/terrazzo-walk-1.loop.json
+    tangcheng/audio/sfx/steps/terrazzo-walk-1.m4a
+    tangcheng/audio/sfx/steps/terrazzo-walk-1.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-003）；線性處理（不限幅），早期反射 ×2、低於 1 kHz 全通相位
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/terrazzo-walk-2.loop.json
+    tangcheng/audio/sfx/steps/terrazzo-walk-2.m4a
+    tangcheng/audio/sfx/steps/terrazzo-walk-2.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-007）；線性處理（不限幅），早期反射 ×2、低於 1 kHz 全通相位
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/terrazzo-walk-3.loop.json
+    tangcheng/audio/sfx/steps/terrazzo-walk-3.m4a
+    tangcheng/audio/sfx/steps/terrazzo-walk-3.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-011）；線性處理（不限幅），早期反射 ×2、低於 1 kHz 全通相位
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/terrazzo-walk-4.loop.json
+    tangcheng/audio/sfx/steps/terrazzo-walk-4.m4a
+    tangcheng/audio/sfx/steps/terrazzo-walk-4.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-014）；線性處理（不限幅），早期反射 ×2、低於 1 kHz 全通相位
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/terrazzo-walk-5.loop.json
+    tangcheng/audio/sfx/steps/terrazzo-walk-5.m4a
+    tangcheng/audio/sfx/steps/terrazzo-walk-5.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-019）；線性處理（不限幅），早期反射 ×2、低於 1 kHz 全通相位
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/terrazzo-walk-6.loop.json
+    tangcheng/audio/sfx/steps/terrazzo-walk-6.m4a
+    tangcheng/audio/sfx/steps/terrazzo-walk-6.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-044）；線性處理（不限幅），早期反射 ×2、低於 1 kHz 全通相位
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/terrazzo-walk-7.loop.json
+    tangcheng/audio/sfx/steps/terrazzo-walk-7.m4a
+    tangcheng/audio/sfx/steps/terrazzo-walk-7.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-073）；線性處理（不限幅），早期反射 ×2、低於 1 kHz 全通相位
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/terrazzo-walk-8.loop.json
+    tangcheng/audio/sfx/steps/terrazzo-walk-8.m4a
+    tangcheng/audio/sfx/steps/terrazzo-walk-8.ogg
+
+■ Fast Steps on Concrete（奔跑） by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1319.html（切出單步 run-009）
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/wet-run-2.loop.json
+    tangcheng/audio/sfx/steps/wet-run-2.m4a
+    tangcheng/audio/sfx/steps/wet-run-2.ogg
+
+■ Fast Steps on Concrete（奔跑） by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1319.html（切出單步 run-023）
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/wet-run-3.loop.json
+    tangcheng/audio/sfx/steps/wet-run-3.m4a
+    tangcheng/audio/sfx/steps/wet-run-3.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-064）
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/wet-walk-1.loop.json
+    tangcheng/audio/sfx/steps/wet-walk-1.m4a
+    tangcheng/audio/sfx/steps/wet-walk-1.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-031）
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/wet-walk-4.loop.json
+    tangcheng/audio/sfx/steps/wet-walk-4.m4a
+    tangcheng/audio/sfx/steps/wet-walk-4.ogg
+
+■ Fast Steps on Concrete by Joseph SARDIN（BigSoundBank）, CC0 1.0, https://bigsoundbank.com/fast-steps-on-concrete-s1318.html（切出單步 walk-037）
+  授權：取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名
+  模型：無生成模型；CC0 錄音＋程式處理（CLAP 只用來挑選）
+  檔案（3）：
+    tangcheng/audio/sfx/steps/wet-walk-7.loop.json
+    tangcheng/audio/sfx/steps/wet-walk-7.m4a
+    tangcheng/audio/sfx/steps/wet-walk-7.ogg
+
+■ 本機 Blender Cycles（Metal GPU）烘焙，本專案自產
+  授權：本專案自產，無外部素材、無參考照進貼圖；可商用、可公開
+  模型：無（Blender 5.2 Cycles 路徑追蹤，幾何由 tools/sandbox/tangcheng/bake/export-atrium.ts 從程式樣板匯出）
+  檔案（2）：
+    tangcheng/bake/index.json
+    tangcheng/bake/recipe.json
+
+■ 本專案原創文案（手寫），不含真實品牌名、logo、電話
+  授權：本專案自產
+  檔案（1）：
+    tangcheng/brands.json
+
+■ https://github.com/ButTaiwan/gensen-font/releases/download/v2.100/GenSenRounded2TW-otf.zip（GenSenRounded2TW-H.otf）（下載後用 pyftsubset 做 6770 字子集，輸出 woff2）
+  授權：SIL OFL 1.1（ButTaiwan，基於思源黑體；Reserved Font Name 'Source'）
+  模型：無（下載的字型，非生成）
+  檔案（1）：
+    tangcheng/fonts/GenSenRounded2TW-H.woff2
+
+■ https://github.com/notofonts/noto-cjk/raw/main/Sans/SubsetOTF/TC/NotoSansTC-Black.otf（下載後用 pyftsubset 做 6770 字子集，輸出 woff2）
+  授權：SIL OFL 1.1（Adobe/Google，Reserved Font Name 'Source'；子集檔名不含保留名）
+  模型：無（下載的字型，非生成）
+  檔案（1）：
+    tangcheng/fonts/NotoSansTC-Black.woff2
+
+■ https://github.com/notofonts/noto-cjk/raw/main/Serif/SubsetOTF/TC/NotoSerifTC-Black.otf（下載後用 pyftsubset 做 6770 字子集，輸出 woff2）
+  授權：SIL OFL 1.1（Adobe/Google，Reserved Font Name 'Source'）
+  模型：無（下載的字型，非生成）
+  檔案（2）：
+    tangcheng/fonts/NotoSerifTC-Black.woff2
+    tangcheng/fonts/recipe.json
+
+■ 地下街商品圖集（本作合成；102 件，每件的來源、授權、收錄理由見 tangcheng/goods/manifest.json items，逐件確認無人形）
+  授權：SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）；
+    Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字；
+    FLUX.1 [dev] 本機生成（Non-Commercial License：輸出可用；本專案為免費非營利遊戲）；
+    本專案程式生成（無生成模型、無參考照），可公開；
+    自產 ACE-Step（MIT）；封面為程式生成；
+    自產（DSP 後製）；封面為程式生成；
+    自產 musicctl／VSCO-2 CC0；封面為程式生成；
+    自產曲（VSCO-2 CC0／VPO3 可商用）；封面 Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字
+  檔案（2）：
+    tangcheng/goods/atlas-1k.webp
+    tangcheng/goods/atlas-2k.webp
+
+■ 地下街商品清單與圖集座標（本作）
+  授權：本作
+  檔案（2）：
+    tangcheng/goods/atlas.json
+    tangcheng/goods/manifest.json
+
+■ 地下街 3D 小玩具（Tencent Hunyuan3D 2.x 本機生成，本作 Blender 減面；逐件確認無人形）
+  授權：Tencent Hunyuan 3D 2.0 Community License
+  模型：Powered by Tencent Hunyuan.
+  Notice: Tencent Hunyuan 3D 2.0 is licensed under the Tencent Hunyuan 3D 2.0 Community License Agreement, Copyright © 2025 Tencent. All Rights Reserved. The trademark rights of “Tencent Hunyuan” are owned by Tencent or its affiliate.
+  注意：Hunyuan3D 2.0 社群授權不適用於歐盟、英國、南韓（Territory 以外），其產出也不得在該地區使用、散布或展示。
+  檔案（7）：
+    tangcheng/goods/models/toy-ant.glb
+    tangcheng/goods/models/toy-bakery.glb
+    tangcheng/goods/models/toy-car.glb
+    tangcheng/goods/models/toy-grasshopper.glb
+    tangcheng/goods/models/toy-knot.glb
+    tangcheng/goods/models/toy-rat.glb
+    tangcheng/goods/models/toy-train.glb
+
+■ 本機生成：第 6 項概念圖 A → Qwen-Image-Edit 整理正面＋多角度 LoRA 側背 → Hunyuan3D-2mv 形狀 → Blender 減面；本專案自產，未用參考照
+  授權：Qwen 系列與兩個 LoRA：Apache-2.0；Hunyuan3D-2／2mv：Tencent Hunyuan 3D 2.0 Community License（台灣可商用；歐盟、英國、南韓不適用；月活 >1M 另簽）；來源概念圖 FLUX.1 [dev] 輸出（見 art-src/tangcheng/concepts/recipe.json）
+  模型：Qwen-Image-Edit-2511 Q4_K_M GGUF＋Lightning 4 步 LoRA（＋fal Multiple-Angles LoRA 生側背）；Hunyuan3D-2mv hunyuan3d-dit-v2-mv-turbo（只要形狀，不烤貼圖）；Blender 5.2 減面
+  檔案（1）：
+    tangcheng/models/atrium-sculpture.glb
+
+■ 本機生成：RealVisXL 產品照（純文字提示詞）→ Hunyuan3D-2 turbo → Blender 整理；未用參考照當貼圖
+  授權：RealVisXL V5：CreativeML Open RAIL++-M（產出不受授權方主張權利）；Hunyuan3D-2：Tencent Hunyuan 3D 2.0 Community License（台灣可商用；歐盟、英國、南韓不適用；月活 >1M 另簽）
+  模型：RealVisXL_V5.0_fp16（30 步 dpmpp_2m karras cfg 5，1024²）→ Hunyuan3D-2 2.0-turbo 形狀＋paint-v2-0-turbo 貼圖（4 萬面）→ Blender 5.2 轉向、減面、縮尺寸、貼圖 1024 JPEG q85
+  檔案（12）：
+    tangcheng/models/fixtures/chair.glb
+    tangcheng/models/fixtures/crt.glb
+    tangcheng/models/fixtures/mower.glb
+    tangcheng/models/fixtures/recipe.json
+    tangcheng/models/fixtures/scrubber.glb
+    tangcheng/models/fixtures/skate.glb
+    tangcheng/models/vehicles/bumper.glb
+    tangcheng/models/vehicles/forklift.glb
+    tangcheng/models/vehicles/hatch.glb
+    tangcheng/models/vehicles/recipe.json
+    tangcheng/models/vehicles/scooter.glb
+    tangcheng/models/vehicles/sedan.glb
+
+■ 本機生成：RealVisXL 產品照（純文字提示詞）→ Hunyuan3D-2 turbo → Blender 整理；未用參考照
+  授權：RealVisXL V5：CreativeML Open RAIL++-M（產出不受授權方主張權利）；Hunyuan3D-2：Tencent Hunyuan 3D 2.0 Community License（台灣可商用；歐盟、英國、南韓不適用；月活 >1M 另簽）
+  模型：RealVisXL_V5.0_fp16（30 步 dpmpp_2m karras cfg 5，1024²）→ Hunyuan3D-2 2.0-turbo 形狀＋paint-v2-0-turbo 貼圖（4 萬面）→ Blender 5.2 減面、縮尺寸、貼圖 1024 JPEG q85
+  檔案（10）：
+    tangcheng/models/props/bench.glb
+    tangcheng/models/props/bin.glb
+    tangcheng/models/props/claw.glb
+    tangcheng/models/props/extinguisher.glb
+    tangcheng/models/props/phone.glb
+    tangcheng/models/props/photo.glb
+    tangcheng/models/props/recipe.json
+    tangcheng/models/props/seats.glb
+    tangcheng/models/props/sortbins.glb
+    tangcheng/models/props/vending.glb
+
+■ 本機生成：第 8 項概念圖 → Qwen-Image-Edit 整理側面＋多角度 LoRA 側背 → Hunyuan3D-2mv 形狀 → hunyuan3d-paint 貼圖 → 照概念圖取色＋褪色 → Blender 整理；本專案自產，未用參考照
+  授權：Qwen 系列與兩個 LoRA：Apache-2.0；Hunyuan3D-2／2mv（含 paint）：Tencent Hunyuan 3D 2.0 Community License（台灣可商用；歐盟、英國、南韓不適用；月活 >1M 另簽）；來源概念圖 FLUX.1 [dev] 輸出（見 art-src/tangcheng/concepts/recipe.json）
+  模型：Qwen-Image-Edit-2511 Q4_K_M GGUF＋Lightning 4 步 LoRA（＋fal Multiple-Angles LoRA 生側背）；Hunyuan3D-2mv hunyuan3d-dit-v2-mv-turbo（形狀）＋Hunyuan3D-2 hunyuan3d-paint-v2-0-turbo（貼圖）；Blender 5.2
+  檔案（3）：
+    tangcheng/models/recipe.json
+    tangcheng/models/ride-car.glb
+    tangcheng/models/ride-train.glb
+
+■ 本機生成：local-gen-work/tangcheng-terrain/gen_fix9.py facade（numpy 程式化，CPU）
+  授權：純程式生成（numpy，無模型、無參考照）；可商用、可公開
+  模型：無（程式生成）
+  檔案（2）：
+    tangcheng/tex/far/facade-atlas/albedo.jpg
+    tangcheng/tex/far/facade-atlas/recipe.json
+
+■ 本機 ComfyUI Flux 文生圖＋4x-UltraSharp 放大＋程式褪色（fade w=0.3），本專案自產；參考照只目視取色
+  授權：FLUX.1 [dev] Non-Commercial License：輸出可用（禁拿輸出訓練競品模型）；本專案為免費非營利遊戲，若改收費／掛廣告須重審。放大用 4x-UltraSharp（CC BY-NC-SA 4.0，非營利可用）
+  模型：flux1-dev-Q4_K_S.gguf（t5xxl_fp8＋clip_l＋ae）＋4x-UltraSharp.pth
+  檔案（16）：
+    tangcheng/tex/lightbox/2k/appliance-a.jpg
+    tangcheng/tex/lightbox/2k/bakery-a.jpg
+    tangcheng/tex/lightbox/2k/coffee-a.jpg
+    tangcheng/tex/lightbox/2k/ff-combo.jpg
+    tangcheng/tex/lightbox/2k/ff-fries.jpg
+    tangcheng/tex/lightbox/2k/ff-soda.jpg
+    tangcheng/tex/lightbox/2k/music-a.jpg
+    tangcheng/tex/lightbox/2k/music-b.jpg
+    tangcheng/tex/lightbox/2k/optical-a.jpg
+    tangcheng/tex/lightbox/2k/phone-a.jpg
+    tangcheng/tex/lightbox/2k/phone-b.jpg
+    tangcheng/tex/lightbox/2k/tea-a.jpg
+    tangcheng/tex/lightbox/2k/toys-a.jpg
+    tangcheng/tex/lightbox/2k/toys-b.jpg
+    tangcheng/tex/lightbox/2k/watch-a.jpg
+    tangcheng/tex/lightbox/recipe.json
+
+■ 本機生成：PIL 粗略構圖色塊→RealVisXL img2img（高 denoise、照片感、無 ControlNet）→拼 2×4 圖集
+  授權：RealVisXL V5：CreativeML Open RAIL++-M（產出不受授權方主張權利）；無參考照進貼圖；可商用、可公開
+  模型：RealVisXL_V5.0_fp16
+  檔案（6）：
+    tangcheng/tex/pbr/accessory-wall-atlas/2k/albedo.jpg
+    tangcheng/tex/pbr/accessory-wall-atlas/recipe.json
+    tangcheng/tex/pbr/bridal-backdrop-atlas/2k/albedo.jpg
+    tangcheng/tex/pbr/bridal-backdrop-atlas/recipe.json
+    tangcheng/tex/pbr/consign-window-atlas/2k/albedo.jpg
+    tangcheng/tex/pbr/consign-window-atlas/recipe.json
+
+■ 本機程式生成（CPU numpy），本專案自產
+  授權：本專案程式生成，CPU numpy，無生成模型、無參考照進貼圖；可商用、可公開
+  模型：無（程式生成）
+  檔案（42）：
+    tangcheng/tex/pbr/acrylic-frost/2k/albedo.jpg
+    tangcheng/tex/pbr/acrylic-frost/recipe.json
+    tangcheng/tex/pbr/alu-frame-old/2k/albedo.jpg
+    tangcheng/tex/pbr/alu-frame-old/recipe.json
+    tangcheng/tex/pbr/alu-panel-white/2k/albedo.jpg
+    tangcheng/tex/pbr/alu-panel-white/recipe.json
+    tangcheng/tex/pbr/b2-quarry-tile/2k/albedo.jpg
+    tangcheng/tex/pbr/b2-quarry-tile/recipe.json
+    tangcheng/tex/pbr/ceiling-alu-strip/2k/albedo.jpg
+    tangcheng/tex/pbr/ceiling-alu-strip/recipe.json
+    tangcheng/tex/pbr/ceiling-grille/2k/albedo.jpg
+    tangcheng/tex/pbr/ceiling-grille/recipe.json
+    tangcheng/tex/pbr/ceiling-mineral/2k/albedo.jpg
+    tangcheng/tex/pbr/ceiling-mineral/recipe.json
+    tangcheng/tex/pbr/ceiling-paint/2k/albedo.jpg
+    tangcheng/tex/pbr/ceiling-paint/recipe.json
+    tangcheng/tex/pbr/concrete-wet/2k/albedo.jpg
+    tangcheng/tex/pbr/concrete-wet/recipe.json
+    tangcheng/tex/pbr/mosaic/2k/albedo.jpg
+    tangcheng/tex/pbr/mosaic/recipe.json
+    tangcheng/tex/pbr/rubber-handrail/2k/albedo.jpg
+    tangcheng/tex/pbr/rubber-handrail/recipe.json
+    tangcheng/tex/pbr/shutter-galv/2k/albedo.jpg
+    tangcheng/tex/pbr/shutter-galv/recipe.json
+    tangcheng/tex/pbr/stainless-hairline/2k/albedo.jpg
+    tangcheng/tex/pbr/stainless-hairline/recipe.json
+    tangcheng/tex/pbr/stair-tread-antislip/2k/albedo.jpg
+    tangcheng/tex/pbr/stair-tread-antislip/recipe.json
+    tangcheng/tex/pbr/subway-brick/2k/albedo.jpg
+    tangcheng/tex/pbr/subway-brick/recipe.json
+    tangcheng/tex/pbr/tactile-guide/2k/albedo.jpg
+    tangcheng/tex/pbr/tactile-guide/recipe.json
+    tangcheng/tex/pbr/terrazzo-blue/2k/albedo.jpg
+    tangcheng/tex/pbr/terrazzo-blue/recipe.json
+    tangcheng/tex/pbr/terrazzo-bw/2k/albedo.jpg
+    tangcheng/tex/pbr/terrazzo-bw/recipe.json
+    tangcheng/tex/pbr/terrazzo-mint/2k/albedo.jpg
+    tangcheng/tex/pbr/terrazzo-mint/recipe.json
+    tangcheng/tex/pbr/terrazzo-tile-worn/2k/albedo.jpg
+    tangcheng/tex/pbr/terrazzo-tile-worn/recipe.json
+    tangcheng/tex/pbr/wall-paint/2k/albedo.jpg
+    tangcheng/tex/pbr/wall-paint/recipe.json
+
+■ 本機生成：PIL 程式原稿→RealVisXL img2img（tile ControlNet）→程式加燈管光帶、黃化、蟲影、鋁框
+  授權：RealVisXL V5：CreativeML Open RAIL++-M（產出不受授權方主張權利）；xinsir controlnet-union-sdxl：Apache-2.0；無參考照進貼圖；可商用、可公開
+  模型：RealVisXL_V5.0_fp16＋xinsir controlnet-union-sdxl（tile）
+  檔案（2）：
+    tangcheng/tex/pbr/acrylic-sign-blank/2k/albedo.jpg
+    tangcheng/tex/pbr/acrylic-sign-blank/recipe.json
+
+■ 本機生成：CPU numpy 四方連續底稿＋RealVisXL img2img（tile ControlNet）加細節
+  授權：RealVisXL V5：CreativeML Open RAIL++-M（產出不受授權方主張權利）；xinsir controlnet-union-sdxl：Apache-2.0；無參考照進貼圖；可商用、可公開
+  模型：RealVisXL_V5.0_fp16＋xinsir controlnet-union-sdxl（tile）
+  檔案（112）：
+    tangcheng/tex/pbr/arcade-mat/2k/albedo.jpg
+    tangcheng/tex/pbr/arcade-mat/recipe.json
+    tangcheng/tex/pbr/banquet-carpet/2k/albedo.jpg
+    tangcheng/tex/pbr/banquet-carpet/recipe.json
+    tangcheng/tex/pbr/billiard-felt/2k/albedo.jpg
+    tangcheng/tex/pbr/billiard-felt/recipe.json
+    tangcheng/tex/pbr/boardwalk-wood/2k/albedo.jpg
+    tangcheng/tex/pbr/boardwalk-wood/recipe.json
+    tangcheng/tex/pbr/booth-panel/2k/albedo.jpg
+    tangcheng/tex/pbr/booth-panel/recipe.json
+    tangcheng/tex/pbr/bowling-carpet/2k/albedo.jpg
+    tangcheng/tex/pbr/bowling-carpet/recipe.json
+    tangcheng/tex/pbr/bridge-checker/2k/albedo.jpg
+    tangcheng/tex/pbr/bridge-checker/recipe.json
+    tangcheng/tex/pbr/car-cover-fabric/2k/albedo.jpg
+    tangcheng/tex/pbr/car-cover-fabric/recipe.json
+    tangcheng/tex/pbr/carpet-tile/2k/albedo.jpg
+    tangcheng/tex/pbr/carpet-tile/recipe.json
+    tangcheng/tex/pbr/duckweed/2k/albedo.jpg
+    tangcheng/tex/pbr/duckweed/recipe.json
+    tangcheng/tex/pbr/fiberglass-faded/2k/albedo.jpg
+    tangcheng/tex/pbr/fiberglass-faded/recipe.json
+    tangcheng/tex/pbr/fountain-dry/2k/albedo.jpg
+    tangcheng/tex/pbr/fountain-dry/recipe.json
+    tangcheng/tex/pbr/granite-slab/2k/albedo.jpg
+    tangcheng/tex/pbr/granite-slab/recipe.json
+    tangcheng/tex/pbr/grass-short/2k/albedo.jpg
+    tangcheng/tex/pbr/grass-short/recipe.json
+    tangcheng/tex/pbr/greenhouse-tile/2k/albedo.jpg
+    tangcheng/tex/pbr/greenhouse-tile/recipe.json
+    tangcheng/tex/pbr/gutter-cover-wet/2k/albedo.jpg
+    tangcheng/tex/pbr/gutter-cover-wet/recipe.json
+    tangcheng/tex/pbr/hazard-stripe/2k/albedo.jpg
+    tangcheng/tex/pbr/hazard-stripe/recipe.json
+    tangcheng/tex/pbr/herbal-wood/2k/albedo.jpg
+    tangcheng/tex/pbr/herbal-wood/recipe.json
+    tangcheng/tex/pbr/lane-maple/2k/albedo.jpg
+    tangcheng/tex/pbr/lane-maple/recipe.json
+    tangcheng/tex/pbr/lantern-panel/2k/albedo.jpg
+    tangcheng/tex/pbr/lantern-panel/recipe.json
+    tangcheng/tex/pbr/leaf-litter/2k/albedo.png
+    tangcheng/tex/pbr/leaf-litter/recipe.json
+    tangcheng/tex/pbr/lightwell-wall/2k/albedo.jpg
+    tangcheng/tex/pbr/lightwell-wall/recipe.json
+    tangcheng/tex/pbr/mahjong-felt/2k/albedo.jpg
+    tangcheng/tex/pbr/mahjong-felt/recipe.json
+    tangcheng/tex/pbr/mall-carpet-green/2k/albedo.jpg
+    tangcheng/tex/pbr/mall-carpet-green/recipe.json
+    tangcheng/tex/pbr/mall-carpet-wine/2k/albedo.jpg
+    tangcheng/tex/pbr/mall-carpet-wine/recipe.json
+    tangcheng/tex/pbr/market-cement-wet/2k/albedo.jpg
+    tangcheng/tex/pbr/market-cement-wet/recipe.json
+    tangcheng/tex/pbr/market-steel/2k/albedo.jpg
+    tangcheng/tex/pbr/market-steel/recipe.json
+    tangcheng/tex/pbr/moss-drip-decal/2k/albedo.png
+    tangcheng/tex/pbr/moss-drip-decal/recipe.json
+    tangcheng/tex/pbr/netcafe-carpet/2k/albedo.jpg
+    tangcheng/tex/pbr/netcafe-carpet/recipe.json
+    tangcheng/tex/pbr/nichoukake-grime/2k/albedo.jpg
+    tangcheng/tex/pbr/nichoukake-grime/recipe.json
+    tangcheng/tex/pbr/onsen-tile/2k/albedo.jpg
+    tangcheng/tex/pbr/onsen-tile/recipe.json
+    tangcheng/tex/pbr/parquet-teak/2k/albedo.jpg
+    tangcheng/tex/pbr/parquet-teak/recipe.json
+    tangcheng/tex/pbr/partition-fabric/2k/albedo.jpg
+    tangcheng/tex/pbr/partition-fabric/recipe.json
+    tangcheng/tex/pbr/pavilion-wood/2k/albedo.jpg
+    tangcheng/tex/pbr/pavilion-wood/recipe.json
+    tangcheng/tex/pbr/pool-dry/2k/albedo.jpg
+    tangcheng/tex/pbr/pool-dry/recipe.json
+    tangcheng/tex/pbr/queue-belt/2k/albedo.jpg
+    tangcheng/tex/pbr/queue-belt/recipe.json
+    tangcheng/tex/pbr/ramp-concrete/2k/albedo.jpg
+    tangcheng/tex/pbr/ramp-concrete/recipe.json
+    tangcheng/tex/pbr/red-clay-tile/2k/albedo.jpg
+    tangcheng/tex/pbr/red-clay-tile/recipe.json
+    tangcheng/tex/pbr/red-runner/2k/albedo.jpg
+    tangcheng/tex/pbr/red-runner/recipe.json
+    tangcheng/tex/pbr/rink-ice/2k/albedo.jpg
+    tangcheng/tex/pbr/rink-ice/recipe.json
+    tangcheng/tex/pbr/roof-corrugated-rust/2k/albedo.jpg
+    tangcheng/tex/pbr/roof-corrugated-rust/recipe.json
+    tangcheng/tex/pbr/roof-underside/2k/albedo.jpg
+    tangcheng/tex/pbr/roof-underside/recipe.json
+    tangcheng/tex/pbr/roof-waterproof-green/2k/albedo.jpg
+    tangcheng/tex/pbr/roof-waterproof-green/recipe.json
+    tangcheng/tex/pbr/sand-ripple/2k/albedo.jpg
+    tangcheng/tex/pbr/sand-ripple/recipe.json
+    tangcheng/tex/pbr/sauna-wood/2k/albedo.jpg
+    tangcheng/tex/pbr/sauna-wood/recipe.json
+    tangcheng/tex/pbr/soil-edge/2k/albedo.jpg
+    tangcheng/tex/pbr/soil-edge/recipe.json
+    tangcheng/tex/pbr/table-linen/2k/albedo.jpg
+    tangcheng/tex/pbr/table-linen/recipe.json
+    tangcheng/tex/pbr/tank-stainless/2k/albedo.jpg
+    tangcheng/tex/pbr/tank-stainless/recipe.json
+    tangcheng/tex/pbr/tarp-blue/2k/albedo.jpg
+    tangcheng/tex/pbr/tarp-blue/recipe.json
+    tangcheng/tex/pbr/tc-handsigns/2k/albedo.jpg
+    tangcheng/tex/pbr/tc-handsigns/recipe.json
+    tangcheng/tex/pbr/threshold-brass/2k/albedo.jpg
+    tangcheng/tex/pbr/threshold-brass/recipe.json
+    tangcheng/tex/pbr/turf-artificial/2k/albedo.jpg
+    tangcheng/tex/pbr/turf-artificial/recipe.json
+    tangcheng/tex/pbr/turf-minigolf/2k/albedo.jpg
+    tangcheng/tex/pbr/turf-minigolf/recipe.json
+    tangcheng/tex/pbr/vct-tile/2k/albedo.jpg
+    tangcheng/tex/pbr/vct-tile/recipe.json
+    tangcheng/tex/pbr/vermilion-wood/2k/albedo.jpg
+    tangcheng/tex/pbr/vermilion-wood/recipe.json
+    tangcheng/tex/pbr/vinyl-quilted/2k/albedo.jpg
+    tangcheng/tex/pbr/vinyl-quilted/recipe.json
+
+■ 本機生成：PIL 程式幾何原稿→RealVisXL img2img（tile ControlNet）印刷貼紙質感→拼 4×2 圖集
+  授權：RealVisXL V5：CreativeML Open RAIL++-M（產出不受授權方主張權利）；xinsir controlnet-union-sdxl：Apache-2.0；無參考照進貼圖；可商用、可公開
+  模型：RealVisXL_V5.0_fp16＋xinsir controlnet-union-sdxl（tile）
+  檔案（2）：
+    tangcheng/tex/pbr/arcade-side-atlas/2k/albedo.jpg
+    tangcheng/tex/pbr/arcade-side-atlas/recipe.json
+
+■ 本機生成：numpy 週期程式原稿→RealVisXL img2img（tile ControlNet，3×3 週期拼接）→低頻鎖回原稿
+  授權：RealVisXL V5：CreativeML Open RAIL++-M（產出不受授權方主張權利）；xinsir controlnet-union-sdxl：Apache-2.0；無參考照進貼圖；可商用、可公開
+  模型：RealVisXL_V5.0_fp16＋xinsir controlnet-union-sdxl（tile）
+  檔案（26）：
+    tangcheng/tex/pbr/cable-bin-grid/2k/albedo.jpg
+    tangcheng/tex/pbr/cable-bin-grid/recipe.json
+    tangcheng/tex/pbr/checker-tile-30/2k/albedo.jpg
+    tangcheng/tex/pbr/checker-tile-30/recipe.json
+    tangcheng/tex/pbr/latex-paint-fresh/2k/albedo.jpg
+    tangcheng/tex/pbr/latex-paint-fresh/recipe.json
+    tangcheng/tex/pbr/paint-peel-green/2k/albedo.jpg
+    tangcheng/tex/pbr/paint-peel-green/recipe.json
+    tangcheng/tex/pbr/protect-board-floor/2k/albedo.jpg
+    tangcheng/tex/pbr/protect-board-floor/recipe.json
+    tangcheng/tex/pbr/shutter-slat/2k/albedo.jpg
+    tangcheng/tex/pbr/shutter-slat/recipe.json
+    tangcheng/tex/pbr/silk-flower-wall/2k/albedo.jpg
+    tangcheng/tex/pbr/silk-flower-wall/recipe.json
+    tangcheng/tex/pbr/stall-counter-acrylic/2k/albedo.jpg
+    tangcheng/tex/pbr/stall-counter-acrylic/recipe.json
+    tangcheng/tex/pbr/steel-film-new/2k/albedo.jpg
+    tangcheng/tex/pbr/steel-film-new/recipe.json
+    tangcheng/tex/pbr/terrazzo-yellowed/2k/albedo.jpg
+    tangcheng/tex/pbr/terrazzo-yellowed/recipe.json
+    tangcheng/tex/pbr/tile-cracked-old/2k/albedo.jpg
+    tangcheng/tex/pbr/tile-cracked-old/recipe.json
+    tangcheng/tex/pbr/tile-film-new/2k/albedo.jpg
+    tangcheng/tex/pbr/tile-film-new/recipe.json
+    tangcheng/tex/pbr/velvet-drape/2k/albedo.jpg
+    tangcheng/tex/pbr/velvet-drape/recipe.json
+
+■ 本機生成：local-gen-work/tangcheng-terrain/gen_fix9.py（numpy 程式化，CPU）
+  授權：純程式生成（numpy，無模型、無參考照）；可商用、可公開
+  模型：無（程式生成）
+  檔案（4）：
+    tangcheng/tex/pbr/cardboard-box/2k/albedo.jpg
+    tangcheng/tex/pbr/cardboard-box/recipe.json
+    tangcheng/tex/pbr/rubber-mat-ribbed/2k/albedo.jpg
+    tangcheng/tex/pbr/rubber-mat-ribbed/recipe.json
+
+■ 本機生成：numpy 週期程式（無 SDXL），alpha 直接寫入 albedo.png
+  授權：純程式生成（numpy／PIL），無模型、無參考照；可商用、可公開
+  模型：無（純程式）
+  檔案（2）：
+    tangcheng/tex/pbr/dust-layer-decal/2k/albedo.png
+    tangcheng/tex/pbr/dust-layer-decal/recipe.json
+
+■ ambientCG Plastic010（https://ambientcg.com/a/Plastic010）
+  授權：ambientCG CC0 1.0（公有領域，可商用、可再散布；不需署名）；本專案去色／加工
+  模型：無（ambientCG 照片掃描材質，numpy 去色加工）
+  檔案（2）：
+    tangcheng/tex/pbr/faded-plastic/2k/albedo.jpg
+    tangcheng/tex/pbr/faded-plastic/recipe.json
+
+■ ambientCG Fingerprints001（https://ambientcg.com/a/Fingerprints001）
+  授權：ambientCG CC0 1.0（公有領域，可商用、可再散布；不需署名）；本專案去色／加工
+  模型：無（ambientCG 照片掃描材質，numpy 去色加工）
+  檔案（2）：
+    tangcheng/tex/pbr/glass-smudge/2k/albedo.jpg
+    tangcheng/tex/pbr/glass-smudge/recipe.json
+
+■ ambientCG Granite002A（https://ambientcg.com/a/Granite002A）
+  授權：ambientCG CC0 1.0（公有領域，可商用、可再散布；不需署名）；本專案去色／加工
+  模型：無（ambientCG 照片掃描材質，numpy 去色加工）
+  檔案（2）：
+    tangcheng/tex/pbr/granite-polished/2k/albedo.jpg
+    tangcheng/tex/pbr/granite-polished/recipe.json
+
+■ 本機生成：RealVisXL txt2img 白底逐格→去背拼圖集
+  授權：RealVisXL V5：CreativeML Open RAIL++-M（產出不受授權方主張權利）；無參考照進貼圖；可商用、可公開
+  模型：RealVisXL_V5.0_fp16
+  檔案（2）：
+    tangcheng/tex/pbr/jiannian-atlas/2k/albedo.png
+    tangcheng/tex/pbr/jiannian-atlas/recipe.json
+
+■ ambientCG Wood058（https://ambientcg.com/a/Wood058）
+  授權：ambientCG CC0 1.0（公有領域，可商用、可再散布；不需署名）；本專案去色／加工
+  模型：無（ambientCG 照片掃描材質，numpy 去色加工）
+  檔案（2）：
+    tangcheng/tex/pbr/laminate-wood/2k/albedo.jpg
+    tangcheng/tex/pbr/laminate-wood/recipe.json
+
+■ ambientCG PaintedMetal004（https://ambientcg.com/a/PaintedMetal004）
+  授權：ambientCG CC0 1.0（公有領域，可商用、可再散布；不需署名）；本專案去色／加工
+  模型：無（ambientCG 照片掃描材質，numpy 去色加工）
+  檔案（2）：
+    tangcheng/tex/pbr/painted-steel/2k/albedo.jpg
+    tangcheng/tex/pbr/painted-steel/recipe.json
+
+■ 本機生成：純程式（numpy／PIL）
+  授權：純程式生成（numpy／PIL），無模型、無參考照；可商用、可公開
+  模型：無（純程式）
+  檔案（2）：
+    tangcheng/tex/pbr/tv-screen-atlas/2k/albedo.jpg
+    tangcheng/tex/pbr/tv-screen-atlas/recipe.json
+
+■ 本機生成：PIL 程式原稿（色塊＋偽字形）→RealVisXL img2img（tile ControlNet）印刷質感
+  授權：RealVisXL V5：CreativeML Open RAIL++-M（產出不受授權方主張權利）；xinsir controlnet-union-sdxl：Apache-2.0；無參考照進貼圖；可商用、可公開
+  模型：RealVisXL_V5.0_fp16＋xinsir controlnet-union-sdxl（tile）
+  檔案（2）：
+    tangcheng/tex/pbr/vhs-spine-atlas/2k/albedo.jpg
+    tangcheng/tex/pbr/vhs-spine-atlas/recipe.json
+
+■ 本機生成：RealVisXL txt2img（純文字提示詞）＋程式做舊；未用參考照
+  授權：RealVisXL V5：CreativeML Open RAIL++-M（產出不受授權方主張權利）；xinsir controlnet-union-sdxl：Apache-2.0；無參考照進貼圖；可商用、可公開
+  模型：RealVisXL_V5.0_fp16（30 步 dpmpp_2m karras cfg 5，832×1152）
+  檔案（2）：
+    tangcheng/tex/poster/1k/atlas.jpg
+    tangcheng/tex/poster/2k/atlas.jpg
+
+■ 本機生成：RealVisXL txt2img＋程式做舊
+  授權：RealVisXL V5：CreativeML Open RAIL++-M（產出不受授權方主張權利）；xinsir controlnet-union-sdxl：Apache-2.0；無參考照進貼圖；可商用、可公開
+  模型：RealVisXL_V5.0_fp16
+  檔案（2）：
+    tangcheng/tex/poster/notice.jpg
+    tangcheng/tex/poster/recipe.json
+
+■ 未分類（公開前要查來源與授權；補進 apps/game/public/tangcheng/manifest.json）
+    tangcheng/bake/atrium-144593ea-ao.png
+    tangcheng/bake/atrium-144593ea.png
+    tangcheng/bake/atrium-144593ea.uv.json
+    tangcheng/bake/corner-54x32-ao.png
+    tangcheng/bake/corner-54x32.png
+    tangcheng/bake/corner-54x32.uv.json
+    tangcheng/bake/corner-54x40-ao.png
+    tangcheng/bake/corner-54x40.png
+    tangcheng/bake/corner-54x40.uv.json
+    tangcheng/bake/corner-70x32-ao.png
+    tangcheng/bake/corner-70x32.png
+    tangcheng/bake/corner-70x32.uv.json
+    tangcheng/bake/corner-70x40-ao.png
+    tangcheng/bake/corner-70x40.png
+    tangcheng/bake/corner-70x40.uv.json
+    tangcheng/bake/corner-86x32-ao.png
+    tangcheng/bake/corner-86x32.png
+    tangcheng/bake/corner-86x32.uv.json
+    tangcheng/bake/corner-86x40-ao.png
+    tangcheng/bake/corner-86x40.png
+    tangcheng/bake/corner-86x40.uv.json
+    tangcheng/bake/corridor-54x32-ao.png
+    tangcheng/bake/corridor-54x32.png
+    tangcheng/bake/corridor-54x32.uv.json
+    tangcheng/bake/corridor-54x40-ao.png
+    tangcheng/bake/corridor-54x40.png
+    tangcheng/bake/corridor-54x40.uv.json
+    tangcheng/bake/corridor-70x32-ao.png
+    tangcheng/bake/corridor-70x32.png
+    tangcheng/bake/corridor-70x32.uv.json
+    tangcheng/bake/corridor-70x40-ao.png
+    tangcheng/bake/corridor-70x40.png
+    tangcheng/bake/corridor-70x40.uv.json
+    tangcheng/bake/corridor-86x32-ao.png
+    tangcheng/bake/corridor-86x32.png
+    tangcheng/bake/corridor-86x32.uv.json
+    tangcheng/bake/corridor-86x40-ao.png
+    tangcheng/bake/corridor-86x40.png
+    tangcheng/bake/corridor-86x40.uv.json
+    tangcheng/bake/cross-60x32-ao.png
+    tangcheng/bake/cross-60x32.png
+    tangcheng/bake/cross-60x32.uv.json
+    tangcheng/bake/cross-60x40-ao.png
+    tangcheng/bake/cross-60x40.png
+    tangcheng/bake/cross-60x40.uv.json
+    tangcheng/bake/cross-76x32-ao.png
+    tangcheng/bake/cross-76x32.png
+    tangcheng/bake/cross-76x32.uv.json
+    tangcheng/bake/cross-76x40-ao.png
+    tangcheng/bake/cross-76x40.png
+    tangcheng/bake/cross-76x40.uv.json
+    tangcheng/bake/cross-92x32-ao.png
+    tangcheng/bake/cross-92x32.png
+    tangcheng/bake/cross-92x32.uv.json
+    tangcheng/bake/cross-92x40-ao.png
+    tangcheng/bake/cross-92x40.png
+    tangcheng/bake/cross-92x40.uv.json
+    tangcheng/bake/shoprow-106x32-ao.png
+    tangcheng/bake/shoprow-106x32.png
+    tangcheng/bake/shoprow-106x32.uv.json
+    tangcheng/bake/shoprow-106x40-ao.png
+    tangcheng/bake/shoprow-106x40.png
+    tangcheng/bake/shoprow-106x40.uv.json
+    tangcheng/bake/shoprow-74x32-ao.png
+    tangcheng/bake/shoprow-74x32.png
+    tangcheng/bake/shoprow-74x32.uv.json
+    tangcheng/bake/shoprow-74x40-ao.png
+    tangcheng/bake/shoprow-74x40.png
+    tangcheng/bake/shoprow-74x40.uv.json
+    tangcheng/bake/shoprow-90x32-ao.png
+    tangcheng/bake/shoprow-90x32.png
+    tangcheng/bake/shoprow-90x32.uv.json
+    tangcheng/bake/shoprow-90x40-ao.png
+    tangcheng/bake/shoprow-90x40.png
+    tangcheng/bake/shoprow-90x40.uv.json
+    tangcheng/bake/tee-54x32-ao.png
+    tangcheng/bake/tee-54x32.png
+    tangcheng/bake/tee-54x32.uv.json
+    tangcheng/bake/tee-54x40-ao.png
+    tangcheng/bake/tee-54x40.png
+    tangcheng/bake/tee-54x40.uv.json
+    tangcheng/bake/tee-70x32-ao.png
+    tangcheng/bake/tee-70x32.png
+    tangcheng/bake/tee-70x32.uv.json
+    tangcheng/bake/tee-70x40-ao.png
+    tangcheng/bake/tee-70x40.png
+    tangcheng/bake/tee-70x40.uv.json
+    tangcheng/bake/tee-86x32-ao.png
+    tangcheng/bake/tee-86x32.png
+    tangcheng/bake/tee-86x32.uv.json
+    tangcheng/bake/tee-86x40-ao.png
+    tangcheng/bake/tee-86x40.png
+    tangcheng/bake/tee-86x40.uv.json
+    tangcheng/fonts/GenSenRounded-OFL.txt
+    tangcheng/fonts/NotoSansTC-OFL.txt
+    tangcheng/fonts/NotoSerifTC-OFL.txt
+    tangcheng/fonts/subset-chars.txt
+    tangcheng/tex/decals/1k/atlas.png
+    tangcheng/tex/decals/2k/atlas.png
+    tangcheng/tex/decals/recipe.json
+    tangcheng/tex/far/facade-atlas/window.png
+    tangcheng/tex/graffiti/1k/g0.png
+    tangcheng/tex/graffiti/1k/g1.png
+    tangcheng/tex/graffiti/1k/g2.png
+    tangcheng/tex/graffiti/1k/g3.png
+    tangcheng/tex/graffiti/1k/g4.png
+    tangcheng/tex/graffiti/1k/g5.png
+    tangcheng/tex/graffiti/2k/g0.png
+    tangcheng/tex/graffiti/2k/g1.png
+    tangcheng/tex/graffiti/2k/g2.png
+    tangcheng/tex/graffiti/2k/g3.png
+    tangcheng/tex/graffiti/2k/g4.png
+    tangcheng/tex/graffiti/2k/g5.png
+    tangcheng/tex/graffiti/recipe.json
+    tangcheng/tex/lightbox/1k/appliance-a.jpg
+    tangcheng/tex/lightbox/1k/bakery-a.jpg
+    tangcheng/tex/lightbox/1k/coffee-a.jpg
+    tangcheng/tex/lightbox/1k/ff-combo.jpg
+    tangcheng/tex/lightbox/1k/ff-fries.jpg
+    tangcheng/tex/lightbox/1k/ff-soda.jpg
+    tangcheng/tex/lightbox/1k/music-a.jpg
+    tangcheng/tex/lightbox/1k/music-b.jpg
+    tangcheng/tex/lightbox/1k/optical-a.jpg
+    tangcheng/tex/lightbox/1k/phone-a.jpg
+    tangcheng/tex/lightbox/1k/phone-b.jpg
+    tangcheng/tex/lightbox/1k/tea-a.jpg
+    tangcheng/tex/lightbox/1k/toys-a.jpg
+    tangcheng/tex/lightbox/1k/toys-b.jpg
+    tangcheng/tex/lightbox/1k/watch-a.jpg
+    tangcheng/tex/lightbox/_overview.png
+    tangcheng/tex/pbr/accessory-wall-atlas/1k/albedo.jpg
+    tangcheng/tex/pbr/accessory-wall-atlas/1k/ao.jpg
+    tangcheng/tex/pbr/accessory-wall-atlas/1k/normal.jpg
+    tangcheng/tex/pbr/accessory-wall-atlas/1k/roughness.jpg
+    tangcheng/tex/pbr/accessory-wall-atlas/2k/ao.jpg
+    tangcheng/tex/pbr/accessory-wall-atlas/2k/normal.jpg
+    tangcheng/tex/pbr/accessory-wall-atlas/2k/roughness.jpg
+    tangcheng/tex/pbr/acrylic-frost/1k/albedo.jpg
+    tangcheng/tex/pbr/acrylic-frost/1k/ao.jpg
+    tangcheng/tex/pbr/acrylic-frost/1k/normal.jpg
+    tangcheng/tex/pbr/acrylic-frost/1k/roughness.jpg
+    tangcheng/tex/pbr/acrylic-frost/2k/ao.jpg
+    tangcheng/tex/pbr/acrylic-frost/2k/normal.jpg
+    tangcheng/tex/pbr/acrylic-frost/2k/roughness.jpg
+    tangcheng/tex/pbr/acrylic-sign-blank/1k/albedo.jpg
+    tangcheng/tex/pbr/acrylic-sign-blank/1k/ao.jpg
+    tangcheng/tex/pbr/acrylic-sign-blank/1k/normal.jpg
+    tangcheng/tex/pbr/acrylic-sign-blank/1k/roughness.jpg
+    tangcheng/tex/pbr/acrylic-sign-blank/2k/ao.jpg
+    tangcheng/tex/pbr/acrylic-sign-blank/2k/normal.jpg
+    tangcheng/tex/pbr/acrylic-sign-blank/2k/roughness.jpg
+    tangcheng/tex/pbr/alu-frame-old/1k/albedo.jpg
+    tangcheng/tex/pbr/alu-frame-old/1k/ao.jpg
+    tangcheng/tex/pbr/alu-frame-old/1k/mask.jpg
+    tangcheng/tex/pbr/alu-frame-old/1k/metalness.jpg
+    tangcheng/tex/pbr/alu-frame-old/1k/normal.jpg
+    tangcheng/tex/pbr/alu-frame-old/1k/roughness.jpg
+    tangcheng/tex/pbr/alu-frame-old/2k/ao.jpg
+    tangcheng/tex/pbr/alu-frame-old/2k/mask.jpg
+    tangcheng/tex/pbr/alu-frame-old/2k/metalness.jpg
+    tangcheng/tex/pbr/alu-frame-old/2k/normal.jpg
+    tangcheng/tex/pbr/alu-frame-old/2k/roughness.jpg
+    tangcheng/tex/pbr/alu-panel-white/1k/albedo.jpg
+    tangcheng/tex/pbr/alu-panel-white/1k/ao.jpg
+    tangcheng/tex/pbr/alu-panel-white/1k/mask.jpg
+    tangcheng/tex/pbr/alu-panel-white/1k/normal.jpg
+    tangcheng/tex/pbr/alu-panel-white/1k/roughness.jpg
+    tangcheng/tex/pbr/alu-panel-white/2k/ao.jpg
+    tangcheng/tex/pbr/alu-panel-white/2k/mask.jpg
+    tangcheng/tex/pbr/alu-panel-white/2k/normal.jpg
+    tangcheng/tex/pbr/alu-panel-white/2k/roughness.jpg
+    tangcheng/tex/pbr/arcade-mat/1k/albedo.jpg
+    tangcheng/tex/pbr/arcade-mat/1k/ao.jpg
+    tangcheng/tex/pbr/arcade-mat/1k/normal.jpg
+    tangcheng/tex/pbr/arcade-mat/1k/roughness.jpg
+    tangcheng/tex/pbr/arcade-mat/2k/ao.jpg
+    tangcheng/tex/pbr/arcade-mat/2k/normal.jpg
+    tangcheng/tex/pbr/arcade-mat/2k/roughness.jpg
+    tangcheng/tex/pbr/arcade-side-atlas/1k/albedo.jpg
+    tangcheng/tex/pbr/arcade-side-atlas/1k/ao.jpg
+    tangcheng/tex/pbr/arcade-side-atlas/1k/normal.jpg
+    tangcheng/tex/pbr/arcade-side-atlas/1k/roughness.jpg
+    tangcheng/tex/pbr/arcade-side-atlas/2k/ao.jpg
+    tangcheng/tex/pbr/arcade-side-atlas/2k/normal.jpg
+    tangcheng/tex/pbr/arcade-side-atlas/2k/roughness.jpg
+    tangcheng/tex/pbr/b2-quarry-tile/1k/albedo.jpg
+    tangcheng/tex/pbr/b2-quarry-tile/1k/ao.jpg
+    tangcheng/tex/pbr/b2-quarry-tile/1k/mask.jpg
+    tangcheng/tex/pbr/b2-quarry-tile/1k/normal.jpg
+    tangcheng/tex/pbr/b2-quarry-tile/1k/roughness.jpg
+    tangcheng/tex/pbr/b2-quarry-tile/2k/ao.jpg
+    tangcheng/tex/pbr/b2-quarry-tile/2k/mask.jpg
+    tangcheng/tex/pbr/b2-quarry-tile/2k/normal.jpg
+    tangcheng/tex/pbr/b2-quarry-tile/2k/roughness.jpg
+    tangcheng/tex/pbr/banquet-carpet/1k/albedo.jpg
+    tangcheng/tex/pbr/banquet-carpet/1k/ao.jpg
+    tangcheng/tex/pbr/banquet-carpet/1k/normal.jpg
+    tangcheng/tex/pbr/banquet-carpet/1k/roughness.jpg
+    tangcheng/tex/pbr/banquet-carpet/2k/ao.jpg
+    tangcheng/tex/pbr/banquet-carpet/2k/normal.jpg
+    tangcheng/tex/pbr/banquet-carpet/2k/roughness.jpg
+    tangcheng/tex/pbr/billiard-felt/1k/albedo.jpg
+    tangcheng/tex/pbr/billiard-felt/1k/ao.jpg
+    tangcheng/tex/pbr/billiard-felt/1k/normal.jpg
+    tangcheng/tex/pbr/billiard-felt/1k/roughness.jpg
+    tangcheng/tex/pbr/billiard-felt/2k/ao.jpg
+    tangcheng/tex/pbr/billiard-felt/2k/normal.jpg
+    tangcheng/tex/pbr/billiard-felt/2k/roughness.jpg
+    tangcheng/tex/pbr/boardwalk-wood/1k/albedo.jpg
+    tangcheng/tex/pbr/boardwalk-wood/1k/ao.jpg
+    tangcheng/tex/pbr/boardwalk-wood/1k/normal.jpg
+    tangcheng/tex/pbr/boardwalk-wood/1k/roughness.jpg
+    tangcheng/tex/pbr/boardwalk-wood/2k/ao.jpg
+    tangcheng/tex/pbr/boardwalk-wood/2k/normal.jpg
+    tangcheng/tex/pbr/boardwalk-wood/2k/roughness.jpg
+    tangcheng/tex/pbr/booth-panel/1k/albedo.jpg
+    tangcheng/tex/pbr/booth-panel/1k/ao.jpg
+    tangcheng/tex/pbr/booth-panel/1k/normal.jpg
+    tangcheng/tex/pbr/booth-panel/1k/roughness.jpg
+    tangcheng/tex/pbr/booth-panel/2k/ao.jpg
+    tangcheng/tex/pbr/booth-panel/2k/normal.jpg
+    tangcheng/tex/pbr/booth-panel/2k/roughness.jpg
+    tangcheng/tex/pbr/bowling-carpet/1k/albedo.jpg
+    tangcheng/tex/pbr/bowling-carpet/1k/ao.jpg
+    tangcheng/tex/pbr/bowling-carpet/1k/normal.jpg
+    tangcheng/tex/pbr/bowling-carpet/1k/roughness.jpg
+    tangcheng/tex/pbr/bowling-carpet/2k/ao.jpg
+    tangcheng/tex/pbr/bowling-carpet/2k/normal.jpg
+    tangcheng/tex/pbr/bowling-carpet/2k/roughness.jpg
+    tangcheng/tex/pbr/bridal-backdrop-atlas/1k/albedo.jpg
+    tangcheng/tex/pbr/bridal-backdrop-atlas/1k/ao.jpg
+    tangcheng/tex/pbr/bridal-backdrop-atlas/1k/normal.jpg
+    tangcheng/tex/pbr/bridal-backdrop-atlas/1k/roughness.jpg
+    tangcheng/tex/pbr/bridal-backdrop-atlas/2k/ao.jpg
+    tangcheng/tex/pbr/bridal-backdrop-atlas/2k/normal.jpg
+    tangcheng/tex/pbr/bridal-backdrop-atlas/2k/roughness.jpg
+    tangcheng/tex/pbr/bridge-checker/1k/albedo.jpg
+    tangcheng/tex/pbr/bridge-checker/1k/ao.jpg
+    tangcheng/tex/pbr/bridge-checker/1k/metalness.jpg
+    tangcheng/tex/pbr/bridge-checker/1k/normal.jpg
+    tangcheng/tex/pbr/bridge-checker/1k/roughness.jpg
+    tangcheng/tex/pbr/bridge-checker/2k/ao.jpg
+    tangcheng/tex/pbr/bridge-checker/2k/metalness.jpg
+    tangcheng/tex/pbr/bridge-checker/2k/normal.jpg
+    tangcheng/tex/pbr/bridge-checker/2k/roughness.jpg
+    tangcheng/tex/pbr/cable-bin-grid/1k/albedo.jpg
+    tangcheng/tex/pbr/cable-bin-grid/1k/ao.jpg
+    tangcheng/tex/pbr/cable-bin-grid/1k/normal.jpg
+    tangcheng/tex/pbr/cable-bin-grid/1k/roughness.jpg
+    tangcheng/tex/pbr/cable-bin-grid/2k/ao.jpg
+    tangcheng/tex/pbr/cable-bin-grid/2k/normal.jpg
+    tangcheng/tex/pbr/cable-bin-grid/2k/roughness.jpg
+    tangcheng/tex/pbr/car-cover-fabric/1k/albedo.jpg
+    tangcheng/tex/pbr/car-cover-fabric/1k/ao.jpg
+    tangcheng/tex/pbr/car-cover-fabric/1k/normal.jpg
+    tangcheng/tex/pbr/car-cover-fabric/1k/roughness.jpg
+    tangcheng/tex/pbr/car-cover-fabric/2k/ao.jpg
+    tangcheng/tex/pbr/car-cover-fabric/2k/normal.jpg
+    tangcheng/tex/pbr/car-cover-fabric/2k/roughness.jpg
+    tangcheng/tex/pbr/cardboard-box/1k/albedo.jpg
+    tangcheng/tex/pbr/cardboard-box/1k/ao.jpg
+    tangcheng/tex/pbr/cardboard-box/1k/normal.jpg
+    tangcheng/tex/pbr/cardboard-box/1k/roughness.jpg
+    tangcheng/tex/pbr/cardboard-box/2k/ao.jpg
+    tangcheng/tex/pbr/cardboard-box/2k/normal.jpg
+    tangcheng/tex/pbr/cardboard-box/2k/roughness.jpg
+    tangcheng/tex/pbr/carpet-tile/1k/albedo.jpg
+    tangcheng/tex/pbr/carpet-tile/1k/ao.jpg
+    tangcheng/tex/pbr/carpet-tile/1k/normal.jpg
+    tangcheng/tex/pbr/carpet-tile/1k/roughness.jpg
+    tangcheng/tex/pbr/carpet-tile/2k/ao.jpg
+    tangcheng/tex/pbr/carpet-tile/2k/normal.jpg
+    tangcheng/tex/pbr/carpet-tile/2k/roughness.jpg
+    tangcheng/tex/pbr/ceiling-alu-strip/1k/albedo.jpg
+    tangcheng/tex/pbr/ceiling-alu-strip/1k/ao.jpg
+    tangcheng/tex/pbr/ceiling-alu-strip/1k/mask.jpg
+    tangcheng/tex/pbr/ceiling-alu-strip/1k/normal.jpg
+    tangcheng/tex/pbr/ceiling-alu-strip/1k/roughness.jpg
+    tangcheng/tex/pbr/ceiling-alu-strip/2k/ao.jpg
+    tangcheng/tex/pbr/ceiling-alu-strip/2k/mask.jpg
+    tangcheng/tex/pbr/ceiling-alu-strip/2k/normal.jpg
+    tangcheng/tex/pbr/ceiling-alu-strip/2k/roughness.jpg
+    tangcheng/tex/pbr/ceiling-grille/1k/albedo.jpg
+    tangcheng/tex/pbr/ceiling-grille/1k/ao.jpg
+    tangcheng/tex/pbr/ceiling-grille/1k/mask.jpg
+    tangcheng/tex/pbr/ceiling-grille/1k/normal.jpg
+    tangcheng/tex/pbr/ceiling-grille/1k/roughness.jpg
+    tangcheng/tex/pbr/ceiling-grille/2k/ao.jpg
+    tangcheng/tex/pbr/ceiling-grille/2k/mask.jpg
+    tangcheng/tex/pbr/ceiling-grille/2k/normal.jpg
+    tangcheng/tex/pbr/ceiling-grille/2k/roughness.jpg
+    tangcheng/tex/pbr/ceiling-mineral/1k/albedo.jpg
+    tangcheng/tex/pbr/ceiling-mineral/1k/ao.jpg
+    tangcheng/tex/pbr/ceiling-mineral/1k/mask.jpg
+    tangcheng/tex/pbr/ceiling-mineral/1k/normal.jpg
+    tangcheng/tex/pbr/ceiling-mineral/1k/roughness.jpg
+    tangcheng/tex/pbr/ceiling-mineral/2k/ao.jpg
+    tangcheng/tex/pbr/ceiling-mineral/2k/mask.jpg
+    tangcheng/tex/pbr/ceiling-mineral/2k/normal.jpg
+    tangcheng/tex/pbr/ceiling-mineral/2k/roughness.jpg
+    tangcheng/tex/pbr/ceiling-paint/1k/albedo.jpg
+    tangcheng/tex/pbr/ceiling-paint/1k/ao.jpg
+    tangcheng/tex/pbr/ceiling-paint/1k/mask.jpg
+    tangcheng/tex/pbr/ceiling-paint/1k/normal.jpg
+    tangcheng/tex/pbr/ceiling-paint/1k/roughness.jpg
+    tangcheng/tex/pbr/ceiling-paint/2k/ao.jpg
+    tangcheng/tex/pbr/ceiling-paint/2k/mask.jpg
+    tangcheng/tex/pbr/ceiling-paint/2k/normal.jpg
+    tangcheng/tex/pbr/ceiling-paint/2k/roughness.jpg
+    tangcheng/tex/pbr/ceiling-wood-slat/1k/albedo.jpg
+    tangcheng/tex/pbr/ceiling-wood-slat/1k/ao.jpg
+    tangcheng/tex/pbr/ceiling-wood-slat/1k/normal.jpg
+    tangcheng/tex/pbr/ceiling-wood-slat/1k/roughness.jpg
+    tangcheng/tex/pbr/ceiling-wood-slat/2k/albedo.jpg
+    tangcheng/tex/pbr/ceiling-wood-slat/2k/ao.jpg
+    tangcheng/tex/pbr/ceiling-wood-slat/2k/normal.jpg
+    tangcheng/tex/pbr/ceiling-wood-slat/2k/roughness.jpg
+    tangcheng/tex/pbr/ceiling-wood-slat/recipe.json
+    tangcheng/tex/pbr/cement-screed/1k/albedo.jpg
+    tangcheng/tex/pbr/cement-screed/1k/ao.jpg
+    tangcheng/tex/pbr/cement-screed/1k/normal.jpg
+    tangcheng/tex/pbr/cement-screed/1k/roughness.jpg
+    tangcheng/tex/pbr/cement-screed/2k/albedo.jpg
+    tangcheng/tex/pbr/cement-screed/2k/ao.jpg
+    tangcheng/tex/pbr/cement-screed/2k/normal.jpg
+    tangcheng/tex/pbr/cement-screed/2k/roughness.jpg
+    tangcheng/tex/pbr/cement-screed/recipe.json
+    tangcheng/tex/pbr/ceramic-tile-10/1k/albedo.jpg
+    tangcheng/tex/pbr/ceramic-tile-10/1k/ao.jpg
+    tangcheng/tex/pbr/ceramic-tile-10/1k/height.jpg
+    tangcheng/tex/pbr/ceramic-tile-10/1k/normal.jpg
+    tangcheng/tex/pbr/ceramic-tile-10/1k/roughness.jpg
+    tangcheng/tex/pbr/ceramic-tile-10/2k/albedo.jpg
+    tangcheng/tex/pbr/ceramic-tile-10/2k/ao.jpg
+    tangcheng/tex/pbr/ceramic-tile-10/2k/height.jpg
+    tangcheng/tex/pbr/ceramic-tile-10/2k/normal.jpg
+    tangcheng/tex/pbr/ceramic-tile-10/2k/roughness.jpg
+    tangcheng/tex/pbr/ceramic-tile-10/recipe.json
+    tangcheng/tex/pbr/checker-tile-30/1k/albedo.jpg
+    tangcheng/tex/pbr/checker-tile-30/1k/ao.jpg
+    tangcheng/tex/pbr/checker-tile-30/1k/height.jpg
+    tangcheng/tex/pbr/checker-tile-30/1k/normal.jpg
+    tangcheng/tex/pbr/checker-tile-30/1k/roughness.jpg
+    tangcheng/tex/pbr/checker-tile-30/2k/ao.jpg
+    tangcheng/tex/pbr/checker-tile-30/2k/height.jpg
+    tangcheng/tex/pbr/checker-tile-30/2k/normal.jpg
+    tangcheng/tex/pbr/checker-tile-30/2k/roughness.jpg
+    tangcheng/tex/pbr/concrete-formed/1k/albedo.jpg
+    tangcheng/tex/pbr/concrete-formed/1k/ao.jpg
+    tangcheng/tex/pbr/concrete-formed/1k/normal.jpg
+    tangcheng/tex/pbr/concrete-formed/1k/roughness.jpg
+    tangcheng/tex/pbr/concrete-formed/2k/albedo.jpg
+    tangcheng/tex/pbr/concrete-formed/2k/ao.jpg
+    tangcheng/tex/pbr/concrete-formed/2k/normal.jpg
+    tangcheng/tex/pbr/concrete-formed/2k/roughness.jpg
+    tangcheng/tex/pbr/concrete-formed/recipe.json
+    tangcheng/tex/pbr/concrete-wet/1k/albedo.jpg
+    tangcheng/tex/pbr/concrete-wet/1k/ao.jpg
+    tangcheng/tex/pbr/concrete-wet/1k/mask.jpg
+    tangcheng/tex/pbr/concrete-wet/1k/normal.jpg
+    tangcheng/tex/pbr/concrete-wet/1k/roughness.jpg
+    tangcheng/tex/pbr/concrete-wet/2k/ao.jpg
+    tangcheng/tex/pbr/concrete-wet/2k/mask.jpg
+    tangcheng/tex/pbr/concrete-wet/2k/normal.jpg
+    tangcheng/tex/pbr/concrete-wet/2k/roughness.jpg
+    tangcheng/tex/pbr/consign-window-atlas/1k/albedo.jpg
+    tangcheng/tex/pbr/consign-window-atlas/1k/ao.jpg
+    tangcheng/tex/pbr/consign-window-atlas/1k/normal.jpg
+    tangcheng/tex/pbr/consign-window-atlas/1k/roughness.jpg
+    tangcheng/tex/pbr/consign-window-atlas/2k/ao.jpg
+    tangcheng/tex/pbr/consign-window-atlas/2k/normal.jpg
+    tangcheng/tex/pbr/consign-window-atlas/2k/roughness.jpg
+    tangcheng/tex/pbr/duckweed/1k/albedo.jpg
+    tangcheng/tex/pbr/duckweed/1k/ao.jpg
+    tangcheng/tex/pbr/duckweed/1k/normal.jpg
+    tangcheng/tex/pbr/duckweed/1k/roughness.jpg
+    tangcheng/tex/pbr/duckweed/2k/ao.jpg
+    tangcheng/tex/pbr/duckweed/2k/normal.jpg
+    tangcheng/tex/pbr/duckweed/2k/roughness.jpg
+    tangcheng/tex/pbr/dust-layer-decal/1k/albedo.png
+    tangcheng/tex/pbr/dust-layer-decal/1k/ao.jpg
+    tangcheng/tex/pbr/dust-layer-decal/1k/normal.jpg
+    tangcheng/tex/pbr/dust-layer-decal/1k/roughness.jpg
+    tangcheng/tex/pbr/dust-layer-decal/2k/ao.jpg
+    tangcheng/tex/pbr/dust-layer-decal/2k/normal.jpg
+    tangcheng/tex/pbr/dust-layer-decal/2k/roughness.jpg
+    tangcheng/tex/pbr/epoxy-parking/1k/albedo.jpg
+    tangcheng/tex/pbr/epoxy-parking/1k/ao.jpg
+    tangcheng/tex/pbr/epoxy-parking/1k/normal.jpg
+    tangcheng/tex/pbr/epoxy-parking/1k/roughness.jpg
+    tangcheng/tex/pbr/epoxy-parking/2k/albedo.jpg
+    tangcheng/tex/pbr/epoxy-parking/2k/ao.jpg
+    tangcheng/tex/pbr/epoxy-parking/2k/normal.jpg
+    tangcheng/tex/pbr/epoxy-parking/2k/roughness.jpg
+    tangcheng/tex/pbr/epoxy-parking/recipe.json
+    tangcheng/tex/pbr/faded-plastic/1k/albedo.jpg
+    tangcheng/tex/pbr/faded-plastic/1k/ao.jpg
+    tangcheng/tex/pbr/faded-plastic/1k/normal.jpg
+    tangcheng/tex/pbr/faded-plastic/1k/roughness.jpg
+    tangcheng/tex/pbr/faded-plastic/2k/ao.jpg
+    tangcheng/tex/pbr/faded-plastic/2k/normal.jpg
+    tangcheng/tex/pbr/faded-plastic/2k/roughness.jpg
+    tangcheng/tex/pbr/fiberglass-faded/1k/albedo.jpg
+    tangcheng/tex/pbr/fiberglass-faded/1k/ao.jpg
+    tangcheng/tex/pbr/fiberglass-faded/1k/normal.jpg
+    tangcheng/tex/pbr/fiberglass-faded/1k/roughness.jpg
+    tangcheng/tex/pbr/fiberglass-faded/2k/ao.jpg
+    tangcheng/tex/pbr/fiberglass-faded/2k/normal.jpg
+    tangcheng/tex/pbr/fiberglass-faded/2k/roughness.jpg
+    tangcheng/tex/pbr/fountain-dry/1k/albedo.jpg
+    tangcheng/tex/pbr/fountain-dry/1k/ao.jpg
+    tangcheng/tex/pbr/fountain-dry/1k/normal.jpg
+    tangcheng/tex/pbr/fountain-dry/1k/roughness.jpg
+    tangcheng/tex/pbr/fountain-dry/2k/ao.jpg
+    tangcheng/tex/pbr/fountain-dry/2k/normal.jpg
+    tangcheng/tex/pbr/fountain-dry/2k/roughness.jpg
+    tangcheng/tex/pbr/glass-smudge/1k/albedo.jpg
+    tangcheng/tex/pbr/glass-smudge/1k/ao.jpg
+    tangcheng/tex/pbr/glass-smudge/1k/mask.jpg
+    tangcheng/tex/pbr/glass-smudge/1k/normal.jpg
+    tangcheng/tex/pbr/glass-smudge/1k/roughness.jpg
+    tangcheng/tex/pbr/glass-smudge/2k/ao.jpg
+    tangcheng/tex/pbr/glass-smudge/2k/mask.jpg
+    tangcheng/tex/pbr/glass-smudge/2k/normal.jpg
+    tangcheng/tex/pbr/glass-smudge/2k/roughness.jpg
+    tangcheng/tex/pbr/granite-fine-plain/1k/albedo.jpg
+    tangcheng/tex/pbr/granite-fine-plain/1k/ao.jpg
+    tangcheng/tex/pbr/granite-fine-plain/1k/normal.jpg
+    tangcheng/tex/pbr/granite-fine-plain/1k/roughness.jpg
+    tangcheng/tex/pbr/granite-fine-plain/2k/albedo.jpg
+    tangcheng/tex/pbr/granite-fine-plain/2k/ao.jpg
+    tangcheng/tex/pbr/granite-fine-plain/2k/normal.jpg
+    tangcheng/tex/pbr/granite-fine-plain/2k/roughness.jpg
+    tangcheng/tex/pbr/granite-fine-plain/recipe.json
+    tangcheng/tex/pbr/granite-fine/1k/albedo.jpg
+    tangcheng/tex/pbr/granite-fine/1k/ao.jpg
+    tangcheng/tex/pbr/granite-fine/1k/normal.jpg
+    tangcheng/tex/pbr/granite-fine/1k/roughness.jpg
+    tangcheng/tex/pbr/granite-fine/2k/albedo.jpg
+    tangcheng/tex/pbr/granite-fine/2k/ao.jpg
+    tangcheng/tex/pbr/granite-fine/2k/normal.jpg
+    tangcheng/tex/pbr/granite-fine/2k/roughness.jpg
+    tangcheng/tex/pbr/granite-fine/recipe.json
+    tangcheng/tex/pbr/granite-polished/1k/albedo.jpg
+    tangcheng/tex/pbr/granite-polished/1k/ao.jpg
+    tangcheng/tex/pbr/granite-polished/1k/normal.jpg
+    tangcheng/tex/pbr/granite-polished/1k/roughness.jpg
+    tangcheng/tex/pbr/granite-polished/2k/ao.jpg
+    tangcheng/tex/pbr/granite-polished/2k/normal.jpg
+    tangcheng/tex/pbr/granite-polished/2k/roughness.jpg
+    tangcheng/tex/pbr/granite-slab/1k/albedo.jpg
+    tangcheng/tex/pbr/granite-slab/1k/ao.jpg
+    tangcheng/tex/pbr/granite-slab/1k/normal.jpg
+    tangcheng/tex/pbr/granite-slab/1k/roughness.jpg
+    tangcheng/tex/pbr/granite-slab/2k/ao.jpg
+    tangcheng/tex/pbr/granite-slab/2k/normal.jpg
+    tangcheng/tex/pbr/granite-slab/2k/roughness.jpg
+    tangcheng/tex/pbr/grass-short/1k/albedo.jpg
+    tangcheng/tex/pbr/grass-short/1k/ao.jpg
+    tangcheng/tex/pbr/grass-short/1k/normal.jpg
+    tangcheng/tex/pbr/grass-short/1k/roughness.jpg
+    tangcheng/tex/pbr/grass-short/2k/ao.jpg
+    tangcheng/tex/pbr/grass-short/2k/normal.jpg
+    tangcheng/tex/pbr/grass-short/2k/roughness.jpg
+    tangcheng/tex/pbr/greenhouse-tile/1k/albedo.jpg
+    tangcheng/tex/pbr/greenhouse-tile/1k/ao.jpg
+    tangcheng/tex/pbr/greenhouse-tile/1k/normal.jpg
+    tangcheng/tex/pbr/greenhouse-tile/1k/roughness.jpg
+    tangcheng/tex/pbr/greenhouse-tile/2k/ao.jpg
+    tangcheng/tex/pbr/greenhouse-tile/2k/normal.jpg
+    tangcheng/tex/pbr/greenhouse-tile/2k/roughness.jpg
+    tangcheng/tex/pbr/gutter-cover-wet/1k/albedo.jpg
+    tangcheng/tex/pbr/gutter-cover-wet/1k/ao.jpg
+    tangcheng/tex/pbr/gutter-cover-wet/1k/height.jpg
+    tangcheng/tex/pbr/gutter-cover-wet/1k/normal.jpg
+    tangcheng/tex/pbr/gutter-cover-wet/1k/roughness.jpg
+    tangcheng/tex/pbr/gutter-cover-wet/2k/ao.jpg
+    tangcheng/tex/pbr/gutter-cover-wet/2k/height.jpg
+    tangcheng/tex/pbr/gutter-cover-wet/2k/normal.jpg
+    tangcheng/tex/pbr/gutter-cover-wet/2k/roughness.jpg
+    tangcheng/tex/pbr/hazard-stripe/1k/albedo.jpg
+    tangcheng/tex/pbr/hazard-stripe/1k/ao.jpg
+    tangcheng/tex/pbr/hazard-stripe/1k/metalness.jpg
+    tangcheng/tex/pbr/hazard-stripe/1k/normal.jpg
+    tangcheng/tex/pbr/hazard-stripe/1k/roughness.jpg
+    tangcheng/tex/pbr/hazard-stripe/2k/ao.jpg
+    tangcheng/tex/pbr/hazard-stripe/2k/metalness.jpg
+    tangcheng/tex/pbr/hazard-stripe/2k/normal.jpg
+    tangcheng/tex/pbr/hazard-stripe/2k/roughness.jpg
+    tangcheng/tex/pbr/herbal-wood/1k/albedo.jpg
+    tangcheng/tex/pbr/herbal-wood/1k/ao.jpg
+    tangcheng/tex/pbr/herbal-wood/1k/normal.jpg
+    tangcheng/tex/pbr/herbal-wood/1k/roughness.jpg
+    tangcheng/tex/pbr/herbal-wood/2k/ao.jpg
+    tangcheng/tex/pbr/herbal-wood/2k/normal.jpg
+    tangcheng/tex/pbr/herbal-wood/2k/roughness.jpg
+    tangcheng/tex/pbr/hotel-carpet-red/1k/albedo.jpg
+    tangcheng/tex/pbr/hotel-carpet-red/1k/ao.jpg
+    tangcheng/tex/pbr/hotel-carpet-red/1k/normal.jpg
+    tangcheng/tex/pbr/hotel-carpet-red/1k/roughness.jpg
+    tangcheng/tex/pbr/hotel-carpet-red/2k/albedo.jpg
+    tangcheng/tex/pbr/hotel-carpet-red/2k/ao.jpg
+    tangcheng/tex/pbr/hotel-carpet-red/2k/normal.jpg
+    tangcheng/tex/pbr/hotel-carpet-red/2k/roughness.jpg
+    tangcheng/tex/pbr/hotel-carpet-red/recipe.json
+    tangcheng/tex/pbr/hotel-carpet-teal/1k/albedo.jpg
+    tangcheng/tex/pbr/hotel-carpet-teal/1k/ao.jpg
+    tangcheng/tex/pbr/hotel-carpet-teal/1k/normal.jpg
+    tangcheng/tex/pbr/hotel-carpet-teal/1k/roughness.jpg
+    tangcheng/tex/pbr/hotel-carpet-teal/2k/albedo.jpg
+    tangcheng/tex/pbr/hotel-carpet-teal/2k/ao.jpg
+    tangcheng/tex/pbr/hotel-carpet-teal/2k/normal.jpg
+    tangcheng/tex/pbr/hotel-carpet-teal/2k/roughness.jpg
+    tangcheng/tex/pbr/hotel-carpet-teal/recipe.json
+    tangcheng/tex/pbr/hotel-ceiling-coffer/1k/albedo.jpg
+    tangcheng/tex/pbr/hotel-ceiling-coffer/1k/ao.jpg
+    tangcheng/tex/pbr/hotel-ceiling-coffer/1k/normal.jpg
+    tangcheng/tex/pbr/hotel-ceiling-coffer/1k/roughness.jpg
+    tangcheng/tex/pbr/hotel-ceiling-coffer/2k/albedo.jpg
+    tangcheng/tex/pbr/hotel-ceiling-coffer/2k/ao.jpg
+    tangcheng/tex/pbr/hotel-ceiling-coffer/2k/normal.jpg
+    tangcheng/tex/pbr/hotel-ceiling-coffer/2k/roughness.jpg
+    tangcheng/tex/pbr/hotel-ceiling-coffer/recipe.json
+    tangcheng/tex/pbr/jiannian-atlas/1k/albedo.png
+    tangcheng/tex/pbr/jiannian-atlas/1k/ao.jpg
+    tangcheng/tex/pbr/jiannian-atlas/1k/normal.jpg
+    tangcheng/tex/pbr/jiannian-atlas/1k/roughness.jpg
+    tangcheng/tex/pbr/jiannian-atlas/2k/ao.jpg
+    tangcheng/tex/pbr/jiannian-atlas/2k/normal.jpg
+    tangcheng/tex/pbr/jiannian-atlas/2k/roughness.jpg
+    tangcheng/tex/pbr/laminate-wood/1k/albedo.jpg
+    tangcheng/tex/pbr/laminate-wood/1k/ao.jpg
+    tangcheng/tex/pbr/laminate-wood/1k/normal.jpg
+    tangcheng/tex/pbr/laminate-wood/1k/roughness.jpg
+    tangcheng/tex/pbr/laminate-wood/2k/ao.jpg
+    tangcheng/tex/pbr/laminate-wood/2k/normal.jpg
+    tangcheng/tex/pbr/laminate-wood/2k/roughness.jpg
+    tangcheng/tex/pbr/lane-maple/1k/albedo.jpg
+    tangcheng/tex/pbr/lane-maple/1k/ao.jpg
+    tangcheng/tex/pbr/lane-maple/1k/normal.jpg
+    tangcheng/tex/pbr/lane-maple/1k/roughness.jpg
+    tangcheng/tex/pbr/lane-maple/2k/ao.jpg
+    tangcheng/tex/pbr/lane-maple/2k/normal.jpg
+    tangcheng/tex/pbr/lane-maple/2k/roughness.jpg
+    tangcheng/tex/pbr/lantern-cloth/1k/albedo.jpg
+    tangcheng/tex/pbr/lantern-cloth/1k/ao.jpg
+    tangcheng/tex/pbr/lantern-cloth/1k/emissive.jpg
+    tangcheng/tex/pbr/lantern-cloth/1k/normal.jpg
+    tangcheng/tex/pbr/lantern-cloth/1k/roughness.jpg
+    tangcheng/tex/pbr/lantern-cloth/2k/albedo.jpg
+    tangcheng/tex/pbr/lantern-cloth/2k/ao.jpg
+    tangcheng/tex/pbr/lantern-cloth/2k/emissive.jpg
+    tangcheng/tex/pbr/lantern-cloth/2k/normal.jpg
+    tangcheng/tex/pbr/lantern-cloth/2k/roughness.jpg
+    tangcheng/tex/pbr/lantern-cloth/recipe.json
+    tangcheng/tex/pbr/lantern-panel/1k/albedo.jpg
+    tangcheng/tex/pbr/lantern-panel/1k/ao.jpg
+    tangcheng/tex/pbr/lantern-panel/1k/normal.jpg
+    tangcheng/tex/pbr/lantern-panel/1k/roughness.jpg
+    tangcheng/tex/pbr/lantern-panel/2k/ao.jpg
+    tangcheng/tex/pbr/lantern-panel/2k/normal.jpg
+    tangcheng/tex/pbr/lantern-panel/2k/roughness.jpg
+    tangcheng/tex/pbr/lantern-silk/1k/albedo.jpg
+    tangcheng/tex/pbr/lantern-silk/1k/ao.jpg
+    tangcheng/tex/pbr/lantern-silk/1k/normal.jpg
+    tangcheng/tex/pbr/lantern-silk/1k/roughness.jpg
+    tangcheng/tex/pbr/lantern-silk/2k/albedo.jpg
+    tangcheng/tex/pbr/lantern-silk/2k/ao.jpg
+    tangcheng/tex/pbr/lantern-silk/2k/normal.jpg
+    tangcheng/tex/pbr/lantern-silk/2k/roughness.jpg
+    tangcheng/tex/pbr/lantern-silk/recipe.json
+    tangcheng/tex/pbr/latex-paint-fresh/1k/albedo.jpg
+    tangcheng/tex/pbr/latex-paint-fresh/1k/ao.jpg
+    tangcheng/tex/pbr/latex-paint-fresh/1k/normal.jpg
+    tangcheng/tex/pbr/latex-paint-fresh/1k/roughness.jpg
+    tangcheng/tex/pbr/latex-paint-fresh/2k/ao.jpg
+    tangcheng/tex/pbr/latex-paint-fresh/2k/normal.jpg
+    tangcheng/tex/pbr/latex-paint-fresh/2k/roughness.jpg
+    tangcheng/tex/pbr/leaf-litter/1k/albedo.png
+    tangcheng/tex/pbr/leaf-litter/1k/ao.jpg
+    tangcheng/tex/pbr/leaf-litter/1k/normal.jpg
+    tangcheng/tex/pbr/leaf-litter/1k/roughness.jpg
+    tangcheng/tex/pbr/leaf-litter/2k/ao.jpg
+    tangcheng/tex/pbr/leaf-litter/2k/normal.jpg
+    tangcheng/tex/pbr/leaf-litter/2k/roughness.jpg
+    tangcheng/tex/pbr/leaf-potted/1k/albedo.png
+    tangcheng/tex/pbr/leaf-potted/1k/ao.jpg
+    tangcheng/tex/pbr/leaf-potted/1k/normal.jpg
+    tangcheng/tex/pbr/leaf-potted/1k/roughness.jpg
+    tangcheng/tex/pbr/leaf-potted/2k/albedo.png
+    tangcheng/tex/pbr/leaf-potted/2k/ao.jpg
+    tangcheng/tex/pbr/leaf-potted/2k/normal.jpg
+    tangcheng/tex/pbr/leaf-potted/2k/roughness.jpg
+    tangcheng/tex/pbr/leaf-potted/recipe.json
+    tangcheng/tex/pbr/leaf-schefflera/1k/albedo.png
+    tangcheng/tex/pbr/leaf-schefflera/1k/ao.jpg
+    tangcheng/tex/pbr/leaf-schefflera/1k/normal.jpg
+    tangcheng/tex/pbr/leaf-schefflera/1k/roughness.jpg
+    tangcheng/tex/pbr/leaf-schefflera/2k/albedo.png
+    tangcheng/tex/pbr/leaf-schefflera/2k/ao.jpg
+    tangcheng/tex/pbr/leaf-schefflera/2k/normal.jpg
+    tangcheng/tex/pbr/leaf-schefflera/2k/roughness.jpg
+    tangcheng/tex/pbr/leaf-schefflera/recipe.json
+    tangcheng/tex/pbr/lightwell-wall/1k/albedo.jpg
+    tangcheng/tex/pbr/lightwell-wall/1k/ao.jpg
+    tangcheng/tex/pbr/lightwell-wall/1k/metalness.jpg
+    tangcheng/tex/pbr/lightwell-wall/1k/normal.jpg
+    tangcheng/tex/pbr/lightwell-wall/1k/roughness.jpg
+    tangcheng/tex/pbr/lightwell-wall/2k/ao.jpg
+    tangcheng/tex/pbr/lightwell-wall/2k/metalness.jpg
+    tangcheng/tex/pbr/lightwell-wall/2k/normal.jpg
+    tangcheng/tex/pbr/lightwell-wall/2k/roughness.jpg
+    tangcheng/tex/pbr/mahjong-felt/1k/albedo.jpg
+    tangcheng/tex/pbr/mahjong-felt/1k/ao.jpg
+    tangcheng/tex/pbr/mahjong-felt/1k/normal.jpg
+    tangcheng/tex/pbr/mahjong-felt/1k/roughness.jpg
+    tangcheng/tex/pbr/mahjong-felt/2k/ao.jpg
+    tangcheng/tex/pbr/mahjong-felt/2k/normal.jpg
+    tangcheng/tex/pbr/mahjong-felt/2k/roughness.jpg
+    tangcheng/tex/pbr/mall-carpet-green/1k/albedo.jpg
+    tangcheng/tex/pbr/mall-carpet-green/1k/ao.jpg
+    tangcheng/tex/pbr/mall-carpet-green/1k/normal.jpg
+    tangcheng/tex/pbr/mall-carpet-green/1k/roughness.jpg
+    tangcheng/tex/pbr/mall-carpet-green/2k/ao.jpg
+    tangcheng/tex/pbr/mall-carpet-green/2k/normal.jpg
+    tangcheng/tex/pbr/mall-carpet-green/2k/roughness.jpg
+    tangcheng/tex/pbr/mall-carpet-wine/1k/albedo.jpg
+    tangcheng/tex/pbr/mall-carpet-wine/1k/ao.jpg
+    tangcheng/tex/pbr/mall-carpet-wine/1k/normal.jpg
+    tangcheng/tex/pbr/mall-carpet-wine/1k/roughness.jpg
+    tangcheng/tex/pbr/mall-carpet-wine/2k/ao.jpg
+    tangcheng/tex/pbr/mall-carpet-wine/2k/normal.jpg
+    tangcheng/tex/pbr/mall-carpet-wine/2k/roughness.jpg
+    tangcheng/tex/pbr/market-cement-wet/1k/albedo.jpg
+    tangcheng/tex/pbr/market-cement-wet/1k/ao.jpg
+    tangcheng/tex/pbr/market-cement-wet/1k/normal.jpg
+    tangcheng/tex/pbr/market-cement-wet/1k/roughness.jpg
+    tangcheng/tex/pbr/market-cement-wet/2k/ao.jpg
+    tangcheng/tex/pbr/market-cement-wet/2k/normal.jpg
+    tangcheng/tex/pbr/market-cement-wet/2k/roughness.jpg
+    tangcheng/tex/pbr/market-steel/1k/albedo.jpg
+    tangcheng/tex/pbr/market-steel/1k/ao.jpg
+    tangcheng/tex/pbr/market-steel/1k/metalness.jpg
+    tangcheng/tex/pbr/market-steel/1k/normal.jpg
+    tangcheng/tex/pbr/market-steel/1k/roughness.jpg
+    tangcheng/tex/pbr/market-steel/2k/ao.jpg
+    tangcheng/tex/pbr/market-steel/2k/metalness.jpg
+    tangcheng/tex/pbr/market-steel/2k/normal.jpg
+    tangcheng/tex/pbr/market-steel/2k/roughness.jpg
+    tangcheng/tex/pbr/mosaic-blue-worn/1k/albedo.jpg
+    tangcheng/tex/pbr/mosaic-blue-worn/1k/ao.jpg
+    tangcheng/tex/pbr/mosaic-blue-worn/1k/mask.png
+    tangcheng/tex/pbr/mosaic-blue-worn/1k/normal.jpg
+    tangcheng/tex/pbr/mosaic-blue-worn/1k/roughness.jpg
+    tangcheng/tex/pbr/mosaic-blue-worn/2k/albedo.jpg
+    tangcheng/tex/pbr/mosaic-blue-worn/2k/ao.jpg
+    tangcheng/tex/pbr/mosaic-blue-worn/2k/mask.png
+    tangcheng/tex/pbr/mosaic-blue-worn/2k/normal.jpg
+    tangcheng/tex/pbr/mosaic-blue-worn/2k/roughness.jpg
+    tangcheng/tex/pbr/mosaic-blue-worn/recipe.json
+    tangcheng/tex/pbr/mosaic/1k/albedo.jpg
+    tangcheng/tex/pbr/mosaic/1k/ao.jpg
+    tangcheng/tex/pbr/mosaic/1k/mask.png
+    tangcheng/tex/pbr/mosaic/1k/normal.jpg
+    tangcheng/tex/pbr/mosaic/1k/roughness.jpg
+    tangcheng/tex/pbr/mosaic/2k/ao.jpg
+    tangcheng/tex/pbr/mosaic/2k/mask.png
+    tangcheng/tex/pbr/mosaic/2k/normal.jpg
+    tangcheng/tex/pbr/mosaic/2k/roughness.jpg
+    tangcheng/tex/pbr/moss-drip-decal/1k/albedo.png
+    tangcheng/tex/pbr/moss-drip-decal/1k/ao.jpg
+    tangcheng/tex/pbr/moss-drip-decal/1k/normal.jpg
+    tangcheng/tex/pbr/moss-drip-decal/1k/roughness.jpg
+    tangcheng/tex/pbr/moss-drip-decal/2k/ao.jpg
+    tangcheng/tex/pbr/moss-drip-decal/2k/normal.jpg
+    tangcheng/tex/pbr/moss-drip-decal/2k/roughness.jpg
+    tangcheng/tex/pbr/netcafe-carpet/1k/albedo.jpg
+    tangcheng/tex/pbr/netcafe-carpet/1k/ao.jpg
+    tangcheng/tex/pbr/netcafe-carpet/1k/normal.jpg
+    tangcheng/tex/pbr/netcafe-carpet/1k/roughness.jpg
+    tangcheng/tex/pbr/netcafe-carpet/2k/ao.jpg
+    tangcheng/tex/pbr/netcafe-carpet/2k/normal.jpg
+    tangcheng/tex/pbr/netcafe-carpet/2k/roughness.jpg
+    tangcheng/tex/pbr/nichoukake-grime/1k/albedo.jpg
+    tangcheng/tex/pbr/nichoukake-grime/1k/ao.jpg
+    tangcheng/tex/pbr/nichoukake-grime/1k/normal.jpg
+    tangcheng/tex/pbr/nichoukake-grime/1k/roughness.jpg
+    tangcheng/tex/pbr/nichoukake-grime/2k/ao.jpg
+    tangcheng/tex/pbr/nichoukake-grime/2k/normal.jpg
+    tangcheng/tex/pbr/nichoukake-grime/2k/roughness.jpg
+    tangcheng/tex/pbr/nichoukake/1k/albedo.jpg
+    tangcheng/tex/pbr/nichoukake/1k/ao.jpg
+    tangcheng/tex/pbr/nichoukake/1k/height.jpg
+    tangcheng/tex/pbr/nichoukake/1k/normal.jpg
+    tangcheng/tex/pbr/nichoukake/1k/roughness.jpg
+    tangcheng/tex/pbr/nichoukake/2k/albedo.jpg
+    tangcheng/tex/pbr/nichoukake/2k/ao.jpg
+    tangcheng/tex/pbr/nichoukake/2k/height.jpg
+    tangcheng/tex/pbr/nichoukake/2k/normal.jpg
+    tangcheng/tex/pbr/nichoukake/2k/roughness.jpg
+    tangcheng/tex/pbr/nichoukake/recipe.json
+    tangcheng/tex/pbr/onsen-tile/1k/albedo.jpg
+    tangcheng/tex/pbr/onsen-tile/1k/ao.jpg
+    tangcheng/tex/pbr/onsen-tile/1k/normal.jpg
+    tangcheng/tex/pbr/onsen-tile/1k/roughness.jpg
+    tangcheng/tex/pbr/onsen-tile/2k/ao.jpg
+    tangcheng/tex/pbr/onsen-tile/2k/normal.jpg
+    tangcheng/tex/pbr/onsen-tile/2k/roughness.jpg
+    tangcheng/tex/pbr/paint-peel-green/1k/albedo.jpg
+    tangcheng/tex/pbr/paint-peel-green/1k/ao.jpg
+    tangcheng/tex/pbr/paint-peel-green/1k/normal.jpg
+    tangcheng/tex/pbr/paint-peel-green/1k/roughness.jpg
+    tangcheng/tex/pbr/paint-peel-green/2k/ao.jpg
+    tangcheng/tex/pbr/paint-peel-green/2k/normal.jpg
+    tangcheng/tex/pbr/paint-peel-green/2k/roughness.jpg
+    tangcheng/tex/pbr/painted-steel/1k/albedo.jpg
+    tangcheng/tex/pbr/painted-steel/1k/ao.jpg
+    tangcheng/tex/pbr/painted-steel/1k/normal.jpg
+    tangcheng/tex/pbr/painted-steel/1k/roughness.jpg
+    tangcheng/tex/pbr/painted-steel/2k/ao.jpg
+    tangcheng/tex/pbr/painted-steel/2k/normal.jpg
+    tangcheng/tex/pbr/painted-steel/2k/roughness.jpg
+    tangcheng/tex/pbr/painted-wood-old/1k/albedo.jpg
+    tangcheng/tex/pbr/painted-wood-old/1k/ao.jpg
+    tangcheng/tex/pbr/painted-wood-old/1k/normal.jpg
+    tangcheng/tex/pbr/painted-wood-old/1k/roughness.jpg
+    tangcheng/tex/pbr/painted-wood-old/2k/albedo.jpg
+    tangcheng/tex/pbr/painted-wood-old/2k/ao.jpg
+    tangcheng/tex/pbr/painted-wood-old/2k/normal.jpg
+    tangcheng/tex/pbr/painted-wood-old/2k/roughness.jpg
+    tangcheng/tex/pbr/painted-wood-old/recipe.json
+    tangcheng/tex/pbr/parquet-teak/1k/albedo.jpg
+    tangcheng/tex/pbr/parquet-teak/1k/ao.jpg
+    tangcheng/tex/pbr/parquet-teak/1k/normal.jpg
+    tangcheng/tex/pbr/parquet-teak/1k/roughness.jpg
+    tangcheng/tex/pbr/parquet-teak/2k/ao.jpg
+    tangcheng/tex/pbr/parquet-teak/2k/normal.jpg
+    tangcheng/tex/pbr/parquet-teak/2k/roughness.jpg
+    tangcheng/tex/pbr/partition-fabric/1k/albedo.jpg
+    tangcheng/tex/pbr/partition-fabric/1k/ao.jpg
+    tangcheng/tex/pbr/partition-fabric/1k/normal.jpg
+    tangcheng/tex/pbr/partition-fabric/1k/roughness.jpg
+    tangcheng/tex/pbr/partition-fabric/2k/ao.jpg
+    tangcheng/tex/pbr/partition-fabric/2k/normal.jpg
+    tangcheng/tex/pbr/partition-fabric/2k/roughness.jpg
+    tangcheng/tex/pbr/pavilion-wood/1k/albedo.jpg
+    tangcheng/tex/pbr/pavilion-wood/1k/ao.jpg
+    tangcheng/tex/pbr/pavilion-wood/1k/normal.jpg
+    tangcheng/tex/pbr/pavilion-wood/1k/roughness.jpg
+    tangcheng/tex/pbr/pavilion-wood/2k/ao.jpg
+    tangcheng/tex/pbr/pavilion-wood/2k/normal.jpg
+    tangcheng/tex/pbr/pavilion-wood/2k/roughness.jpg
+    tangcheng/tex/pbr/pc-corrugated/1k/albedo.jpg
+    tangcheng/tex/pbr/pc-corrugated/1k/ao.jpg
+    tangcheng/tex/pbr/pc-corrugated/1k/normal.jpg
+    tangcheng/tex/pbr/pc-corrugated/1k/roughness.jpg
+    tangcheng/tex/pbr/pc-corrugated/2k/albedo.jpg
+    tangcheng/tex/pbr/pc-corrugated/2k/ao.jpg
+    tangcheng/tex/pbr/pc-corrugated/2k/normal.jpg
+    tangcheng/tex/pbr/pc-corrugated/2k/roughness.jpg
+    tangcheng/tex/pbr/pc-corrugated/recipe.json
+    tangcheng/tex/pbr/plaster-peeling/1k/albedo.jpg
+    tangcheng/tex/pbr/plaster-peeling/1k/ao.jpg
+    tangcheng/tex/pbr/plaster-peeling/1k/normal.jpg
+    tangcheng/tex/pbr/plaster-peeling/1k/roughness.jpg
+    tangcheng/tex/pbr/plaster-peeling/2k/albedo.jpg
+    tangcheng/tex/pbr/plaster-peeling/2k/ao.jpg
+    tangcheng/tex/pbr/plaster-peeling/2k/normal.jpg
+    tangcheng/tex/pbr/plaster-peeling/2k/roughness.jpg
+    tangcheng/tex/pbr/plaster-peeling/recipe.json
+    tangcheng/tex/pbr/pool-dry/1k/albedo.jpg
+    tangcheng/tex/pbr/pool-dry/1k/ao.jpg
+    tangcheng/tex/pbr/pool-dry/1k/normal.jpg
+    tangcheng/tex/pbr/pool-dry/1k/roughness.jpg
+    tangcheng/tex/pbr/pool-dry/2k/ao.jpg
+    tangcheng/tex/pbr/pool-dry/2k/normal.jpg
+    tangcheng/tex/pbr/pool-dry/2k/roughness.jpg
+    tangcheng/tex/pbr/porcelain-tile-60/1k/albedo.jpg
+    tangcheng/tex/pbr/porcelain-tile-60/1k/ao.jpg
+    tangcheng/tex/pbr/porcelain-tile-60/1k/height.jpg
+    tangcheng/tex/pbr/porcelain-tile-60/1k/normal.jpg
+    tangcheng/tex/pbr/porcelain-tile-60/1k/roughness.jpg
+    tangcheng/tex/pbr/porcelain-tile-60/2k/albedo.jpg
+    tangcheng/tex/pbr/porcelain-tile-60/2k/ao.jpg
+    tangcheng/tex/pbr/porcelain-tile-60/2k/height.jpg
+    tangcheng/tex/pbr/porcelain-tile-60/2k/normal.jpg
+    tangcheng/tex/pbr/porcelain-tile-60/2k/roughness.jpg
+    tangcheng/tex/pbr/porcelain-tile-60/recipe.json
+    tangcheng/tex/pbr/protect-board-floor/1k/albedo.jpg
+    tangcheng/tex/pbr/protect-board-floor/1k/ao.jpg
+    tangcheng/tex/pbr/protect-board-floor/1k/normal.jpg
+    tangcheng/tex/pbr/protect-board-floor/1k/roughness.jpg
+    tangcheng/tex/pbr/protect-board-floor/2k/ao.jpg
+    tangcheng/tex/pbr/protect-board-floor/2k/normal.jpg
+    tangcheng/tex/pbr/protect-board-floor/2k/roughness.jpg
+    tangcheng/tex/pbr/queue-belt/1k/albedo.jpg
+    tangcheng/tex/pbr/queue-belt/1k/ao.jpg
+    tangcheng/tex/pbr/queue-belt/1k/normal.jpg
+    tangcheng/tex/pbr/queue-belt/1k/roughness.jpg
+    tangcheng/tex/pbr/queue-belt/2k/ao.jpg
+    tangcheng/tex/pbr/queue-belt/2k/normal.jpg
+    tangcheng/tex/pbr/queue-belt/2k/roughness.jpg
+    tangcheng/tex/pbr/ramp-concrete/1k/albedo.jpg
+    tangcheng/tex/pbr/ramp-concrete/1k/ao.jpg
+    tangcheng/tex/pbr/ramp-concrete/1k/normal.jpg
+    tangcheng/tex/pbr/ramp-concrete/1k/roughness.jpg
+    tangcheng/tex/pbr/ramp-concrete/2k/ao.jpg
+    tangcheng/tex/pbr/ramp-concrete/2k/normal.jpg
+    tangcheng/tex/pbr/ramp-concrete/2k/roughness.jpg
+    tangcheng/tex/pbr/red-clay-tile/1k/albedo.jpg
+    tangcheng/tex/pbr/red-clay-tile/1k/ao.jpg
+    tangcheng/tex/pbr/red-clay-tile/1k/normal.jpg
+    tangcheng/tex/pbr/red-clay-tile/1k/roughness.jpg
+    tangcheng/tex/pbr/red-clay-tile/2k/ao.jpg
+    tangcheng/tex/pbr/red-clay-tile/2k/normal.jpg
+    tangcheng/tex/pbr/red-clay-tile/2k/roughness.jpg
+    tangcheng/tex/pbr/red-runner/1k/albedo.jpg
+    tangcheng/tex/pbr/red-runner/1k/ao.jpg
+    tangcheng/tex/pbr/red-runner/1k/normal.jpg
+    tangcheng/tex/pbr/red-runner/1k/roughness.jpg
+    tangcheng/tex/pbr/red-runner/2k/ao.jpg
+    tangcheng/tex/pbr/red-runner/2k/normal.jpg
+    tangcheng/tex/pbr/red-runner/2k/roughness.jpg
+    tangcheng/tex/pbr/rink-ice/1k/albedo.jpg
+    tangcheng/tex/pbr/rink-ice/1k/ao.jpg
+    tangcheng/tex/pbr/rink-ice/1k/normal.jpg
+    tangcheng/tex/pbr/rink-ice/1k/roughness.jpg
+    tangcheng/tex/pbr/rink-ice/2k/ao.jpg
+    tangcheng/tex/pbr/rink-ice/2k/normal.jpg
+    tangcheng/tex/pbr/rink-ice/2k/roughness.jpg
+    tangcheng/tex/pbr/roof-corrugated-rust/1k/albedo.jpg
+    tangcheng/tex/pbr/roof-corrugated-rust/1k/ao.jpg
+    tangcheng/tex/pbr/roof-corrugated-rust/1k/metalness.jpg
+    tangcheng/tex/pbr/roof-corrugated-rust/1k/normal.jpg
+    tangcheng/tex/pbr/roof-corrugated-rust/1k/roughness.jpg
+    tangcheng/tex/pbr/roof-corrugated-rust/2k/ao.jpg
+    tangcheng/tex/pbr/roof-corrugated-rust/2k/metalness.jpg
+    tangcheng/tex/pbr/roof-corrugated-rust/2k/normal.jpg
+    tangcheng/tex/pbr/roof-corrugated-rust/2k/roughness.jpg
+    tangcheng/tex/pbr/roof-underside/1k/albedo.jpg
+    tangcheng/tex/pbr/roof-underside/1k/ao.jpg
+    tangcheng/tex/pbr/roof-underside/1k/metalness.jpg
+    tangcheng/tex/pbr/roof-underside/1k/normal.jpg
+    tangcheng/tex/pbr/roof-underside/1k/roughness.jpg
+    tangcheng/tex/pbr/roof-underside/2k/ao.jpg
+    tangcheng/tex/pbr/roof-underside/2k/metalness.jpg
+    tangcheng/tex/pbr/roof-underside/2k/normal.jpg
+    tangcheng/tex/pbr/roof-underside/2k/roughness.jpg
+    tangcheng/tex/pbr/roof-waterproof-green/1k/albedo.jpg
+    tangcheng/tex/pbr/roof-waterproof-green/1k/ao.jpg
+    tangcheng/tex/pbr/roof-waterproof-green/1k/normal.jpg
+    tangcheng/tex/pbr/roof-waterproof-green/1k/roughness.jpg
+    tangcheng/tex/pbr/roof-waterproof-green/2k/ao.jpg
+    tangcheng/tex/pbr/roof-waterproof-green/2k/normal.jpg
+    tangcheng/tex/pbr/roof-waterproof-green/2k/roughness.jpg
+    tangcheng/tex/pbr/rubber-handrail/1k/albedo.jpg
+    tangcheng/tex/pbr/rubber-handrail/1k/ao.jpg
+    tangcheng/tex/pbr/rubber-handrail/1k/mask.jpg
+    tangcheng/tex/pbr/rubber-handrail/1k/normal.jpg
+    tangcheng/tex/pbr/rubber-handrail/1k/roughness.jpg
+    tangcheng/tex/pbr/rubber-handrail/2k/ao.jpg
+    tangcheng/tex/pbr/rubber-handrail/2k/mask.jpg
+    tangcheng/tex/pbr/rubber-handrail/2k/normal.jpg
+    tangcheng/tex/pbr/rubber-handrail/2k/roughness.jpg
+    tangcheng/tex/pbr/rubber-mat-ribbed/1k/albedo.jpg
+    tangcheng/tex/pbr/rubber-mat-ribbed/1k/ao.jpg
+    tangcheng/tex/pbr/rubber-mat-ribbed/1k/normal.jpg
+    tangcheng/tex/pbr/rubber-mat-ribbed/1k/roughness.jpg
+    tangcheng/tex/pbr/rubber-mat-ribbed/2k/ao.jpg
+    tangcheng/tex/pbr/rubber-mat-ribbed/2k/normal.jpg
+    tangcheng/tex/pbr/rubber-mat-ribbed/2k/roughness.jpg
+    tangcheng/tex/pbr/sand-ripple/1k/albedo.jpg
+    tangcheng/tex/pbr/sand-ripple/1k/ao.jpg
+    tangcheng/tex/pbr/sand-ripple/1k/normal.jpg
+    tangcheng/tex/pbr/sand-ripple/1k/roughness.jpg
+    tangcheng/tex/pbr/sand-ripple/2k/ao.jpg
+    tangcheng/tex/pbr/sand-ripple/2k/normal.jpg
+    tangcheng/tex/pbr/sand-ripple/2k/roughness.jpg
+    tangcheng/tex/pbr/sauna-wood/1k/albedo.jpg
+    tangcheng/tex/pbr/sauna-wood/1k/ao.jpg
+    tangcheng/tex/pbr/sauna-wood/1k/normal.jpg
+    tangcheng/tex/pbr/sauna-wood/1k/roughness.jpg
+    tangcheng/tex/pbr/sauna-wood/2k/ao.jpg
+    tangcheng/tex/pbr/sauna-wood/2k/normal.jpg
+    tangcheng/tex/pbr/sauna-wood/2k/roughness.jpg
+    tangcheng/tex/pbr/shutter-galv/1k/albedo.jpg
+    tangcheng/tex/pbr/shutter-galv/1k/ao.jpg
+    tangcheng/tex/pbr/shutter-galv/1k/mask.jpg
+    tangcheng/tex/pbr/shutter-galv/1k/metalness.jpg
+    tangcheng/tex/pbr/shutter-galv/1k/normal.jpg
+    tangcheng/tex/pbr/shutter-galv/1k/roughness.jpg
+    tangcheng/tex/pbr/shutter-galv/2k/ao.jpg
+    tangcheng/tex/pbr/shutter-galv/2k/mask.jpg
+    tangcheng/tex/pbr/shutter-galv/2k/metalness.jpg
+    tangcheng/tex/pbr/shutter-galv/2k/normal.jpg
+    tangcheng/tex/pbr/shutter-galv/2k/roughness.jpg
+    tangcheng/tex/pbr/shutter-slat/1k/albedo.jpg
+    tangcheng/tex/pbr/shutter-slat/1k/ao.jpg
+    tangcheng/tex/pbr/shutter-slat/1k/height.jpg
+    tangcheng/tex/pbr/shutter-slat/1k/metalness.jpg
+    tangcheng/tex/pbr/shutter-slat/1k/normal.jpg
+    tangcheng/tex/pbr/shutter-slat/1k/roughness.jpg
+    tangcheng/tex/pbr/shutter-slat/2k/ao.jpg
+    tangcheng/tex/pbr/shutter-slat/2k/height.jpg
+    tangcheng/tex/pbr/shutter-slat/2k/metalness.jpg
+    tangcheng/tex/pbr/shutter-slat/2k/normal.jpg
+    tangcheng/tex/pbr/shutter-slat/2k/roughness.jpg
+    tangcheng/tex/pbr/silk-flower-wall/1k/albedo.jpg
+    tangcheng/tex/pbr/silk-flower-wall/1k/ao.jpg
+    tangcheng/tex/pbr/silk-flower-wall/1k/normal.jpg
+    tangcheng/tex/pbr/silk-flower-wall/1k/roughness.jpg
+    tangcheng/tex/pbr/silk-flower-wall/2k/ao.jpg
+    tangcheng/tex/pbr/silk-flower-wall/2k/normal.jpg
+    tangcheng/tex/pbr/silk-flower-wall/2k/roughness.jpg
+    tangcheng/tex/pbr/soil-edge/1k/albedo.jpg
+    tangcheng/tex/pbr/soil-edge/1k/ao.jpg
+    tangcheng/tex/pbr/soil-edge/1k/normal.jpg
+    tangcheng/tex/pbr/soil-edge/1k/roughness.jpg
+    tangcheng/tex/pbr/soil-edge/2k/ao.jpg
+    tangcheng/tex/pbr/soil-edge/2k/normal.jpg
+    tangcheng/tex/pbr/soil-edge/2k/roughness.jpg
+    tangcheng/tex/pbr/stainless-hairline/1k/albedo.jpg
+    tangcheng/tex/pbr/stainless-hairline/1k/ao.jpg
+    tangcheng/tex/pbr/stainless-hairline/1k/normal.jpg
+    tangcheng/tex/pbr/stainless-hairline/1k/roughness.jpg
+    tangcheng/tex/pbr/stainless-hairline/2k/ao.jpg
+    tangcheng/tex/pbr/stainless-hairline/2k/normal.jpg
+    tangcheng/tex/pbr/stainless-hairline/2k/roughness.jpg
+    tangcheng/tex/pbr/stair-tread-antislip/1k/albedo.jpg
+    tangcheng/tex/pbr/stair-tread-antislip/1k/ao.jpg
+    tangcheng/tex/pbr/stair-tread-antislip/1k/mask.jpg
+    tangcheng/tex/pbr/stair-tread-antislip/1k/normal.jpg
+    tangcheng/tex/pbr/stair-tread-antislip/1k/roughness.jpg
+    tangcheng/tex/pbr/stair-tread-antislip/2k/ao.jpg
+    tangcheng/tex/pbr/stair-tread-antislip/2k/mask.jpg
+    tangcheng/tex/pbr/stair-tread-antislip/2k/normal.jpg
+    tangcheng/tex/pbr/stair-tread-antislip/2k/roughness.jpg
+    tangcheng/tex/pbr/stall-counter-acrylic/1k/albedo.jpg
+    tangcheng/tex/pbr/stall-counter-acrylic/1k/ao.jpg
+    tangcheng/tex/pbr/stall-counter-acrylic/1k/metalness.jpg
+    tangcheng/tex/pbr/stall-counter-acrylic/1k/normal.jpg
+    tangcheng/tex/pbr/stall-counter-acrylic/1k/roughness.jpg
+    tangcheng/tex/pbr/stall-counter-acrylic/2k/ao.jpg
+    tangcheng/tex/pbr/stall-counter-acrylic/2k/metalness.jpg
+    tangcheng/tex/pbr/stall-counter-acrylic/2k/normal.jpg
+    tangcheng/tex/pbr/stall-counter-acrylic/2k/roughness.jpg
+    tangcheng/tex/pbr/steel-film-new/1k/albedo.jpg
+    tangcheng/tex/pbr/steel-film-new/1k/ao.jpg
+    tangcheng/tex/pbr/steel-film-new/1k/metalness.jpg
+    tangcheng/tex/pbr/steel-film-new/1k/normal.jpg
+    tangcheng/tex/pbr/steel-film-new/1k/roughness.jpg
+    tangcheng/tex/pbr/steel-film-new/2k/ao.jpg
+    tangcheng/tex/pbr/steel-film-new/2k/metalness.jpg
+    tangcheng/tex/pbr/steel-film-new/2k/normal.jpg
+    tangcheng/tex/pbr/steel-film-new/2k/roughness.jpg
+    tangcheng/tex/pbr/steel-rust-paint/1k/albedo.jpg
+    tangcheng/tex/pbr/steel-rust-paint/1k/ao.jpg
+    tangcheng/tex/pbr/steel-rust-paint/1k/metalness.jpg
+    tangcheng/tex/pbr/steel-rust-paint/1k/normal.jpg
+    tangcheng/tex/pbr/steel-rust-paint/1k/roughness.jpg
+    tangcheng/tex/pbr/steel-rust-paint/2k/albedo.jpg
+    tangcheng/tex/pbr/steel-rust-paint/2k/ao.jpg
+    tangcheng/tex/pbr/steel-rust-paint/2k/metalness.jpg
+    tangcheng/tex/pbr/steel-rust-paint/2k/normal.jpg
+    tangcheng/tex/pbr/steel-rust-paint/2k/roughness.jpg
+    tangcheng/tex/pbr/steel-rust-paint/recipe.json
+    tangcheng/tex/pbr/stone-clad-fine/1k/albedo.jpg
+    tangcheng/tex/pbr/stone-clad-fine/1k/ao.jpg
+    tangcheng/tex/pbr/stone-clad-fine/1k/normal.jpg
+    tangcheng/tex/pbr/stone-clad-fine/1k/roughness.jpg
+    tangcheng/tex/pbr/stone-clad-fine/2k/albedo.jpg
+    tangcheng/tex/pbr/stone-clad-fine/2k/ao.jpg
+    tangcheng/tex/pbr/stone-clad-fine/2k/normal.jpg
+    tangcheng/tex/pbr/stone-clad-fine/2k/roughness.jpg
+    tangcheng/tex/pbr/stone-clad-fine/recipe.json
+    tangcheng/tex/pbr/stone-medallion/1k/albedo.jpg
+    tangcheng/tex/pbr/stone-medallion/1k/ao.jpg
+    tangcheng/tex/pbr/stone-medallion/1k/normal.jpg
+    tangcheng/tex/pbr/stone-medallion/1k/roughness.jpg
+    tangcheng/tex/pbr/stone-medallion/2k/albedo.jpg
+    tangcheng/tex/pbr/stone-medallion/2k/ao.jpg
+    tangcheng/tex/pbr/stone-medallion/2k/normal.jpg
+    tangcheng/tex/pbr/stone-medallion/2k/roughness.jpg
+    tangcheng/tex/pbr/stone-medallion/recipe.json
+    tangcheng/tex/pbr/subway-brick/1k/albedo.jpg
+    tangcheng/tex/pbr/subway-brick/1k/ao.jpg
+    tangcheng/tex/pbr/subway-brick/1k/height.jpg
+    tangcheng/tex/pbr/subway-brick/1k/mask.jpg
+    tangcheng/tex/pbr/subway-brick/1k/normal.jpg
+    tangcheng/tex/pbr/subway-brick/1k/roughness.jpg
+    tangcheng/tex/pbr/subway-brick/2k/ao.jpg
+    tangcheng/tex/pbr/subway-brick/2k/height.jpg
+    tangcheng/tex/pbr/subway-brick/2k/mask.jpg
+    tangcheng/tex/pbr/subway-brick/2k/normal.jpg
+    tangcheng/tex/pbr/subway-brick/2k/roughness.jpg
+    tangcheng/tex/pbr/table-linen/1k/albedo.jpg
+    tangcheng/tex/pbr/table-linen/1k/ao.jpg
+    tangcheng/tex/pbr/table-linen/1k/normal.jpg
+    tangcheng/tex/pbr/table-linen/1k/roughness.jpg
+    tangcheng/tex/pbr/table-linen/2k/ao.jpg
+    tangcheng/tex/pbr/table-linen/2k/normal.jpg
+    tangcheng/tex/pbr/table-linen/2k/roughness.jpg
+    tangcheng/tex/pbr/tactile-guide/1k/albedo.jpg
+    tangcheng/tex/pbr/tactile-guide/1k/ao.jpg
+    tangcheng/tex/pbr/tactile-guide/1k/mask.jpg
+    tangcheng/tex/pbr/tactile-guide/1k/normal.jpg
+    tangcheng/tex/pbr/tactile-guide/1k/roughness.jpg
+    tangcheng/tex/pbr/tactile-guide/2k/ao.jpg
+    tangcheng/tex/pbr/tactile-guide/2k/mask.jpg
+    tangcheng/tex/pbr/tactile-guide/2k/normal.jpg
+    tangcheng/tex/pbr/tactile-guide/2k/roughness.jpg
+    tangcheng/tex/pbr/tank-stainless/1k/albedo.jpg
+    tangcheng/tex/pbr/tank-stainless/1k/ao.jpg
+    tangcheng/tex/pbr/tank-stainless/1k/metalness.jpg
+    tangcheng/tex/pbr/tank-stainless/1k/normal.jpg
+    tangcheng/tex/pbr/tank-stainless/1k/roughness.jpg
+    tangcheng/tex/pbr/tank-stainless/2k/ao.jpg
+    tangcheng/tex/pbr/tank-stainless/2k/metalness.jpg
+    tangcheng/tex/pbr/tank-stainless/2k/normal.jpg
+    tangcheng/tex/pbr/tank-stainless/2k/roughness.jpg
+    tangcheng/tex/pbr/tarp-blue/1k/albedo.jpg
+    tangcheng/tex/pbr/tarp-blue/1k/ao.jpg
+    tangcheng/tex/pbr/tarp-blue/1k/normal.jpg
+    tangcheng/tex/pbr/tarp-blue/1k/roughness.jpg
+    tangcheng/tex/pbr/tarp-blue/2k/ao.jpg
+    tangcheng/tex/pbr/tarp-blue/2k/normal.jpg
+    tangcheng/tex/pbr/tarp-blue/2k/roughness.jpg
+    tangcheng/tex/pbr/tc-handsigns/1k/albedo.jpg
+    tangcheng/tex/pbr/tc-handsigns/1k/ao.jpg
+    tangcheng/tex/pbr/tc-handsigns/1k/normal.jpg
+    tangcheng/tex/pbr/tc-handsigns/1k/roughness.jpg
+    tangcheng/tex/pbr/tc-handsigns/2k/ao.jpg
+    tangcheng/tex/pbr/tc-handsigns/2k/normal.jpg
+    tangcheng/tex/pbr/tc-handsigns/2k/roughness.jpg
+    tangcheng/tex/pbr/terrazzo-blue-worn/1k/albedo.jpg
+    tangcheng/tex/pbr/terrazzo-blue-worn/1k/ao.jpg
+    tangcheng/tex/pbr/terrazzo-blue-worn/1k/height.jpg
+    tangcheng/tex/pbr/terrazzo-blue-worn/1k/mask.png
+    tangcheng/tex/pbr/terrazzo-blue-worn/1k/normal.jpg
+    tangcheng/tex/pbr/terrazzo-blue-worn/1k/roughness.jpg
+    tangcheng/tex/pbr/terrazzo-blue-worn/2k/albedo.jpg
+    tangcheng/tex/pbr/terrazzo-blue-worn/2k/ao.jpg
+    tangcheng/tex/pbr/terrazzo-blue-worn/2k/height.jpg
+    tangcheng/tex/pbr/terrazzo-blue-worn/2k/mask.png
+    tangcheng/tex/pbr/terrazzo-blue-worn/2k/normal.jpg
+    tangcheng/tex/pbr/terrazzo-blue-worn/2k/roughness.jpg
+    tangcheng/tex/pbr/terrazzo-blue-worn/recipe.json
+    tangcheng/tex/pbr/terrazzo-blue/1k/albedo.jpg
+    tangcheng/tex/pbr/terrazzo-blue/1k/ao.jpg
+    tangcheng/tex/pbr/terrazzo-blue/1k/mask.png
+    tangcheng/tex/pbr/terrazzo-blue/1k/normal.jpg
+    tangcheng/tex/pbr/terrazzo-blue/1k/roughness.jpg
+    tangcheng/tex/pbr/terrazzo-blue/1k/shade.jpg
+    tangcheng/tex/pbr/terrazzo-blue/2k/ao.jpg
+    tangcheng/tex/pbr/terrazzo-blue/2k/mask.png
+    tangcheng/tex/pbr/terrazzo-blue/2k/normal.jpg
+    tangcheng/tex/pbr/terrazzo-blue/2k/roughness.jpg
+    tangcheng/tex/pbr/terrazzo-blue/2k/shade.jpg
+    tangcheng/tex/pbr/terrazzo-bw/1k/albedo.jpg
+    tangcheng/tex/pbr/terrazzo-bw/1k/ao.jpg
+    tangcheng/tex/pbr/terrazzo-bw/1k/mask.png
+    tangcheng/tex/pbr/terrazzo-bw/1k/normal.jpg
+    tangcheng/tex/pbr/terrazzo-bw/1k/roughness.jpg
+    tangcheng/tex/pbr/terrazzo-bw/1k/shade.jpg
+    tangcheng/tex/pbr/terrazzo-bw/2k/ao.jpg
+    tangcheng/tex/pbr/terrazzo-bw/2k/mask.png
+    tangcheng/tex/pbr/terrazzo-bw/2k/normal.jpg
+    tangcheng/tex/pbr/terrazzo-bw/2k/roughness.jpg
+    tangcheng/tex/pbr/terrazzo-bw/2k/shade.jpg
+    tangcheng/tex/pbr/terrazzo-gloss/1k/albedo.jpg
+    tangcheng/tex/pbr/terrazzo-gloss/1k/ao.jpg
+    tangcheng/tex/pbr/terrazzo-gloss/1k/normal.jpg
+    tangcheng/tex/pbr/terrazzo-gloss/1k/roughness.jpg
+    tangcheng/tex/pbr/terrazzo-gloss/2k/albedo.jpg
+    tangcheng/tex/pbr/terrazzo-gloss/2k/ao.jpg
+    tangcheng/tex/pbr/terrazzo-gloss/2k/normal.jpg
+    tangcheng/tex/pbr/terrazzo-gloss/2k/roughness.jpg
+    tangcheng/tex/pbr/terrazzo-gloss/recipe.json
+    tangcheng/tex/pbr/terrazzo-mint/1k/albedo.jpg
+    tangcheng/tex/pbr/terrazzo-mint/1k/ao.jpg
+    tangcheng/tex/pbr/terrazzo-mint/1k/mask.png
+    tangcheng/tex/pbr/terrazzo-mint/1k/normal.jpg
+    tangcheng/tex/pbr/terrazzo-mint/1k/roughness.jpg
+    tangcheng/tex/pbr/terrazzo-mint/1k/shade.jpg
+    tangcheng/tex/pbr/terrazzo-mint/2k/ao.jpg
+    tangcheng/tex/pbr/terrazzo-mint/2k/mask.png
+    tangcheng/tex/pbr/terrazzo-mint/2k/normal.jpg
+    tangcheng/tex/pbr/terrazzo-mint/2k/roughness.jpg
+    tangcheng/tex/pbr/terrazzo-mint/2k/shade.jpg
+    tangcheng/tex/pbr/terrazzo-speckle-grey/1k/albedo.jpg
+    tangcheng/tex/pbr/terrazzo-speckle-grey/1k/ao.jpg
+    tangcheng/tex/pbr/terrazzo-speckle-grey/1k/normal.jpg
+    tangcheng/tex/pbr/terrazzo-speckle-grey/1k/roughness.jpg
+    tangcheng/tex/pbr/terrazzo-speckle-grey/2k/albedo.jpg
+    tangcheng/tex/pbr/terrazzo-speckle-grey/2k/ao.jpg
+    tangcheng/tex/pbr/terrazzo-speckle-grey/2k/normal.jpg
+    tangcheng/tex/pbr/terrazzo-speckle-grey/2k/roughness.jpg
+    tangcheng/tex/pbr/terrazzo-speckle-grey/recipe.json
+    tangcheng/tex/pbr/terrazzo-tile-worn/1k/albedo.jpg
+    tangcheng/tex/pbr/terrazzo-tile-worn/1k/ao.jpg
+    tangcheng/tex/pbr/terrazzo-tile-worn/1k/mask.jpg
+    tangcheng/tex/pbr/terrazzo-tile-worn/1k/normal.jpg
+    tangcheng/tex/pbr/terrazzo-tile-worn/1k/roughness.jpg
+    tangcheng/tex/pbr/terrazzo-tile-worn/2k/ao.jpg
+    tangcheng/tex/pbr/terrazzo-tile-worn/2k/mask.jpg
+    tangcheng/tex/pbr/terrazzo-tile-worn/2k/normal.jpg
+    tangcheng/tex/pbr/terrazzo-tile-worn/2k/roughness.jpg
+    tangcheng/tex/pbr/terrazzo-yellowed/1k/albedo.jpg
+    tangcheng/tex/pbr/terrazzo-yellowed/1k/ao.jpg
+    tangcheng/tex/pbr/terrazzo-yellowed/1k/normal.jpg
+    tangcheng/tex/pbr/terrazzo-yellowed/1k/roughness.jpg
+    tangcheng/tex/pbr/terrazzo-yellowed/2k/ao.jpg
+    tangcheng/tex/pbr/terrazzo-yellowed/2k/normal.jpg
+    tangcheng/tex/pbr/terrazzo-yellowed/2k/roughness.jpg
+    tangcheng/tex/pbr/threshold-brass/1k/albedo.jpg
+    tangcheng/tex/pbr/threshold-brass/1k/ao.jpg
+    tangcheng/tex/pbr/threshold-brass/1k/metalness.jpg
+    tangcheng/tex/pbr/threshold-brass/1k/normal.jpg
+    tangcheng/tex/pbr/threshold-brass/1k/roughness.jpg
+    tangcheng/tex/pbr/threshold-brass/2k/ao.jpg
+    tangcheng/tex/pbr/threshold-brass/2k/metalness.jpg
+    tangcheng/tex/pbr/threshold-brass/2k/normal.jpg
+    tangcheng/tex/pbr/threshold-brass/2k/roughness.jpg
+    tangcheng/tex/pbr/tile-10-mix/1k/albedo.jpg
+    tangcheng/tex/pbr/tile-10-mix/1k/ao.jpg
+    tangcheng/tex/pbr/tile-10-mix/1k/normal.jpg
+    tangcheng/tex/pbr/tile-10-mix/1k/roughness.jpg
+    tangcheng/tex/pbr/tile-10-mix/2k/albedo.jpg
+    tangcheng/tex/pbr/tile-10-mix/2k/ao.jpg
+    tangcheng/tex/pbr/tile-10-mix/2k/normal.jpg
+    tangcheng/tex/pbr/tile-10-mix/2k/roughness.jpg
+    tangcheng/tex/pbr/tile-10-mix/recipe.json
+    tangcheng/tex/pbr/tile-cracked-old/1k/albedo.jpg
+    tangcheng/tex/pbr/tile-cracked-old/1k/ao.jpg
+    tangcheng/tex/pbr/tile-cracked-old/1k/normal.jpg
+    tangcheng/tex/pbr/tile-cracked-old/1k/roughness.jpg
+    tangcheng/tex/pbr/tile-cracked-old/2k/ao.jpg
+    tangcheng/tex/pbr/tile-cracked-old/2k/normal.jpg
+    tangcheng/tex/pbr/tile-cracked-old/2k/roughness.jpg
+    tangcheng/tex/pbr/tile-film-new/1k/albedo.jpg
+    tangcheng/tex/pbr/tile-film-new/1k/ao.jpg
+    tangcheng/tex/pbr/tile-film-new/1k/normal.jpg
+    tangcheng/tex/pbr/tile-film-new/1k/roughness.jpg
+    tangcheng/tex/pbr/tile-film-new/2k/ao.jpg
+    tangcheng/tex/pbr/tile-film-new/2k/normal.jpg
+    tangcheng/tex/pbr/tile-film-new/2k/roughness.jpg
+    tangcheng/tex/pbr/turf-artificial/1k/albedo.jpg
+    tangcheng/tex/pbr/turf-artificial/1k/ao.jpg
+    tangcheng/tex/pbr/turf-artificial/1k/normal.jpg
+    tangcheng/tex/pbr/turf-artificial/1k/roughness.jpg
+    tangcheng/tex/pbr/turf-artificial/2k/ao.jpg
+    tangcheng/tex/pbr/turf-artificial/2k/normal.jpg
+    tangcheng/tex/pbr/turf-artificial/2k/roughness.jpg
+    tangcheng/tex/pbr/turf-minigolf/1k/albedo.jpg
+    tangcheng/tex/pbr/turf-minigolf/1k/ao.jpg
+    tangcheng/tex/pbr/turf-minigolf/1k/normal.jpg
+    tangcheng/tex/pbr/turf-minigolf/1k/roughness.jpg
+    tangcheng/tex/pbr/turf-minigolf/2k/ao.jpg
+    tangcheng/tex/pbr/turf-minigolf/2k/normal.jpg
+    tangcheng/tex/pbr/turf-minigolf/2k/roughness.jpg
+    tangcheng/tex/pbr/tv-screen-atlas/1k/albedo.jpg
+    tangcheng/tex/pbr/tv-screen-atlas/1k/ao.jpg
+    tangcheng/tex/pbr/tv-screen-atlas/1k/normal.jpg
+    tangcheng/tex/pbr/tv-screen-atlas/1k/roughness.jpg
+    tangcheng/tex/pbr/tv-screen-atlas/2k/ao.jpg
+    tangcheng/tex/pbr/tv-screen-atlas/2k/normal.jpg
+    tangcheng/tex/pbr/tv-screen-atlas/2k/roughness.jpg
+    tangcheng/tex/pbr/vct-tile/1k/albedo.jpg
+    tangcheng/tex/pbr/vct-tile/1k/ao.jpg
+    tangcheng/tex/pbr/vct-tile/1k/normal.jpg
+    tangcheng/tex/pbr/vct-tile/1k/roughness.jpg
+    tangcheng/tex/pbr/vct-tile/2k/ao.jpg
+    tangcheng/tex/pbr/vct-tile/2k/normal.jpg
+    tangcheng/tex/pbr/vct-tile/2k/roughness.jpg
+    tangcheng/tex/pbr/velvet-drape/1k/albedo.jpg
+    tangcheng/tex/pbr/velvet-drape/1k/ao.jpg
+    tangcheng/tex/pbr/velvet-drape/1k/normal.jpg
+    tangcheng/tex/pbr/velvet-drape/1k/roughness.jpg
+    tangcheng/tex/pbr/velvet-drape/2k/ao.jpg
+    tangcheng/tex/pbr/velvet-drape/2k/normal.jpg
+    tangcheng/tex/pbr/velvet-drape/2k/roughness.jpg
+    tangcheng/tex/pbr/vermilion-wood/1k/albedo.jpg
+    tangcheng/tex/pbr/vermilion-wood/1k/ao.jpg
+    tangcheng/tex/pbr/vermilion-wood/1k/normal.jpg
+    tangcheng/tex/pbr/vermilion-wood/1k/roughness.jpg
+    tangcheng/tex/pbr/vermilion-wood/2k/ao.jpg
+    tangcheng/tex/pbr/vermilion-wood/2k/normal.jpg
+    tangcheng/tex/pbr/vermilion-wood/2k/roughness.jpg
+    tangcheng/tex/pbr/vhs-spine-atlas/1k/albedo.jpg
+    tangcheng/tex/pbr/vhs-spine-atlas/1k/ao.jpg
+    tangcheng/tex/pbr/vhs-spine-atlas/1k/normal.jpg
+    tangcheng/tex/pbr/vhs-spine-atlas/1k/roughness.jpg
+    tangcheng/tex/pbr/vhs-spine-atlas/2k/ao.jpg
+    tangcheng/tex/pbr/vhs-spine-atlas/2k/normal.jpg
+    tangcheng/tex/pbr/vhs-spine-atlas/2k/roughness.jpg
+    tangcheng/tex/pbr/vinyl-quilted/1k/albedo.jpg
+    tangcheng/tex/pbr/vinyl-quilted/1k/ao.jpg
+    tangcheng/tex/pbr/vinyl-quilted/1k/normal.jpg
+    tangcheng/tex/pbr/vinyl-quilted/1k/roughness.jpg
+    tangcheng/tex/pbr/vinyl-quilted/2k/ao.jpg
+    tangcheng/tex/pbr/vinyl-quilted/2k/normal.jpg
+    tangcheng/tex/pbr/vinyl-quilted/2k/roughness.jpg
+    tangcheng/tex/pbr/vinyl-sheet/1k/albedo.jpg
+    tangcheng/tex/pbr/vinyl-sheet/1k/ao.jpg
+    tangcheng/tex/pbr/vinyl-sheet/1k/normal.jpg
+    tangcheng/tex/pbr/vinyl-sheet/1k/roughness.jpg
+    tangcheng/tex/pbr/vinyl-sheet/2k/albedo.jpg
+    tangcheng/tex/pbr/vinyl-sheet/2k/ao.jpg
+    tangcheng/tex/pbr/vinyl-sheet/2k/normal.jpg
+    tangcheng/tex/pbr/vinyl-sheet/2k/roughness.jpg
+    tangcheng/tex/pbr/vinyl-sheet/recipe.json
+    tangcheng/tex/pbr/wall-paint/1k/albedo.jpg
+    tangcheng/tex/pbr/wall-paint/1k/ao.jpg
+    tangcheng/tex/pbr/wall-paint/1k/mask.jpg
+    tangcheng/tex/pbr/wall-paint/1k/normal.jpg
+    tangcheng/tex/pbr/wall-paint/1k/roughness.jpg
+    tangcheng/tex/pbr/wall-paint/2k/ao.jpg
+    tangcheng/tex/pbr/wall-paint/2k/mask.jpg
+    tangcheng/tex/pbr/wall-paint/2k/normal.jpg
+    tangcheng/tex/pbr/wall-paint/2k/roughness.jpg
+    tangcheng/tex/signfx/1k/lightbox.jpg
+    tangcheng/tex/signfx/2k/lightbox.jpg
+    tangcheng/tex/signfx/recipe.json
+    tangcheng/tex/wallart/ad-banjia/recipe.json
+    tangcheng/tex/wallart/ad-kaisuo/recipe.json
+    tangcheng/tex/wallart/ad-shuidian/recipe.json
+    tangcheng/tex/wallart/ad-shuita/recipe.json
+    tangcheng/tex/wallart/ad-tongshui/recipe.json
+    tangcheng/tex/wallart/ad-zhualou/recipe.json
+    tangcheng/tex/wallart/atlas/atlas-1k.webp
+    tangcheng/tex/wallart/atlas/atlas.json
+    tangcheng/tex/wallart/atlas/atlas.webp
+    tangcheng/tex/wallart/atlas/recipe.json
+    tangcheng/tex/wallart/buff-cross/recipe.json
+    tangcheng/tex/wallart/buff-grey/recipe.json
+    tangcheng/tex/wallart/buff-offwhite/recipe.json
+    tangcheng/tex/wallart/drip-black/recipe.json
+    tangcheng/tex/wallart/drip-red/recipe.json
+    tangcheng/tex/wallart/faded-piece/recipe.json
+    tangcheng/tex/wallart/marker-blue/recipe.json
+    tangcheng/tex/wallart/marker-pencil/recipe.json
+    tangcheng/tex/wallart/marker-red/recipe.json
+    tangcheng/tex/wallart/marker-scrawl/recipe.json
+    tangcheng/tex/wallart/stamp-check/recipe.json
+    tangcheng/tex/wallart/stamp-lou/recipe.json
+    tangcheng/tex/wallart/stamp-tong/recipe.json
+    tangcheng/tex/wallart/stencil-17/recipe.json
+    tangcheng/tex/wallart/stencil-arrow/recipe.json
+    tangcheng/tex/wallart/stencil-b3/recipe.json
+    tangcheng/tex/wallart/stencil-dir/recipe.json
+    tangcheng/tex/wallart/stencil-x/recipe.json
+    tangcheng/tex/wallart/tag-black/recipe.json
+    tangcheng/tex/wallart/tag-blue/recipe.json
+    tangcheng/tex/wallart/tag-multi/recipe.json
+    tangcheng/tex/wallart/tag-red/recipe.json
+    tangcheng/tex/wallart/throw-pink/recipe.json
+    tangcheng/tex/wallart/throw-redwhite/recipe.json
+    tangcheng/tex/wallart/throw-silver/recipe.json
 
 ■ bundle.js 內的授權註解（去重）
+    @license
+    Copyright 2010-2026 Three.js Authors
     @copyright 2013-2026 Phaser Studio Inc.
     @license {@link https://opensource.org/licenses/MIT|MIT License}
     @copyright 2018 Photon Storm Ltd.
@@ -376,5 +2336,3 @@
     @copyright 2018 CodeAndWeb GmbH
     @license {@link https://github.com/photonstorm/phaser3-plugin-template/blob/master/LICENSE|MIT License}
     @license None
-    @license
-    Copyright 2010-2026 Three.js Authors

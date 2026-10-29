@@ -1,0 +1,180 @@
+{
+ "generator": "CPU numpy 程式生成（scipy cKDTree 週期 Voronoi、FFT 週期濾波），無生成模型、無 GPU",
+ "license": "本專案程式生成，CPU numpy，無生成模型、無參考照進貼圖；可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色，沒有當貼圖、沒有 img2img、沒有切圖、沒有複製進專案（照片不進 repo、不進 build）",
+ "spec": "doc/design/tangcheng-site-spec.md（照片勘查規格書：尺寸、顏色以它為準）",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "所有濾波週期邊界（FFT／np.roll／mod 座標），四方連續；驗證見 verify_images",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "jpg sRGB 4:2:0",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有鐵捲門有）",
+  "mask": "見各組 mask_notes（jpg 4:4:4 或 png）",
+  "shade": "jpg 線性灰階，值×2＝亮度倍率（只有磨石子有）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化，mask.png 用最近鄰）"
+ },
+ "set": "terrazzo-bw",
+ "title": "拋光磨石子：黑白斑馬條",
+ "queue_item": 25,
+ "candidate": "terrazzo-bw-s303",
+ "seed": 303,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_terrazzo.py（指令：python gen_terrazzo.py bw 303 <out>）",
+ "span_m": 2.4,
+ "why_picked": "s303 的黑條淺色石子較少，打蠟反光比較乾淨；s404 有一格補土太亮。",
+ "rejected": [
+  "terrazzo-bw-s404"
+ ],
+ "photos_referenced": [
+  "~/Desktop/game/閾限空間台灣/02_亮著燈但沒人/粉綠格地板反光__yt-xfK_eVJkgCQ-t606.jpg",
+  "~/Desktop/game/閾限空間台灣/02_亮著燈但沒人/家樂福鐵捲門與綠格地板__yt-6vyiGU8q8f0-t1383.jpg",
+  "~/Desktop/game/閾限空間台灣/01_童年招牌還在/地板貼紙_玩具反斗城麥當勞指標_近照__blog島國拾影.jpg",
+  "~/Desktop/game/閾限空間台灣/02_亮著燈但沒人/黑白地板與鐵捲門__yt-6vyiGU8q8f0-t1873.jpg",
+  "~/Desktop/game/閾限空間台灣/03_中庭與玻璃天幕/百鳥朝鳳與黑白棋盤地__vocus.jpg",
+  "~/Desktop/game/閾限空間台灣/04_停止的手扶梯/停用的手扶梯__yt-RFfHOelgvOE-t604.jpg"
+ ],
+ "recolor_formula": "linear：cell＝UV 所在格的奇偶（checker：(floor(u·n)+floor(v·n))&1；stripe：floor(u·n)&1，n＝tiles_per_tex）；W＝mask.png RGB/255（三類石子權重）；base＝(1−ΣW)·matrix[cell]＋Σ W_k·chips[cell][k]；albedo＝base × (shade.jpg×2)。albedo.jpg 是預設色票烘好的，不換色時直接用。",
+ "mask_notes": "mask.png RGB＝三類石子權重（6 階量化，0/51/…/255）；shade.jpg×2＝亮度倍率",
+ "files": {
+  "2k/albedo.jpg": 1246031,
+  "2k/normal.jpg": 124331,
+  "2k/roughness.jpg": 545433,
+  "2k/ao.jpg": 86376,
+  "2k/shade.jpg": 758342,
+  "2k/mask.png": 1723207,
+  "1k/albedo.jpg": 303562,
+  "1k/normal.jpg": 46020,
+  "1k/roughness.jpg": 150289,
+  "1k/ao.jpg": 33527,
+  "1k/shade.jpg": 164891,
+  "1k/mask.png": 468854
+ },
+ "params": {
+  "pattern": "bw",
+  "size": 2048,
+  "span_m": 2.4,
+  "tiles_per_tex": 8,
+  "tile_m": 0.3,
+  "layout": "stripe",
+  "mm_per_px": 1.171875,
+  "palette_srgb": [
+   {
+    "matrix": [
+     236,
+     235,
+     232
+    ],
+    "chips": [
+     [
+      246,
+      246,
+      244
+     ],
+     [
+      172,
+      172,
+      170
+     ],
+     [
+      82,
+      82,
+      84
+     ]
+    ]
+   },
+   {
+    "matrix": [
+     30,
+     31,
+     32
+    ],
+    "chips": [
+     [
+      46,
+      47,
+      49
+     ],
+     [
+      18,
+      18,
+      19
+     ],
+     [
+      98,
+      98,
+      97
+     ]
+    ]
+   }
+  ],
+  "chip_class_p": [
+   0.86,
+   0.09,
+   0.05
+  ],
+  "layers": {
+   "big": {
+    "points": 71111,
+    "cell_mm": 9.0,
+    "keep": 0.3,
+    "gap_mm": [
+     1.6,
+     3.0
+    ],
+    "clear_mm": 0,
+    "kept": 20926
+   },
+   "med": {
+    "points": 326530,
+    "cell_mm": 4.2,
+    "keep": 0.65,
+    "gap_mm": [
+     0.8,
+     1.6
+    ],
+    "clear_mm": 0.9,
+    "kept": 105232
+   },
+   "small": {
+    "points": 1440000,
+    "cell_mm": 2.0,
+    "keep": 0.7,
+    "gap_mm": [
+     0.5,
+     0.9
+    ],
+    "clear_mm": 0.5,
+    "kept": 331016
+   }
+  },
+  "replacement_tile": [
+   3,
+   1
+  ],
+  "patch_centers_px": [
+   [
+    768.9801690652572,
+    767.4735030608831
+   ],
+   [
+    958.692192852501,
+    329.1902548907781
+   ]
+  ],
+  "crack_tile": [
+   5,
+   3
+  ],
+  "coverage_chips": 0.41125890858634373
+ },
+ "verify_images": [
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/terrazzo-bw-s303-floor.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/terrazzo-bw-s303-top3x3.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/terrazzo-bw-s303-seam.jpg"
+ ]
+}

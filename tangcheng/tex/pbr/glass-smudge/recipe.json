@@ -1,0 +1,30 @@
+{
+ "license": "ambientCG CC0 1.0（公有領域，可商用、可再散布；不需署名）；本專案去色／加工",
+ "photo_rule": "照片只用眼睛看＋取色，沒有當貼圖、沒有 img2img、沒有切圖、沒有複製進專案",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "seamless": "ambientCG 原圖四方連續；加工只用週期濾波（FFT／np.roll）",
+ "tiling": "UV＝世界座標 / span_m",
+ "color": "去色（灰階 albedo，平均值見 albedo_mean）：顏色一律由材質 color／withPalette 決定，貼圖不帶色",
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機）"
+ },
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/install_acg.py（python install_acg.py <ambientCG 解壓根> <tex/pbr>）",
+ "queue_item": "T1-14",
+ "set": "glass-smudge",
+ "title": "玻璃污痕／指紋（灰階遮罩）",
+ "files": {
+  "2k/albedo.jpg": 27469,
+  "2k/roughness.jpg": 251973,
+  "2k/mask.jpg": 252043,
+  "2k/normal.jpg": 49439,
+  "1k/albedo.jpg": 7501,
+  "1k/roughness.jpg": 84431,
+  "1k/mask.jpg": 84240,
+  "1k/normal.jpg": 12575
+ },
+ "albedo_mean": 0.9,
+ "source": "ambientCG Fingerprints001（https://ambientcg.com/a/Fingerprints001）",
+ "span_m": 1.5,
+ "process": "roughness 正規化成 0–1 污痕量、乘低頻雲；mask.R＝roughness.R＝污痕量（albedo／normal 只是占位）"
+}

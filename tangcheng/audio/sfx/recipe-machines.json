@@ -1,0 +1,1422 @@
+{
+ "category": "sfx",
+ "theme": "tangcheng-machines",
+ "queue": "frount_demo/doc/design/tangcheng-asset-queue.md #5",
+ "brief": "手扶梯馬達循環、鐵捲門拉起和放下、出風口循環、噴水池循環。先翻 art-src/_reference/audio/ 有沒有可商用的，沒有就程式合成",
+ "reference_search": "art-src/_reference/audio/：horror-sfx（LICENSES.md：門、金屬、滴水）與 kenney-impact（撞擊、腳步）都沒有手扶梯、鐵捲門、空調、噴水池的錄音，可商用的裡沒有能直接用的 → 全部程式合成。其中 metal-barrier-slam、dripping-water-basement-loop 只拿來當 CLAP 對照組，沒有混進任何輸出",
+ "made": "2026-10-26",
+ "tool": "numpy／scipy 程式合成（~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-sfx-machines/synth.py）",
+ "model": "無生成模型（挑選時用 CLAP laion/larger_clap_general 打分，只評分、不產生聲音）",
+ "license": "本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型；可商用",
+ "format": "48 kHz 單聲道乾聲（殘響交給場景），Opus .ogg＋AAC .m4a＋.loop.json（tools/audio/bgm_export.py）。循環：手扶梯 −22 LUFS、出風口 −26、噴水池 −20；鐵捲門單發 −16 LUFS，但受真峰值 −1 dBTP 限制，shutter-down-a 實際 −21.8、shutter-up-a −17.1。相對音量由場景設定。每個聲音掛在看得到的物件上（計畫第 2 節第 12–13 條）",
+ "physics": {
+  "escalator": "感應馬達 120 Hz 嗡聲加諧波，軸轉 29 Hz 旁帶；蝸桿減速機嘯聲 493 Hz（29×17 齒）；台階每 0.8 s 經過梳板，敲在桁架的模態上；鏈條 3.75 Hz 喀喀；扶手橡膠摩擦雜訊",
+  "shutter": "片高 75 mm，每片經過導軌一聲喀，打在門簾和導軌的模態組上（隨速度變化：放下越掉越快，拉起由彈簧加速）；帕松分布的碎響，大小呈冪律；捲筒隆隆；導軌刮擦；結尾撞擊包含低頻模態、受阻尼的中頻、地板悶響（110→45 Hz 掃頻）、90 ms 後反彈、餘震碎響；電動版另加馬達、減速機和極限開關",
+  "vent": "穩定的有色雜訊加風管低鳴；風扇葉片通過頻率 144／288 Hz；馬達 120 Hz；老機組多百葉窗咔噠與縫隙哨音",
+  "fountain": "van den Doel 氣泡模型（Minnaert 頻率 f=3.26/r、阻尼 d=0.13/r+0.0072·r^-1.5、音高隨時間上揚）；飛濺雜訊帶快速隨機包絡；水柱落池的低頻；幫浦嗡聲；大水滴"
+ },
+ "loop_method": "循環長度：手扶梯 16 s、出風口 20 s、噴水池 24 s。週期成分都是循環內整數週期；雜訊在 FFT 域生成，濾波是循環的；離散事件放在環狀時間軸上，尾巴繞回檔頭 → 不用交叉淡化，天生首尾相接。驗法有兩種，都附對照組：(1) seamtone.py：120 Hz 窄帶包絡在接點的凹陷，對照組少切半週期（200 樣本）或 1.5 週期（600 樣本），手扶梯和 vent-a 會掉 −5～−26 dB，選上的接點是 −0.3～+3.5 dB；vent-b 的 120 Hz 太弱，對照組也不掉，這個方法對它無效。(2) seamcheck.py：接點 ±2 ms 最大差值在全段的百分位；但對照組少切幾千樣本也不一定失敗（雜訊為主的聲音，切一刀本來就聽不出來），所以只當參考，數字記在 measure.seam。噴水池接點百分位 99.9，原因是檔頭剛好有一顆大水滴起音，不是斷點：首尾樣本跳差只有一般相鄰差的 0.88 倍",
+ "pick_method": "候選共 156 個（兩輪配方＋種子掃描）。主要用 CLAP 零樣本打分：每類一組目標描述，加一組容易混淆的描述（瀑布、海浪、雷、垃圾桶……），看 softmax 後的目標機率和目標相似度。對照組：白雜訊、粉紅雜訊對所有類別機率都 ≈0；但 120 Hz 正弦對 vent 的機率也有 0.988，相似度只有 0.128，所以 vent 以相似度為準。真實錄音：滴水循環對噴水池 0.999／0.246，金屬柵欄撞擊對鐵捲門相似度 0.264。CLAP 分不出拉起和放下（shutter-down／shutter-up 兩組都 ≈0），上下是照物理模型和時間軸分的。再看手機可聽度（300 Hz 以上能量比、頻譜質心）和峰值因數。拼板 _sheet.png（頻譜 0–8 kHz）在 local-gen。未經人耳試聽",
+ "listen_checklist": [
+  "手扶梯 a／b：循環 3 圈以上，聽不出接點；台階聲有沒有規律到像節拍器",
+  "鐵捲門 down-a：撞地那一下夠不夠重、像不像「門」（CLAP 第一名是垃圾桶）；up-a 頂到擋塊那一下會不會太小聲",
+  "電動 b 組：馬達嘯聲 830 Hz 會不會刺耳",
+  "出風口 a：手機上聽不聽得到（300 Hz 以上的能量只有 18%），太悶的話場景可以加 EQ 或改用 b",
+  "噴水池 a／b：會不會像下雨或炸東西；循環 24 s 有沒有某顆水滴聽得出在重複"
+ ],
+ "items": [
+  {
+   "file": "escalator-a.ogg",
+   "also": [
+    "escalator-a.m4a",
+    "escalator-a.loop.json"
+   ],
+   "candidate": "esc-e1-smooth-s52",
+   "tool": "synth.py（numpy／scipy）",
+   "license": "本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": 52,
+   "params": {
+    "kind": "escalator",
+    "loop": true,
+    "seed": 52,
+    "desc": "保養好的新梯：嗡聲輕、嘯聲中等、台階聲軟，沒有尖叫",
+    "whine_fm": 0.15,
+    "rumble_hi": 260,
+    "rattle": 0.15,
+    "squeaks": [],
+    "mix": {
+     "hum": 0.18,
+     "whine": 0.16,
+     "rumble": 0.55,
+     "rail": 0.14,
+     "steps": 0.22,
+     "ticks": 0.05
+    },
+    "length_s": 16.0,
+    "samples": 768000
+   },
+   "measure": {
+    "lufs": -22.0,
+    "true_peak_db": -4.5,
+    "clipped": 0,
+    "length_s": 16.0,
+    "clap": {
+     "escalator": {
+      "target_p": 1.0,
+      "target_sim": 0.381,
+      "top": [
+       "escalator machinery humming",
+       "an escalator running"
+      ]
+     }
+    },
+    "seam": {
+     "seam_pct": 28.4,
+     "control_median_pct": 37.6,
+     "control_min_pct": 28.2,
+     "sample_jump": 0.58
+    },
+    "seam_120hz": {
+     "seam_dip_db": 2.4,
+     "control_cut200_db": -16.3,
+     "control_cut600_db": -12.0
+    }
+   },
+   "why_picked": "主選，保養好的 1996 年新梯。CLAP 判「手扶梯」機率 1.00、相似度 0.381，是 12 個候選裡最高的一批；沒有吱吱聲，嗡聲、嘯聲、台階聲都平均。e3-pit 的相似度 0.392 更高一點，但機坑共鳴讓低頻悶成一團（質心 165 Hz），所以不選。"
+  },
+  {
+   "file": "escalator-b.ogg",
+   "also": [
+    "escalator-b.m4a",
+    "escalator-b.loop.json"
+   ],
+   "candidate": "esc-e4-worn-nosq-s51",
+   "tool": "synth.py（numpy／scipy）",
+   "license": "本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": 51,
+   "params": {
+    "kind": "escalator",
+    "loop": true,
+    "seed": 51,
+    "desc": "E2 的舊梯但沒有尖叫（尖叫每 16 s 重複一次可能太規律）",
+    "whine_fm": 0.45,
+    "rumble_hi": 320,
+    "rattle": 0.5,
+    "squeaks": [],
+    "mix": {
+     "hum": 0.2,
+     "whine": 0.24,
+     "rumble": 0.5,
+     "rail": 0.18,
+     "steps": 0.42,
+     "ticks": 0.12
+    },
+    "length_s": 16.0,
+    "samples": 768000
+   },
+   "measure": {
+    "lufs": -22.0,
+    "true_peak_db": -4.13,
+    "clipped": 0,
+    "length_s": 16.0,
+    "clap": {
+     "escalator": {
+      "target_p": 0.996,
+      "target_sim": 0.358,
+      "top": [
+       "escalator machinery humming",
+       "an escalator running"
+      ]
+     }
+    },
+    "seam": {
+     "seam_pct": 77.8,
+     "control_median_pct": 82.6,
+     "control_min_pct": 77.4,
+     "sample_jump": 0.23
+    },
+    "seam_120hz": {
+     "seam_dip_db": -0.3,
+     "control_cut200_db": -5.3,
+     "control_cut600_db": -6.7
+    }
+   },
+   "why_picked": "備選，2026 年磨損的舊梯：台階碰撞和鏈條喀喀聲加重，300 Hz 以上的能量佔 24%（a 是 15%），手機上比較聽得到。CLAP 0.996／0.358。e2-worn 有台階吱吱聲，但每 16 秒重複一次，耳朵會抓到是循環，所以選不帶吱吱聲的版本。種子和 a 不同，兩台梯並排播也不會疊出梳狀濾波。"
+  },
+  {
+   "file": "shutter-down-a.ogg",
+   "also": [
+    "shutter-down-a.m4a",
+    "shutter-down-a.loop.json"
+   ],
+   "candidate": "h7-s66（fix23 r3）",
+   "tool": "shut2.py（numpy／scipy，延伸 synth.py）",
+   "license": "本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": 66,
+   "params": {
+    "kind": "shutter-down",
+    "loop": false,
+    "seed": 66,
+    "var": "h7",
+    "end_s": 6.04,
+    "slats": 31,
+    "desc": "",
+    "dur": 9.0,
+    "travel": 2.4,
+    "micro_rate": 60,
+    "clack_ms": 1.3,
+    "start_hits": [
+     [
+      0.03,
+      0.6,
+      "clink"
+     ],
+     [
+      0.38,
+      0.8,
+      "clack"
+     ]
+    ],
+    "mix": {
+     "clack": 1.0,
+     "micro": 0.5,
+     "drum": 1.0,
+     "hiss": 0.15
+    },
+    "v0": 0.4,
+    "jerk": 0.25,
+    "hand_hz": 1.1,
+    "drop": 0.4,
+    "vdrop": 0.9,
+    "imp": {
+     "ms": 2.5,
+     "plate": 1.0,
+     "plate_tau": 0.02,
+     "bar": 0.5,
+     "bar_tau": 0.08,
+     "thud": 0.8,
+     "slide": 0.6,
+     "slide_s": 0.16,
+     "zip": 0.5,
+     "rail": 0.3,
+     "gain": 4.5
+    },
+    "name": "h7-s66",
+    "length_s": 6.6682,
+    "samples": 320075
+   },
+   "measure": {
+    "lufs": -20.35,
+    "true_peak_db": -1.0,
+    "clipped": 0,
+    "length_s": 6.668,
+    "endHit": 6.04,
+    "clap": {
+     "pair": {
+      "a metal rolling shutter": 1.0,
+      "a metal trash can falling over": 0.0
+     },
+     "pair_margin": 0.102,
+     "impact_only": {
+      "a heavy steel plate dropped flat on a stone floor": 1.0,
+      "a metal trash can falling over": 0.0,
+      "a metal shutter slamming shut": 0.0
+     },
+     "down_top": "a metal rolling shutter door being rolled up"
+    },
+    "clap_v1": {
+     "shutter": {
+      "target_p": 0.299,
+      "target_sim": 0.203,
+      "top": [
+       "a metal trash can falling over",
+       "a garage door closing"
+      ]
+     },
+     "shutter-down": {
+      "target_p": 0.002,
+      "target_sim": 0.162,
+      "top": [
+       "a metal trash can falling over",
+       "a garage door opening"
+      ]
+     },
+     "shutter-up": {
+      "target_p": 0.004,
+      "target_sim": 0.168,
+      "top": [
+       "a metal trash can falling over",
+       "a garage door closing"
+      ]
+     }
+    }
+   },
+   "why_picked": "第 23 項④：舊版（m5d-s65，現在叫 v1）整段 CLAP 第一名是「金屬垃圾桶倒了」。改法：底桿落地改成扁平鋼板拍地（2.5 ms 接觸、板模 20 ms 就收、底桿 80 ms、低頻悶擊加重），落地後門片在導軌裡滑落 0.16 s＋拉鍊式連串小喀（slide/zip），手拉速度 0.4 m/s 起、帶手抖 1.1 Hz；鼓狀捲軸聲 drum 1.0。整段 CLAP「金屬捲門」對「垃圾桶倒了」1.00/0.00（相似度差 +0.102），撞擊單獨切出來「扁平鋼板落在石地」1.00、垃圾桶 0.00。h2（無 drum/slide）撞擊段單獨聽仍判垃圾桶 0.69；h8/h9 減碎響後整段掉回垃圾桶。endHit 2.807→6.04 s（手送比較慢），已同步 tools/sandbox/scenes/_tc-shopfront.ts。已知限制：CLAP 分不出拉上／放下方向（新舊都判「往上捲」），方向靠畫面動畫"
+  },
+  {
+   "file": "shutter-up-a.ogg",
+   "also": [
+    "shutter-up-a.m4a",
+    "shutter-up-a.loop.json"
+   ],
+   "candidate": "shut-up-m5-s64",
+   "tool": "synth.py（numpy／scipy）",
+   "license": "本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": 64,
+   "params": {
+    "kind": "shutter-up",
+    "loop": false,
+    "seed": 64,
+    "end_s": 2.595,
+    "slats": 30,
+    "desc": "手拉起：底桿開鎖喀一聲，先使力往上推、彈簧接手越捲越快，頂到擋塊碰一聲（小、高）；清脆版：每片過導軌一聲尖的「喀」（0.4 ms 脈衝，片高 75 mm）為主、碎響每秒 350 下、隆隆很少",
+    "dur": 6.0,
+    "travel": 2.3,
+    "v_t": [
+     0,
+     0.3,
+     0.55,
+     1.0,
+     1.7,
+     2.4
+    ],
+    "v_v": [
+     0,
+     0,
+     0.45,
+     0.6,
+     1.4,
+     1.5
+    ],
+    "micro_rate": 350,
+    "clack_ms": 0.4,
+    "start_hits": [
+     [
+      0.05,
+      0.9,
+      "clack"
+     ],
+     [
+      0.12,
+      0.5,
+      "clink"
+     ]
+    ],
+    "end": {
+     "ms": 2.0,
+     "low": 0.35,
+     "mid": 1.0,
+     "rail": 0.6,
+     "thud": 0.0,
+     "gain": 4.5,
+     "bounce": 0.25,
+     "settle": 12
+    },
+    "mix": {
+     "clack": 1.0,
+     "micro": 0.7,
+     "drum": 0.1,
+     "hiss": 0.03,
+     "scrape": 0.25
+    },
+    "cur_n": 120,
+    "cur_band": [
+     400,
+     9000
+    ],
+    "cur_tau": [
+     0.03,
+     0.25
+    ],
+    "cur_tilt": 0.6,
+    "micro_alpha": 1.5,
+    "pitch": 0.075,
+    "length_s": 4.8459,
+    "samples": 232603
+   },
+   "measure": {
+    "lufs": -17.05,
+    "true_peak_db": -1.0,
+    "clipped": 0,
+    "length_s": 4.846,
+    "clap": {
+     "shutter": {
+      "target_p": 0.784,
+      "target_sim": 0.161,
+      "top": [
+       "a metal roller shutter rolling up",
+       "a metal trash can falling over"
+      ]
+     },
+     "shutter-down": {
+      "target_p": 0.004,
+      "target_sim": 0.111,
+      "top": [
+       "a metal trash can falling over",
+       "a garage door opening"
+      ]
+     },
+     "shutter-up": {
+      "target_p": 0.024,
+      "target_sim": 0.128,
+      "top": [
+       "a metal trash can falling over",
+       "a garage door closing"
+      ]
+     }
+    }
+   },
+   "why_picked": "主選，手推拉起：開鎖喀一聲，彈簧接手後越捲越快，最後頂到擋塊。CLAP 第一名是「a metal roller shutter rolling up」，機率 0.784、相似度 0.161。清脆版每片過導軌一聲尖的喀，比起 m1 的悶版（0.98／0.093）更像金屬片。"
+  },
+  {
+   "file": "shutter-down-b.ogg",
+   "also": [
+    "shutter-down-b.m4a",
+    "shutter-down-b.loop.json"
+   ],
+   "candidate": "shut-down-e1-s66",
+   "tool": "synth.py（numpy／scipy）",
+   "license": "本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": 66,
+   "params": {
+    "kind": "shutter-down",
+    "loop": false,
+    "seed": 66,
+    "end_s": 8.5,
+    "slats": 31,
+    "desc": "電動放下：馬達嗡＋減速機嘯、等速 0.3 m/s 規律喀喀，底桿輕觸地、極限開關＋煞車喀",
+    "dur": 11.5,
+    "travel": 2.4,
+    "v_t": [
+     0,
+     0.3,
+     0.7,
+     9
+    ],
+    "v_v": [
+     0,
+     0,
+     0.3,
+     0.3
+    ],
+    "micro_rate": 45,
+    "clack_ms": 1.3,
+    "start_hits": [
+     [
+      0.12,
+      0.5,
+      "clink"
+     ]
+    ],
+    "end": {
+     "ms": 6.0,
+     "low": 0.6,
+     "mid": 0.4,
+     "rail": 0.2,
+     "thud": 0.9,
+     "gain": 2.5,
+     "bounce": 0.1,
+     "settle": 3
+    },
+    "motor": {
+     "t0": 0.2,
+     "t1": 8.72,
+     "whine": 830,
+     "gain": 0.55,
+     "clicks": [
+      8.72
+     ]
+    },
+    "mix": {
+     "clack": 1.0,
+     "micro": 0.5,
+     "drum": 0.6,
+     "hiss": 0.15
+    },
+    "length_s": 10.7544,
+    "samples": 516213
+   },
+   "measure": {
+    "lufs": -16.24,
+    "true_peak_db": -1.0,
+    "clipped": 0,
+    "length_s": 10.754,
+    "clap": {
+     "shutter": {
+      "target_p": 0.999,
+      "target_sim": 0.094,
+      "top": [
+       "a garage door closing",
+       "a garage door opening"
+      ]
+     },
+     "shutter-down": {
+      "target_p": 0.0,
+      "target_sim": 0.014,
+      "top": [
+       "a garage door opening",
+       "a drum roll"
+      ]
+     },
+     "shutter-up": {
+      "target_p": 0.0,
+      "target_sim": 0.042,
+      "top": [
+       "a garage door closing",
+       "a drum roll"
+      ]
+     }
+    }
+   },
+   "why_picked": "備選，電動放下：馬達嗡聲加減速機嘯聲，以 0.3 m/s 等速規律喀喀，最後極限開關喀一聲。CLAP 鐵捲門機率 0.999，第一名「a garage door closing」。想做成電動門的店家可以換這組。"
+  },
+  {
+   "file": "shutter-up-b.ogg",
+   "also": [
+    "shutter-up-b.m4a",
+    "shutter-up-b.loop.json"
+   ],
+   "candidate": "shut-up-e1-s66",
+   "tool": "synth.py（numpy／scipy）",
+   "license": "本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": 66,
+   "params": {
+    "kind": "shutter-up",
+    "loop": false,
+    "seed": 66,
+    "end_s": 8.5,
+    "slats": 31,
+    "desc": "電動拉起：同上馬達，捲到頂、極限開關＋煞車喀",
+    "dur": 11.5,
+    "travel": 2.4,
+    "v_t": [
+     0,
+     0.3,
+     0.7,
+     9
+    ],
+    "v_v": [
+     0,
+     0,
+     0.3,
+     0.3
+    ],
+    "micro_rate": 45,
+    "clack_ms": 1.1,
+    "start_hits": [
+     [
+      0.12,
+      0.5,
+      "clink"
+     ]
+    ],
+    "end": {
+     "ms": 2.0,
+     "low": 0.2,
+     "mid": 0.5,
+     "rail": 0.4,
+     "thud": 0.0,
+     "gain": 2.0,
+     "bounce": 0.1,
+     "settle": 4
+    },
+    "motor": {
+     "t0": 0.2,
+     "t1": 8.72,
+     "whine": 860,
+     "gain": 0.55,
+     "clicks": [
+      8.72
+     ]
+    },
+    "mix": {
+     "clack": 1.0,
+     "micro": 0.55,
+     "drum": 0.6,
+     "hiss": 0.15
+    },
+    "length_s": 10.7508,
+    "samples": 516036
+   },
+   "measure": {
+    "lufs": -16.19,
+    "true_peak_db": -1.0,
+    "clipped": 0,
+    "length_s": 10.751,
+    "clap": {
+     "shutter": {
+      "target_p": 0.999,
+      "target_sim": 0.1,
+      "top": [
+       "a garage door closing",
+       "a garage door opening"
+      ]
+     },
+     "shutter-down": {
+      "target_p": 0.0,
+      "target_sim": 0.015,
+      "top": [
+       "a garage door opening",
+       "a drum roll"
+      ]
+     },
+     "shutter-up": {
+      "target_p": 0.0,
+      "target_sim": 0.046,
+      "top": [
+       "a garage door closing",
+       "a drum roll"
+      ]
+     }
+    }
+   },
+   "why_picked": "備選，電動拉起，和 down-b 同一台馬達、同一個種子，可以成對使用。CLAP 0.999。"
+  },
+  {
+   "file": "vent-a.ogg",
+   "also": [
+    "vent-a.m4a",
+    "vent-a.loop.json"
+   ],
+   "candidate": "vent-v10-rumble-dark-s73",
+   "tool": "synth.py（numpy／scipy）",
+   "license": "本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": 73,
+   "params": {
+    "kind": "vent",
+    "loop": true,
+    "seed": 73,
+    "desc": "v8 更悶（滾降 1.2 kHz）、風管隆隆更重、葉片聲更清楚——像站在大型送風口正下方",
+    "peak": 200,
+    "peak_db": 2,
+    "roll": 1200,
+    "gust_pow": 0.15,
+    "steady": true,
+    "mix": {
+     "air": 1.0,
+     "air_hi": 0.0,
+     "duct": 1.4,
+     "bpf": 0.3,
+     "hum": 0.08
+    },
+    "length_s": 20.0,
+    "samples": 960000
+   },
+   "measure": {
+    "lufs": -26.0,
+    "true_peak_db": -10.03,
+    "clipped": 0,
+    "length_s": 20.0,
+    "clap": {
+     "vent": {
+      "target_p": 0.987,
+      "target_sim": 0.38,
+      "top": [
+       "air blowing from an air conditioning vent",
+       "airflow from a ventilation duct in a building"
+      ]
+     }
+    },
+    "seam": {
+     "seam_pct": 17.5,
+     "control_median_pct": 27.3,
+     "control_min_pct": 2.2,
+     "sample_jump": 2.07
+    },
+    "seam_120hz": {
+     "seam_dip_db": 3.5,
+     "control_cut200_db": -26.0,
+     "control_cut600_db": -13.2
+    }
+   },
+   "why_picked": "主選，天花板出風口：穩定氣流、風管低鳴、風扇葉片通過頻率 144 Hz、馬達 120 Hz。CLAP 第一名「air blowing from an air conditioning vent」，相似度 0.380。v1–v9 聽起來比較亮，被 CLAP 判成「海浪／瀑布／收音機雜訊」，所以改成較暗、較有音調的版本，v10 是最好的一個。"
+  },
+  {
+   "file": "vent-b.ogg",
+   "also": [
+    "vent-b.m4a",
+    "vent-b.loop.json"
+   ],
+   "candidate": "vent-v11-rumble-dark-old-s74",
+   "tool": "synth.py（numpy／scipy）",
+   "license": "本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": 74,
+   "params": {
+    "kind": "vent",
+    "loop": true,
+    "seed": 74,
+    "desc": "v10＋舊回風口百葉細細地抖、壓縮機 120 Hz 多一點（2026 年久失修版）",
+    "peak": 200,
+    "peak_db": 2,
+    "roll": 1200,
+    "gust_pow": 0.15,
+    "steady": true,
+    "mix": {
+     "air": 1.0,
+     "air_hi": 0.0,
+     "duct": 1.4,
+     "bpf": 0.3,
+     "hum": 0.11,
+     "rattle": 0.06
+    },
+    "length_s": 20.0,
+    "samples": 960000
+   },
+   "measure": {
+    "lufs": -26.0,
+    "true_peak_db": -10.28,
+    "clipped": 0,
+    "length_s": 20.0,
+    "clap": {
+     "vent": {
+      "target_p": 0.934,
+      "target_sim": 0.379,
+      "top": [
+       "air blowing from an air conditioning vent",
+       "a waterfall"
+      ]
+     }
+    },
+    "seam": {
+     "seam_pct": 63.0,
+     "control_median_pct": 45.7,
+     "control_min_pct": 16.2,
+     "sample_jump": 0.12
+    },
+    "seam_120hz": {
+     "seam_dip_db": 0.7,
+     "control_cut200_db": 1.6,
+     "control_cut600_db": 2.2
+    }
+   },
+   "why_picked": "備選，老舊機組：多了百葉窗輕微的咔噠聲和縫隙哨音。CLAP 0.934／0.379。種子和 a 不同，兩個出風口同時播也不會相關。"
+  },
+  {
+   "file": "fountain-a.ogg",
+   "also": [
+    "fountain-a.m4a",
+    "fountain-a.loop.json"
+   ],
+   "candidate": "fount-f8-arcs-soft-s81",
+   "tool": "synth.py（numpy／scipy）",
+   "license": "本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": 81,
+   "params": {
+    "kind": "fountain",
+    "loop": true,
+    "seed": 81,
+    "desc": "F2 的一圈拱形水柱但水壓小：較稀、較細（遠一點、安靜一點的噴水池）",
+    "splash_lo": 450,
+    "splash_pk": 2800,
+    "splash_fc": 40,
+    "splash_depth": 0.55,
+    "low_hi": 180,
+    "bub": [
+     {
+      "rate": 1300,
+      "rmin": 0.4,
+      "rmax": 4.0,
+      "beta": 2.8,
+      "amp_pow": 1.1,
+      "w": 1.0
+     }
+    ],
+    "drops": {
+     "rate": 7,
+     "rmin": 3.5,
+     "rmax": 8,
+     "w": 0.22
+    },
+    "mix": {
+     "bubbles": 0.8,
+     "splash": 0.45,
+     "low": 0.12
+    },
+    "length_s": 24.0,
+    "samples": 1152000
+   },
+   "measure": {
+    "lufs": -20.0,
+    "true_peak_db": -2.58,
+    "clipped": 0,
+    "length_s": 24.0,
+    "clap": {
+     "fountain": {
+      "target_p": 1.0,
+      "target_sim": 0.248,
+      "top": [
+       "water falling into a pool from a fountain",
+       "rain on a roof"
+      ]
+     }
+    },
+    "seam": {
+     "seam_pct": 99.9,
+     "control_median_pct": 96.9,
+     "control_min_pct": 96.5,
+     "sample_jump": 0.88
+    }
+   },
+   "why_picked": "主選，中庭噴水池：一圈拱形水柱落進水池，水壓小。CLAP 第一名「water falling into a pool from a fountain」，機率 1.00、相似度 0.248，和真實錄音的滴水循環（0.246）相當。直衝向上的水柱版本（f1、f4–f7）都被判成「瀑布」（0.06–0.47），所以不選。"
+  },
+  {
+   "file": "fountain-b.ogg",
+   "also": [
+    "fountain-b.m4a",
+    "fountain-b.loop.json"
+   ],
+   "candidate": "fount-f2-arcs-s81",
+   "tool": "synth.py（numpy／scipy）",
+   "license": "本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": 81,
+   "params": {
+    "kind": "fountain",
+    "loop": true,
+    "seed": 81,
+    "desc": "一圈小拱形水柱落進池邊：較輕較亮、氣泡小而多，偶爾大水滴咚",
+    "splash_lo": 400,
+    "splash_pk": 2600,
+    "splash_fc": 45,
+    "splash_depth": 0.45,
+    "low_hi": 200,
+    "bub": [
+     {
+      "rate": 2200,
+      "rmin": 0.4,
+      "rmax": 4.5,
+      "beta": 2.8,
+      "amp_pow": 1.1,
+      "w": 1.0
+     }
+    ],
+    "drops": {
+     "rate": 5,
+     "rmin": 4,
+     "rmax": 9,
+     "w": 0.18
+    },
+    "mix": {
+     "bubbles": 0.75,
+     "splash": 0.55,
+     "low": 0.15
+    },
+    "length_s": 24.0,
+    "samples": 1152000
+   },
+   "measure": {
+    "lufs": -20.0,
+    "true_peak_db": -4.69,
+    "clipped": 0,
+    "length_s": 24.0,
+    "clap": {
+     "fountain": {
+      "target_p": 0.998,
+      "target_sim": 0.228,
+      "top": [
+       "water falling into a pool from a fountain",
+       "applause"
+      ]
+     }
+    },
+    "seam": {
+     "seam_pct": 62.8,
+     "control_median_pct": 71.8,
+     "control_min_pct": 37.4,
+     "sample_jump": 0.44
+    }
+   },
+   "why_picked": "備選，同一圈拱形水柱、水壓全開，聲音比較滿。CLAP 0.998／0.228。可以在劇情裡放 1996 年的版本，或拿來做「噴水池重新打開」的場面。"
+  }
+ ],
+ "rejected": [
+  {
+   "candidate": "esc-e1-smooth-s51",
+   "why": "手扶梯：CLAP 都 ≥0.96，依相似度、有沒有會被聽出循環的吱吱聲、手機可聽度挑 2"
+  },
+  {
+   "candidate": "esc-e2-worn-s51",
+   "why": "手扶梯：CLAP 都 ≥0.96，依相似度、有沒有會被聽出循環的吱吱聲、手機可聽度挑 2"
+  },
+  {
+   "candidate": "esc-e2-worn-s52",
+   "why": "手扶梯：CLAP 都 ≥0.96，依相似度、有沒有會被聽出循環的吱吱聲、手機可聽度挑 2"
+  },
+  {
+   "candidate": "esc-e3-pit-s51",
+   "why": "手扶梯：CLAP 都 ≥0.96，依相似度、有沒有會被聽出循環的吱吱聲、手機可聽度挑 2"
+  },
+  {
+   "candidate": "esc-e3-pit-s52",
+   "why": "手扶梯：CLAP 都 ≥0.96，依相似度、有沒有會被聽出循環的吱吱聲、手機可聽度挑 2"
+  },
+  {
+   "candidate": "esc-e4-worn-nosq-s52",
+   "why": "手扶梯：CLAP 都 ≥0.96，依相似度、有沒有會被聽出循環的吱吱聲、手機可聽度挑 2"
+  },
+  {
+   "candidate": "fount-f1-jet-s81",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f1-jet-s82",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f2-arcs-s82",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f2-arcs-s83",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f2-arcs-s84",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f3-cascade-s81",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f3-cascade-s82",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f4-jet-bright-s81",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f4-jet-bright-s82",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f5-jet-bubbly-s81",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f5-jet-bubbly-s82",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f5-jet-bubbly-s83",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f5-jet-bubbly-s84",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f6-arcs-full-s81",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f6-arcs-full-s82",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f6-arcs-full-s83",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f6-arcs-full-s84",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f7-jet-balanced-s81",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f7-jet-balanced-s82",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f7-jet-balanced-s83",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f7-jet-balanced-s84",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f8-arcs-soft-s82",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f8-arcs-soft-s83",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "fount-f8-arcs-soft-s84",
+   "why": "噴水池：直衝水柱 f1、f4–f7 被判瀑布；階梯瀑布 f3 也被判瀑布（0.001）"
+  },
+  {
+   "candidate": "shut-down-e1-s61",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-e1-s62",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-e1-s63",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-e1-s64",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-e1-s65",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m1-s61",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m1-s62",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m1-s63",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m1-s64",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m1-s65",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m1-s66",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m2-s61",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m2-s62",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m3-s61",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m3-s62",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m3-s63",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m3-s64",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m3-s65",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m3-s66",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m3d-s61",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m3d-s62",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m3d-s63",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m3d-s64",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m3d-s65",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m3d-s66",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m4-s61",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m4-s62",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m5-s61",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m5-s62",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m5-s63",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m5-s64",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m5-s65",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m5-s66",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m5d-s61",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m5d-s62",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m5d-s63",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m5d-s64",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m5d-s66",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m6-s61",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-down-m6-s62",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-e1-s61",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-e1-s62",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-e1-s63",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-e1-s64",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-e1-s65",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m1-s61",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m1-s62",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m1-s63",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m1-s64",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m1-s65",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m1-s66",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m2-s61",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m2-s62",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m3-s61",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m3-s62",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m3-s63",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m3-s64",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m3-s65",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m3-s66",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m3d-s61",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m3d-s62",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m3d-s63",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m3d-s64",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m3d-s65",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m3d-s66",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m4-s61",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m4-s62",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m5-s61",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m5-s62",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m5-s63",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m5-s65",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m5-s66",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m5d-s61",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m5d-s62",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m5d-s63",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m5d-s64",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m5d-s65",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m5d-s66",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m6-s61",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "shut-up-m6-s62",
+   "why": "鐵捲門：手拉 m1–m6／m3d／m5d、電動 e1，種子 61–66；被判「鼓聲滾奏／雷／垃圾桶」或鐵捲門相似度較低"
+  },
+  {
+   "candidate": "vent-v1-diffuser-s71",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v1-diffuser-s72",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v10-rumble-dark-s71",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v10-rumble-dark-s72",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v10-rumble-dark-s74",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v11-rumble-dark-old-s71",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v11-rumble-dark-old-s72",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v11-rumble-dark-old-s73",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v12-rumble-mid-s71",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v12-rumble-mid-s72",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v12-rumble-mid-s73",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v12-rumble-mid-s74",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v2-slot-s71",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v2-slot-s72",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v3-old-s71",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v3-old-s72",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v4-diffuser-hi-s71",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v4-diffuser-hi-s72",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v5-steady-s71",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v5-steady-s72",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v5-steady-s73",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v5-steady-s74",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v6-steady-slot-s71",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v6-steady-slot-s72",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v7-steady-old-s71",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v7-steady-old-s72",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v7-steady-old-s73",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v7-steady-old-s74",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v8-rumble-s71",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v8-rumble-s72",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v8-rumble-s73",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v8-rumble-s74",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v9-rumble-old-s71",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v9-rumble-old-s72",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v9-rumble-old-s73",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "vent-v9-rumble-old-s74",
+   "why": "出風口：v1–v9 被判海浪／瀑布／收音機雜訊，v12 機率 0.4–0.68"
+  },
+  {
+   "candidate": "fix23 shutter-down-a 候選（r1／r2／p2／r3 非 h7-s66）",
+   "why": "整段或撞擊段 CLAP 仍判垃圾桶、或 h8/h9 碎響太少掉回垃圾桶；wav 已刪，分數 r1–r3.json、p2.json 留在 tangcheng-fix23/shutter/；舊版 v1 留本地庫"
+  }
+ ],
+ "work_dir": "~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-sfx-machines/（synth.py、clapscore.py、seamcheck.py、seamtone.py、export_all.py、recipe.py、scores_*.json、seam*.json、scores/、picked/ 24-bit wav＋meta）"
+}

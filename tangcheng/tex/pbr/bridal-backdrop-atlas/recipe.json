@@ -1,0 +1,52 @@
+{
+ "generator": "PIL 程式畫粗略構圖（色塊、層板；高斯模糊 6–8 px）→ 本地 SDXL img2img（RealVisXL V5、denoise 0.90、無 ControlNet、1536×768、32 步）→ 縮 1024×512 拼 2×4",
+ "license": "RealVisXL V5.0（CreativeML OpenRAIL++-M，可商用）、controlnet-union-sdxl-promax（Apache-2.0）；輸入只有本專案程式原稿；沒有任何照片；可商用、可公開",
+ "people_rule": "原稿只有色塊；提示詞 no people／empty；負面詞含 people, face, hands, body, mannequin, statue, sculpture, angel, cherub, doll, portrait；8 格逐張看過",
+ "brand_rule": "無字、無 logo、無花押字（負面詞 text, letters, logo, brand, monogram, label text）；逐張看過",
+ "atlas": "2 欄×4 列，一格 1024×512 橫式 2:1（u＝欄/2、v＝列/4；第 0 列在圖上方）：colonnade、arch-gate、rose-garden、sea-terrace、town-hill、sky-clouds、palace-hall、autumn-avenue",
+ "cell_m": "一格建議 4.8×2.4 m（假景片／畫布背景一面；背後支架另做）",
+ "seed": 7,
+ "cell_seeds": {
+  "colonnade": 700,
+  "arch-gate": 701,
+  "rose-garden": 702,
+  "sea-terrace": 703,
+  "town-hill": 704,
+  "sky-clouds": 705,
+  "palace-hall": 706,
+  "autumn-avenue": 707
+ },
+ "title": "婚紗假景片圖集（羅馬柱廊、拱門、玫瑰花園、海景露台、山城遠景、天空、宮廷長廊、林蔭道；畫布感；無人、無雕像、無字）",
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-terrain/gen_themes7.py（python gen_themes7.py atlas bridal --seed 7）",
+ "prompts": {
+  "colonnade": "RAW photo of a wedding photography studio set, straight-on frontal view filling the whole frame, a painted canvas backdrop of a classical european colonnade with white roman columns and a balustrade, blue sky with soft clouds behind, wooden flat stage set, slightly faded painted canvas with visible canvas weave and brush strokes, empty scene, no people, no statues, studio lighting, photorealistic, sharp focus",
+  "arch-gate": "RAW photo of a wedding photography studio set, straight-on frontal view filling the whole frame, a stage set of a cream stucco european arched gateway with climbing roses, painted garden visible through the arch, plywood flat, slightly faded painted canvas with visible canvas weave and brush strokes, empty scene, no people, no statues, studio lighting, photorealistic, sharp focus",
+  "rose-garden": "RAW photo of a wedding photography studio set, straight-on frontal view filling the whole frame, a painted canvas backdrop of a formal european rose garden with trimmed hedges, pink and white roses, gravel path, soft afternoon light, slightly faded painted canvas with visible canvas weave and brush strokes, empty scene, no people, no statues, studio lighting, photorealistic, sharp focus",
+  "sea-terrace": "RAW photo of a wedding photography studio set, straight-on frontal view filling the whole frame, a painted canvas backdrop of a mediterranean seaside terrace with a white stone balustrade, turquoise sea and sky, potted plants, slightly faded painted canvas with visible canvas weave and brush strokes, empty scene, no people, no statues, studio lighting, photorealistic, sharp focus",
+  "town-hill": "RAW photo of a wedding photography studio set, straight-on frontal view filling the whole frame, a painted canvas backdrop of a distant european hill town with terracotta roofs and a church dome, cypress trees, hazy golden light, slightly faded painted canvas with visible canvas weave and brush strokes, empty scene, no people, no statues, studio lighting, photorealistic, sharp focus",
+  "sky-clouds": "RAW photo of a wedding photography studio set, straight-on frontal view filling the whole frame, a painted canvas backdrop of a soft pastel sky with fluffy white clouds, gentle gradient from blue to pink near the bottom, slightly faded painted canvas with visible canvas weave and brush strokes, empty scene, no people, no statues, studio lighting, photorealistic, sharp focus",
+  "palace-hall": "RAW photo of a wedding photography studio set, straight-on frontal view filling the whole frame, a painted canvas backdrop of an empty baroque palace hall with marble columns, gilded mouldings, tall windows and a chandelier, empty, slightly faded painted canvas with visible canvas weave and brush strokes, empty scene, no people, no statues, studio lighting, photorealistic, sharp focus",
+  "autumn-avenue": "RAW photo of a wedding photography studio set, straight-on frontal view filling the whole frame, a painted canvas backdrop of an empty tree-lined avenue in autumn with golden leaves and old street lamps, park benches empty, slightly faded painted canvas with visible canvas weave and brush strokes, empty scene, no people, no statues, studio lighting, photorealistic, sharp focus"
+ },
+ "neg": "people, person, human, figure, man, woman, child, bride, groom, face, eyes, mouth, head, hands, fingers, body, mannequin, dummy, torso, bust, statue, sculpture, angel, cherub, figurine, doll, portrait, photo of people, model, silhouette, character, mascot, cartoon character, anime, animal, creature, skull, logo, brand, trademark, monogram, designer logo pattern, watermark, signature, text, letters, words, numbers, label text, sign, illustration, drawing, vector art, flat colors, clipart, 3d render, cgi, blurry, lowres, jpeg artifacts, frame, border, tilted, dutch angle",
+ "secs": 1064,
+ "maps": "albedo 照片；roughness／ao 由亮度推的弱層次；normal 平",
+ "files": {
+  "2k/albedo.jpg": 787714,
+  "2k/normal.jpg": 115317,
+  "2k/roughness.jpg": 167781,
+  "2k/ao.jpg": 95937,
+  "1k/albedo.jpg": 241839,
+  "1k/normal.jpg": 29301,
+  "1k/roughness.jpg": 51362,
+  "1k/ao.jpg": 33700
+ },
+ "queue_item": "theme-pbr-7（10-29 第十批：清單七 #12 剛裝潢好還沒開幕、#18 3C 攤位迷宮、#19 婚紗攝影假景棚；重做清單六 #23 委託行櫥窗）",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "sizes": {
+  "2k": "2048×2048",
+  "1k": "1024×1024"
+ },
+ "set": "bridal-backdrop-atlas",
+ "photo_rule": "沒有使用任何照片"
+}

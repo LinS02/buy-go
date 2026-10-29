@@ -1,0 +1,33 @@
+{
+ "set": "ceiling-wood-slat",
+ "title": "補習班大樓門廳木條天花（24 條 10 cm 亮漆木條＋12 mm 黑縫，每條 1.2 m 錯開對接；舊蜂蜜色、褪色）",
+ "queue_item": "照片細節第二輪（補習街大樓 10-29）",
+ "generator": "純程式生成（CPU numpy：各向異性週期雜訊做順紋、正弦微彎條帶、每段木色亂度、帶通雜訊褪色）；沒有用生成模型、沒有樹瘤",
+ "license": "本專案程式生成，可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色（05_補習街大樓／補習班入口磁磚旋轉梯：看木條寬度與色）；沒有當貼圖、沒有 img2img／ControlNet 輸入、沒有切圖、沒有複製進專案",
+ "photos_referenced": [
+  "~/Desktop/game/閾限空間台灣/台灣閾限大集合/05_補習街大樓/補習班入口磁磚旋轉梯（只看天花木條）"
+ ],
+ "people_rule": "無生成模型；圖樣只有平行木條與順紋（無圓點、無樹瘤、無成對橢圓），24 m 俯視模擬看過無腳印／手印／臉狀重複",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "seamless": "全部週期（FFT 濾波、條數整除），四方連續",
+ "tiling": "UV＝世界座標 / span_m；木條沿貼圖 u（rot 換方向）",
+ "color": "albedo 帶色（蜂蜜木 sRGB≈168,120,69；縫 18,14,11），材質 color 用白或微調",
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_wood_slat.py（python3 gen_wood_slat.py <pbr_root> --seed 41）",
+ "seed": 41,
+ "span_m": 2.4,
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化）"
+ },
+ "files": {
+  "2k/albedo.jpg": 494758,
+  "2k/normal.jpg": 614701,
+  "2k/roughness.jpg": 308617,
+  "2k/ao.jpg": 128488,
+  "1k/albedo.jpg": 167848,
+  "1k/normal.jpg": 205788,
+  "1k/roughness.jpg": 110577,
+  "1k/ao.jpg": 45492
+ }
+}

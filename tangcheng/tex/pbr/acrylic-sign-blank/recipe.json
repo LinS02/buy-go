@@ -1,0 +1,33 @@
+{
+ "generator": "PIL 程式畫招牌底板原稿（底色、色框／色帶、鋁框、角螺絲）→ 本地 SDXL img2img（RealVisXL V5＋tile ControlNet 0.75、denoise 0.22，2048×512 一張一張）→ 低頻鎖回；燈管亮帶、泛黃、灰點、蟲影、刮痕程式加",
+ "license": "RealVisXL V5.0（CreativeML OpenRAIL++-M，可商用）、controlnet-union-sdxl-promax（Apache-2.0）；輸入只有本專案程式原稿；沒有任何照片；可商用、可公開",
+ "people_rule": "只有色塊與框；負面詞含 people, face, hands, silhouette, character",
+ "brand_rule": "不含字（不留撕掉字的殘影），程式稿無字；SDXL 負面詞 text, letters, characters, words, numbers；4 格逐張看過",
+ "atlas": "1 欄×4 列，一格 2048×512 橫式 4:1（v＝列/4；第 0 列在圖上方）：white-red、cream-brown、white-blue、green-white",
+ "cell_m": "一格建議 2.4×0.6 m（3 m 寬店門上方）；外圈 18 px 是鋁框",
+ "seed": 1,
+ "title": "壓克力招牌底板圖集（白紅框、米黃褐框、白藍雙線、淺綠白框；燈管亮帶、泛黃、不含字）",
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-terrain/gen_themes6b.py（python gen_themes6b.py atlas sign --seed 1）",
+ "prompt": "straight-on photo of a blank backlit milky acrylic shop sign panel in a thin aluminium frame, no text, flat colored border bands, slightly yellowed aged plastic, faint fluorescent tube glow bands behind, dust specks, sharp focus",
+ "neg": "people, person, human, figure, man, woman, child, face, eyes, mouth, head, hands, fingers, body, mannequin, dummy, torso, bust, model, silhouette, character, mascot, cartoon character, anime, animal, creature, skull, logo, brand, trademark, monogram, designer logo pattern, watermark, signature, english text, readable words, blurry, lowres, jpeg artifacts, frame, border, text, letters, characters, words, numbers",
+ "secs": 208,
+ "usage": "當發光面用 terrainMat(..., { glow }) 時只吃 albedo；受光時鋁框靠 normal 有一圈落差",
+ "files": {
+  "2k/albedo.jpg": 406015,
+  "2k/normal.jpg": 288167,
+  "2k/roughness.jpg": 148075,
+  "2k/ao.jpg": 49484,
+  "1k/albedo.jpg": 151667,
+  "1k/normal.jpg": 81910,
+  "1k/roughness.jpg": 47684,
+  "1k/ao.jpg": 12620
+ },
+ "queue_item": "theme-pbr-6b（10-29 第九批：清單六 #12 越走越舊、#15 灰塵腳印、#21 錄影帶店、#23 委託行窄街、#24 電器行電視牆）",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "sizes": {
+  "2k": "2048×2048",
+  "1k": "1024×1024"
+ },
+ "set": "acrylic-sign-blank",
+ "photo_rule": "沒有使用任何照片"
+}

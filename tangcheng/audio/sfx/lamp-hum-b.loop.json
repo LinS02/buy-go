@@ -1,0 +1,67 @@
+{
+ "title": "fluorescent lamp hum B: old ballast, rattling, 120 Hz loop",
+ "key": "n/a (sfx)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 576000,
+ "oneshot": false,
+ "loopStart": 0.0,
+ "loopEnd": 12.0,
+ "loopStartSample": 0,
+ "loopEndSample": 576000,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 0,
+ "lufsIn": -20.39,
+ "gainDb": -3.61,
+ "lufs": -24.0,
+ "truePeakDb": -6.61,
+ "clipped": 0,
+ "files": {
+  "ogg": "lamp-hum-b.ogg",
+  "m4a": "lamp-hum-b.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 337230,
+   "decoded_samples": 576000,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -29.1,
+   "main_loop": {
+    "jump_ratio": 0.05,
+    "level_before_db": -23.7,
+    "level_after_db": -22.2
+   }
+  },
+  "m4a": {
+   "bytes": 292834,
+   "decoded_samples": 577472,
+   "tail_padding": 1472,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -36.2,
+   "main_loop": {
+    "jump_ratio": 0.11,
+    "level_before_db": -23.7,
+    "level_after_db": -22.2
+   }
+  },
+  "source_main_loop": {
+   "jump_ratio": 0.08,
+   "level_before_db": -23.7,
+   "level_after_db": -22.2
+  }
+ },
+ "kind": "lamp-hum-loop",
+ "note": "整檔即循環（loopStart 0）。所有成分都是循環內整數週期，接縫逐樣本連續；多盞燈同時放時各自從隨機位置起播，避免梳狀濾波。"
+}

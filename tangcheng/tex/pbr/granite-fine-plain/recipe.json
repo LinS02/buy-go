@@ -1,0 +1,38 @@
+{
+ "set": "granite-fine-plain",
+ "title": "細粒拋光花崗石（不切板、無縫；錯層中庭拼花圓心）",
+ "queue_item": "F 線（廣場／中庭花崗岩地板 10-28）",
+ "generator": "純程式生成（CPU numpy：週期白雜訊模糊成礦物相——石英、粉長石、黑雲母——＋低頻雲紋、每塊明度／色溫亂度、2 px 縫）；沒有用生成模型",
+ "license": "本專案程式生成，可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色（03_中庭與玻璃天幕：玻璃天幕中庭全景、百鳥朝鳳與黑白棋盤地、湯城廣場入口大字、中庭樓梯與噴水池）；沒有當貼圖、沒有 img2img、沒有切圖、沒有複製進專案",
+ "people_rule": "無生成模型、無結構圖樣（顆粒是各向同性雜訊），24 m 俯視模擬看過無腳印／手印狀重複",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "seamless": "全部 FFT 週期濾波，四方連續",
+ "tiling": "UV＝世界座標 / span_m",
+ "color": "albedo 近中性（RGB 平均 0.80）、顆粒有微弱暖冷色差；整體色調由材質 color 決定",
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_granite_fine.py（venv/bin/python gen_granite_fine.py <out> --seed 12 --plain）",
+ "seed": 12,
+ "span_m": 2.4,
+ "slabs_per_tex": 1,
+ "albedo_mean": 0.8,
+ "luma_std": {
+  "std_full": 0.050518413319365005,
+  "std_x4": 0.019364756706978896,
+  "std_x16": 0.007898523588869505
+ },
+ "roughness_note": "roughness 貼圖平均 ≈0.8，乘材質 roughness（0.26–0.32）＝拋光；縫＝1.0",
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化）"
+ },
+ "files": {
+  "2k/albedo.jpg": 1587761,
+  "2k/normal.jpg": 57700,
+  "2k/roughness.jpg": 644925,
+  "2k/ao.jpg": 16545,
+  "1k/albedo.jpg": 311051,
+  "1k/normal.jpg": 13659,
+  "1k/roughness.jpg": 117132,
+  "1k/ao.jpg": 4257
+ }
+}

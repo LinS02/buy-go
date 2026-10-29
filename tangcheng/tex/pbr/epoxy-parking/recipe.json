@@ -1,0 +1,84 @@
+{
+ "generator": "程式生成結構（CPU numpy：週期磚格、Voronoi 骨材、FFT 週期濾波）＋本地 SDXL 加表面細節（RealVisXL V5.0 fp16 img2img＋xinsir controlnet-union-sdxl-promax tile；3×3 週期 1024 塊、Hann⁴ 權重拼回，四方連續）；低頻顏色鎖回程式底稿，只取生成圖高頻",
+ "license": "RealVisXL V5.0（CreativeML OpenRAIL++-M，可商用）、controlnet-union-sdxl-promax（Apache-2.0）；輸入只有本專案的程式底稿；可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色；沒有當貼圖、沒有 img2img／ControlNet 輸入、沒有切圖、沒有複製進專案（照片不進 repo、不進 build）",
+ "people_rule": "生圖提示詞含 no people/no person/no figure/no face，負面詞含 people, person, human, figure, silhouette, face, eyes, footprint, shoe print, handprint, hand；9 塊逐張看過、拼好的整張與 24 m 俯視模擬再看一次",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "程式底稿全部週期；SDXL 塊從環繞的底稿切、拼回時權重週期，四方連續",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "jpg sRGB 4:2:0",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有 steel-rust-paint）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化）"
+ },
+ "set": "epoxy-parking",
+ "title": "停車場環氧樹脂地坪（亮面淺灰綠、補塗、磨白車道、長輪痕）",
+ "seed": 1,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_mata.py（python gen_mata.py all epoxy-parking --seed 1 --out <pbr>）",
+ "span_m": 4.8,
+ "photos_referenced": [
+  "~/Desktop/game/閾限空間台灣/台灣閾限大集合/04_地下停車場/板橋站B2綠柱長車道",
+  "~/Desktop/game/閾限空間台灣/台灣閾限大集合/04_地下停車場/板橋站黃柱停車層"
+ ],
+ "sdxl": {
+  "model": "RealVisXL_V5.0_fp16.safetensors",
+  "controlnet": "controlnet-union-sdxl-promax (tile)",
+  "cn_strength": 0.6,
+  "denoise": 0.42,
+  "steps": 26,
+  "cfg": 5.0,
+  "sampler": "dpmpp_2m karras",
+  "tiles": "3x3 periodic 1024 (Hann^4 blend)",
+  "prompt": "seamless tileable texture, high resolution photograph of glossy light grey-green epoxy painted concrete floor in an underground parking garage, roller marks, recoated patches, worn lighter lanes, faint long tire marks, hairline cracks, top-down view, orthographic flat surface filling the whole frame, even diffuse lighting, photorealistic, sharp focus, 8k, no people, no person, no figure, no face",
+  "neg": "people, person, human, figure, silhouette, face, eyes, mouth, skull, footprint, shoe print, handprint, hand, fingers, animal, text, letters, numbers, watermark, logo, signature, poster, graffiti, perspective, vanishing point, horizon, room, furniture, harsh shadow, vignette, blurry, cartoon, painting, illustration, 3d render, frame, border",
+  "secs": 520
+ },
+ "final": {
+  "lock_px": 48.0,
+  "detail": 1.0,
+  "relief_mm": 0.06,
+  "sdxl": true
+ },
+ "files": {
+  "2k/albedo.jpg": 192414,
+  "2k/normal.jpg": 96686,
+  "2k/roughness.jpg": 302704,
+  "2k/ao.jpg": 32916,
+  "1k/albedo.jpg": 59651,
+  "1k/normal.jpg": 23326,
+  "1k/roughness.jpg": 103180,
+  "1k/ao.jpg": 9419
+ },
+ "params": {
+  "span_m": 4.8,
+  "colors_srgb": {
+   "base": [
+    164,
+    170,
+    162
+   ],
+   "recoat": [
+    150,
+    160,
+    150
+   ],
+   "worn": [
+    182,
+    180,
+    172
+   ],
+   "tire": [
+    70,
+    70,
+    68
+   ]
+  },
+  "proc_secs": 7.7
+ }
+}

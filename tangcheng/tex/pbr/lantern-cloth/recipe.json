@@ -1,0 +1,19 @@
+{
+ "set": "lantern-cloth",
+ "title": "紅燈籠布（第二版：整顆一張、16 圈鐵絲、褪色／灰／水痕、透光自發光圖）",
+ "generator": "CPU numpy 程式生成（FFT 濾波雜訊、肋線、接縫）；沒有用任何照片、沒有生圖模型",
+ "license": "本專案程式生成，可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色（02_衰退商場、00_北車地下街 紅燈籠長廊）；沒有當貼圖或輸入、沒有進 repo／build",
+ "people_rule": "純程式圖樣，無人形／臉／手腳印；逐張看過",
+ "uv": "u＝繞一圈 K 張（週期）、v＝燈籠由下到上 0→1（不週期，lantern() 給 UV）；鐵絲在 v＝i/16",
+ "maps": [
+  "albedo",
+  "emissive（sRGB；×材質 emissiveI）",
+  "normal（OpenGL）",
+  "roughness",
+  "ao"
+ ],
+ "script": "scratchpad gen_lantern_cloth.py（內容即本檔描述）",
+ "nrib": 16,
+ "span_m": 1.0
+}

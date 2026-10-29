@@ -1,0 +1,56 @@
+{
+ "title": "walk-lost far: a steel door / metal barrier grinding shut ~110 m down the endless corridor",
+ "key": "n/a",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 539104,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 26635,
+ "lufsIn": -21.74,
+ "gainDb": -6.26,
+ "lufs": -27.51,
+ "truePeakDb": -12.28,
+ "clipped": 0,
+ "files": {
+  "ogg": "far-firedoor.ogg",
+  "m4a": "far-firedoor.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 204798,
+   "decoded_samples": 539104,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 26568,
+   "err_db": -24.8
+  },
+  "m4a": {
+   "bytes": 274181,
+   "decoded_samples": 540608,
+   "tail_padding": 1504,
+   "offset_samples": 0,
+   "first_sound_sample": 26568,
+   "err_db": -35.8
+  }
+ },
+ "kind": "far-oneshot",
+ "distance_m": 110,
+ "drr_db": -14,
+ "ir": "audio/ir/vast-corridor.wav",
+ "source": "CC0：Joseph SARDIN〈Metal barrier: Closure #1〉bigsoundbank.com/grinding-metal-barrier-closure-1-s2358.html（art-src/_reference/audio/horror-sfx/door/metal-barrier-slam.flac）",
+ "note": "第 26 項極遠處單發：距離、空氣吸收、殘響都已烘進檔案（立體聲），不要再接 ConvolverNode；不走 PannerNode（要方向感用 StereoPannerNode）。音量已經很小（−28 LUFS 整合、直達聲比殘響低 |drr_db| dB），場景只需再決定多久放一次。無人聲。"
+}

@@ -1,0 +1,31 @@
+{
+ "license": "本專案程式生成，CPU numpy，無生成模型、無參考照進貼圖；可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色，沒有當貼圖、沒有 img2img、沒有切圖、沒有複製進專案",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "seamless": "ambientCG 原圖四方連續；加工只用週期濾波（FFT／np.roll）",
+ "tiling": "UV＝世界座標 / span_m",
+ "color": "去色（灰階 albedo，平均值見 albedo_mean）：顏色一律由材質 color／withPalette 決定，貼圖不帶色",
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機）"
+ },
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/install_acg.py（python install_acg.py <ambientCG 解壓根> <tex/pbr>）",
+ "queue_item": "T1-14",
+ "set": "acrylic-frost",
+ "title": "霧面壓克力燈箱面板（程式生成）",
+ "files": {
+  "2k/albedo.jpg": 867228,
+  "2k/normal.jpg": 66713,
+  "2k/roughness.jpg": 1400690,
+  "2k/ao.jpg": 16545,
+  "1k/albedo.jpg": 58648,
+  "1k/normal.jpg": 16580,
+  "1k/roughness.jpg": 149488,
+  "1k/ao.jpg": 4257
+ },
+ "albedo_mean": 0.928,
+ "source": "本機程式生成（CPU numpy），本專案自產",
+ "span_m": 1.0,
+ "process": "band_noise 6–2 px 砂紋 ±2.5%、2048–400 px 低頻 ±4%（燈箱面板亮度不均）",
+ "seed": 1406
+}

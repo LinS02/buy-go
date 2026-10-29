@@ -1,0 +1,78 @@
+{
+ "generator": "CPU numpy 程式生成（scipy cKDTree 週期 Voronoi、FFT 週期濾波），無生成模型、無 GPU",
+ "license": "本專案程式生成，CPU numpy，無生成模型、無參考照進貼圖；可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色，沒有當貼圖、沒有 img2img、沒有切圖、沒有複製進專案（照片不進 repo、不進 build）",
+ "spec": "doc/design/tangcheng-site-spec.md（照片勘查規格書：尺寸、顏色以它為準）",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "所有濾波週期邊界（FFT／np.roll／mod 座標），四方連續；驗證見 verify_images",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "jpg sRGB 4:2:0",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有鐵捲門有）",
+  "mask": "見各組 mask_notes（jpg 4:4:4 或 png）",
+  "shade": "jpg 線性灰階，值×2＝亮度倍率（只有磨石子有）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化，mask.png 用最近鄰）"
+ },
+ "set": "wall-paint",
+ "title": "白色半光水性漆牆",
+ "queue_item": 25,
+ "candidate": "wall-paint-s11",
+ "seed": 11,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_misc.py（指令：python gen_misc.py wall-paint 11 <out>）",
+ "span_m": 2.4,
+ "why_picked": "兩版接近；s11 的霉點群較少，B1 乾淨牆比較好用。",
+ "rejected": [
+  "wall-paint-s22"
+ ],
+ "photos_referenced": [
+  "~/Desktop/game/閾限空間台灣/05_B2黑暗/B2白牆__yt-6vyiGU8q8f0-t858.jpg"
+ ],
+ "recolor_formula": "linear：sh＝mask.R×2，g＝mask.G，b＝mask.B；albedo＝mix(mix(base, colors.G, g), colors.B, b) × sh。albedo.jpg 已用預設色票烘好；換底色只改 base，髒污程度改 g、b 的倍率。",
+ "mask_notes": "mask.jpg（4:4:4）：R＝shade×0.5、G／B＝見 params.colors_srgb 的 G_／B_ 欄",
+ "files": {
+  "2k/albedo.jpg": 131063,
+  "2k/normal.jpg": 70461,
+  "2k/roughness.jpg": 869373,
+  "2k/ao.jpg": 36613,
+  "2k/mask.jpg": 225685,
+  "1k/albedo.jpg": 45569,
+  "1k/normal.jpg": 17384,
+  "1k/roughness.jpg": 45214,
+  "1k/ao.jpg": 9384,
+  "1k/mask.jpg": 81060
+ },
+ "params": {
+  "span_m": 2.4,
+  "colors_srgb": {
+   "base": [
+    236,
+    234,
+    228
+   ],
+   "G_grime": [
+    176,
+    170,
+    158
+   ],
+   "B_mold": [
+    70,
+    74,
+    62
+   ]
+  },
+  "notes": "半光水性漆（照片 05-08 的白牆有大片柔反光）。G＝灰黑雨痕／積灰，B＝霉斑；B1 乾淨牆把 G、B 權重乘 0.2。",
+  "set": "wall-paint",
+  "size": 2048
+ },
+ "verify_images": [
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/wall-paint-s11-wall.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/wall-paint-s11-top3x3.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/wall-paint-s11-seam.jpg"
+ ]
+}

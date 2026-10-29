@@ -1,0 +1,34 @@
+{
+ "license": "本專案程式生成，可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色；沒有當貼圖、沒有 img2img／ControlNet 輸入、沒有切圖、沒有複製進專案",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "seamless": "全部週期（FFT 濾波＋環繞距離），四方連續",
+ "tiling": "UV＝世界座標 / span_m",
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化）"
+ },
+ "span_m": 2.4,
+ "seed": 29,
+ "photos_referenced": [
+  "~/Desktop/game/閾限空間台灣/台灣閾限大集合/14_老飯店走廊/高雄圓山飯店紅毯走廊（只取色、看花紋尺度）",
+  "~/Desktop/game/閾限空間台灣/台灣閾限大集合/14_老飯店走廊/高雄圓山飯店長廊（只看天花方格板）"
+ ],
+ "set": "hotel-carpet-red",
+ "title": "老飯店走廊滿鋪紅地毯（橘紅底、金色菊花圓紋 2×4 錯排 1.2×0.6 m（斜向間距 0.85 m）、暗紅細捲紋；絨毛、褪色、淡污漬）",
+ "queue_item": "照片細節第二輪（老飯店走廊 10-29）",
+ "generator": "純程式生成（CPU numpy：極座標花瓣函數畫圓紋、週期正弦捲紋、白雜訊模糊成絨毛、帶通雜訊做褪色）；沒有用生成模型",
+ "people_rule": "無生成模型；圖樣只有圓形菊花紋與細捲線（各向同性、無成對橢圓），24 m 俯視模擬看過無腳印／手印狀重複",
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_hotel_red.py（python3 gen_hotel_red.py <pbr_root> --seed 29）",
+ "color": "albedo 帶色（橘紅底 sRGB≈152,52,30；金 222,164,70），材質 color 用白",
+ "files": {
+  "2k/albedo.jpg": 1046116,
+  "2k/normal.jpg": 1928687,
+  "2k/roughness.jpg": 515005,
+  "2k/ao.jpg": 695992,
+  "1k/albedo.jpg": 303434,
+  "1k/normal.jpg": 592314,
+  "1k/roughness.jpg": 158503,
+  "1k/ao.jpg": 215632
+ }
+}

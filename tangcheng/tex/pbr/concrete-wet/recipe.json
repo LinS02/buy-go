@@ -1,0 +1,79 @@
+{
+ "generator": "CPU numpy 程式生成（scipy cKDTree 週期 Voronoi、FFT 週期濾波），無生成模型、無 GPU",
+ "license": "本專案程式生成，CPU numpy，無生成模型、無參考照進貼圖；可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色，沒有當貼圖、沒有 img2img、沒有切圖、沒有複製進專案（照片不進 repo、不進 build）",
+ "spec": "doc/design/tangcheng-site-spec.md（照片勘查規格書：尺寸、顏色以它為準）",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "所有濾波週期邊界（FFT／np.roll／mod 座標），四方連續；驗證見 verify_images",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "jpg sRGB 4:2:0",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有鐵捲門有）",
+  "mask": "見各組 mask_notes（jpg 4:4:4 或 png）",
+  "shade": "jpg 線性灰階，值×2＝亮度倍率（只有磨石子有）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化，mask.png 用最近鄰）"
+ },
+ "set": "concrete-wet",
+ "title": "B2 濕水泥地（積水區）",
+ "queue_item": 25,
+ "candidate": "concrete-wet-s22",
+ "seed": 22,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_misc.py（指令：python gen_misc.py concrete-wet 22 <out>）",
+ "span_m": 2.4,
+ "why_picked": "s22 有一條長裂縫、油漬較散；s11 的油漬團每 2.4 m 一顆，3×3 看得出格子。",
+ "rejected": [
+  "concrete-wet-s11"
+ ],
+ "photos_referenced": [
+  "~/Desktop/game/閾限空間台灣/05_B2黑暗/B2手電筒__yt-xfK_eVJkgCQ-t518.jpg",
+  "~/Desktop/game/閾限空間台灣/05_B2黑暗/地下停車場黃線__yt-3aHhxOTwrZQ-t830.jpg"
+ ],
+ "recolor_formula": "linear：sh＝mask.R×2，g＝mask.G，b＝mask.B；albedo＝mix(mix(base, colors.G, g), colors.B, b) × sh。albedo.jpg 已用預設色票烘好；換底色只改 base，髒污程度改 g、b 的倍率。",
+ "mask_notes": "mask.jpg（4:4:4）：R＝shade×0.5、G／B＝見 params.colors_srgb 的 G_／B_ 欄",
+ "files": {
+  "2k/albedo.jpg": 231372,
+  "2k/normal.jpg": 263739,
+  "2k/roughness.jpg": 902866,
+  "2k/ao.jpg": 502632,
+  "2k/mask.jpg": 324653,
+  "1k/albedo.jpg": 47515,
+  "1k/normal.jpg": 25509,
+  "1k/roughness.jpg": 92292,
+  "1k/ao.jpg": 38109,
+  "1k/mask.jpg": 101340
+ },
+ "params": {
+  "span_m": 2.4,
+  "colors_srgb": {
+   "base": [
+    116,
+    115,
+    108
+   ],
+   "B_oil_tire": [
+    38,
+    36,
+    34
+   ],
+   "patch": [
+    132,
+    130,
+    124
+   ]
+  },
+  "notes": "mask.jpg：R＝亮度、G＝濕（albedo×(1−0.5G)；G>0.9 為積水，粗糙 0.035、normal 拉平）、B＝油漬輪胎痕。",
+  "set": "concrete-wet",
+  "size": 2048
+ },
+ "verify_images": [
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/concrete-wet-s22-floor.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/concrete-wet-s22-top3x3.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/concrete-wet-s22-seam.jpg"
+ ]
+}

@@ -1,0 +1,72 @@
+{
+ "queue_item": 22,
+ "kind": "font",
+ "note": "下載的 OFL 字型，非生成。子集＝教育部常用國字標準字體表 4808 字＋jf7000 基本集＋ASCII＋常用全形標點＋brands.json 全部字元，共 6770 字（字表 subset-chars.txt，來源 github.com/ButTaiwan/cjktables taiwan/standard/edu_standard_1.txt、taiwan/jf7000_base.txt）。",
+ "subset_command": "pyftsubset <src> --text-file=subset-chars.txt --flavor=woff2 --layout-features=kern,palt,halt,vert,vrt2,vhal,vpal,locl --no-hinting --desubroutinize --name-IDs='*'",
+ "tool": "fontTools 4.x pyftsubset＋brotli",
+ "sample": "art-src/tangcheng/fonts-sample.png",
+ "candidates": [
+  {
+   "font": "Noto Sans TC Black",
+   "verdict": "選上（粗黑）",
+   "why": "筆畫最重、字面方正，紅底黃字燈箱一看就是 90 年代量販／速食招牌"
+  },
+  {
+   "font": "源泉圓體 TW Heavy",
+   "verdict": "選上（圓）",
+   "why": "粗圓、轉角圓潤，最接近當年華康圓體系的飲料店／麵包店燈箱；比粉圓重得多，遠看也讀得出"
+  },
+  {
+   "font": "Noto Serif TC Black",
+   "verdict": "選上（明）",
+   "why": "粗明體有襯線三角，書局、照相館、老字號招牌的味道；比文楷更像印刷招牌"
+  },
+  {
+   "font": "jf open 粉圓 2.1",
+   "verdict": "落選，已刪",
+   "why": "只有一種細字重，招牌上太細太可愛，像 2010 年代 UI 字"
+  },
+  {
+   "font": "霞鶩文楷 TC Medium",
+   "verdict": "落選，已刪",
+   "why": "手寫楷筆畫細、字面小，不像壓克力字或燈箱字；也沒有招牌用的粗字重"
+  },
+  {
+   "font": "源泉圓體 TW Bold",
+   "verdict": "落選，已刪",
+   "why": "Heavy 在燈箱上更有份量，二選一留 Heavy"
+  }
+ ],
+ "fonts": [
+  {
+   "path": "fonts/NotoSansTC-Black.woff2",
+   "license_file": "fonts/NotoSansTC-OFL.txt",
+   "title": "招牌字型：粗黑體 Noto Sans TC Black",
+   "role": "粗黑體（燈箱、量販、電器行、遊藝場）",
+   "source": "https://github.com/notofonts/noto-cjk/raw/main/Sans/SubsetOTF/TC/NotoSansTC-Black.otf",
+   "upstream": "https://github.com/notofonts/noto-cjk",
+   "license": "SIL OFL 1.1（Adobe/Google，Reserved Font Name 'Source'；子集檔名不含保留名）",
+   "bytes": 1111428
+  },
+  {
+   "path": "fonts/GenSenRounded2TW-H.woff2",
+   "license_file": "fonts/GenSenRounded-OFL.txt",
+   "title": "招牌字型：圓體 源泉圓體 GenSenRounded2 TW Heavy",
+   "role": "圓體（飲料、麵包、玩具、文具、髮廊）",
+   "source": "https://github.com/ButTaiwan/gensen-font/releases/download/v2.100/GenSenRounded2TW-otf.zip（GenSenRounded2TW-H.otf）",
+   "upstream": "https://github.com/ButTaiwan/gensen-font",
+   "license": "SIL OFL 1.1（ButTaiwan，基於思源黑體；Reserved Font Name 'Source'）",
+   "bytes": 1499592
+  },
+  {
+   "path": "fonts/NotoSerifTC-Black.woff2",
+   "license_file": "fonts/NotoSerifTC-OFL.txt",
+   "title": "招牌字型：粗明體 Noto Serif TC Black",
+   "role": "粗明體（書局、照相館、鐘錶、補習班、老店）",
+   "source": "https://github.com/notofonts/noto-cjk/raw/main/Serif/SubsetOTF/TC/NotoSerifTC-Black.otf",
+   "upstream": "https://github.com/notofonts/noto-cjk",
+   "license": "SIL OFL 1.1（Adobe/Google，Reserved Font Name 'Source'）",
+   "bytes": 1504256
+  }
+ ]
+}

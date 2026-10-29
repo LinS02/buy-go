@@ -1,0 +1,36 @@
+{
+ "set": "leaf-schefflera",
+ "title": "鵝掌藤葉片圖集（4×4 枝，RGBA，給中庭花台的葉片卡）",
+ "generator": "CPU numpy 程式畫小葉輪廓／主脈／對折明暗／葉色／乾尖／灰塵（alpha 也是程式輪廓）＋本地 SDXL（RealVisXL V5.0 img2img＋union ControlNet tile，黑底合成圖當輸入）只取葉面內高頻",
+ "license": "RealVisXL V5.0（CreativeML OpenRAIL++-M，可商用）、controlnet-union-sdxl-promax（Apache-2.0）；輸入只有程式底稿；可商用、可公開",
+ "photo_rule": "照片只用眼睛看（03_中庭與玻璃天幕 花台灌木）；沒有當貼圖、沒有 img2img／ControlNet 輸入",
+ "people_rule": "提示詞含 no people/no person/no figure/no face/no hands，負面詞含 people, human, figure, silhouette, face, hand, fingers；4 塊逐張看過",
+ "layout": "4×4 格，每格 512 px（2k）＝0.30 m；葉柄往格子中心外伸出（3D 的莖接在那裡）",
+ "alpha": "A 通道＝葉面覆蓋（alphaTest 0.5）；RGB 往透明區外推",
+ "normal_convention": "OpenGL",
+ "seed": 3,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_leaf.py all --seed 3",
+ "used_by": "tools/sandbox/scenes/_tc-site.ts shrub()（中庭噴水池花台）；材質名 plant",
+ "sdxl": {
+  "model": "RealVisXL_V5.0_fp16",
+  "controlnet": "controlnet-union-sdxl-promax (tile)",
+  "cn_strength": 0.6,
+  "denoise": 0.45,
+  "steps": 26,
+  "cfg": 5.0,
+  "tiles": "2x2 1024（格子不週期，各格獨立）",
+  "prompt": "top-down studio photograph of a single sprig of schefflera arboricola dwarf umbrella tree leaves, palmate compound leaf, glossy dark green leaflets, some dusty and yellowing, a few dry brown tips, isolated on pure black background, sharp focus, photorealistic, 8k, no people, no person, no figure, no face, no hands",
+  "neg": "people, person, human, figure, silhouette, face, eyes, mouth, skull, hand, fingers, insect, animal, flower, text, letters, watermark, logo, pot, soil, table, room, background objects, perspective, cartoon, painting, illustration, 3d render, frame, border",
+  "secs": 232
+ },
+ "files": {
+  "2k/albedo.png": 2852744,
+  "2k/normal.jpg": 343333,
+  "2k/roughness.jpg": 984137,
+  "2k/ao.jpg": 75498,
+  "1k/albedo.png": 652509,
+  "1k/normal.jpg": 94214,
+  "1k/roughness.jpg": 380976,
+  "1k/ao.jpg": 25080
+ }
+}

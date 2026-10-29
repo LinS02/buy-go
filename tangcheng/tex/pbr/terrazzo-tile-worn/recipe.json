@@ -1,0 +1,116 @@
+{
+ "generator": "CPU numpy 程式生成（scipy cKDTree 週期 Voronoi、FFT 週期濾波），無生成模型、無 GPU",
+ "license": "本專案程式生成，CPU numpy，無生成模型、無參考照進貼圖；可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色，沒有當貼圖、沒有 img2img、沒有切圖、沒有複製進專案（照片不進 repo、不進 build）",
+ "spec": "doc/design/taiwan-liminal-catalog.md（01 老舊地下街、03 地下道與月台：尺寸、顏色以它為準）",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "所有濾波週期邊界（FFT／np.roll／mod 座標），四方連續；驗證見 verify_images",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "jpg sRGB 4:2:0",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有鐵捲門有）",
+  "mask": "見各組 mask_notes（jpg 4:4:4 或 png）",
+  "shade": "jpg 線性灰階，值×2＝亮度倍率（只有磨石子有）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化，mask.png 用最近鄰）"
+ },
+ "set": "terrazzo-tile-worn",
+ "title": "補過很多次的預鑄磨石子方磚 30 cm（米黃）",
+ "queue_item": "T1-16",
+ "candidate": "terrazzo-tile-worn-s22",
+ "seed": 22,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_underpass.py（指令：python gen_underpass.py terrazzo-tile-worn 22 <out>）",
+ "span_m": 2.4,
+ "why_picked": "s22 的補土塊較分散，還有一條填了水泥的磚縫；s11 的兩塊灰補土在 24 m 俯視裡排成固定格點。",
+ "rejected": [
+  "terrazzo-tile-worn-s11"
+ ],
+ "photos_referenced": [
+  "~/Desktop/game/閾限空間台灣/台灣閾限大集合/03_地下道與月台/西大路地下道人行側__commons.wikimedia.org.jpg",
+  "~/Desktop/game/閾限空間台灣/台灣閾限大集合/01_老舊地下街/龍山寺地下街磨石長廊2019__commons.wikimedia.org.jpg"
+ ],
+ "recolor_formula": "linear：sh＝mask.R×2，g＝mask.G，b＝mask.B；albedo＝mix(mix(base, colors.G, g), colors.B, b) × sh。albedo.jpg 已用預設色票烘好；換底色只改 base，髒污程度改 g、b 的倍率。",
+ "mask_notes": "mask.jpg（4:4:4）：R＝shade×0.5、G／B＝見 params.colors_srgb 的 G_／B_ 欄；預鑄磨石子方磚（不是現有的現場磨石子三色）。mask.jpg：R＝每塊亮度、G＝水泥補丁／抹灰／換成水泥的那塊、B＝污垢（只在縫、縫邊、崩角與整張尺度的低頻，刻意不做 10–40 cm 的團塊，24 m 俯視檢查過不成排）。2007 灰藍版：matrix 換 #8c98a4。",
+ "files": {
+  "2k/albedo.jpg": 1818955,
+  "2k/normal.jpg": 326860,
+  "2k/roughness.jpg": 398283,
+  "2k/ao.jpg": 361082,
+  "2k/mask.jpg": 201341,
+  "1k/albedo.jpg": 406527,
+  "1k/normal.jpg": 93266,
+  "1k/roughness.jpg": 105829,
+  "1k/ao.jpg": 65504,
+  "1k/mask.jpg": 80682
+ },
+ "params": {
+  "span_m": 2.4,
+  "tile_m": 0.3,
+  "tiles_per_tex": 8,
+  "colors_srgb": {
+   "matrix": [
+    200,
+    192,
+    176
+   ],
+   "chips": {
+    "dark": [
+     70,
+     66,
+     62
+    ],
+    "mid": [
+     150,
+     132,
+     110
+    ],
+    "white": [
+     236,
+     232,
+     222
+    ],
+    "red": [
+     140,
+     92,
+     74
+    ]
+   },
+   "grout": [
+    96,
+    90,
+    82
+   ],
+   "G_cement": [
+    192,
+    186,
+    174
+   ],
+   "B_dirt": [
+    74,
+    68,
+    60
+   ],
+   "batch_tile": [
+    204,
+    190,
+    174
+   ]
+  },
+  "notes": "預鑄磨石子方磚（不是現有的現場磨石子三色）。mask.jpg：R＝每塊亮度、G＝水泥補丁／抹灰／換成水泥的那塊、B＝污垢（只在縫、縫邊、崩角與整張尺度的低頻，刻意不做 10–40 cm 的團塊，24 m 俯視檢查過不成排）。2007 灰藍版：matrix 換 #8c98a4。",
+  "set": "terrazzo-tile-worn",
+  "size": 2048
+ },
+ "verify_images": [
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/t116/c1.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/t116/c2b.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/t116/c3.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/t116/c4.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/t116/terrazzo-tile-worn-s22-24m.jpg"
+ ],
+ "footprint_check": "24 m×24 m 俯視拼貼看過：髒污只沿灰縫／磚縫、往下流的水痕或整張低頻，沒有 10–40 cm 團塊，不成排、不像腳印。"
+}

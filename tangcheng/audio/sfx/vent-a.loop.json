@@ -1,0 +1,67 @@
+{
+ "title": "walk-lost ceiling AC vent A: steady airflow + duct rumble + fan tone, 20 s loop",
+ "key": "n/a (sfx)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 960000,
+ "oneshot": false,
+ "loopStart": 0.0,
+ "loopEnd": 20.0,
+ "loopStartSample": 0,
+ "loopEndSample": 960000,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 0,
+ "lufsIn": -19.06,
+ "gainDb": -6.94,
+ "lufs": -26.0,
+ "truePeakDb": -10.03,
+ "clipped": 0,
+ "files": {
+  "ogg": "vent-a.ogg",
+  "m4a": "vent-a.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 370650,
+   "decoded_samples": 960000,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -20.8,
+   "main_loop": {
+    "jump_ratio": 0.08,
+    "level_before_db": -23.3,
+    "level_after_db": -22.4
+   }
+  },
+  "m4a": {
+   "bytes": 486334,
+   "decoded_samples": 961472,
+   "tail_padding": 1472,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -37.0,
+   "main_loop": {
+    "jump_ratio": 0.55,
+    "level_before_db": -23.3,
+    "level_after_db": -22.4
+   }
+  },
+  "source_main_loop": {
+   "jump_ratio": 0.54,
+   "level_before_db": -23.3,
+   "level_after_db": -22.4
+  }
+ },
+ "kind": "vent-loop",
+ "note": "整檔即循環（loopStart 0）。週期成分都是循環內整數週期，雜訊在頻域做、濾波是循環的，事件尾巴繞回檔頭，接縫逐樣本連續；同一種聲源多個同時放時各自從隨機位置起播，避免梳狀濾波。"
+}

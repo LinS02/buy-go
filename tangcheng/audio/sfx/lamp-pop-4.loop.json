@@ -1,0 +1,65 @@
+{
+ "title": "failing tube pop 4: starter ticks, strike, snap off",
+ "key": "n/a (sfx)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 49934,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [
+  0.6499,
+  0.9303
+ ],
+ "risers": [],
+ "firstSoundSample": 0,
+ "lufsIn": -28.99,
+ "gainDb": 0.25,
+ "lufs": -28.74,
+ "truePeakDb": -1.0,
+ "clipped": 0,
+ "files": {
+  "ogg": "lamp-pop-4.ogg",
+  "m4a": "lamp-pop-4.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 38363,
+   "decoded_samples": 49934,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -17.9
+  },
+  "m4a": {
+   "bytes": 27610,
+   "decoded_samples": 51136,
+   "tail_padding": 1202,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -38.2
+  }
+ },
+ "kind": "lamp-pop",
+ "snaps": [
+  0.6499,
+  0.9303
+ ],
+ "lampOn": [
+  [
+   0.6499,
+   0.9303
+  ]
+ ],
+ "note": "hits/snaps＝每聲「啪」的時間（秒），lampOn＝燈管亮著的時段 [開, 關]；燈的閃爍照這兩個欄位同步。"
+}

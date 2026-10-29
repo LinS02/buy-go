@@ -1,0 +1,80 @@
+{
+ "generator": "程式生成結構（CPU numpy：週期磚格、Voronoi 骨材、FFT 週期濾波）＋本地 SDXL 加表面細節（RealVisXL V5.0 fp16 img2img＋xinsir controlnet-union-sdxl-promax tile；3×3 週期 1024 塊、Hann⁴ 權重拼回，四方連續）；低頻顏色鎖回程式底稿，只取生成圖高頻",
+ "license": "RealVisXL V5.0（CreativeML OpenRAIL++-M，可商用）、controlnet-union-sdxl-promax（Apache-2.0）；輸入只有本專案的程式底稿；可商用、可公開",
+ "photo_rule": "沒有使用任何照片（純程式底稿＋SDXL 細節）",
+ "people_rule": "生圖提示詞含 no people/no person/no figure/no face，負面詞含 people, person, human, figure, silhouette, face, eyes, footprint, shoe print, handprint, hand；9 塊逐張看過、拼好的整張與 24 m 俯視模擬再看一次",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "程式底稿全部週期；SDXL 塊從環繞的底稿切、拼回時權重週期，四方連續",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "jpg sRGB 4:2:0",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有 steel-rust-paint）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化）"
+ },
+ "set": "hazard-stripe",
+ "title": "限高桿黑黃斜紋（45°、烤漆、掉漆露鋼、車頂刮痕、積灰）",
+ "seed": 1,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-terrain/gen_terrain2.py（python gen_terrain2.py all hazard-stripe --seed 1；共用 tangcheng-pbr/gen_mata.py 的 stage_sdxl／stage_final）",
+ "span_m": 0.6,
+ "photos_referenced": [],
+ "sdxl": {
+  "model": "RealVisXL_V5.0_fp16.safetensors",
+  "controlnet": "controlnet-union-sdxl-promax (tile)",
+  "cn_strength": 0.6,
+  "denoise": 0.3,
+  "steps": 26,
+  "cfg": 5.0,
+  "sampler": "dpmpp_2m karras",
+  "tiles": "3x3 periodic 1024 (Hann^4 blend)",
+  "prompt": "seamless tileable texture, high resolution photograph of worn yellow and black diagonal hazard stripes painted on a steel bar, chipped paint showing bare steel, horizontal scuffs and scratches, dust, flat front view, orthographic flat surface filling the whole frame, even diffuse lighting, photorealistic, sharp focus, 8k, no people, no person, no figure, no face",
+  "neg": "people, person, human, figure, silhouette, face, eyes, mouth, skull, footprint, shoe print, handprint, hand, fingers, animal, text, letters, numbers, watermark, logo, signature, poster, graffiti, perspective, vanishing point, horizon, room, furniture, harsh shadow, vignette, blurry, cartoon, painting, illustration, 3d render, frame, border",
+  "secs": 424
+ },
+ "final": {
+  "lock_px": 48.0,
+  "detail": 1.0,
+  "relief_mm": 0.06,
+  "sdxl": true
+ },
+ "files": {
+  "2k/albedo.jpg": 878623,
+  "2k/normal.jpg": 1300800,
+  "2k/roughness.jpg": 970531,
+  "2k/ao.jpg": 444462,
+  "2k/metalness.jpg": 1331011,
+  "1k/albedo.jpg": 244148,
+  "1k/normal.jpg": 206655,
+  "1k/roughness.jpg": 158870,
+  "1k/ao.jpg": 71674,
+  "1k/metalness.jpg": 347223
+ },
+ "params": {
+  "span_m": 0.6,
+  "stripe": "45° 斜紋；水平 0.3 m 一組（黃 0.15＋黑 0.15），垂直帶寬約 10.6 cm",
+  "colors_srgb": {
+   "yellow": [
+    206,
+    160,
+    34
+   ],
+   "black": [
+    32,
+    31,
+    29
+   ],
+   "steel": [
+    128,
+    128,
+    124
+   ]
+  },
+  "proc_secs": 6.5
+ },
+ "queue_item": "terrain-b2（_tc-terrain 第二批特殊地形）"
+}

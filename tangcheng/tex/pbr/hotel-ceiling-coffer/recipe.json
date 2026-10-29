@@ -1,0 +1,34 @@
+{
+ "license": "本專案程式生成，可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色；沒有當貼圖、沒有 img2img／ControlNet 輸入、沒有切圖、沒有複製進專案",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "seamless": "全部週期（FFT 濾波＋環繞距離），四方連續",
+ "tiling": "UV＝世界座標 / span_m",
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化）"
+ },
+ "span_m": 2.4,
+ "seed": 29,
+ "photos_referenced": [
+  "~/Desktop/game/閾限空間台灣/台灣閾限大集合/14_老飯店走廊/高雄圓山飯店紅毯走廊（只取色、看花紋尺度）",
+  "~/Desktop/game/閾限空間台灣/台灣閾限大集合/14_老飯店走廊/高雄圓山飯店長廊（只看天花方格板）"
+ ],
+ "set": "hotel-ceiling-coffer",
+ "title": "老飯店走廊天花方格浮雕板（4×4 塊 0.6 m：凸框、方珠線、圓環＋八瓣花＋角扇；米白微泛黃）",
+ "queue_item": "照片細節第二輪（老飯店走廊 10-29）",
+ "generator": "純程式生成（CPU numpy：高度場＝方框／珠線／極座標花瓣，法線、AO 由高度算）；沒有用生成模型",
+ "people_rule": "無生成模型；幾何對稱浮雕，無人形、無腳印狀重複",
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_hotel_red.py（python3 gen_hotel_red.py <pbr_root> --seed 29）",
+ "color": "albedo 近米白（平均 ≈0.84），整體色調由材質 color 決定",
+ "files": {
+  "2k/albedo.jpg": 604394,
+  "2k/normal.jpg": 539577,
+  "2k/roughness.jpg": 650001,
+  "2k/ao.jpg": 252267,
+  "1k/albedo.jpg": 164065,
+  "1k/normal.jpg": 221534,
+  "1k/roughness.jpg": 156085,
+  "1k/ao.jpg": 99426
+ }
+}

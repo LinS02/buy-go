@@ -1,0 +1,57 @@
+{
+ "title": "walk-lost footstep: B2 wet concrete, water film splash (walk 5)",
+ "key": "n/a (sfx)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 54529,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [
+  0.0085
+ ],
+ "risers": [],
+ "firstSoundSample": 2,
+ "lufsIn": -26.72,
+ "gainDb": -0.28,
+ "lufs": -27.0,
+ "truePeakDb": -3.37,
+ "clipped": 0,
+ "files": {
+  "ogg": "wet-walk-5.ogg",
+  "m4a": "wet-walk-5.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 20780,
+   "decoded_samples": 54529,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 2,
+   "err_db": -25.6
+  },
+  "m4a": {
+   "bytes": 30190,
+   "decoded_samples": 56256,
+   "tail_padding": 1727,
+   "offset_samples": 0,
+   "first_sound_sample": 2,
+   "err_db": -25.1
+  }
+ },
+ "kind": "footstep",
+ "surface": "wet",
+ "mode": "walk",
+ "heel": 0.0085,
+ "note": "單發腳步聲。heel＝腳跟落地（最大振幅）的時間（秒）：引擎在腳落地那一刻減掉 heel 起播，才對得上步伐。同一地面的 1–8（跑步 1–4）隨機輪流放、不連續重複同一個，每次再隨機 ±1.5 dB、±3% 播放速率。檔內含很淡的空間尾巴（手扶梯在中庭、B2 是水泥空間），場景別再加殘響。"
+}

@@ -1,0 +1,306 @@
+{
+ "queue": "doc/design/tangcheng-asset-queue.md #26",
+ "made": "2026-10-27",
+ "tool": "numpy／scipy（CPU；協調者 10-27 指示 GPU 歸概念圖，本項不跑任何 GPU 程序）",
+ "license": "本專案程式合成（numpy／scipy），無生成模型、無人聲；遠處鐵捲門與腳步的乾聲取自本專案自產的 sfx/shutter-down-a、sfx/steps/terrazzo-walk-3 再加工；可商用",
+ "path_note": "清單第 26 項：底噪與單發在 audio/amb/vast/，IR 放 audio/ir/（給 ConvolverNode，三個空間共用）",
+ "scripts": "~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-vast/（ir.py＋ir_params.json、drone.py＋drone_params.json、far.py＋far_params.json；量測 irm.py、dmeas.py、fmeas.py、clap.py＋labels.json；出檔 export.py；分數 scores/r*-*.json）",
+ "category": "impulse-response",
+ "title": "第 26 項巨大空間長殘響 IR（ConvolverNode）",
+ "format": "48 kHz 立體聲 24-bit PCM wav（不轉 ogg：IR 要逐樣本精確）。濕訊號（沒有直達聲，第 0 樣本＝發聲時刻），單位能量（每聲道 Σh²≈1）：ConvolverNode.normalize＝false 時濕聲≈輸入同功率；設 true 也行（瀏覽器會再正規化）。乾濕比由場景的 GainNode 決定。",
+ "metrics": "irm.py：Schroeder 反向積分 T30／EDT（八度帶，RT60_mid＝500 Hz/1 kHz 平均）、C50/C80；echo_n＝300 Hz 高通、5 ms 包絡上比中位高 6 dB、間隔 ≥40 ms 的峰數；echo_ac＝包絡自相關 40–400 ms 最高峰；flutter_ac＝5–30 ms 自相關最高峰；metal_peak_db＝白化頻譜的最高窄峰（純雜訊 ≈8 dB）；CLAP laion/larger_clap_general（CPU）對比分數 d＝目標描述均值 − 反面描述均值，測試訊號＝一下乾腳步＋一下雜訊脈衝 ⊛ IR",
+ "items": {
+  "vast-abyss.wav": {
+   "space": "無底中庭",
+   "candidate": "A1",
+   "params": {
+    "type": "abyss",
+    "seed": 261,
+    "len": 12,
+    "t60": [
+     13,
+     12.5,
+     11.5,
+     10.5,
+     9.5,
+     7,
+     4.5,
+     2.2,
+     1.0
+    ],
+    "rise": 0.15,
+    "diff_g": 1,
+    "floors": 9,
+    "d0": 12,
+    "h": 4.5,
+    "er_g": 12,
+    "er_db": 1.5,
+    "lp_k": 1
+   },
+   "len_s": 12,
+   "measured": {
+    "RT60_mid_s": 10.05,
+    "T30_125_s": 12.22,
+    "T30_4k_s": 5.56,
+    "EDT_s": 10.7,
+    "C50_db": -25.6,
+    "echo_n": 3,
+    "centroid_hz": 765,
+    "clap_d_size": 0.207,
+    "clap_d_size_controls": {
+     "small_room": 0.12,
+     "dry": 0.141
+    }
+   },
+   "target": "RT60 8–12 s",
+   "design": "九層欄杆面一層層往下的反射（每層 4.5 m、越下越暗）、沒有地板反射、0.15 s 慢建立",
+   "verify_1027": {
+    "len_s": 12.0,
+    "energy_L": 1.015,
+    "energy_R": 0.985,
+    "T30_broad_s": 12.05,
+    "T20_broad_s": 12.12,
+    "EDT_s": 11.77,
+    "bands": {
+     "125": {
+      "T30": 12.22,
+      "T20": 13.13
+     },
+     "250": {
+      "T30": 11.69,
+      "T20": 11.71
+     },
+     "500": {
+      "T30": 10.54,
+      "T20": 10.63
+     },
+     "1000": {
+      "T30": 9.45,
+      "T20": 9.38
+     },
+     "2000": {
+      "T30": 7.19,
+      "T20": 7.22
+     },
+     "4000": {
+      "T30": 4.92,
+      "T20": 4.79
+     }
+    },
+    "RT60_mid_s": 9.99,
+    "centroid_hz": 765,
+    "e300": 0.409,
+    "e300_1k": 0.207,
+    "e_below120": 0.324
+   }
+  },
+  "vast-corridor.wav": {
+   "space": "無限走道",
+   "candidate": "C4",
+   "params": {
+    "type": "corridor",
+    "seed": 274,
+    "len": 8,
+    "t60": [
+     6.5,
+     6,
+     5.5,
+     5,
+     4.6,
+     3.6,
+     2.5,
+     1.4,
+     0.7
+    ],
+    "rise": 0.05,
+    "diff_g": 0.18,
+    "trains": [
+     [
+      0.17,
+      32,
+      9,
+      0.015
+     ],
+     [
+      0.29,
+      7,
+      6,
+      0.04
+     ]
+    ],
+    "jit": 0.0015,
+    "lp_k": 0.55
+   },
+   "len_s": 8,
+   "measured": {
+    "RT60_mid_s": 5.09,
+    "echo_n": 42,
+    "echo_med_db": 11.8,
+    "echo_last_s": 7.95,
+    "echo_ac": 0.454,
+    "echo_lag_ms": 171,
+    "centroid_hz": 1600,
+    "clap_d_echo": 0.176,
+    "clap_d_echo_controls": {
+     "abyss": 0.072,
+     "dry": 0.119
+    }
+   },
+   "target": "長的重複回音拖尾",
+   "design": "兩列等距回音（170 ms＝柱距 29 m、290 ms），一根根越後越暗越散，拖到 8 s",
+   "verify_1027": {
+    "len_s": 8.0,
+    "energy_L": 0.993,
+    "energy_R": 1.007,
+    "T30_broad_s": 5.9,
+    "T20_broad_s": 6.02,
+    "EDT_s": 5.11,
+    "bands": {
+     "125": {
+      "T30": 5.97,
+      "T20": 5.97
+     },
+     "250": {
+      "T30": 5.84,
+      "T20": 5.96
+     },
+     "500": {
+      "T30": 5.14,
+      "T20": 5.08
+     },
+     "1000": {
+      "T30": 4.97,
+      "T20": 4.85
+     },
+     "2000": {
+      "T30": 4.49,
+      "T20": 4.07
+     },
+     "4000": {
+      "T30": 3.32,
+      "T20": 2.91
+     }
+    },
+    "RT60_mid_s": 5.05,
+    "centroid_hz": 1600,
+    "e300": 0.548,
+    "e300_1k": 0.197,
+    "e_below120": 0.274
+   }
+  },
+  "vast-escalator-well.wav": {
+   "space": "手扶梯井",
+   "candidate": "W8",
+   "params": {
+    "type": "well",
+    "seed": 288,
+    "len": 7,
+    "t60": [
+     5.5,
+     5,
+     4.6,
+     4.4,
+     4.2,
+     3.8,
+     3,
+     2,
+     1
+    ],
+    "rise": 0.025,
+    "diff_g": 1,
+    "flutter_P": 0.0118,
+    "flutter_t0": 0.005,
+    "flutter_len": 1.8,
+    "flutter_t60": 2.6,
+    "flutter_g": 85,
+    "modes": 80,
+    "mode_lo": 600,
+    "mode_hi": 8000,
+    "beat": [
+     2,
+     8
+    ],
+    "mode_t60": 4.5,
+    "mode_g": 1.6
+   },
+   "len_s": 7,
+   "measured": {
+    "RT60_mid_s": 5.24,
+    "flutter_ac": 0.551,
+    "flutter_period_ms": 11.8,
+    "flutter_ac_controls": {
+     "abyss": 0.13,
+     "ctl_room": 0.13
+    },
+    "metal_peak_db": 24.7,
+    "metal_peak_noise_db": 8,
+    "clap_metal_group_p": 0.9,
+    "clap_d_metal": 0.133,
+    "clap_d_metal_controls": {
+     "corridor": "0.067–0.106",
+     "abyss": "≈0"
+    }
+   },
+   "target": "金屬顫動",
+   "design": "兩側不鏽鋼裙板平行 → 11.8 ms 顫動回音（RT60 2.6 s）＋80 個鋼板模態成對失諧 2–8 Hz 拍頻（『顫』）",
+   "verify_1027": {
+    "len_s": 7.0,
+    "energy_L": 0.992,
+    "energy_R": 1.008,
+    "T30_broad_s": 5.01,
+    "T20_broad_s": 4.99,
+    "EDT_s": 4.13,
+    "bands": {
+     "125": {
+      "T30": 5.31,
+      "T20": 5.37
+     },
+     "250": {
+      "T30": 4.66,
+      "T20": 4.56
+     },
+     "500": {
+      "T30": 5.56,
+      "T20": 5.74
+     },
+     "1000": {
+      "T30": 4.71,
+      "T20": 4.7
+     },
+     "2000": {
+      "T30": 4.37,
+      "T20": 4.27
+     },
+     "4000": {
+      "T30": 3.32,
+      "T20": 3.25
+     }
+    },
+    "RT60_mid_s": 5.13,
+    "centroid_hz": 2259,
+    "e300": 0.889,
+    "e300_1k": 0.261,
+    "e_below120": 0.056
+   }
+  }
+ },
+ "rejected": {
+  "A2": "RT60_mid 8.68 s 達標，但 CLAP d_size 0.189 低於 A1 0.207；A1 10.05 s 落在 8–12 s 中段",
+  "A3": "RT60_mid 11.3 s 貼近上限；flutter_ac 0.231（A1 0.13）——中庭不該有週期感",
+  "C1": "echo_ac 0.308（C4 0.454）、回音只拖到 6.69 s（C4 7.95 s）",
+  "C2": "echo_ac 0.532 最規則，但重心 2708 Hz 太亮、CLAP d_metal 0.106 偏金屬，會搶手扶梯井的辨識",
+  "C3": "echo_ac 0.397 低於 C4；重心 2358 Hz 偏亮（C4 1600 Hz，較像遠處）",
+  "W1": "flutter_ac 0.38、metal_peak 12.2 dB（雜訊 ≈8）：金屬感不足，CLAP 金屬群 0.04",
+  "W2": "flutter_ac 0.457、metal_peak 17.4 dB，CLAP 金屬群 0.30（判成回音）",
+  "W3": "flutter_ac 0.151、metal_peak 9.4 dB：沒有顫動，CLAP 判成大空間",
+  "W4": "flutter_ac 0.649 最強但 metal_peak 20.6 dB、CLAP 金屬群 0.33（判成回音）",
+  "W5": "metal_peak 23.5 dB、CLAP 金屬群 0.71，但 flutter_ac 0.126：只有鳴響、沒有顫動",
+  "W6": "CLAP 金屬群 0.72，但 flutter_ac 0.345、echo_n 0",
+  "W7": "flutter_ac 0.139、CLAP 金屬群 0.47",
+  "W9": "flutter_ac 0.669、metal_peak 26.1 dB，但 CLAP 金屬群只有 0.10（判成回音 0.90）",
+  "CTLroom": "對照組（小房間 RT60 0.7 s），只用來證明量法分得出來"
+ },
+ "known_limits": "IR 為合成（指數衰減雜訊＋結構反射），不是實錄；RT60_4k 隨空氣吸收短（5.6 s），刻意。12 s IR 在手機上摺積成本較高：ConvolverNode 每個只開一個，接在空間匯流排上，別每個聲源一個。",
+ "reference_search": "先翻 art-src/_reference/audio/（horror-sfx LICENSES.md、kenney-impact License.txt）：沒有現成 IR、沒有巨大空間底噪（underground-parking-ambience 有輪胎聲＝有人，不能用）；可商用的金屬實錄有 metal/falling-steel-bar（CC0）、metal/clang-bart-01（CC0）、door/metal-barrier-slam（CC0）、door/metal-door-slam-rubberduck（CC0）→ 鋼管、防火門改用實錄做候選並勝出；水錘、手扶梯煞車、鐵捲門沒有合適實錄（鐵捲門用本專案自產 sfx/shutter-down-a）→ 程式合成。本地庫 local-gen/music/sfx/ 只有本專案前幾項的產物。",
+ "verify_1027_method": "verify26.py：寬頻與八度帶 Schroeder 反向積分，T30（−5→−35 dB）、T20（−5→−25）、EDT（0→−10）；RT60_mid＝500/1k T30 平均；e300＝300 Hz 以上能量占比"
+}

@@ -1,0 +1,80 @@
+{
+ "generator": "CPU numpy 程式生成（scipy cKDTree 週期 Voronoi、FFT 週期濾波），無生成模型、無 GPU",
+ "license": "本專案程式生成，CPU numpy，無生成模型、無參考照進貼圖；可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色，沒有當貼圖、沒有 img2img、沒有切圖、沒有複製進專案（照片不進 repo、不進 build）",
+ "spec": "doc/design/tangcheng-site-spec.md（照片勘查規格書：尺寸、顏色以它為準）",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "所有濾波週期邊界（FFT／np.roll／mod 座標），四方連續；驗證見 verify_images",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "jpg sRGB 4:2:0",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有鐵捲門有）",
+  "mask": "見各組 mask_notes（jpg 4:4:4 或 png）",
+  "shade": "jpg 線性灰階，值×2＝亮度倍率（只有磨石子有）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化，mask.png 用最近鄰）"
+ },
+ "set": "alu-panel-white",
+ "title": "白烤漆鋁板（柱子外包，豎縫 0.4 m）",
+ "queue_item": 25,
+ "candidate": "alu-panel-white-s11",
+ "seed": 11,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_misc.py（指令：python gen_misc.py alu-panel-white 11 <out>）",
+ "span_m": 2.4,
+ "why_picked": "s11 的擦痕較短、較少，柱子下段才需要的擦痕交給 shader 用 B 通道加。",
+ "rejected": [
+  "alu-panel-white-s22"
+ ],
+ "photos_referenced": [
+  "~/Desktop/game/閾限空間台灣/02_亮著燈但沒人/家樂福鐵捲門與綠格地板__yt-6vyiGU8q8f0-t1383.jpg",
+  "~/Desktop/game/閾限空間台灣/06_當年熱鬧_旗開得勝約2000年/日光燈走道__yt-54UxuMfMYDs-t1716.jpg"
+ ],
+ "recolor_formula": "linear：sh＝mask.R×2，g＝mask.G，b＝mask.B；albedo＝mix(mix(base, colors.G, g), colors.B, b) × sh。albedo.jpg 已用預設色票烘好；換底色只改 base，髒污程度改 g、b 的倍率。",
+ "mask_notes": "mask.jpg（4:4:4）：R＝shade×0.5、G／B＝見 params.colors_srgb 的 G_／B_ 欄",
+ "files": {
+  "2k/albedo.jpg": 48996,
+  "2k/normal.jpg": 99516,
+  "2k/roughness.jpg": 325985,
+  "2k/ao.jpg": 44375,
+  "2k/mask.jpg": 110376,
+  "1k/albedo.jpg": 17788,
+  "1k/normal.jpg": 32971,
+  "1k/roughness.jpg": 72080,
+  "1k/ao.jpg": 15385,
+  "1k/mask.jpg": 44255
+ },
+ "params": {
+  "span_m": 2.4,
+  "panel_w_m": 0.4,
+  "colors_srgb": {
+   "base_warm_white": [
+    234,
+    230,
+    222
+   ],
+   "G_grime_seam_tape": [
+    178,
+    172,
+    160
+   ],
+   "B_scuff": [
+    86,
+    84,
+    80
+   ]
+  },
+  "notes": "柱子外包白色（偏暖灰白）烤漆鋁板，豎縫每 0.4 m。踢腳、柱頭降板交給幾何。也可當「白烤漆牆」用（把縫距換成 1.2 m 需要另生）。",
+  "set": "alu-panel-white",
+  "size": 2048
+ },
+ "verify_images": [
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/alu-panel-white-s11-wall.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/alu-panel-white-s11-top3x3.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/alu-panel-white-s11-seam.jpg"
+ ]
+}

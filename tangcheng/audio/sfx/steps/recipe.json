@@ -1,0 +1,2471 @@
+{
+ "category": "sfx",
+ "theme": "tangcheng-steps",
+ "queue": "frount_demo/doc/design/tangcheng-asset-queue.md #16（#23 重做金屬 12 檔、磨石子 12 檔）",
+ "made": "2026-10-27",
+ "brief": "四種地面：拋光磨石子（帶一點中庭殘響尾巴）、停住的金屬手扶梯階、B2 濕水泥、店內地毯。每種 8 個變化，另外做跑步版 4 個",
+ "reference_search": "art-src/_reference/audio/：horror-sfx/steps 有 Joseph SARDIN 的 CC0 皮鞋水泥地錄音（走路 61 s、奔跑 38 s）可直接用；kenney-impact 有地毯／水泥各 5 個（CC0），只當對照組；沒有磨石子、金屬梯、濕地的錄音 → 用水泥地錄音切出單步，再程式做出四種地面",
+ "sources": {
+  "walk": {
+   "file": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+   "title": "Fast Steps on Concrete",
+   "author": "Joseph SARDIN（BigSoundBank）",
+   "url": "https://bigsoundbank.com/fast-steps-on-concrete-s1318.html",
+   "license": "CC0 1.0"
+  },
+  "run": {
+   "file": "art-src/_reference/audio/horror-sfx/steps/running-on-concrete.flac",
+   "title": "Fast Steps on Concrete（奔跑）",
+   "author": "Joseph SARDIN（BigSoundBank）",
+   "url": "https://bigsoundbank.com/fast-steps-on-concrete-s1319.html",
+   "license": "CC0 1.0"
+  },
+  "metal_ir": {
+   "file": "art-src/_reference/audio/horror-sfx/metal/bong-metal-impact.wav",
+   "title": "Metal Impact Sounds（bong1.wav）",
+   "author": "BMacZero",
+   "url": "https://opengameart.org/content/metal-impact-sounds",
+   "license": "CC0"
+  },
+  "snk": {
+   "file": "art-src/_reference/audio/horror-sfx/steps/sneakers-running-concrete.flac",
+   "title": "Footsteps, Shoe on Concrete",
+   "author": "Joseph SARDIN（BigSoundBank）",
+   "url": "https://bigsoundbank.com/footsteps-shoe-on-concrete-s0514.html",
+   "license": "CC0 1.0"
+  }
+ },
+ "license": "取樣為 CC0（BigSoundBank／Joseph SARDIN 皮鞋／球鞋水泥地錄音；金屬手扶梯另用 OpenGameArt／BMacZero 的 CC0 金屬撞擊當脈衝響應），其餘本專案程式處理（numpy／scipy／pedalboard 0.9.25；殘響 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無生成模型；可商用、免署名",
+ "method": [
+  "extract.py：onset（librosa，backtrack）切單步，篩掉削波、前 30 ms 不乾淨（<24 dB）、尾巴沒衰減到 −30 dB 的；走路 56 個、奔跑 21 個乾淨步",
+  "srccheck.py：主峰前後 180 ms 以外還有 ≥25% 的第二擊（＝兩步或拖地）的來源不用：walk-015／026／041／070、run-016／025",
+  "process.py <配方>：每個來源步先整體重取樣 ±3.5%（鞋子大小、步伐輕重），再走該地面的處理鏈；種子 1600 起",
+  "clapscore.py：CLAP laion/larger_clap_general（CPU）零樣本打分。單一步 CLAP 認不出是腳步（連 Kenney 真實腳步都判成鎚子／鼓），所以照遊戲用法排成一串（走路 0.55 s、跑步 0.33 s，兩個音高交替）再加 −58 dB 房間底噪——全靜的話原始錄音只剩 0.04。target_p＝目標描述 vs 其他地面＋18 種非腳步聲的 softmax；surf_p＝只在四種地面之間互判",
+  "pickset.py：每種地面選一個配方（走路＋跑步合計最高），配方內挑分數最高、來源步不重複的走路 8＋跑步 4；跑步只用皮鞋奔跑錄音（和走路同一雙鞋，不混球鞋）",
+  "tame.py：磨石子腳跟喀聲峰值因數太高，被 −1 dBTP 卡住，先用 Limiter 削最尖的 4–7 dB；其他地面幾乎不用削",
+  "export_all.py：tools/audio/bgm_export.py --oneshot → Opus .ogg＋AAC .m4a＋.loop.json（heel＝腳跟落地時間）。響度：走路 −27 LUFS（地毯 −30），跑步 +3 dB；磨石子有 7 個被真峰值擋住，差 0.4–3.2 dB"
+ ],
+ "controls": "對照組（controls/）：未處理原始錄音、白雜訊爆音、1 kHz 正弦喀聲、Kenney 水泥／地毯／木頭／雪單步；整段真實錄音（石梯皮鞋、水泥快走、奔跑、巴黎地鐵通道）。分數驗得出失敗：雜訊爆音和正弦喀聲的目標機率都是 0.00",
+ "surfaces": {
+  "terrazzo": {
+   "zh": "拋光磨石子（中庭）",
+   "recipe": "fix23 C＋d3（tangcheng-fix23/steps/tz5.py）；walk-1／2 為 C 不加全通",
+   "chain": "（第 23 項重做，不削峰）來源步 →（d3）16 節二階全通 150–1000 Hz、Q 1.0（幅度頻譜不變，只錯開 1 kHz 以下的到達時間：100–500 Hz 群延遲 11.6–26.3 ms、500 Hz–1 kHz 4.0–11.5 ms、1–4 kHz 0.2–3.9 ms）→ 低架 220 Hz −2 dB → 2.8–3.8 kHz +2～3.5 dB → 高架 7.5 kHz +2 dB → Dragonfly Hall 38–52 m、RT 2.6–3.4 s、預延遲 18–30 ms、高切 6 kHz、早期反射 ×2，直達對殘響 1 dB；檔長 1.5 s（跑步 1.2 s）。沒有限幅、壓縮。",
+   "why": "第 16 項的 12 檔 PLR（真峰值−整合響度）30–35 dB，bgm_export 卡 −1 dBTP 到不了 walk −27／run −24，當時 tame.py 用 Limiter 壓 4–7 dB（＝削峰）。第 23 項的路：①寬頻相位分散（tz2，24–96 節 150–9000 Hz）與②逐檔在腳跟共振（八度帶分析：峰值多在 350–700 Hz 鞋跟共振）放窄全通串（tz3）都能壓到 PLR 21–25，但 CLAP 磨石子 target_p 從 0.78–0.95 掉到 0.00–0.58（第一名變滴水／鐘），1–4 kHz 群延遲 4–31 ms 超過可聽門檻 → 否決；③平坦隨機相位短 FIR（≤5 ms）壓不動（−0～3 dB，共振比 5 ms 長）；④只換來源＋殘響（tz4，85 個來源×3 種 DRR×2 種子）：walk 112 個只有 7 個 ≤26.3、run 0 個 ≤23.5——單步在中庭的自然 PLR 就是 29–31。最後 ⑤ tz5：85 個來源裡挑 PLR 最低的 24 walk／14 run，殘響比例拉到 DRR 1 dB、早期反射 ×2，再加只動 1 kHz 以下的溫和全通（d3）：12 檔 PLR 20.5–24.3（walk）、22.2–23.4（run），CLAP 磨石子互判 0.88–1.00、目標機率 0.78–0.98（舊版未削峰 0.93–0.98／0.78–0.95，削峰版 0.65–1.00／0.42–0.97）。"
+  },
+  "metal": {
+   "zh": "停住的金屬手扶梯階",
+   "recipe": "fix23 a4／b3／a6（tangcheng-fix23/steps/metal2.py，vars.json）",
+   "chain": "m16 的鏈（乾聲×0.3＋密集非諧和模態＋CC0 bong 金屬撞擊當 IR 各半＋桁架腔體模態）但①殘響幾乎拿掉（直達對殘響 20 → 26–30 dB）；②加「空心台階箱」：腳步 >300 Hz 激發 5 個低階模態（f0 300–620 Hz，比值 1／1.47／1.93／2.61／3.2，τ 0.22–0.3 s 逐階遞減），音量和主擊同級；③踏板在梯級軸上晃：主擊後 25–70 ms 一兩聲 250–420＋700–1100 Hz 的「匡」；④（a4／b3）鞋底刮過踏板齒條：主擊前後 6–12 ms 的 2–6 kHz 細短脈衝串，間隔＝齒距 8.5 mm／滑速 0.8–1.6 m/s",
+   "why": "m16 輸給「拋光石地、大廳回音」那一句：金屬餘響拖進大廳殘響，CLAP 就聽成石地（Kenney 金屬撞擊排成一串也判石地 0.95）。r1 七組對照：只拿掉殘響（a1／a2）反而更低（中位 0.43／0.17）；加空心台階箱的鏗（a3）中位跳到 0.66——金屬感來自『空心、有音高的箱體鏗』，不是高頻碎響；再加晃動＋齒條（a4）11/12 過 0.6。r2–r4 再試加重箱體、降箱體音高、多種子，每個來源取 CLAP 四地面互判 ≥0.62 中『互判＋目標機率』最高的一個。run-026 換成 run-015（run-026 六個種子最高 0.68 但目標機率只有 0.06，CLAP 第一名是「雨」）。"
+  },
+  "wet": {
+   "zh": "B2 濕水泥",
+   "recipe": "w8",
+   "chain": "乾聲低通 6.5 kHz、低架 260 Hz +2 dB、3 kHz −2.5 dB（濕鞋不喀）＋跟著腳跟／腳尖兩擊的寬頻噴濺（500–6500 Hz 雜訊，τ 30–60 ms）＋4–8 顆 Minnaert 水珠（1.3–4.2 kHz、上升音高、−26～−16 dB）＋鞋底離地的吸水聲（中心頻率 350→1800 Hz 掃頻的共振雜訊，70 ms）＋水花落回 2–8 kHz 沙沙聲（−12 dB）→ 水泥空間殘響（22–30 m、RT 1.6–2.1 s、高切 3.5 kHz，直達對殘響 18 dB）",
+   "why": "水珠少了（w1–w3）CLAP 就判成「拍手／下雨」；殘響重了判成「洞裡滴水」；w8 把殘響壓到 18 dB 後四地面互判走路 0.98、跑步 0.89，target 0.31，第一名有 5 個是「footsteps splashing on a wet floor」。"
+  },
+  "carpet": {
+   "zh": "店內地毯",
+   "recipe": "c4",
+   "chain": "四階低通 1.0–1.4 kHz（絨毛吃掉喀聲）＋6 ms 漢寧窗抹掉瞬態＋140–190 Hz +4 dB（鞋跟壓到底板的悶聲）＋鞋底擦過絨毛的 1.2–5 kHz 雜訊（跟著包絡，起音 12 ms、−19～−14 dB），乾聲、檔長 ≤0.5 s",
+   "why": "CLAP 對地毯腳步本來就不高（Kenney 的真實地毯錄音同量法 0.12／0.82）；c4 走路 0.13／0.92、跑步 0.12／0.84，和真實錄音相當。擦毛聲太大（c0）被判「翻紙」、太小（c1／c2）被判「心跳／打枕頭」；c4 在兩者之間。用 Kenney 地毯錄音做的版本只有 5 個原檔，湊不出 8 個不同的步，所以不用。另外剔掉擦毛聲蓋過腳步、整段沙沙聲的候選（walk-058）。"
+  }
+ },
+ "format": "48 kHz 單聲道，Opus .ogg＋AAC .m4a＋.loop.json。引擎在腳落地那一刻減掉 heel 起播；同一地面隨機輪流、不連續重複，每次再隨機 ±1.5 dB、±3% 速率",
+ "items": [
+  {
+   "file": "terrazzo-walk-1.ogg",
+   "also": [
+    "terrazzo-walk-1.m4a",
+    "terrazzo-walk-1.loop.json"
+   ],
+   "candidate": "terrazzo-walk-n-walk-002-s7300",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-002"
+   },
+   "seed": 7300,
+   "params": {
+    "name": "terrazzo-walk-n-walk-002-s7300",
+    "source": "walk-002",
+    "seed": 7300,
+    "cfg": "C",
+    "drr": 1.0,
+    "er": 2.0,
+    "allpass_q": null,
+    "plr_db": 25.88,
+    "resample": 0.977,
+    "drr_db": 9.0,
+    "decay_s": 2.82
+   },
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -1.17,
+    "clipped": 0,
+    "length_s": 1.5,
+    "heel_s": 0.0897,
+    "plr_db": 25.88,
+    "clap": {
+     "target_p": 0.997,
+     "target_sim": 0.236,
+     "surf_p": {
+      "terrazzo": 0.999,
+      "metal": 0.001,
+      "wet": 0.0,
+      "carpet": 0.0
+     },
+     "top": "footsteps on a polished stone floor echoing in a large hall"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "terrazzo-walk-2.ogg",
+   "also": [
+    "terrazzo-walk-2.m4a",
+    "terrazzo-walk-2.loop.json"
+   ],
+   "candidate": "terrazzo-walk-n-walk-003-s7310",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-003"
+   },
+   "seed": 7310,
+   "params": {
+    "name": "terrazzo-walk-n-walk-003-s7310",
+    "source": "walk-003",
+    "seed": 7310,
+    "cfg": "C",
+    "drr": 1.0,
+    "er": 2.0,
+    "allpass_q": null,
+    "plr_db": 25.0,
+    "resample": 0.976,
+    "drr_db": 11.0,
+    "decay_s": 3.2
+   },
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -2.04,
+    "clipped": 0,
+    "length_s": 1.5,
+    "heel_s": 0.1136,
+    "plr_db": 25.0,
+    "clap": {
+     "target_p": 0.989,
+     "target_sim": 0.196,
+     "surf_p": {
+      "terrazzo": 0.998,
+      "metal": 0.002,
+      "wet": 0.0,
+      "carpet": 0.0
+     },
+     "top": "footsteps on a polished stone floor echoing in a large hall"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "terrazzo-walk-3.ogg",
+   "also": [
+    "terrazzo-walk-3.m4a",
+    "terrazzo-walk-3.loop.json"
+   ],
+   "candidate": "terrazzo-walk-d3-walk-007-s7320",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-007"
+   },
+   "seed": 7320,
+   "params": {
+    "name": "terrazzo-walk-d3-walk-007-s7320",
+    "source": "walk-007",
+    "seed": 7320,
+    "cfg": "C",
+    "drr": 1.0,
+    "er": 2.0,
+    "allpass_q": [
+     1.0,
+     16,
+     1000
+    ],
+    "plr_db": 20.48,
+    "resample": 1.015,
+    "drr_db": 7.0,
+    "decay_s": 2.97
+   },
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -6.56,
+    "clipped": 0,
+    "length_s": 1.5,
+    "heel_s": 0.0186,
+    "plr_db": 20.48,
+    "clap": {
+     "target_p": 0.968,
+     "target_sim": 0.183,
+     "surf_p": {
+      "terrazzo": 0.995,
+      "metal": 0.001,
+      "wet": 0.004,
+      "carpet": 0.0
+     },
+     "top": "footsteps on a polished stone floor echoing in a large hall"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "terrazzo-walk-4.ogg",
+   "also": [
+    "terrazzo-walk-4.m4a",
+    "terrazzo-walk-4.loop.json"
+   ],
+   "candidate": "terrazzo-walk-d3-walk-011-s7330",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-011"
+   },
+   "seed": 7330,
+   "params": {
+    "name": "terrazzo-walk-d3-walk-011-s7330",
+    "source": "walk-011",
+    "seed": 7330,
+    "cfg": "C",
+    "drr": 1.0,
+    "er": 2.0,
+    "allpass_q": [
+     1.0,
+     16,
+     1000
+    ],
+    "plr_db": 22.44,
+    "resample": 0.967,
+    "drr_db": 7.0,
+    "decay_s": 3.26
+   },
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -4.61,
+    "clipped": 0,
+    "length_s": 1.5,
+    "heel_s": 0.0835,
+    "plr_db": 22.44,
+    "clap": {
+     "target_p": 0.983,
+     "target_sim": 0.206,
+     "surf_p": {
+      "terrazzo": 0.992,
+      "metal": 0.008,
+      "wet": 0.0,
+      "carpet": 0.0
+     },
+     "top": "footsteps on a polished stone floor echoing in a large hall"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "terrazzo-walk-5.ogg",
+   "also": [
+    "terrazzo-walk-5.m4a",
+    "terrazzo-walk-5.loop.json"
+   ],
+   "candidate": "terrazzo-walk-d3-walk-014-s7351",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-014"
+   },
+   "seed": 7351,
+   "params": {
+    "name": "terrazzo-walk-d3-walk-014-s7351",
+    "source": "walk-014",
+    "seed": 7351,
+    "cfg": "C",
+    "drr": 1.0,
+    "er": 2.0,
+    "allpass_q": [
+     1.0,
+     16,
+     1000
+    ],
+    "plr_db": 22.3,
+    "resample": 0.994,
+    "drr_db": 11.0,
+    "decay_s": 3.1
+   },
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -4.75,
+    "clipped": 0,
+    "length_s": 1.5,
+    "heel_s": 0.0227,
+    "plr_db": 22.3,
+    "clap": {
+     "target_p": 0.959,
+     "target_sim": 0.17,
+     "surf_p": {
+      "terrazzo": 0.992,
+      "metal": 0.006,
+      "wet": 0.002,
+      "carpet": 0.0
+     },
+     "top": "footsteps on a polished stone floor echoing in a large hall"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "terrazzo-walk-6.ogg",
+   "also": [
+    "terrazzo-walk-6.m4a",
+    "terrazzo-walk-6.loop.json"
+   ],
+   "candidate": "terrazzo-walk-d3-walk-019-s7390",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-019"
+   },
+   "seed": 7390,
+   "params": {
+    "name": "terrazzo-walk-d3-walk-019-s7390",
+    "source": "walk-019",
+    "seed": 7390,
+    "cfg": "C",
+    "drr": 1.0,
+    "er": 2.0,
+    "allpass_q": [
+     1.0,
+     16,
+     1000
+    ],
+    "plr_db": 21.0,
+    "resample": 0.987,
+    "drr_db": 11.0,
+    "decay_s": 2.66
+   },
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -6.04,
+    "clipped": 0,
+    "length_s": 1.5,
+    "heel_s": 0.0136,
+    "plr_db": 21.0,
+    "clap": {
+     "target_p": 0.988,
+     "target_sim": 0.246,
+     "surf_p": {
+      "terrazzo": 0.995,
+      "metal": 0.004,
+      "wet": 0.0,
+      "carpet": 0.0
+     },
+     "top": "footsteps on a polished stone floor echoing in a large hall"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "terrazzo-walk-7.ogg",
+   "also": [
+    "terrazzo-walk-7.m4a",
+    "terrazzo-walk-7.loop.json"
+   ],
+   "candidate": "terrazzo-walk-d3-walk-044-s7571",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-044"
+   },
+   "seed": 7571,
+   "params": {
+    "name": "terrazzo-walk-d3-walk-044-s7571",
+    "source": "walk-044",
+    "seed": 7571,
+    "cfg": "C",
+    "drr": 1.0,
+    "er": 2.0,
+    "allpass_q": [
+     1.0,
+     16,
+     1000
+    ],
+    "plr_db": 24.27,
+    "resample": 1.03,
+    "drr_db": 7.0,
+    "decay_s": 2.92
+   },
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -2.77,
+    "clipped": 0,
+    "length_s": 1.5,
+    "heel_s": 0.0224,
+    "plr_db": 24.27,
+    "clap": {
+     "target_p": 0.889,
+     "target_sim": 0.18,
+     "surf_p": {
+      "terrazzo": 0.978,
+      "metal": 0.018,
+      "wet": 0.002,
+      "carpet": 0.001
+     },
+     "top": "footsteps on a polished stone floor echoing in a large hall"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "terrazzo-walk-8.ogg",
+   "also": [
+    "terrazzo-walk-8.m4a",
+    "terrazzo-walk-8.loop.json"
+   ],
+   "candidate": "terrazzo-walk-d3-walk-073-s7800",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-073"
+   },
+   "seed": 7800,
+   "params": {
+    "name": "terrazzo-walk-d3-walk-073-s7800",
+    "source": "walk-073",
+    "seed": 7800,
+    "cfg": "C",
+    "drr": 1.0,
+    "er": 2.0,
+    "allpass_q": [
+     1.0,
+     16,
+     1000
+    ],
+    "plr_db": 23.44,
+    "resample": 0.992,
+    "drr_db": 7.0,
+    "decay_s": 3.09
+   },
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -3.6,
+    "clipped": 0,
+    "length_s": 1.5,
+    "heel_s": 0.0917,
+    "plr_db": 23.44,
+    "clap": {
+     "target_p": 0.968,
+     "target_sim": 0.15,
+     "surf_p": {
+      "terrazzo": 0.995,
+      "metal": 0.003,
+      "wet": 0.001,
+      "carpet": 0.0
+     },
+     "top": "footsteps on a polished stone floor echoing in a large hall"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "terrazzo-run-1.ogg",
+   "also": [
+    "terrazzo-run-1.m4a",
+    "terrazzo-run-1.loop.json"
+   ],
+   "candidate": "terrazzo-run-d3-run-023-s7171",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/running-on-concrete.flac",
+    "segment": "run-023"
+   },
+   "seed": 7171,
+   "params": {
+    "name": "terrazzo-run-d3-run-023-s7171",
+    "source": "run-023",
+    "seed": 7171,
+    "cfg": "C",
+    "drr": 1.0,
+    "er": 2.0,
+    "allpass_q": [
+     1.0,
+     16,
+     1000
+    ],
+    "plr_db": 22.64,
+    "resample": 0.976,
+    "drr_db": 9.0,
+    "decay_s": 3.16
+   },
+   "measure": {
+    "lufs": -24.0,
+    "true_peak_db": -1.4,
+    "clipped": 0,
+    "length_s": 1.2,
+    "heel_s": 0.0355,
+    "plr_db": 22.64,
+    "clap": {
+     "target_p": 0.816,
+     "target_sim": 0.172,
+     "surf_p": {
+      "terrazzo": 0.884,
+      "metal": 0.063,
+      "wet": 0.007,
+      "carpet": 0.046
+     },
+     "top": "footsteps on a polished stone floor echoing in a large hall"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "terrazzo-run-2.ogg",
+   "also": [
+    "terrazzo-run-2.m4a",
+    "terrazzo-run-2.loop.json"
+   ],
+   "candidate": "terrazzo-run-d3-snk-037-s7271",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/sneakers-running-concrete.flac",
+    "segment": "snk-037"
+   },
+   "seed": 7271,
+   "params": {
+    "name": "terrazzo-run-d3-snk-037-s7271",
+    "source": "snk-037",
+    "seed": 7271,
+    "cfg": "C",
+    "drr": 1.0,
+    "er": 2.0,
+    "allpass_q": [
+     1.0,
+     16,
+     1000
+    ],
+    "plr_db": 22.24,
+    "resample": 1.016,
+    "drr_db": 9.0,
+    "decay_s": 3.18
+   },
+   "measure": {
+    "lufs": -24.0,
+    "true_peak_db": -1.8,
+    "clipped": 0,
+    "length_s": 1.2,
+    "heel_s": 0.069,
+    "plr_db": 22.24,
+    "clap": {
+     "target_p": 0.845,
+     "target_sim": 0.131,
+     "surf_p": {
+      "terrazzo": 0.906,
+      "metal": 0.088,
+      "wet": 0.0,
+      "carpet": 0.006
+     },
+     "top": "footsteps on a polished stone floor echoing in a large hall"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "terrazzo-run-3.ogg",
+   "also": [
+    "terrazzo-run-3.m4a",
+    "terrazzo-run-3.loop.json"
+   ],
+   "candidate": "terrazzo-run-d3-run-008-s7070",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/running-on-concrete.flac",
+    "segment": "run-008"
+   },
+   "seed": 7070,
+   "params": {
+    "name": "terrazzo-run-d3-run-008-s7070",
+    "source": "run-008",
+    "seed": 7070,
+    "cfg": "C",
+    "drr": 1.0,
+    "er": 2.0,
+    "allpass_q": [
+     1.0,
+     16,
+     1000
+    ],
+    "plr_db": 23.12,
+    "resample": 0.989,
+    "drr_db": 11.0,
+    "decay_s": 3.14
+   },
+   "measure": {
+    "lufs": -24.08,
+    "true_peak_db": -1.0,
+    "clipped": 0,
+    "length_s": 1.2,
+    "heel_s": 0.0304,
+    "plr_db": 23.12,
+    "clap": {
+     "target_p": 0.781,
+     "target_sim": 0.091,
+     "surf_p": {
+      "terrazzo": 0.923,
+      "metal": 0.052,
+      "wet": 0.002,
+      "carpet": 0.023
+     },
+     "top": "footsteps on a polished stone floor echoing in a large hall"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "terrazzo-run-4.ogg",
+   "also": [
+    "terrazzo-run-4.m4a",
+    "terrazzo-run-4.loop.json"
+   ],
+   "candidate": "terrazzo-run-d3-run-013-s7101",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/running-on-concrete.flac",
+    "segment": "run-013"
+   },
+   "seed": 7101,
+   "params": {
+    "name": "terrazzo-run-d3-run-013-s7101",
+    "source": "run-013",
+    "seed": 7101,
+    "cfg": "C",
+    "drr": 1.0,
+    "er": 2.0,
+    "allpass_q": [
+     1.0,
+     16,
+     1000
+    ],
+    "plr_db": 23.4,
+    "resample": 0.983,
+    "drr_db": 7.0,
+    "decay_s": 2.8
+   },
+   "measure": {
+    "lufs": -24.36,
+    "true_peak_db": -1.0,
+    "clipped": 0,
+    "length_s": 1.2,
+    "heel_s": 0.0434,
+    "plr_db": 23.4,
+    "clap": {
+     "target_p": 0.776,
+     "target_sim": 0.122,
+     "surf_p": {
+      "terrazzo": 0.938,
+      "metal": 0.033,
+      "wet": 0.009,
+      "carpet": 0.02
+     },
+     "top": "footsteps on a polished stone floor echoing in a large hall"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "metal-walk-1.ogg",
+   "also": [
+    "metal-walk-1.m4a",
+    "metal-walk-1.loop.json"
+   ],
+   "candidate": "metal-walk-b3-walk-036-s5900",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-036"
+   },
+   "seed": 5900,
+   "params": {
+    "name": "metal-walk-b3-walk-036-s5900",
+    "surface": "metal",
+    "mode": "walk",
+    "variant": "b3",
+    "source": "walk-036",
+    "seed": 5900,
+    "resample": 1.027,
+    "length_s": 1.1,
+    "params": {
+     "drr": 26,
+     "box": 1.0,
+     "box_f0": [
+      300,
+      450
+     ],
+     "box_tau": 0.3,
+     "rock": 0.5,
+     "cleat": 0.3,
+     "name": "b3"
+    },
+    "var": "b3",
+    "f0": 595.7,
+    "cavity_hz": [
+     120.7,
+     250.5
+    ],
+    "plate_gain": 0.165,
+    "cav_gain": 0.07,
+    "box_f0": 338.1
+   },
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -9.29,
+    "clipped": 0,
+    "length_s": 1.1,
+    "heel_s": 0.0087,
+    "clap": {
+     "target_p": 0.523,
+     "target_sim": 0.067,
+     "surf_p": {
+      "terrazzo": 0.041,
+      "metal": 0.883,
+      "wet": 0.001,
+      "carpet": 0.075
+     },
+     "top": "footsteps on a metal floor"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "metal-walk-2.ogg",
+   "also": [
+    "metal-walk-2.m4a",
+    "metal-walk-2.loop.json"
+   ],
+   "candidate": "metal-walk-a4-walk-031-s15401",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-031"
+   },
+   "seed": 15401,
+   "params": {
+    "name": "metal-walk-a4-walk-031-s15401",
+    "surface": "metal",
+    "mode": "walk",
+    "variant": "a4",
+    "source": "walk-031",
+    "seed": 15401,
+    "resample": 1.017,
+    "length_s": 1.1,
+    "params": {
+     "drr": 30,
+     "box": 1.0,
+     "rock": 0.5,
+     "cleat": 0.3,
+     "name": "a4"
+    },
+    "var": "a4",
+    "f0": 631.1,
+    "cavity_hz": [
+     116.6,
+     284.6
+    ],
+    "plate_gain": 0.22,
+    "cav_gain": 0.087,
+    "box_f0": 515.7
+   },
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -8.9,
+    "clipped": 0,
+    "length_s": 1.1,
+    "heel_s": 0.0353,
+    "clap": {
+     "target_p": 0.624,
+     "target_sim": 0.073,
+     "surf_p": {
+      "terrazzo": 0.032,
+      "metal": 0.96,
+      "wet": 0.004,
+      "carpet": 0.004
+     },
+     "top": "walking on a metal staircase"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "metal-walk-3.ogg",
+   "also": [
+    "metal-walk-3.m4a",
+    "metal-walk-3.loop.json"
+   ],
+   "candidate": "metal-walk-b3-walk-022-s15902",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-022"
+   },
+   "seed": 15902,
+   "params": {
+    "name": "metal-walk-b3-walk-022-s15902",
+    "surface": "metal",
+    "mode": "walk",
+    "variant": "b3",
+    "source": "walk-022",
+    "seed": 15902,
+    "resample": 1.018,
+    "length_s": 1.1,
+    "params": {
+     "drr": 26,
+     "box": 1.0,
+     "box_f0": [
+      300,
+      450
+     ],
+     "box_tau": 0.3,
+     "rock": 0.5,
+     "cleat": 0.3,
+     "name": "b3"
+    },
+    "var": "b3",
+    "f0": 648.5,
+    "cavity_hz": [
+     158.8,
+     272.2
+    ],
+    "plate_gain": 0.24,
+    "cav_gain": 0.079,
+    "box_f0": 352.4
+   },
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -6.16,
+    "clipped": 0,
+    "length_s": 1.1,
+    "heel_s": 0.03,
+    "clap": {
+     "target_p": 0.471,
+     "target_sim": 0.055,
+     "surf_p": {
+      "terrazzo": 0.16,
+      "metal": 0.836,
+      "wet": 0.0,
+      "carpet": 0.004
+     },
+     "top": "walking on a metal staircase"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "metal-walk-4.ogg",
+   "also": [
+    "metal-walk-4.m4a",
+    "metal-walk-4.loop.json"
+   ],
+   "candidate": "metal-walk-a6-walk-025-s5603",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-025"
+   },
+   "seed": 5603,
+   "params": {
+    "name": "metal-walk-a6-walk-025-s5603",
+    "surface": "metal",
+    "mode": "walk",
+    "variant": "a6",
+    "source": "walk-025",
+    "seed": 5603,
+    "resample": 1.023,
+    "length_s": 1.1,
+    "params": {
+     "drr": 26,
+     "box": 1.0,
+     "box_f0": [
+      300,
+      450
+     ],
+     "box_tau": 0.3,
+     "rock": 0.5,
+     "name": "a6"
+    },
+    "var": "a6",
+    "f0": 670.3,
+    "cavity_hz": [
+     110.4,
+     238.7
+    ],
+    "plate_gain": 0.202,
+    "cav_gain": 0.055,
+    "box_f0": 306.4
+   },
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -8.52,
+    "clipped": 0,
+    "length_s": 1.1,
+    "heel_s": 0.0252,
+    "clap": {
+     "target_p": 0.557,
+     "target_sim": 0.077,
+     "surf_p": {
+      "terrazzo": 0.183,
+      "metal": 0.811,
+      "wet": 0.001,
+      "carpet": 0.005
+     },
+     "top": "walking on a metal staircase"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "metal-walk-5.ogg",
+   "also": [
+    "metal-walk-5.m4a",
+    "metal-walk-5.loop.json"
+   ],
+   "candidate": "metal-walk-b3-walk-038-s15904",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-038"
+   },
+   "seed": 15904,
+   "params": {
+    "name": "metal-walk-b3-walk-038-s15904",
+    "surface": "metal",
+    "mode": "walk",
+    "variant": "b3",
+    "source": "walk-038",
+    "seed": 15904,
+    "resample": 0.965,
+    "length_s": 1.1,
+    "params": {
+     "drr": 26,
+     "box": 1.0,
+     "box_f0": [
+      300,
+      450
+     ],
+     "box_tau": 0.3,
+     "rock": 0.5,
+     "cleat": 0.3,
+     "name": "b3"
+    },
+    "var": "b3",
+    "f0": 732.0,
+    "cavity_hz": [
+     152.3,
+     246.3
+    ],
+    "plate_gain": 0.212,
+    "cav_gain": 0.079,
+    "box_f0": 433.4
+   },
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -6.02,
+    "clipped": 0,
+    "length_s": 1.1,
+    "heel_s": 0.0461,
+    "clap": {
+     "target_p": 0.403,
+     "target_sim": 0.071,
+     "surf_p": {
+      "terrazzo": 0.075,
+      "metal": 0.904,
+      "wet": 0.002,
+      "carpet": 0.018
+     },
+     "top": "a drum hit"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "metal-walk-6.ogg",
+   "also": [
+    "metal-walk-6.m4a",
+    "metal-walk-6.loop.json"
+   ],
+   "candidate": "metal-walk-b3-walk-051-s55906",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-051"
+   },
+   "seed": 55906,
+   "params": {
+    "name": "metal-walk-b3-walk-051-s55906",
+    "surface": "metal",
+    "mode": "walk",
+    "variant": "b3",
+    "source": "walk-051",
+    "seed": 55906,
+    "resample": 0.988,
+    "length_s": 1.1,
+    "params": {
+     "drr": 26,
+     "box": 1.0,
+     "box_f0": [
+      300,
+      450
+     ],
+     "box_tau": 0.3,
+     "rock": 0.5,
+     "cleat": 0.3,
+     "name": "b3"
+    },
+    "var": "b3",
+    "f0": 577.4,
+    "cavity_hz": [
+     148.4,
+     286.1
+    ],
+    "plate_gain": 0.209,
+    "cav_gain": 0.079,
+    "box_f0": 438.9
+   },
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -6.42,
+    "clipped": 0,
+    "length_s": 1.1,
+    "heel_s": 0.0265,
+    "clap": {
+     "target_p": 0.522,
+     "target_sim": 0.03,
+     "surf_p": {
+      "terrazzo": 0.307,
+      "metal": 0.673,
+      "wet": 0.0,
+      "carpet": 0.019
+     },
+     "top": "walking on a metal staircase"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "metal-walk-7.ogg",
+   "also": [
+    "metal-walk-7.m4a",
+    "metal-walk-7.loop.json"
+   ],
+   "candidate": "metal-walk-a4-walk-018-s35406",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-018"
+   },
+   "seed": 35406,
+   "params": {
+    "name": "metal-walk-a4-walk-018-s35406",
+    "surface": "metal",
+    "mode": "walk",
+    "variant": "a4",
+    "source": "walk-018",
+    "seed": 35406,
+    "resample": 1.033,
+    "length_s": 1.1,
+    "params": {
+     "drr": 30,
+     "box": 1.0,
+     "rock": 0.5,
+     "cleat": 0.3,
+     "name": "a4"
+    },
+    "var": "a4",
+    "f0": 558.6,
+    "cavity_hz": [
+     125.5,
+     262.6
+    ],
+    "plate_gain": 0.208,
+    "cav_gain": 0.074,
+    "box_f0": 430.7
+   },
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -6.68,
+    "clipped": 0,
+    "length_s": 1.1,
+    "heel_s": 0.0494,
+    "clap": {
+     "target_p": 0.564,
+     "target_sim": 0.102,
+     "surf_p": {
+      "terrazzo": 0.077,
+      "metal": 0.897,
+      "wet": 0.003,
+      "carpet": 0.023
+     },
+     "top": "footsteps on a metal floor"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "metal-walk-8.ogg",
+   "also": [
+    "metal-walk-8.m4a",
+    "metal-walk-8.loop.json"
+   ],
+   "candidate": "metal-walk-b3-walk-066-s15907",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-066"
+   },
+   "seed": 15907,
+   "params": {
+    "name": "metal-walk-b3-walk-066-s15907",
+    "surface": "metal",
+    "mode": "walk",
+    "variant": "b3",
+    "source": "walk-066",
+    "seed": 15907,
+    "resample": 1.028,
+    "length_s": 1.1,
+    "params": {
+     "drr": 26,
+     "box": 1.0,
+     "box_f0": [
+      300,
+      450
+     ],
+     "box_tau": 0.3,
+     "rock": 0.5,
+     "cleat": 0.3,
+     "name": "b3"
+    },
+    "var": "b3",
+    "f0": 564.3,
+    "cavity_hz": [
+     117.7,
+     298.7
+    ],
+    "plate_gain": 0.184,
+    "cav_gain": 0.053,
+    "box_f0": 432.3
+   },
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -9.4,
+    "clipped": 0,
+    "length_s": 1.1,
+    "heel_s": 0.0399,
+    "clap": {
+     "target_p": 0.402,
+     "target_sim": 0.082,
+     "surf_p": {
+      "terrazzo": 0.048,
+      "metal": 0.943,
+      "wet": 0.001,
+      "carpet": 0.008
+     },
+     "top": "a drum hit"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "metal-run-1.ogg",
+   "also": [
+    "metal-run-1.m4a",
+    "metal-run-1.loop.json"
+   ],
+   "candidate": "metal-run-b3-run-009-s25908",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/running-on-concrete.flac",
+    "segment": "run-009"
+   },
+   "seed": 25908,
+   "params": {
+    "name": "metal-run-b3-run-009-s25908",
+    "surface": "metal",
+    "mode": "run",
+    "variant": "b3",
+    "source": "run-009",
+    "seed": 25908,
+    "resample": 0.967,
+    "length_s": 1.1,
+    "params": {
+     "drr": 26,
+     "box": 1.0,
+     "box_f0": [
+      300,
+      450
+     ],
+     "box_tau": 0.3,
+     "rock": 0.5,
+     "cleat": 0.3,
+     "name": "b3"
+    },
+    "var": "b3",
+    "f0": 738.9,
+    "cavity_hz": [
+     157.5,
+     237.4
+    ],
+    "plate_gain": 0.239,
+    "cav_gain": 0.082,
+    "box_f0": 396.4
+   },
+   "measure": {
+    "lufs": -24.0,
+    "true_peak_db": -2.43,
+    "clipped": 0,
+    "length_s": 1.1,
+    "heel_s": 0.0586,
+    "clap": {
+     "target_p": 0.61,
+     "target_sim": 0.061,
+     "surf_p": {
+      "terrazzo": 0.134,
+      "metal": 0.856,
+      "wet": 0.002,
+      "carpet": 0.008
+     },
+     "top": "walking on a metal staircase"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "metal-run-2.ogg",
+   "also": [
+    "metal-run-2.m4a",
+    "metal-run-2.loop.json"
+   ],
+   "candidate": "metal-run-a4-run-023-s65407",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/running-on-concrete.flac",
+    "segment": "run-023"
+   },
+   "seed": 65407,
+   "params": {
+    "name": "metal-run-a4-run-023-s65407",
+    "surface": "metal",
+    "mode": "run",
+    "variant": "a4",
+    "source": "run-023",
+    "seed": 65407,
+    "resample": 0.972,
+    "length_s": 1.1,
+    "params": {
+     "drr": 30,
+     "box": 1.0,
+     "rock": 0.5,
+     "cleat": 0.3,
+     "name": "a4"
+    },
+    "var": "a4",
+    "f0": 752.1,
+    "cavity_hz": [
+     137.9,
+     287.1
+    ],
+    "plate_gain": 0.159,
+    "cav_gain": 0.067,
+    "box_f0": 564.1
+   },
+   "measure": {
+    "lufs": -24.0,
+    "true_peak_db": -3.65,
+    "clipped": 0,
+    "length_s": 1.1,
+    "heel_s": 0.0414,
+    "clap": {
+     "target_p": 0.584,
+     "target_sim": 0.048,
+     "surf_p": {
+      "terrazzo": 0.313,
+      "metal": 0.67,
+      "wet": 0.001,
+      "carpet": 0.016
+     },
+     "top": "walking on a metal staircase"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "metal-run-3.ogg",
+   "also": [
+    "metal-run-3.m4a",
+    "metal-run-3.loop.json"
+   ],
+   "candidate": "metal-run-b3-run-015-s65901",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/running-on-concrete.flac",
+    "segment": "run-015"
+   },
+   "seed": 65901,
+   "params": {
+    "name": "metal-run-b3-run-015-s65901",
+    "surface": "metal",
+    "mode": "run",
+    "variant": "b3",
+    "source": "run-015",
+    "seed": 65901,
+    "resample": 0.968,
+    "length_s": 1.1,
+    "params": {
+     "drr": 26,
+     "box": 1.0,
+     "box_f0": [
+      300,
+      450
+     ],
+     "box_tau": 0.3,
+     "rock": 0.5,
+     "cleat": 0.3,
+     "name": "b3"
+    },
+    "var": "b3",
+    "f0": 575.9,
+    "cavity_hz": [
+     122.5,
+     268.7
+    ],
+    "plate_gain": 0.177,
+    "cav_gain": 0.079,
+    "box_f0": 449.0
+   },
+   "measure": {
+    "lufs": -24.0,
+    "true_peak_db": -4.58,
+    "clipped": 0,
+    "length_s": 1.1,
+    "heel_s": 0.0405,
+    "clap": {
+     "target_p": 0.692,
+     "target_sim": 0.049,
+     "surf_p": {
+      "terrazzo": 0.191,
+      "metal": 0.792,
+      "wet": 0.004,
+      "carpet": 0.013
+     },
+     "top": "walking on a metal staircase"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "metal-run-4.ogg",
+   "also": [
+    "metal-run-4.m4a",
+    "metal-run-4.loop.json"
+   ],
+   "candidate": "metal-run-a4-run-000-s25411",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/running-on-concrete.flac",
+    "segment": "run-000"
+   },
+   "seed": 25411,
+   "params": {
+    "name": "metal-run-a4-run-000-s25411",
+    "surface": "metal",
+    "mode": "run",
+    "variant": "a4",
+    "source": "run-000",
+    "seed": 25411,
+    "resample": 1.008,
+    "length_s": 1.1,
+    "params": {
+     "drr": 30,
+     "box": 1.0,
+     "rock": 0.5,
+     "cleat": 0.3,
+     "name": "a4"
+    },
+    "var": "a4",
+    "f0": 651.7,
+    "cavity_hz": [
+     108.5,
+     266.2
+    ],
+    "plate_gain": 0.2,
+    "cav_gain": 0.083,
+    "box_f0": 474.9
+   },
+   "measure": {
+    "lufs": -24.0,
+    "true_peak_db": -5.73,
+    "clipped": 0,
+    "length_s": 1.1,
+    "heel_s": 0.0794,
+    "clap": {
+     "target_p": 0.446,
+     "target_sim": 0.064,
+     "surf_p": {
+      "terrazzo": 0.082,
+      "metal": 0.852,
+      "wet": 0.002,
+      "carpet": 0.064
+     },
+     "top": "walking on a metal staircase"
+    }
+   },
+   "redone": "#23"
+  },
+  {
+   "file": "wet-walk-1.ogg",
+   "also": [
+    "wet-walk-1.m4a",
+    "wet-walk-1.loop.json"
+   ],
+   "candidate": "wet-walk-w8-walk-064-s3405",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-064"
+   },
+   "seed": 3405,
+   "params": {
+    "surface": "wet",
+    "mode": "walk",
+    "variant": "w8",
+    "source": "walk-064",
+    "seed": 3405,
+    "resample": 1.003,
+    "length_s": 0.965,
+    "drr_db": 18.0,
+    "droplets": "3–7"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -2.11,
+    "clipped": 0,
+    "length_s": 0.965,
+    "heel_s": 0.0208,
+    "clap": {
+     "target_p": 0.724,
+     "target_sim": 0.11,
+     "surf_p": {
+      "terrazzo": 0.001,
+      "metal": 0.0,
+      "wet": 0.998,
+      "carpet": 0.001
+     },
+     "top": "footsteps splashing on a wet floor"
+    }
+   }
+  },
+  {
+   "file": "wet-walk-2.ogg",
+   "also": [
+    "wet-walk-2.m4a",
+    "wet-walk-2.loop.json"
+   ],
+   "candidate": "wet-walk-w8-walk-022-s3410",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-022"
+   },
+   "seed": 3410,
+   "params": {
+    "surface": "wet",
+    "mode": "walk",
+    "variant": "w8",
+    "source": "walk-022",
+    "seed": 3410,
+    "resample": 1.009,
+    "length_s": 0.923,
+    "drr_db": 18.0,
+    "droplets": "3–7"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -1.96,
+    "clipped": 0,
+    "length_s": 0.923,
+    "heel_s": 0.0227,
+    "clap": {
+     "target_p": 0.64,
+     "target_sim": 0.088,
+     "surf_p": {
+      "terrazzo": 0.001,
+      "metal": 0.0,
+      "wet": 0.995,
+      "carpet": 0.004
+     },
+     "top": "footsteps splashing on a wet floor"
+    }
+   }
+  },
+  {
+   "file": "wet-walk-3.ogg",
+   "also": [
+    "wet-walk-3.m4a",
+    "wet-walk-3.loop.json"
+   ],
+   "candidate": "wet-walk-w8-walk-018-s3406",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-018"
+   },
+   "seed": 3406,
+   "params": {
+    "surface": "wet",
+    "mode": "walk",
+    "variant": "w8",
+    "source": "walk-018",
+    "seed": 3406,
+    "resample": 0.972,
+    "length_s": 1.157,
+    "drr_db": 18.0,
+    "droplets": "3–7"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -2.82,
+    "clipped": 0,
+    "length_s": 1.157,
+    "heel_s": 0.0155,
+    "clap": {
+     "target_p": 0.653,
+     "target_sim": 0.074,
+     "surf_p": {
+      "terrazzo": 0.001,
+      "metal": 0.001,
+      "wet": 0.982,
+      "carpet": 0.016
+     },
+     "top": "footsteps splashing on a wet floor"
+    }
+   }
+  },
+  {
+   "file": "wet-walk-4.ogg",
+   "also": [
+    "wet-walk-4.m4a",
+    "wet-walk-4.loop.json"
+   ],
+   "candidate": "wet-walk-w8-walk-031-s3407",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-031"
+   },
+   "seed": 3407,
+   "params": {
+    "surface": "wet",
+    "mode": "walk",
+    "variant": "w8",
+    "source": "walk-031",
+    "seed": 3407,
+    "resample": 0.974,
+    "length_s": 0.967,
+    "drr_db": 18.0,
+    "droplets": "3–7"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -2.89,
+    "clipped": 0,
+    "length_s": 0.967,
+    "heel_s": 0.0327,
+    "clap": {
+     "target_p": 0.564,
+     "target_sim": 0.094,
+     "surf_p": {
+      "terrazzo": 0.001,
+      "metal": 0.003,
+      "wet": 0.983,
+      "carpet": 0.014
+     },
+     "top": "footsteps splashing on a wet floor"
+    }
+   }
+  },
+  {
+   "file": "wet-walk-5.ogg",
+   "also": [
+    "wet-walk-5.m4a",
+    "wet-walk-5.loop.json"
+   ],
+   "candidate": "wet-walk-w8-walk-025-s3414",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-025"
+   },
+   "seed": 3414,
+   "params": {
+    "surface": "wet",
+    "mode": "walk",
+    "variant": "w8",
+    "source": "walk-025",
+    "seed": 3414,
+    "resample": 0.968,
+    "length_s": 1.136,
+    "drr_db": 18.0,
+    "droplets": "3–7"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -3.37,
+    "clipped": 0,
+    "length_s": 1.136,
+    "heel_s": 0.0085,
+    "clap": {
+     "target_p": 0.349,
+     "target_sim": 0.072,
+     "surf_p": {
+      "terrazzo": 0.001,
+      "metal": 0.0,
+      "wet": 0.99,
+      "carpet": 0.009
+     },
+     "top": "a hand clap"
+    }
+   }
+  },
+  {
+   "file": "wet-walk-6.ogg",
+   "also": [
+    "wet-walk-6.m4a",
+    "wet-walk-6.loop.json"
+   ],
+   "candidate": "wet-walk-w8-walk-066-s3401",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-066"
+   },
+   "seed": 3401,
+   "params": {
+    "surface": "wet",
+    "mode": "walk",
+    "variant": "w8",
+    "source": "walk-066",
+    "seed": 3401,
+    "resample": 1.033,
+    "length_s": 1.051,
+    "drr_db": 18.0,
+    "droplets": "3–7"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -6.63,
+    "clipped": 0,
+    "length_s": 1.051,
+    "heel_s": 0.0364,
+    "clap": {
+     "target_p": 0.243,
+     "target_sim": 0.044,
+     "surf_p": {
+      "terrazzo": 0.001,
+      "metal": 0.0,
+      "wet": 0.997,
+      "carpet": 0.002
+     },
+     "top": "dripping water"
+    }
+   }
+  },
+  {
+   "file": "wet-walk-7.ogg",
+   "also": [
+    "wet-walk-7.m4a",
+    "wet-walk-7.loop.json"
+   ],
+   "candidate": "wet-walk-w8-walk-037-s3415",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-037"
+   },
+   "seed": 3415,
+   "params": {
+    "surface": "wet",
+    "mode": "walk",
+    "variant": "w8",
+    "source": "walk-037",
+    "seed": 3415,
+    "resample": 1.01,
+    "length_s": 1.064,
+    "drr_db": 18.0,
+    "droplets": "3–7"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -1.61,
+    "clipped": 0,
+    "length_s": 1.064,
+    "heel_s": 0.0066,
+    "clap": {
+     "target_p": 0.236,
+     "target_sim": 0.059,
+     "surf_p": {
+      "terrazzo": 0.002,
+      "metal": 0.001,
+      "wet": 0.982,
+      "carpet": 0.014
+     },
+     "top": "a hand clap"
+    }
+   }
+  },
+  {
+   "file": "wet-walk-8.ogg",
+   "also": [
+    "wet-walk-8.m4a",
+    "wet-walk-8.loop.json"
+   ],
+   "candidate": "wet-walk-w8-walk-038-s3413",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-038"
+   },
+   "seed": 3413,
+   "params": {
+    "surface": "wet",
+    "mode": "walk",
+    "variant": "w8",
+    "source": "walk-038",
+    "seed": 3413,
+    "resample": 0.981,
+    "length_s": 1.022,
+    "drr_db": 18.0,
+    "droplets": "3–7"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -2.33,
+    "clipped": 0,
+    "length_s": 1.022,
+    "heel_s": 0.0107,
+    "clap": {
+     "target_p": 0.223,
+     "target_sim": 0.047,
+     "surf_p": {
+      "terrazzo": 0.003,
+      "metal": 0.005,
+      "wet": 0.895,
+      "carpet": 0.096
+     },
+     "top": "dripping water"
+    }
+   }
+  },
+  {
+   "file": "wet-run-1.ogg",
+   "also": [
+    "wet-run-1.m4a",
+    "wet-run-1.loop.json"
+   ],
+   "candidate": "wet-run-w8-run-015-s3455",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/running-on-concrete.flac",
+    "segment": "run-015"
+   },
+   "seed": 3455,
+   "params": {
+    "surface": "wet",
+    "mode": "run",
+    "variant": "w8",
+    "source": "run-015",
+    "seed": 3455,
+    "resample": 1.031,
+    "length_s": 1.006,
+    "drr_db": 18.0,
+    "droplets": "3–7"
+   },
+   "limiter_db": 1.48,
+   "measure": {
+    "lufs": -24.0,
+    "true_peak_db": -3.61,
+    "clipped": 0,
+    "length_s": 1.006,
+    "heel_s": 0.0235,
+    "clap": {
+     "target_p": 0.319,
+     "target_sim": 0.056,
+     "surf_p": {
+      "terrazzo": 0.011,
+      "metal": 0.008,
+      "wet": 0.948,
+      "carpet": 0.033
+     },
+     "top": "dripping water"
+    }
+   }
+  },
+  {
+   "file": "wet-run-2.ogg",
+   "also": [
+    "wet-run-2.m4a",
+    "wet-run-2.loop.json"
+   ],
+   "candidate": "wet-run-w8-run-009-s3454",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/running-on-concrete.flac",
+    "segment": "run-009"
+   },
+   "seed": 3454,
+   "params": {
+    "surface": "wet",
+    "mode": "run",
+    "variant": "w8",
+    "source": "run-009",
+    "seed": 3454,
+    "resample": 1.033,
+    "length_s": 1.016,
+    "drr_db": 18.0,
+    "droplets": "3–7"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -24.0,
+    "true_peak_db": -5.91,
+    "clipped": 0,
+    "length_s": 1.016,
+    "heel_s": 0.0178,
+    "clap": {
+     "target_p": 0.061,
+     "target_sim": 0.021,
+     "surf_p": {
+      "terrazzo": 0.006,
+      "metal": 0.002,
+      "wet": 0.989,
+      "carpet": 0.003
+     },
+     "top": "a hand clap"
+    }
+   }
+  },
+  {
+   "file": "wet-run-3.ogg",
+   "also": [
+    "wet-run-3.m4a",
+    "wet-run-3.loop.json"
+   ],
+   "candidate": "wet-run-w8-run-023-s3452",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/running-on-concrete.flac",
+    "segment": "run-023"
+   },
+   "seed": 3452,
+   "params": {
+    "surface": "wet",
+    "mode": "run",
+    "variant": "w8",
+    "source": "run-023",
+    "seed": 3452,
+    "resample": 1.01,
+    "length_s": 1.069,
+    "drr_db": 18.0,
+    "droplets": "3–7"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -24.0,
+    "true_peak_db": -2.58,
+    "clipped": 0,
+    "length_s": 1.069,
+    "heel_s": 0.024,
+    "clap": {
+     "target_p": 0.085,
+     "target_sim": 0.017,
+     "surf_p": {
+      "terrazzo": 0.032,
+      "metal": 0.009,
+      "wet": 0.938,
+      "carpet": 0.021
+     },
+     "top": "a hand clap"
+    }
+   }
+  },
+  {
+   "file": "wet-run-4.ogg",
+   "also": [
+    "wet-run-4.m4a",
+    "wet-run-4.loop.json"
+   ],
+   "candidate": "wet-run-w8-run-019-s3453",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/running-on-concrete.flac",
+    "segment": "run-019"
+   },
+   "seed": 3453,
+   "params": {
+    "surface": "wet",
+    "mode": "run",
+    "variant": "w8",
+    "source": "run-019",
+    "seed": 3453,
+    "resample": 0.969,
+    "length_s": 0.988,
+    "drr_db": 18.0,
+    "droplets": "3–7"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -24.0,
+    "true_peak_db": -3.81,
+    "clipped": 0,
+    "length_s": 0.988,
+    "heel_s": 0.0457,
+    "clap": {
+     "target_p": 0.01,
+     "target_sim": -0.047,
+     "surf_p": {
+      "terrazzo": 0.042,
+      "metal": 0.008,
+      "wet": 0.931,
+      "carpet": 0.018
+     },
+     "top": "a hand clap"
+    }
+   }
+  },
+  {
+   "file": "carpet-walk-1.ogg",
+   "also": [
+    "carpet-walk-1.m4a",
+    "carpet-walk-1.loop.json"
+   ],
+   "candidate": "carpet-walk-c4-walk-048-s4308",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-048"
+   },
+   "seed": 4308,
+   "params": {
+    "surface": "carpet",
+    "mode": "walk",
+    "variant": "c4",
+    "source": "walk-048",
+    "seed": 4308,
+    "resample": 0.973,
+    "length_s": 0.206,
+    "var": "c4"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -30.0,
+    "true_peak_db": -10.33,
+    "clipped": 0,
+    "length_s": 0.206,
+    "heel_s": 0.0297,
+    "clap": {
+     "target_p": 0.184,
+     "target_sim": 0.008,
+     "surf_p": {
+      "terrazzo": 0.013,
+      "metal": 0.004,
+      "wet": 0.016,
+      "carpet": 0.966
+     },
+     "top": "a pillow being hit"
+    }
+   }
+  },
+  {
+   "file": "carpet-walk-2.ogg",
+   "also": [
+    "carpet-walk-2.m4a",
+    "carpet-walk-2.loop.json"
+   ],
+   "candidate": "carpet-walk-c4-walk-038-s4313",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-038"
+   },
+   "seed": 4313,
+   "params": {
+    "surface": "carpet",
+    "mode": "walk",
+    "variant": "c4",
+    "source": "walk-038",
+    "seed": 4313,
+    "resample": 1.017,
+    "length_s": 0.417,
+    "var": "c4"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -30.0,
+    "true_peak_db": -10.32,
+    "clipped": 0,
+    "length_s": 0.417,
+    "heel_s": 0.0183,
+    "clap": {
+     "target_p": 0.176,
+     "target_sim": 0.021,
+     "surf_p": {
+      "terrazzo": 0.036,
+      "metal": 0.005,
+      "wet": 0.006,
+      "carpet": 0.952
+     },
+     "top": "a pillow being hit"
+    }
+   }
+  },
+  {
+   "file": "carpet-walk-3.ogg",
+   "also": [
+    "carpet-walk-3.m4a",
+    "carpet-walk-3.loop.json"
+   ],
+   "candidate": "carpet-walk-c4-walk-035-s4312",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-035"
+   },
+   "seed": 4312,
+   "params": {
+    "surface": "carpet",
+    "mode": "walk",
+    "variant": "c4",
+    "source": "walk-035",
+    "seed": 4312,
+    "resample": 0.991,
+    "length_s": 0.31,
+    "var": "c4"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -30.0,
+    "true_peak_db": -9.5,
+    "clipped": 0,
+    "length_s": 0.31,
+    "heel_s": 0.0105,
+    "clap": {
+     "target_p": 0.144,
+     "target_sim": -0.007,
+     "surf_p": {
+      "terrazzo": 0.01,
+      "metal": 0.001,
+      "wet": 0.009,
+      "carpet": 0.98
+     },
+     "top": "paper rustling"
+    }
+   }
+  },
+  {
+   "file": "carpet-walk-4.ogg",
+   "also": [
+    "carpet-walk-4.m4a",
+    "carpet-walk-4.loop.json"
+   ],
+   "candidate": "carpet-walk-c4-walk-066-s4301",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-066"
+   },
+   "seed": 4301,
+   "params": {
+    "surface": "carpet",
+    "mode": "walk",
+    "variant": "c4",
+    "source": "walk-066",
+    "seed": 4301,
+    "resample": 1.031,
+    "length_s": 0.411,
+    "var": "c4"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -30.0,
+    "true_peak_db": -8.46,
+    "clipped": 0,
+    "length_s": 0.411,
+    "heel_s": 0.0165,
+    "clap": {
+     "target_p": 0.132,
+     "target_sim": -0.018,
+     "surf_p": {
+      "terrazzo": 0.022,
+      "metal": 0.002,
+      "wet": 0.019,
+      "carpet": 0.957
+     },
+     "top": "a pillow being hit"
+    }
+   }
+  },
+  {
+   "file": "carpet-walk-5.ogg",
+   "also": [
+    "carpet-walk-5.m4a",
+    "carpet-walk-5.loop.json"
+   ],
+   "candidate": "carpet-walk-c4-walk-036-s4311",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-036"
+   },
+   "seed": 4311,
+   "params": {
+    "surface": "carpet",
+    "mode": "walk",
+    "variant": "c4",
+    "source": "walk-036",
+    "seed": 4311,
+    "resample": 0.976,
+    "length_s": 0.434,
+    "var": "c4"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -30.0,
+    "true_peak_db": -8.72,
+    "clipped": 0,
+    "length_s": 0.434,
+    "heel_s": 0.0056,
+    "clap": {
+     "target_p": 0.196,
+     "target_sim": -0.027,
+     "surf_p": {
+      "terrazzo": 0.06,
+      "metal": 0.009,
+      "wet": 0.041,
+      "carpet": 0.89
+     },
+     "top": "paper rustling"
+    }
+   }
+  },
+  {
+   "file": "carpet-walk-6.ogg",
+   "also": [
+    "carpet-walk-6.m4a",
+    "carpet-walk-6.loop.json"
+   ],
+   "candidate": "carpet-walk-c4-walk-025-s4314",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-025"
+   },
+   "seed": 4314,
+   "params": {
+    "surface": "carpet",
+    "mode": "walk",
+    "variant": "c4",
+    "source": "walk-025",
+    "seed": 4314,
+    "resample": 1.007,
+    "length_s": 0.421,
+    "var": "c4"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -30.0,
+    "true_peak_db": -9.65,
+    "clipped": 0,
+    "length_s": 0.421,
+    "heel_s": 0.0137,
+    "clap": {
+     "target_p": 0.182,
+     "target_sim": -0.023,
+     "surf_p": {
+      "terrazzo": 0.065,
+      "metal": 0.005,
+      "wet": 0.025,
+      "carpet": 0.904
+     },
+     "top": "footsteps on carpet"
+    }
+   }
+  },
+  {
+   "file": "carpet-walk-7.ogg",
+   "also": [
+    "carpet-walk-7.m4a",
+    "carpet-walk-7.loop.json"
+   ],
+   "candidate": "carpet-walk-c4-walk-022-s4310",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-022"
+   },
+   "seed": 4310,
+   "params": {
+    "surface": "carpet",
+    "mode": "walk",
+    "variant": "c4",
+    "source": "walk-022",
+    "seed": 4310,
+    "resample": 0.987,
+    "length_s": 0.43,
+    "var": "c4"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -30.0,
+    "true_peak_db": -10.2,
+    "clipped": 0,
+    "length_s": 0.43,
+    "heel_s": 0.0279,
+    "clap": {
+     "target_p": 0.11,
+     "target_sim": -0.025,
+     "surf_p": {
+      "terrazzo": 0.047,
+      "metal": 0.002,
+      "wet": 0.015,
+      "carpet": 0.936
+     },
+     "top": "a pillow being hit"
+    }
+   }
+  },
+  {
+   "file": "carpet-walk-8.ogg",
+   "also": [
+    "carpet-walk-8.m4a",
+    "carpet-walk-8.loop.json"
+   ],
+   "candidate": "carpet-walk-c4-walk-018-s4306",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/fast-steps-on-concrete.flac",
+    "segment": "walk-018"
+   },
+   "seed": 4306,
+   "params": {
+    "surface": "carpet",
+    "mode": "walk",
+    "variant": "c4",
+    "source": "walk-018",
+    "seed": 4306,
+    "resample": 0.968,
+    "length_s": 0.438,
+    "var": "c4"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -30.0,
+    "true_peak_db": -9.15,
+    "clipped": 0,
+    "length_s": 0.438,
+    "heel_s": 0.0246,
+    "clap": {
+     "target_p": 0.086,
+     "target_sim": -0.012,
+     "surf_p": {
+      "terrazzo": 0.063,
+      "metal": 0.004,
+      "wet": 0.068,
+      "carpet": 0.865
+     },
+     "top": "a pillow being hit"
+    }
+   }
+  },
+  {
+   "file": "carpet-run-1.ogg",
+   "also": [
+    "carpet-run-1.m4a",
+    "carpet-run-1.loop.json"
+   ],
+   "candidate": "carpet-run-c4-run-000-s4350",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/running-on-concrete.flac",
+    "segment": "run-000"
+   },
+   "seed": 4350,
+   "params": {
+    "surface": "carpet",
+    "mode": "run",
+    "variant": "c4",
+    "source": "run-000",
+    "seed": 4350,
+    "resample": 1.012,
+    "length_s": 0.32,
+    "var": "c4"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -5.0,
+    "clipped": 0,
+    "length_s": 0.32,
+    "heel_s": 0.0553,
+    "clap": {
+     "target_p": 0.206,
+     "target_sim": -0.019,
+     "surf_p": {
+      "terrazzo": 0.019,
+      "metal": 0.005,
+      "wet": 0.014,
+      "carpet": 0.962
+     },
+     "top": "paper rustling"
+    }
+   }
+  },
+  {
+   "file": "carpet-run-2.ogg",
+   "also": [
+    "carpet-run-2.m4a",
+    "carpet-run-2.loop.json"
+   ],
+   "candidate": "carpet-run-c4-run-019-s4353",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/running-on-concrete.flac",
+    "segment": "run-019"
+   },
+   "seed": 4353,
+   "params": {
+    "surface": "carpet",
+    "mode": "run",
+    "variant": "c4",
+    "source": "run-019",
+    "seed": 4353,
+    "resample": 1.014,
+    "length_s": 0.32,
+    "var": "c4"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -10.06,
+    "clipped": 0,
+    "length_s": 0.32,
+    "heel_s": 0.0935,
+    "clap": {
+     "target_p": 0.074,
+     "target_sim": -0.08,
+     "surf_p": {
+      "terrazzo": 0.039,
+      "metal": 0.005,
+      "wet": 0.002,
+      "carpet": 0.954
+     },
+     "top": "paper rustling"
+    }
+   }
+  },
+  {
+   "file": "carpet-run-3.ogg",
+   "also": [
+    "carpet-run-3.m4a",
+    "carpet-run-3.loop.json"
+   ],
+   "candidate": "carpet-run-c4-run-026-s4351",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/running-on-concrete.flac",
+    "segment": "run-026"
+   },
+   "seed": 4351,
+   "params": {
+    "surface": "carpet",
+    "mode": "run",
+    "variant": "c4",
+    "source": "run-026",
+    "seed": 4351,
+    "resample": 1.019,
+    "length_s": 0.318,
+    "var": "c4"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -8.93,
+    "clipped": 0,
+    "length_s": 0.318,
+    "heel_s": 0.0285,
+    "clap": {
+     "target_p": 0.044,
+     "target_sim": -0.102,
+     "surf_p": {
+      "terrazzo": 0.066,
+      "metal": 0.021,
+      "wet": 0.008,
+      "carpet": 0.905
+     },
+     "top": "paper rustling"
+    }
+   }
+  },
+  {
+   "file": "carpet-run-4.ogg",
+   "also": [
+    "carpet-run-4.m4a",
+    "carpet-run-4.loop.json"
+   ],
+   "candidate": "carpet-run-c4-run-015-s4355",
+   "source_step": {
+    "recording": "art-src/_reference/audio/horror-sfx/steps/running-on-concrete.flac",
+    "segment": "run-015"
+   },
+   "seed": 4355,
+   "params": {
+    "surface": "carpet",
+    "mode": "run",
+    "variant": "c4",
+    "source": "run-015",
+    "seed": 4355,
+    "resample": 0.997,
+    "length_s": 0.325,
+    "var": "c4"
+   },
+   "limiter_db": 0.0,
+   "measure": {
+    "lufs": -27.0,
+    "true_peak_db": -6.17,
+    "clipped": 0,
+    "length_s": 0.325,
+    "heel_s": 0.0305,
+    "clap": {
+     "target_p": 0.093,
+     "target_sim": 0.007,
+     "surf_p": {
+      "terrazzo": 0.196,
+      "metal": 0.017,
+      "wet": 0.012,
+      "carpet": 0.775
+     },
+     "top": "a pillow being hit"
+    }
+   }
+  }
+ ],
+ "rejected": {
+  "count": 782,
+  "variants": "磨石子 t0 落選走路 8＋跑步 6；金屬 m1–m15（r3 初版＋14 組）；濕地 r3 初版＋w1–w7；地毯 r3 初版、c0–c3、Kenney 版 c0K–c4K",
+  "note": "落選候選已刪；scores_r*.json 留著分數",
+  "fix23": "金屬 r1–r4 共 7＋5＋2 組配方、366 個候選；磨石子 q1–q10（寬頻全通 t1–t6／u1–u5／v1–v3、短 FIR w1–w6、500 Hz 削減 x1–x5、逐檔窄全通 q7、85 來源×DRR 掃描 q8、溫和全通 q9／q10）；落選已刪，分數 json 留在 tangcheng-fix23/steps/"
+ },
+ "issues": [
+  "未經人耳試聽（CLAP 與 PLR／群延遲是代理指標）。",
+  "金屬 metal-walk-5／8 的 CLAP 次要第一名是「a drum hit」（目標機率 0.40）：空心台階箱的鏗偏鼓；四地面互判仍 0.90／0.94。",
+  "磨石子改用 DRR 1 dB（殘響比例比第 16 項高 6–10 dB），中庭感更重、腳跟更遠一點；1 kHz 以下錯開 ≤26 ms。",
+  "全部來自同一雙皮鞋；沒有球鞋、高跟鞋版本。"
+ ],
+ "work_dir": "~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-steps/（第 23 項：~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-fix23/steps/）",
+ "fix23": {
+  "made": "2026-10-27",
+  "metal_surf_p": [
+   0.883,
+   0.96,
+   0.836,
+   0.811,
+   0.904,
+   0.673,
+   0.897,
+   0.943,
+   0.856,
+   0.67,
+   0.792,
+   0.852
+  ],
+  "terrazzo_lufs": {
+   "terrazzo-walk-1": -27.0,
+   "terrazzo-walk-2": -27.0,
+   "terrazzo-walk-3": -27.0,
+   "terrazzo-walk-4": -27.0,
+   "terrazzo-walk-5": -27.0,
+   "terrazzo-walk-6": -27.0,
+   "terrazzo-walk-7": -27.0,
+   "terrazzo-walk-8": -27.0,
+   "terrazzo-run-1": -24.0,
+   "terrazzo-run-2": -24.0,
+   "terrazzo-run-3": -24.08,
+   "terrazzo-run-4": -24.36
+  },
+  "terrazzo_limiter": "無（tame.py 不再套用；picked/ 已換成未限幅版）",
+  "note": "terrazzo-run-3／4 卡在真峰值 −1 dBTP，響度 −24.08／−24.36（目標 −24，差 0.1／0.4 dB，沒有用限幅補）。"
+ }
+}

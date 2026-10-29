@@ -1,0 +1,52 @@
+{
+ "title": "walk-lost trace: a plastic bag blown along the floor by a draft",
+ "key": "n/a (sfx)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 240000,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 2227,
+ "lufsIn": -30.58,
+ "gainDb": 1.91,
+ "lufs": -28.67,
+ "truePeakDb": -1.0,
+ "clipped": 0,
+ "files": {
+  "ogg": "trace-bag.ogg",
+  "m4a": "trace-bag.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 111081,
+   "decoded_samples": 240000,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 2227,
+   "err_db": -25.2
+  },
+  "m4a": {
+   "bytes": 123586,
+   "decoded_samples": 241600,
+   "tail_padding": 1600,
+   "offset_samples": 0,
+   "first_sound_sample": 2227,
+   "err_db": -24.8
+  }
+ },
+ "kind": "trace-oneshot",
+ "note": "痕跡單發（第 19 項）：塑膠袋被風吹鼓、翻一下、在地磚上滑一段。公有領域塑膠袋實錄切成 15–60 ms 顆粒按風包絡重排（去掉手抓的節奏），加一層淡淡的氣流。單聲道乾聲。"
+}

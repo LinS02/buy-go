@@ -1,0 +1,56 @@
+{
+ "title": "walk-lost rolling shutter A: pushed up by hand, spring roll + stop knock",
+ "key": "n/a (sfx)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 232603,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [
+  2.595
+ ],
+ "risers": [],
+ "firstSoundSample": 2414,
+ "lufsIn": -19.12,
+ "gainDb": 2.07,
+ "lufs": -17.05,
+ "truePeakDb": -1.0,
+ "clipped": 0,
+ "files": {
+  "ogg": "shutter-up-a.ogg",
+  "m4a": "shutter-up-a.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 107413,
+   "decoded_samples": 232603,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 2415,
+   "err_db": -31.2
+  },
+  "m4a": {
+   "bytes": 119974,
+   "decoded_samples": 234432,
+   "tail_padding": 1829,
+   "offset_samples": 0,
+   "first_sound_sample": 2414,
+   "err_db": -34.9
+  }
+ },
+ "kind": "shutter-up",
+ "endHit": 2.595,
+ "slats": 30,
+ "note": "hits／endHit＝門簾撞到底（放下）或頂到擋塊（拉起）的時間（秒），門的動畫在這一刻停；slats＝經過導軌的片數（片高 75 mm）。"
+}

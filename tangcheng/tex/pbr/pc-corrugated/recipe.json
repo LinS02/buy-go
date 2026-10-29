@@ -1,0 +1,39 @@
+{
+ "set": "pc-corrugated",
+ "title": "乳白透光浪板（騎樓採光罩，從底下看；波距 75 mm、每 0.6 m 一道搭接）",
+ "queue_item": "夜市白天照片細節第二輪（10-29）",
+ "generator": "純程式生成（CPU numpy：餘弦波浪板高度、週期白雜訊沿波方向拉長成波谷積灰與水漬、搭接縫雙層變暗）；沒有用生成模型",
+ "license": "本專案程式生成，可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色（10_夜市白天：華西街白天招牌拱廊、鐵捲門拱廊的拱形採光罩）；沒有當貼圖、沒有 img2img、沒有切圖、沒有複製進專案",
+ "people_rule": "無生成模型、無結構圖樣（只有平行波與沿波拉長的雜訊），不會讀成腳印手印",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "seamless": "全部 FFT 週期濾波，四方連續；波數、搭接數整除",
+ "tiling": "UV＝世界座標 / span_m；波沿貼圖 v 方向（u 方向起伏）",
+ "color": "albedo 近中性偏暖（平均 0.80），整體色調由材質 color 決定",
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_pc_corrugated.py（python3 gen_pc_corrugated.py <out> --seed 5）",
+ "seed": 5,
+ "span_m": 2.4,
+ "waves_per_tex": 32,
+ "sheets_per_tex": 4,
+ "albedo_mean": 0.8,
+ "luma_std": {
+  "std_full": 0.05513675981390029,
+  "std_x4": 0.05294849633515881,
+  "std_x16": 0.04842139849794412
+ },
+ "roughness_note": "roughness 貼圖平均 ≈0.6；材質 roughness 1 就是霧面塑膠",
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化）"
+ },
+ "files": {
+  "2k/albedo.jpg": 634178,
+  "2k/normal.jpg": 903886,
+  "2k/roughness.jpg": 1146138,
+  "2k/ao.jpg": 152753,
+  "1k/albedo.jpg": 160165,
+  "1k/normal.jpg": 235132,
+  "1k/roughness.jpg": 302379,
+  "1k/ao.jpg": 47025
+ }
+}

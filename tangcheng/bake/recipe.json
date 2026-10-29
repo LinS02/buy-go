@@ -1,0 +1,2116 @@
+{
+ "note": "《走失》T1-09／T1-09b／T1-09c 烘焙光照貼圖（tools/sandbox/tangcheng/bake/）。本專案自產，Blender Cycles 烘焙，無外部素材。pack＝打包版本（中庭 _tc-bake.ts PACK_VERSION、街區格 STREET_PACK＝參考格 refCell，key＝寬x天花高），不一致的瀏覽器端拒絕套用。",
+ "bakes": {
+  "atrium-144593ea": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind atrium --seed 7 --size 2048 --at 4,0,0",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind atrium --samples 1024 --sky 12 --sun 0.35"
+   ],
+   "pack": 2,
+   "fingerprint": "144593ea",
+   "kind": "atrium",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 4,
+     "y": 0,
+     "z": 0
+    },
+    "kind": "atrium",
+    "floorId": "B1",
+    "dims": {
+     "w": 24.64,
+     "h": 18,
+     "l": 24.64,
+     "bay": 7.95,
+     "shopscale": 1,
+     "sx": 24.64,
+     "sz": 24.64,
+     "axis": "z"
+    },
+    "template": "atrium@B1"
+   },
+   "layout": {
+    "size": 2048,
+    "density": 7.346869761641025,
+    "charts": 2991,
+    "meshes": 15,
+    "tris": 7907,
+    "area": 26141.9,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "sky_emission": 12.0,
+    "sky_kelvin": 5600.0,
+    "sun_w_m2": 1.6099999999999999,
+    "sun_angle_deg": 4,
+    "sun_dir_three": [
+     0.08,
+     -1,
+     -0.16
+    ],
+    "spots": 50,
+    "spot_k": 1.0,
+    "lamp_emission": 1.0
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 30.11178191827268,
+   "ao_size": 1024,
+   "stats": {
+    "covered": 0.41795802116394043,
+    "lum_p50": 0.09412538260221481,
+    "lum_p05": 0.0,
+    "lum_p99": 22.31758689880371,
+    "floor_lux_p50": 1607.6,
+    "floor_lux_p10": 56.6,
+    "floor_lux_p90": 37924.7
+   },
+   "seconds": 98.1
+  },
+  "corner-54x32": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind corner --seed 7 --size 512 --at 0,0,-2 --w 5.4 --h 3.2",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind corner --name corner-54x32 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "54x32",
+   "kind": "corner",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 0,
+     "y": 0,
+     "z": -2
+    },
+    "kind": "corner",
+    "floorId": "B1",
+    "dims": {
+     "w": 5.4,
+     "h": 3.2,
+     "l": 36.46,
+     "bay": 5.48,
+     "shopscale": 1,
+     "sx": 36.46,
+     "sz": 36.46,
+     "axis": "z"
+    },
+    "template": "corner@B1"
+   },
+   "layout": {
+    "size": 512,
+    "density": 15.803383316269345,
+    "charts": 64,
+    "meshes": 4,
+    "tris": 148,
+    "area": 455.7,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 24,
+    "downlight_w": 4.118174408152468,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.3136711675341708,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.47971343994140625,
+    "lum_p50": 0.08552118390798569,
+    "lum_p05": 0.0,
+    "lum_p99": 0.23267818987369537,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 155.4,
+    "floor_lux_p90": 462.1
+   },
+   "seconds": 11.9,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "corner-54x40": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind corner --seed 7 --size 512 --at 0,0,-2 --w 5.4 --h 4",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind corner --name corner-54x40 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "54x40",
+   "kind": "corner",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 0,
+     "y": 0,
+     "z": -2
+    },
+    "kind": "corner",
+    "floorId": "B1",
+    "dims": {
+     "w": 5.4,
+     "h": 4,
+     "l": 36.46,
+     "bay": 5.48,
+     "shopscale": 1,
+     "sx": 36.46,
+     "sz": 36.46,
+     "axis": "z"
+    },
+    "template": "corner@B1"
+   },
+   "layout": {
+    "size": 512,
+    "density": 15.78185981135562,
+    "charts": 64,
+    "meshes": 4,
+    "tris": 148,
+    "area": 522,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 24,
+    "downlight_w": 4.554422505604824,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.3251772421821032,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.5465087890625,
+    "lum_p50": 0.07949969172477722,
+    "lum_p05": 0.0,
+    "lum_p99": 0.23252591490745544,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 171.5,
+    "floor_lux_p90": 467.7
+   },
+   "seconds": 11.7,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "corner-70x32": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind corner --seed 7 --size 512 --at 0,0,-2 --w 7 --h 3.2",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind corner --name corner-70x32 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "70x32",
+   "kind": "corner",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 0,
+     "y": 0,
+     "z": -2
+    },
+    "kind": "corner",
+    "floorId": "B1",
+    "dims": {
+     "w": 7,
+     "h": 3.2,
+     "l": 38.06,
+     "bay": 5.48,
+     "shopscale": 1,
+     "sx": 38.06,
+     "sz": 38.06,
+     "axis": "z"
+    },
+    "template": "corner@B1"
+   },
+   "layout": {
+    "size": 512,
+    "density": 14.394184638934227,
+    "charts": 64,
+    "meshes": 4,
+    "tris": 144,
+    "area": 570.5,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 28,
+    "downlight_w": 4.82819873276342,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.25494616554474997,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.497894287109375,
+    "lum_p50": 0.09694916009902954,
+    "lum_p05": 0.0,
+    "lum_p99": 0.240216463804245,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 222.1,
+    "floor_lux_p90": 475.7
+   },
+   "seconds": 11.2,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "corner-70x40": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind corner --seed 7 --size 512 --at 0,0,-2 --w 7 --h 4",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind corner --name corner-70x40 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "70x40",
+   "kind": "corner",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 0,
+     "y": 0,
+     "z": -2
+    },
+    "kind": "corner",
+    "floorId": "B1",
+    "dims": {
+     "w": 7,
+     "h": 4,
+     "l": 38.06,
+     "bay": 5.48,
+     "shopscale": 1,
+     "sx": 38.06,
+     "sz": 38.06,
+     "axis": "z"
+    },
+    "template": "corner@B1"
+   },
+   "layout": {
+    "size": 512,
+    "density": 14.219609597596493,
+    "charts": 64,
+    "meshes": 4,
+    "tris": 144,
+    "area": 640.7,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 28,
+    "downlight_w": 5.128911674842765,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.24160621423170356,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.54132080078125,
+    "lum_p50": 0.08772344887256622,
+    "lum_p05": 0.0,
+    "lum_p99": 0.22915378212928772,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 232.7,
+    "floor_lux_p90": 463.7
+   },
+   "seconds": 11.7,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "corner-86x32": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind corner --seed 7 --size 512 --at 0,0,-2 --w 8.6 --h 3.2",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind corner --name corner-86x32 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "86x32",
+   "kind": "corner",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 0,
+     "y": 0,
+     "z": -2
+    },
+    "kind": "corner",
+    "floorId": "B1",
+    "dims": {
+     "w": 8.6,
+     "h": 3.2,
+     "l": 39.66,
+     "bay": 5.48,
+     "shopscale": 1,
+     "sx": 39.66,
+     "sz": 39.66,
+     "axis": "z"
+    },
+    "template": "corner@B1"
+   },
+   "layout": {
+    "size": 512,
+    "density": 13.12535036767087,
+    "charts": 52,
+    "meshes": 4,
+    "tris": 124,
+    "area": 675.2,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 41,
+    "downlight_w": 4.037983629256869,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.24194385069355775,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.4835052490234375,
+    "lum_p50": 0.10906185954809189,
+    "lum_p05": 0.0,
+    "lum_p99": 0.22805793583393097,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 269.6,
+    "floor_lux_p90": 466.6
+   },
+   "seconds": 11.6,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "corner-86x40": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind corner --seed 7 --size 512 --at 0,0,-2 --w 8.6 --h 4",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind corner --name corner-86x40 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "86x40",
+   "kind": "corner",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 0,
+     "y": 0,
+     "z": -2
+    },
+    "kind": "corner",
+    "floorId": "B1",
+    "dims": {
+     "w": 8.6,
+     "h": 4,
+     "l": 39.66,
+     "bay": 5.48,
+     "shopscale": 1,
+     "sx": 39.66,
+     "sz": 39.66,
+     "axis": "z"
+    },
+    "template": "corner@B1"
+   },
+   "layout": {
+    "size": 512,
+    "density": 13.034647011577807,
+    "charts": 52,
+    "meshes": 4,
+    "tris": 124,
+    "area": 744.4,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 41,
+    "downlight_w": 4.321483701365661,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.23928431262724967,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.5260162353515625,
+    "lum_p50": 0.10266795754432678,
+    "lum_p05": 0.0,
+    "lum_p99": 0.22718124091625214,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 280.9,
+    "floor_lux_p90": 471.8
+   },
+   "seconds": 11.8,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "corridor-54x32": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind corridor --seed 7 --size 512 --at 1,0,-1 --w 5.4 --h 3.2",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind corridor --name corridor-54x32 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "54x32",
+   "kind": "corridor",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 1,
+     "y": 0,
+     "z": -1
+    },
+    "kind": "corridor",
+    "floorId": "B1",
+    "dims": {
+     "w": 5.4,
+     "h": 3.2,
+     "l": 31.060000000000002,
+     "bay": 7.24,
+     "shopscale": 1,
+     "sx": 5.4,
+     "sz": 31.060000000000002,
+     "axis": "z"
+    },
+    "template": "corridor@B1"
+   },
+   "layout": {
+    "size": 512,
+    "density": 23.950618364740656,
+    "charts": 30,
+    "meshes": 4,
+    "tris": 68,
+    "area": 304,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 20,
+    "downlight_w": 4.165280851948177,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.3038415230612442,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.7061309814453125,
+    "lum_p50": 0.08950777351856232,
+    "lum_p05": 0.0,
+    "lum_p99": 0.2234698385000229,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 227.2,
+    "floor_lux_p90": 452.4
+   },
+   "seconds": 11.7,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "corridor-54x40": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind corridor --seed 7 --size 512 --at 1,0,-1 --w 5.4 --h 4",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind corridor --name corridor-54x40 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "54x40",
+   "kind": "corridor",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 1,
+     "y": 0,
+     "z": -1
+    },
+    "kind": "corridor",
+    "floorId": "B1",
+    "dims": {
+     "w": 5.4,
+     "h": 4,
+     "l": 31.060000000000002,
+     "bay": 7.24,
+     "shopscale": 1,
+     "sx": 5.4,
+     "sz": 31.060000000000002,
+     "axis": "z"
+    },
+    "template": "corridor@B1"
+   },
+   "layout": {
+    "size": 512,
+    "density": 24.166985517233517,
+    "charts": 30,
+    "meshes": 4,
+    "tris": 68,
+    "area": 347.3,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 20,
+    "downlight_w": 4.623178058680149,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.3169841117453397,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.8188323974609375,
+    "lum_p50": 0.08182242512702942,
+    "lum_p05": 0.0,
+    "lum_p99": 0.2200600504875183,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 242.2,
+    "floor_lux_p90": 456.0
+   },
+   "seconds": 11.6,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "corridor-70x32": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind corridor --seed 7 --size 512 --at 1,0,-1 --w 7 --h 3.2",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind corridor --name corridor-70x32 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "70x32",
+   "kind": "corridor",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 1,
+     "y": 0,
+     "z": -1
+    },
+    "kind": "corridor",
+    "floorId": "B1",
+    "dims": {
+     "w": 7,
+     "h": 3.2,
+     "l": 31.060000000000002,
+     "bay": 7.24,
+     "shopscale": 1,
+     "sx": 7,
+     "sz": 31.060000000000002,
+     "axis": "z"
+    },
+    "template": "corridor@B1"
+   },
+   "layout": {
+    "size": 512,
+    "density": 24.08705141841536,
+    "charts": 30,
+    "meshes": 4,
+    "tris": 68,
+    "area": 371.4,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 20,
+    "downlight_w": 4.879147744972033,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.2312769236417741,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.8667526245117188,
+    "lum_p50": 0.10064154863357544,
+    "lum_p05": 0.0,
+    "lum_p99": 0.22141803801059723,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 265.5,
+    "floor_lux_p90": 458.1
+   },
+   "seconds": 12.2,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "corridor-70x40": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind corridor --seed 7 --size 512 --at 1,0,-1 --w 7 --h 4",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind corridor --name corridor-70x40 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "70x40",
+   "kind": "corridor",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 1,
+     "y": 0,
+     "z": -1
+    },
+    "kind": "corridor",
+    "floorId": "B1",
+    "dims": {
+     "w": 7,
+     "h": 4,
+     "l": 31.060000000000002,
+     "bay": 7.24,
+     "shopscale": 1,
+     "sx": 7,
+     "sz": 31.060000000000002,
+     "axis": "z"
+    },
+    "template": "corridor@B1"
+   },
+   "layout": {
+    "size": 512,
+    "density": 22.11625764731993,
+    "charts": 30,
+    "meshes": 4,
+    "tris": 68,
+    "area": 414.7,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 20,
+    "downlight_w": 5.190773532205569,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.2149316474224645,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.8148345947265625,
+    "lum_p50": 0.08991430699825287,
+    "lum_p05": 0.0,
+    "lum_p99": 0.20827290415763855,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 277.1,
+    "floor_lux_p90": 440.4
+   },
+   "seconds": 11.9,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "corridor-86x32": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind corridor --seed 7 --size 512 --at 1,0,-1 --w 8.6 --h 3.2",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind corridor --name corridor-86x32 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "86x32",
+   "kind": "corridor",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 1,
+     "y": 0,
+     "z": -1
+    },
+    "kind": "corridor",
+    "floorId": "B1",
+    "dims": {
+     "w": 8.6,
+     "h": 3.2,
+     "l": 31.060000000000002,
+     "bay": 7.24,
+     "shopscale": 1,
+     "sx": 8.6,
+     "sz": 31.060000000000002,
+     "axis": "z"
+    },
+    "template": "corridor@B1"
+   },
+   "layout": {
+    "size": 512,
+    "density": 21.827838865368783,
+    "charts": 30,
+    "meshes": 4,
+    "tris": 68,
+    "area": 438.8,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 31,
+    "downlight_w": 3.875781043333648,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.24746646188561705,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.8356857299804688,
+    "lum_p50": 0.10991670936346054,
+    "lum_p05": 0.0,
+    "lum_p99": 0.22291965782642365,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 283.2,
+    "floor_lux_p90": 454.8
+   },
+   "seconds": 12.7,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "corridor-86x40": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind corridor --seed 7 --size 512 --at 1,0,-1 --w 8.6 --h 4",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind corridor --name corridor-86x40 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "86x40",
+   "kind": "corridor",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 1,
+     "y": 0,
+     "z": -1
+    },
+    "kind": "corridor",
+    "floorId": "B1",
+    "dims": {
+     "w": 8.6,
+     "h": 4,
+     "l": 31.060000000000002,
+     "bay": 7.24,
+     "shopscale": 1,
+     "sx": 8.6,
+     "sz": 31.060000000000002,
+     "axis": "z"
+    },
+    "template": "corridor@B1"
+   },
+   "layout": {
+    "size": 512,
+    "density": 20.824595546847608,
+    "charts": 30,
+    "meshes": 4,
+    "tris": 68,
+    "area": 482.1,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 31,
+    "downlight_w": 4.126778480094746,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.24975755644676914,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.8391799926757812,
+    "lum_p50": 0.10139626264572144,
+    "lum_p05": 0.0,
+    "lum_p99": 0.22008971869945526,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 288.3,
+    "floor_lux_p90": 459.6
+   },
+   "seconds": 11.8,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "cross-60x32": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind cross --seed 7 --size 1024 --at 0,0,0 --w 6 --h 3.2",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind cross --name cross-60x32 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "60x32",
+   "kind": "cross",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 0,
+     "y": 0,
+     "z": 0
+    },
+    "kind": "cross",
+    "floorId": "B1",
+    "dims": {
+     "w": 6,
+     "h": 3.2,
+     "l": 41.86,
+     "bay": 5.6,
+     "shopscale": 1,
+     "sx": 41.86,
+     "sz": 41.86,
+     "axis": "z"
+    },
+    "template": "cross@B1"
+   },
+   "layout": {
+    "size": 1024,
+    "density": 26.906515505473642,
+    "charts": 114,
+    "meshes": 4,
+    "tris": 244,
+    "area": 1023.5,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 49,
+    "downlight_w": 4.824830353101837,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.2593489070645609,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.7436466217041016,
+    "lum_p50": 0.11243724822998047,
+    "lum_p05": 0.0,
+    "lum_p99": 0.24105994403362274,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 319.8,
+    "floor_lux_p90": 496.4
+   },
+   "seconds": 26.0,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "cross-60x40": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind cross --seed 7 --size 1024 --at 0,0,0 --w 6 --h 4",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind cross --name cross-60x40 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "60x40",
+   "kind": "cross",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 0,
+     "y": 0,
+     "z": 0
+    },
+    "kind": "cross",
+    "floorId": "B1",
+    "dims": {
+     "w": 6,
+     "h": 4,
+     "l": 41.86,
+     "bay": 5.6,
+     "shopscale": 1,
+     "sx": 41.86,
+     "sz": 41.86,
+     "axis": "z"
+    },
+    "template": "cross@B1"
+   },
+   "layout": {
+    "size": 1024,
+    "density": 24.85313408996562,
+    "charts": 114,
+    "meshes": 4,
+    "tris": 244,
+    "area": 1129.3,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 49,
+    "downlight_w": 5.145276233301603,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.2574844610709265,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.7000064849853516,
+    "lum_p50": 0.10808084905147552,
+    "lum_p05": 0.0,
+    "lum_p99": 0.2321474850177765,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 324.0,
+    "floor_lux_p90": 484.8
+   },
+   "seconds": 24.5,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "cross-76x32": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind cross --seed 7 --size 1024 --at 0,0,0 --w 7.6 --h 3.2",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind cross --name cross-76x32 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "76x32",
+   "kind": "cross",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 0,
+     "y": 0,
+     "z": 0
+    },
+    "kind": "cross",
+    "floorId": "B1",
+    "dims": {
+     "w": 7.6,
+     "h": 3.2,
+     "l": 44.739999999999995,
+     "bay": 5.6,
+     "shopscale": 1,
+     "sx": 44.739999999999995,
+     "sz": 44.739999999999995,
+     "axis": "z"
+    },
+    "template": "cross@B1"
+   },
+   "layout": {
+    "size": 1024,
+    "density": 23.984195631377062,
+    "charts": 122,
+    "meshes": 4,
+    "tris": 260,
+    "area": 1288.2,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 56,
+    "downlight_w": 5.449159938861451,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.24927244967157933,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.7416706085205078,
+    "lum_p50": 0.11175030469894409,
+    "lum_p05": 0.002648068591952324,
+    "lum_p99": 0.23650524020195007,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 274.6,
+    "floor_lux_p90": 479.1
+   },
+   "seconds": 28.3,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "cross-76x40": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind cross --seed 7 --size 1024 --at 0,0,0 --w 7.6 --h 4",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind cross --name cross-76x40 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "76x40",
+   "kind": "cross",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 0,
+     "y": 0,
+     "z": 0
+    },
+    "kind": "cross",
+    "floorId": "B1",
+    "dims": {
+     "w": 7.6,
+     "h": 4,
+     "l": 44.739999999999995,
+     "bay": 5.6,
+     "shopscale": 1,
+     "sx": 44.739999999999995,
+     "sz": 44.739999999999995,
+     "axis": "z"
+    },
+    "template": "cross@B1"
+   },
+   "layout": {
+    "size": 1024,
+    "density": 23.728590334242277,
+    "charts": 122,
+    "meshes": 4,
+    "tris": 260,
+    "area": 1398.1,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 56,
+    "downlight_w": 5.81657282472395,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.23768670261086378,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.7884464263916016,
+    "lum_p50": 0.1063099056482315,
+    "lum_p05": 0.0,
+    "lum_p99": 0.22593533992767334,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 293.8,
+    "floor_lux_p90": 469.2
+   },
+   "seconds": 28.0,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "cross-92x32": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind cross --seed 7 --size 1024 --at 0,0,0 --w 9.2 --h 3.2",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind cross --name cross-92x32 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "92x32",
+   "kind": "cross",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 0,
+     "y": 0,
+     "z": 0
+    },
+    "kind": "cross",
+    "floorId": "B1",
+    "dims": {
+     "w": 9.2,
+     "h": 3.2,
+     "l": 47.620000000000005,
+     "bay": 5.6,
+     "shopscale": 1,
+     "sx": 47.620000000000005,
+     "sz": 47.620000000000005,
+     "axis": "z"
+    },
+    "template": "cross@B1"
+   },
+   "layout": {
+    "size": 1024,
+    "density": 23.333088001298805,
+    "charts": 122,
+    "meshes": 4,
+    "tris": 260,
+    "area": 1583.1,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 85,
+    "downlight_w": 4.473520773081695,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.251244776373191,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.8560276031494141,
+    "lum_p50": 0.12148420512676239,
+    "lum_p05": 0.010006658732891083,
+    "lum_p99": 0.2361040562391281,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 331.9,
+    "floor_lux_p90": 479.1
+   },
+   "seconds": 39.0,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "cross-92x40": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind cross --seed 7 --size 1024 --at 0,0,0 --w 9.2 --h 4",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind cross --name cross-92x40 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "92x40",
+   "kind": "cross",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 0,
+     "y": 0,
+     "z": 0
+    },
+    "kind": "cross",
+    "floorId": "B1",
+    "dims": {
+     "w": 9.2,
+     "h": 4,
+     "l": 47.620000000000005,
+     "bay": 5.6,
+     "shopscale": 1,
+     "sx": 47.620000000000005,
+     "sz": 47.620000000000005,
+     "axis": "z"
+    },
+    "template": "cross@B1"
+   },
+   "layout": {
+    "size": 1024,
+    "density": 21.865407687399074,
+    "charts": 122,
+    "meshes": 4,
+    "tris": 260,
+    "area": 1697,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 85,
+    "downlight_w": 4.638880655758187,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.24056418939207366,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.8098163604736328,
+    "lum_p50": 0.11569774150848389,
+    "lum_p05": 0.005668867379426956,
+    "lum_p99": 0.23011085391044617,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 324.8,
+    "floor_lux_p90": 472.4
+   },
+   "seconds": 33.7,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "shoprow-106x32": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind shoprow --seed 7 --size 512 --at -1,0,1 --w 10.6 --h 3.2",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind shoprow --name shoprow-106x32 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "106x32",
+   "kind": "shoprow",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": -1,
+     "y": 0,
+     "z": 1
+    },
+    "kind": "shoprow",
+    "floorId": "B1",
+    "dims": {
+     "w": 10.6,
+     "h": 3.2,
+     "l": 31.060000000000002,
+     "bay": 6.79,
+     "shopscale": 1,
+     "sx": 10.6,
+     "sz": 31.060000000000002,
+     "axis": "z"
+    },
+    "template": "shoprow@B1"
+   },
+   "layout": {
+    "size": 512,
+    "density": 19.397590560978443,
+    "charts": 30,
+    "meshes": 4,
+    "tris": 68,
+    "area": 523,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 31,
+    "downlight_w": 5.126309034475776,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.23851568041435317,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.7859649658203125,
+    "lum_p50": 0.07578935474157333,
+    "lum_p05": 0.0009560600155964494,
+    "lum_p99": 0.2276790738105774,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 288.1,
+    "floor_lux_p90": 465.7
+   },
+   "seconds": 11.9,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "shoprow-106x40": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind shoprow --seed 7 --size 512 --at -1,0,1 --w 10.6 --h 4",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind shoprow --name shoprow-106x40 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "106x40",
+   "kind": "shoprow",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": -1,
+     "y": 0,
+     "z": 1
+    },
+    "kind": "shoprow",
+    "floorId": "B1",
+    "dims": {
+     "w": 10.6,
+     "h": 4,
+     "l": 31.060000000000002,
+     "bay": 6.79,
+     "shopscale": 1,
+     "sx": 10.6,
+     "sz": 31.060000000000002,
+     "axis": "z"
+    },
+    "template": "shoprow@B1"
+   },
+   "layout": {
+    "size": 512,
+    "density": 18.641362385713755,
+    "charts": 30,
+    "meshes": 4,
+    "tris": 68,
+    "area": 566.3,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 31,
+    "downlight_w": 5.2492854614147895,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.22587229460803177,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.7859268188476562,
+    "lum_p50": 0.07057753205299377,
+    "lum_p05": 0.0012355309445410967,
+    "lum_p99": 0.21782726049423218,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 289.3,
+    "floor_lux_p90": 454.6
+   },
+   "seconds": 11.4,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "shoprow-74x32": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind shoprow --seed 7 --size 512 --at -1,0,1 --w 7.4 --h 3.2",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind shoprow --name shoprow-74x32 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "74x32",
+   "kind": "shoprow",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": -1,
+     "y": 0,
+     "z": 1
+    },
+    "kind": "shoprow",
+    "floorId": "B1",
+    "dims": {
+     "w": 7.4,
+     "h": 3.2,
+     "l": 31.060000000000002,
+     "bay": 6.79,
+     "shopscale": 1,
+     "sx": 7.4,
+     "sz": 31.060000000000002,
+     "axis": "z"
+    },
+    "template": "shoprow@B1"
+   },
+   "layout": {
+    "size": 512,
+    "density": 23.917376544846842,
+    "charts": 30,
+    "meshes": 4,
+    "tris": 68,
+    "area": 388.2,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 20,
+    "downlight_w": 5.6172774251532935,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.23967910447723123,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.8864364624023438,
+    "lum_p50": 0.06783096492290497,
+    "lum_p05": 0.0,
+    "lum_p99": 0.22994422912597656,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 264.9,
+    "floor_lux_p90": 473.1
+   },
+   "seconds": 11.5,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "shoprow-74x40": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind shoprow --seed 7 --size 512 --at -1,0,1 --w 7.4 --h 4",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind shoprow --name shoprow-74x40 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "74x40",
+   "kind": "shoprow",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": -1,
+     "y": 0,
+     "z": 1
+    },
+    "kind": "shoprow",
+    "floorId": "B1",
+    "dims": {
+     "w": 7.4,
+     "h": 4,
+     "l": 31.060000000000002,
+     "bay": 6.79,
+     "shopscale": 1,
+     "sx": 7.4,
+     "sz": 31.060000000000002,
+     "axis": "z"
+    },
+    "template": "shoprow@B1"
+   },
+   "layout": {
+    "size": 512,
+    "density": 21.355025192126433,
+    "charts": 30,
+    "meshes": 4,
+    "tris": 68,
+    "area": 431.5,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 20,
+    "downlight_w": 5.773164393416629,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.21393886454741196,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.7926025390625,
+    "lum_p50": 0.061183370649814606,
+    "lum_p05": 0.0,
+    "lum_p99": 0.2071588933467865,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 271.6,
+    "floor_lux_p90": 437.4
+   },
+   "seconds": 10.0,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "shoprow-90x32": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind shoprow --seed 7 --size 512 --at -1,0,1 --w 9 --h 3.2",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind shoprow --name shoprow-90x32 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "90x32",
+   "kind": "shoprow",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": -1,
+     "y": 0,
+     "z": 1
+    },
+    "kind": "shoprow",
+    "floorId": "B1",
+    "dims": {
+     "w": 9,
+     "h": 3.2,
+     "l": 31.060000000000002,
+     "bay": 6.79,
+     "shopscale": 1,
+     "sx": 9,
+     "sz": 31.060000000000002,
+     "axis": "z"
+    },
+    "template": "shoprow@B1"
+   },
+   "layout": {
+    "size": 512,
+    "density": 21.0991647934076,
+    "charts": 30,
+    "meshes": 4,
+    "tris": 68,
+    "area": 455.6,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 31,
+    "downlight_w": 4.445436442245109,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.2340317213846537,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.812042236328125,
+    "lum_p50": 0.07234928756952286,
+    "lum_p05": 0.0,
+    "lum_p99": 0.22275124490261078,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 284.9,
+    "floor_lux_p90": 454.3
+   },
+   "seconds": 12.0,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "tee-54x32": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind tee --seed 7 --size 1024 --at 0,0,1 --w 5.4 --h 3.2",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind tee --name tee-54x32 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "54x32",
+   "kind": "tee",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 0,
+     "y": 0,
+     "z": 1
+    },
+    "kind": "tee",
+    "floorId": "B1",
+    "dims": {
+     "w": 5.4,
+     "h": 3.2,
+     "l": 36.46,
+     "bay": 6.39,
+     "shopscale": 1,
+     "sx": 36.46,
+     "sz": 36.46,
+     "axis": "z"
+    },
+    "template": "tee@B1"
+   },
+   "layout": {
+    "size": 1024,
+    "density": 25.483544208881824,
+    "charts": 89,
+    "meshes": 4,
+    "tris": 212,
+    "area": 630.6,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 34,
+    "downlight_w": 4.0411644453858155,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.3193704455518448,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.4160127639770508,
+    "lum_p50": 0.08917637169361115,
+    "lum_p05": 0.0,
+    "lum_p99": 0.2365419566631317,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 177.6,
+    "floor_lux_p90": 464.7
+   },
+   "seconds": 19.0,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "tee-54x40": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind tee --seed 7 --size 1024 --at 0,0,1 --w 5.4 --h 4",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind tee --name tee-54x40 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "54x40",
+   "kind": "tee",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 0,
+     "y": 0,
+     "z": 1
+    },
+    "kind": "tee",
+    "floorId": "B1",
+    "dims": {
+     "w": 5.4,
+     "h": 4,
+     "l": 36.46,
+     "bay": 6.39,
+     "shopscale": 1,
+     "sx": 36.46,
+     "sz": 36.46,
+     "axis": "z"
+    },
+    "template": "tee@B1"
+   },
+   "layout": {
+    "size": 1024,
+    "density": 24.489892386456212,
+    "charts": 89,
+    "meshes": 4,
+    "tris": 212,
+    "area": 719.5,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 34,
+    "downlight_w": 4.443929718030862,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.33217776644576263,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.43825531005859375,
+    "lum_p50": 0.08221844583749771,
+    "lum_p05": 0.0,
+    "lum_p99": 0.2374510020017624,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 197.4,
+    "floor_lux_p90": 473.5
+   },
+   "seconds": 18.9,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "tee-70x32": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind tee --seed 7 --size 1024 --at 0,0,1 --w 7 --h 3.2",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind tee --name tee-70x32 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "70x32",
+   "kind": "tee",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 0,
+     "y": 0,
+     "z": 1
+    },
+    "kind": "tee",
+    "floorId": "B1",
+    "dims": {
+     "w": 7,
+     "h": 3.2,
+     "l": 38.06,
+     "bay": 6.39,
+     "shopscale": 1,
+     "sx": 38.06,
+     "sz": 38.06,
+     "axis": "z"
+    },
+    "template": "tee@B1"
+   },
+   "layout": {
+    "size": 1024,
+    "density": 23.973292898924882,
+    "charts": 89,
+    "meshes": 4,
+    "tris": 206,
+    "area": 770.2,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 40,
+    "downlight_w": 4.728096825504071,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.2578133837919805,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.44536685943603516,
+    "lum_p50": 0.10192321240901947,
+    "lum_p05": 0.0,
+    "lum_p99": 0.2458059936761856,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 254.7,
+    "floor_lux_p90": 480.5
+   },
+   "seconds": 19.3,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "tee-70x40": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind tee --seed 7 --size 1024 --at 0,0,1 --w 7 --h 4",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind tee --name tee-70x40 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "70x40",
+   "kind": "tee",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 0,
+     "y": 0,
+     "z": 1
+    },
+    "kind": "tee",
+    "floorId": "B1",
+    "dims": {
+     "w": 7,
+     "h": 4,
+     "l": 38.06,
+     "bay": 6.39,
+     "shopscale": 1,
+     "sx": 38.06,
+     "sz": 38.06,
+     "axis": "z"
+    },
+    "template": "tee@B1"
+   },
+   "layout": {
+    "size": 1024,
+    "density": 22.771065563833847,
+    "charts": 89,
+    "meshes": 4,
+    "tris": 206,
+    "area": 861.7,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 40,
+    "downlight_w": 5.008217504467195,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.24540253212410626,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.44966697692871094,
+    "lum_p50": 0.09212525933980942,
+    "lum_p05": 0.0,
+    "lum_p99": 0.23466888070106506,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 265.9,
+    "floor_lux_p90": 474.5
+   },
+   "seconds": 18.6,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "tee-86x32": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind tee --seed 7 --size 1024 --at 0,0,1 --w 8.6 --h 3.2",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind tee --name tee-86x32 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "86x32",
+   "kind": "tee",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 0,
+     "y": 0,
+     "z": 1
+    },
+    "kind": "tee",
+    "floorId": "B1",
+    "dims": {
+     "w": 8.6,
+     "h": 3.2,
+     "l": 39.66,
+     "bay": 6.39,
+     "shopscale": 1,
+     "sx": 39.66,
+     "sz": 39.66,
+     "axis": "z"
+    },
+    "template": "tee@B1"
+   },
+   "layout": {
+    "size": 1024,
+    "density": 22.37985772484328,
+    "charts": 64,
+    "meshes": 4,
+    "tris": 160,
+    "area": 907.7,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 57,
+    "downlight_w": 3.924866849799387,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.23881934201242813,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.45366859436035156,
+    "lum_p50": 0.11240233480930328,
+    "lum_p05": 0.0,
+    "lum_p99": 0.22511641681194305,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 285.3,
+    "floor_lux_p90": 460.7
+   },
+   "seconds": 22.5,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "tee-86x40": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind tee --seed 7 --size 1024 --at 0,0,1 --w 8.6 --h 4",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind tee --name tee-86x40 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "86x40",
+   "kind": "tee",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": 0,
+     "y": 0,
+     "z": 1
+    },
+    "kind": "tee",
+    "floorId": "B1",
+    "dims": {
+     "w": 8.6,
+     "h": 4,
+     "l": 39.66,
+     "bay": 6.39,
+     "shopscale": 1,
+     "sx": 39.66,
+     "sz": 39.66,
+     "axis": "z"
+    },
+    "template": "tee@B1"
+   },
+   "layout": {
+    "size": 1024,
+    "density": 21.065244419205726,
+    "charts": 64,
+    "meshes": 4,
+    "tris": 160,
+    "area": 992.1,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 57,
+    "downlight_w": 4.178327561034182,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.23706982604540355,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.44086551666259766,
+    "lum_p50": 0.1070176213979721,
+    "lum_p05": 0.0,
+    "lum_p99": 0.22264216840267181,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 295.5,
+    "floor_lux_p90": 464.5
+   },
+   "seconds": 21.6,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  },
+  "shoprow-90x40": {
+   "cmd": [
+    "npx tsx tools/sandbox/tangcheng/bake/export-cell.ts --kind shoprow --seed 7 --size 512 --at -1,0,1 --w 9 --h 4",
+    "blender -b --factory-startup -P tools/sandbox/tangcheng/bake/bake_cell.py -- --kind shoprow --name shoprow-90x40 --work /var/folders/21/vptvt2k51254099rzcmj_fkw0000gn/T//tc-bake9 --samples 1024 --lamp 6 --target-lux 420"
+   ],
+   "pack": 3,
+   "fingerprint": "90x40",
+   "kind": "shoprow",
+   "seed": 7,
+   "cell": {
+    "at": {
+     "x": -1,
+     "y": 0,
+     "z": 1
+    },
+    "kind": "shoprow",
+    "floorId": "B1",
+    "dims": {
+     "w": 9,
+     "h": 4,
+     "l": 31.060000000000002,
+     "bay": 6.79,
+     "shopscale": 1,
+     "sx": 9,
+     "sz": 31.060000000000002,
+     "axis": "z"
+    },
+    "template": "shoprow@B1"
+   },
+   "layout": {
+    "size": 512,
+    "density": 20.162920414542242,
+    "charts": 30,
+    "meshes": 4,
+    "tris": 68,
+    "area": 498.9,
+    "culled": 0
+   },
+   "blender": "5.2.2 LTS",
+   "engine": "CYCLES Metal GPU",
+   "samples": 1024,
+   "ao_samples": 256,
+   "ao_distance_m": 1.0,
+   "lights": {
+    "downlights": 31,
+    "downlight_w": 4.648184488691803,
+    "downlight_w_baked": 6.0,
+    "downlight_kelvin": 6000.0,
+    "downlight": "Blender AREA DISK Ø0.2 m、spread 120°、朝下",
+    "world": 0.08,
+    "target_lux": 420.0,
+    "not_baked": "亮店（shop-lit、投光）、招牌、燈籠＝即時光"
+   },
+   "encode": "png sRGB 8-bit，值＝Cycles 漫射光（DIRECT+INDIRECT，不含顏色）/ scale；three：lightMapIntensity＝π×scale；uv1 照 .uv.json 排法每片拉伸貼入",
+   "scale": 0.22833246378191288,
+   "ao_size": 512,
+   "stats": {
+    "covered": 0.8151702880859375,
+    "lum_p50": 0.06778448820114136,
+    "lum_p05": 0.0,
+    "lum_p99": 0.2189980149269104,
+    "floor_lux_p50": 420.0,
+    "floor_lux_p10": 287.4,
+    "floor_lux_p90": 457.7
+   },
+   "seconds": 12.2,
+   "post": "fill_hidden.py：參考格看不見（lm<12/255）的 texel 用同片最近有效值補，整片全黑的不動"
+  }
+ }
+}

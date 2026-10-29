@@ -1,0 +1,270 @@
+{
+ "tool": "comfyui (RealVisXL V5 txt2img) + Hunyuan3D-2 turbo img2glb.sh + blender finish.py",
+ "category": "prop",
+ "topic": "tangcheng-props3d",
+ "title": "《走失》細節道具層換生成模型（10-29）：販賣機、夾娃娃機、垃圾桶、長椅、連排椅、公共電話、分類回收桶、滅火器",
+ "model": "RealVisXL_V5.0_fp16（30 步 dpmpp_2m karras cfg 5，1024²）→ Hunyuan3D-2 2.0-turbo 形狀＋paint-v2-0-turbo 貼圖（4 萬面）→ Blender 5.2 減面、縮尺寸、貼圖 1024 JPEG q85",
+ "license": "RealVisXL V5：CreativeML Open RAIL++-M（產出不受授權方主張權利）；Hunyuan3D-2：Tencent Hunyuan 3D 2.0 Community License（台灣可商用；歐盟、英國、南韓不適用；月活 >1M 另簽）",
+ "negative": "text, letters, words, logo, brand, watermark, signature, label text, person, people, human, face, mannequin, hands, character, cartoon, mascot, multiple objects, collection, two objects, set, cropped, cut off, room, floor, wall, scene, background clutter, glossy reflections, blurry, lowres, deformed",
+ "reference_photos": "未使用參考照（純文字提示詞，不做 img2img）",
+ "orientation": "正面朝 glTF +Z、寬沿 x、原點底部中心、單位公尺；三面縮進 fit_box（等比，高度可多拉到 stretch_z_max 倍）；材質 metallic 0 roughness 0.7，遊戲端再依種類覆寫（GEN_FIT）",
+ "scripts": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-props3d/{gen.py,hy.sh,finish.py,fin_all.sh}",
+ "git": "4802f90a5",
+ "candidates": "每種 3 張（種子 11／23／37），每種挑 1；落選圖已刪",
+ "no_human": "已確認無人形、無臉、無品牌字",
+ "issues": "背面是 Hunyuan 猜的（販賣機背板像木紋、電話背面空白），都靠牆擺看不到；販賣機罐子是紅白無字罐；長椅、回收桶比佔地小（照圖比例）；大頭貼機寬 1.23 m 比佔地 1.7 m 窄（照圖比例），正面凹槽是相機與螢幕",
+ "files": {
+  "vending.glb": {
+   "source_image": "vending_s11.png",
+   "seed": 11,
+   "prompt": "a canned drink vending machine, red painted steel cabinet, big illuminated display window with rows of plain colorful aluminum cans, row of small square selection buttons, coin slot panel on the right, dispensing flap at the bottom, single object only, entire object fully visible and centered with margin, straight front view facing the camera, camera slightly above eye level, isolated on plain pure white background, soft even studio lighting, no shadow, realistic product photograph, matte surfaces, slightly worn and faded, 1990s Taiwan shopping mall, generic unbranded",
+   "stretch_z_max": 1.5,
+   "fit_box_m_WDH": [
+    1.0,
+    0.78,
+    1.84
+   ],
+   "tris_target": 12000,
+   "why": "正面整台入鏡、展示窗與按鈕讀得出；s37 是三台並排",
+   "result": {
+    "tris_in": 40000,
+    "tris": 11999,
+    "size_gltf_xyz": [
+     1.0,
+     1.84,
+     0.627
+    ],
+    "tex": [
+     1024,
+     1024
+    ],
+    "bytes": 433600
+   },
+   "sha1": "8ed07c19cf8a9e72d12c2f8d0170eaa9e08f807b"
+  },
+  "claw.glb": {
+   "source_image": "claw_s37.png",
+   "seed": 37,
+   "prompt": "a coin-operated claw crane prize machine, pastel pink painted cabinet, glass box on top filled with plain colorful balls and cubes, metal claw hanging inside, red joystick and button panel, illuminated header box on top, single object only, entire object fully visible and centered with margin, straight front view facing the camera, camera slightly above eye level, isolated on plain pure white background, soft even studio lighting, no shadow, realistic product photograph, matte surfaces, slightly worn and faded, 1990s Taiwan shopping mall, generic unbranded",
+   "stretch_z_max": 1.3,
+   "fit_box_m_WDH": [
+    0.86,
+    0.9,
+    1.9
+   ],
+   "tris_target": 12000,
+   "why": "正面最乾淨、獎品只有彩球；s11 掛著球、s23 斜角",
+   "result": {
+    "tris_in": 39999,
+    "tris": 12000,
+    "size_gltf_xyz": [
+     0.86,
+     1.9,
+     0.646
+    ],
+    "tex": [
+     1024,
+     1024
+    ],
+    "bytes": 510452
+   },
+   "sha1": "6bbfed20cf139bc10b377caa8443c14f5547d369"
+  },
+  "bin.glb": {
+   "source_image": "bin_s23.png",
+   "seed": 23,
+   "prompt": "a round brushed stainless steel public litter bin, cylindrical, with a dark round opening in the domed top, short dark base ring, single object only, entire object fully visible and centered with margin, straight front view facing the camera, camera slightly above eye level, isolated on plain pure white background, soft even studio lighting, no shadow, realistic product photograph, matte surfaces, slightly worn and faded, 1990s Taiwan shopping mall, generic unbranded",
+   "stretch_z_max": 1.0,
+   "fit_box_m_WDH": [
+    0.46,
+    0.46,
+    0.8
+   ],
+   "tris_target": 6000,
+   "why": "s11 轉 3D 後正面有黑色污斑；s23 圓頂側開口乾淨",
+   "result": {
+    "tris_in": 40000,
+    "tris": 5999,
+    "size_gltf_xyz": [
+     0.431,
+     0.8,
+     0.434
+    ],
+    "tex": [
+     1024,
+     1024
+    ],
+    "bytes": 219352
+   },
+   "sha1": "234d7bb5398e31852709e480a205b4725a8f24ff"
+  },
+  "bench.glb": {
+   "source_image": "bench_s23.png",
+   "seed": 23,
+   "prompt": "a backless public bench made of brushed stainless steel slats on simple steel legs, single object only, entire object fully visible and centered with margin, straight front view facing the camera, camera slightly above eye level, isolated on plain pure white background, soft even studio lighting, no shadow, realistic product photograph, matte surfaces, slightly worn and faded, 1990s Taiwan shopping mall, generic unbranded",
+   "stretch_z_max": 1.0,
+   "fit_box_m_WDH": [
+    1.7,
+    0.55,
+    0.46
+   ],
+   "tris_target": 6000,
+   "why": "正面、結構最單純；s11 太扁、s37 斜角",
+   "result": {
+    "tris_in": 40000,
+    "tris": 6000,
+    "size_gltf_xyz": [
+     0.985,
+     0.46,
+     0.315
+    ],
+    "tex": [
+     1024,
+     1024
+    ],
+    "bytes": 369892
+   },
+   "sha1": "c9a07335a269e22e961d8f597a8b9127084495ec"
+  },
+  "seats.glb": {
+   "source_image": "seats_s37.png",
+   "seed": 37,
+   "prompt": "a row of four molded orange plastic bucket seats joined on one steel beam with two steel legs, waiting area seating, single object only, entire object fully visible and centered with margin, straight front view facing the camera, camera slightly above eye level, isolated on plain pure white background, soft even studio lighting, no shadow, realistic product photograph, matte surfaces, slightly worn and faded, 1990s Taiwan shopping mall, generic unbranded",
+   "stretch_z_max": 1.0,
+   "fit_box_m_WDH": [
+    1.9,
+    0.6,
+    0.84
+   ],
+   "tris_target": 10000,
+   "why": "三座連排正面；s11 多了頭上的架子、s23 是高腳椅",
+   "result": {
+    "tris_in": 40000,
+    "tris": 9999,
+    "size_gltf_xyz": [
+     1.385,
+     0.84,
+     0.529
+    ],
+    "tex": [
+     1024,
+     1024
+    ],
+    "bytes": 512600
+   },
+   "sha1": "5740f0fe315fd4fd47d9ab881da962be32a778c9"
+  },
+  "phone.glb": {
+   "source_image": "phone_s23.png",
+   "seed": 23,
+   "prompt": "a green public card telephone mounted on a short brushed steel back panel, handset hanging on the left side, metal keypad, small LCD screen, card slot, single object only, entire object fully visible and centered with margin, straight front view facing the camera, camera slightly above eye level, isolated on plain pure white background, soft even studio lighting, no shadow, realistic product photograph, matte surfaces, slightly worn and faded, 1990s Taiwan shopping mall, generic unbranded",
+   "stretch_z_max": 1.0,
+   "fit_box_m_WDH": [
+    0.5,
+    0.36,
+    0.95
+   ],
+   "tris_target": 8000,
+   "why": "正面、無字；s37 有假字「BLBT」、s11 畫面有字",
+   "result": {
+    "tris_in": 40000,
+    "tris": 7999,
+    "size_gltf_xyz": [
+     0.465,
+     0.95,
+     0.297
+    ],
+    "tex": [
+     1024,
+     1024
+    ],
+    "bytes": 401428
+   },
+   "sha1": "4962c3557f05fb530c82c329737153a7b6bdf517"
+  },
+  "sortbins.glb": {
+   "source_image": "sortbins_s11.png",
+   "seed": 11,
+   "prompt": "three rectangular recycling bins side by side, green, blue and gray painted steel, each with a slot opening on top, single object only, entire object fully visible and centered with margin, straight front view facing the camera, camera slightly above eye level, isolated on plain pure white background, soft even studio lighting, no shadow, realistic product photograph, matte surfaces, slightly worn and faded, 1990s Taiwan shopping mall, generic unbranded",
+   "stretch_z_max": 1.0,
+   "fit_box_m_WDH": [
+    1.1,
+    0.46,
+    0.88
+   ],
+   "tris_target": 8000,
+   "why": "三桶並排正面；s23 前後疊、s37 四桶帶輪",
+   "result": {
+    "tris_in": 40000,
+    "tris": 7999,
+    "size_gltf_xyz": [
+     0.85,
+     0.626,
+     0.46
+    ],
+    "tex": [
+     1024,
+     1024
+    ],
+    "bytes": 338084
+   },
+   "sha1": "75bc00a89a35bf89cb880e5f977189e2fa464f74"
+  },
+  "extinguisher.glb": {
+   "source_image": "extinguisher_s37.png",
+   "seed": 37,
+   "prompt": "a red fire extinguisher cylinder with black hose and steel handle, standing upright, single object only, entire object fully visible and centered with margin, straight front view facing the camera, camera slightly above eye level, isolated on plain pure white background, soft even studio lighting, no shadow, realistic product photograph, matte surfaces, slightly worn and faded, 1990s Taiwan shopping mall, generic unbranded",
+   "stretch_z_max": 1.0,
+   "fit_box_m_WDH": [
+    0.32,
+    0.26,
+    0.62
+   ],
+   "tris_target": 5000,
+   "why": "正面直立、水管貼身；其餘水管拖地",
+   "result": {
+    "tris_in": 40000,
+    "tris": 5000,
+    "size_gltf_xyz": [
+     0.242,
+     0.62,
+     0.16
+    ],
+    "tex": [
+     1024,
+     1024
+    ],
+    "bytes": 261492
+   },
+   "sha1": "14bb76b4e7970e7ddcf3c29739fc2e7d6fc0342f"
+  },
+  "photo.glb": {
+   "source_image": "photo_s11.png",
+   "seed": 11,
+   "prompt": "a photo sticker booth kiosk, boxy cabinet painted pastel pink and white, decorated only with plain stars, hearts and stripes pattern, pink fabric curtain hanging over the side entrance, small screen and round buttons on the outside panel, illuminated empty header box on top, no pictures, single object only, entire object fully visible and centered with margin, straight front view facing the camera, camera slightly above eye level, isolated on plain pure white background, soft even studio lighting, no shadow, realistic product photograph, matte surfaces, slightly worn and faded, 1990s Taiwan shopping mall, generic unbranded",
+   "stretch_z_max": 1.3,
+   "fit_box_m_WDH": [
+    1.7,
+    1.1,
+    2.3
+   ],
+   "tris_target": 12000,
+   "why": "方正櫃體、側邊布簾、頂上燈箱，最像大頭貼機；s23 圓筒、s37 帳篷",
+   "result": {
+    "tris_in": 40000,
+    "tris": 11999,
+    "size_gltf_xyz": [
+     1.225,
+     2.3,
+     1.1
+    ],
+    "tex": [
+     1024,
+     1024
+    ],
+    "bytes": 434928
+   },
+   "sha1": "54bba33da132ffaa6d0ca8db2b9eaa639e4e2b56"
+  }
+ }
+}

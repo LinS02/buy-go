@@ -1,0 +1,65 @@
+{
+ "title": "walk-lost mall BGM A 1996 opening (mall-1996-b)",
+ "key": "C major",
+ "tempo": 90.63,
+ "meter": "4/4",
+ "barSec": 2.64812975835816,
+ "sr": 48000,
+ "samples": 6356520,
+ "oneshot": false,
+ "loopStart": 0.0,
+ "loopEnd": 132.4275,
+ "loopStartSample": 0,
+ "loopEndSample": 6356520,
+ "introBars": 0.0,
+ "loopBars": 50.008,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 0,
+ "lufsIn": -16.23,
+ "gainDb": -1.77,
+ "lufs": -18.0,
+ "truePeakDb": -2.03,
+ "clipped": 0,
+ "files": {
+  "ogg": "mall-1996-b.ogg",
+  "m4a": "mall-1996-b.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 2942060,
+   "decoded_samples": 6356520,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -22.8,
+   "main_loop": {
+    "jump_ratio": 0.33,
+    "level_before_db": -19.6,
+    "level_after_db": -20.1
+   }
+  },
+  "m4a": {
+   "bytes": 3205625,
+   "decoded_samples": 6357952,
+   "tail_padding": 1432,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -25.1,
+   "main_loop": {
+    "jump_ratio": 0.18,
+    "level_before_db": -19.7,
+    "level_after_db": -20.1
+   }
+  },
+  "source_main_loop": {
+   "jump_ratio": 0.22,
+   "level_before_db": -19.6,
+   "level_after_db": -20.1
+  }
+ }
+}

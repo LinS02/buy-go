@@ -1,0 +1,52 @@
+{
+ "title": "walk-lost trace: AC draft knocks clothes hangers together on a rail",
+ "key": "n/a (sfx)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 216000,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 5886,
+ "lufsIn": -29.03,
+ "gainDb": 2.06,
+ "lufs": -26.97,
+ "truePeakDb": -1.0,
+ "clipped": 0,
+ "files": {
+  "ogg": "trace-hangers.ogg",
+  "m4a": "trace-hangers.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 89936,
+   "decoded_samples": 216000,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 5784,
+   "err_db": -36.7
+  },
+  "m4a": {
+   "bytes": 111202,
+   "decoded_samples": 217024,
+   "tail_padding": 1024,
+   "offset_samples": 0,
+   "first_sound_sample": 5886,
+   "err_db": -33.4
+  }
+ },
+ "kind": "trace-oneshot",
+ "note": "痕跡單發（第 19 項）：冷氣出風一陣，橫桿上的鐵絲／塑膠衣架被吹得互碰 2–4 下連碰、越來越疏。單聲道乾聲，掛在服飾店衣架位置走 PannerNode；殘響交給場景。沒有人：碰撞時間跟著氣流包絡，沒有手拿的規律。"
+}

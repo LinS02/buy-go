@@ -1,0 +1,21 @@
+{
+ "model": "RealVisXL_V5.0_fp16.safetensors",
+ "mode": "txt2img",
+ "prompt": "a graffiti throw-up, two big bubble letters, pink fill and black outline, drips at the bottom, on a plain smooth flat white painted concrete wall, straight-on frontal photograph, evenly lit, orthographic, wall fills the frame, empty white wall around it, high detail",
+ "negative": "person, people, human, man, woman, child, face, eyes, eye, skull, hand, hands, handprint, fingers, silhouette, figure, body, character, cartoon, mascot, anime, animal, creature, monster, portrait, logo, brand, watermark, frame, border, perspective, floor, ceiling, corner, brick, tiles, window, door, colorful background, dark background, shadow, vignette, blurry",
+ "seed": 1203,
+ "size": [
+  1216,
+  832
+ ],
+ "steps": 22,
+ "cfg": 5.5,
+ "sampler": "dpmpp_2m karras",
+ "post": "key_white 差異去背＋裁切（gen_wallart.py process）",
+ "kind": "throw",
+ "size_m": [
+  1.8,
+  0.891
+ ],
+ "license": "原創（本專案；本地生成）"
+}

@@ -1,0 +1,98 @@
+{
+ "generator": "CPU numpy 程式生成（scipy cKDTree 週期 Voronoi、FFT 週期濾波），無生成模型、無 GPU",
+ "license": "本專案程式生成，CPU numpy，無生成模型、無參考照進貼圖；可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色，沒有當貼圖、沒有 img2img、沒有切圖、沒有複製進專案（照片不進 repo、不進 build）",
+ "spec": "doc/design/taiwan-liminal-catalog.md（01 老舊地下街、03 地下道與月台：尺寸、顏色以它為準）",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "所有濾波週期邊界（FFT／np.roll／mod 座標），四方連續；驗證見 verify_images",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "jpg sRGB 4:2:0",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有鐵捲門有）",
+  "mask": "見各組 mask_notes（jpg 4:4:4 或 png）",
+  "shade": "jpg 線性灰階，值×2＝亮度倍率（只有磨石子有）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化，mask.png 用最近鄰）"
+ },
+ "set": "tactile-guide",
+ "title": "黃色導盲磚（線型引導，30 cm）",
+ "queue_item": "T1-16",
+ "candidate": "tactile-guide-s11",
+ "seed": 11,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_underpass.py（指令：python gen_underpass.py tactile-guide 11 <out>）",
+ "span_m": 1.2,
+ "why_picked": "兩版都乾淨；s11 每塊褪色差較小，1.2 m 一重複時比 s22 不容易看出格子。",
+ "rejected": [
+  "tactile-guide-s22"
+ ],
+ "photos_referenced": [
+  "~/Desktop/game/閾限空間台灣/台灣閾限大集合/03_地下道與月台/新竹站白磚地下道日光燈__commons.wikimedia.org.jpg",
+  "~/Desktop/game/閾限空間台灣/台灣閾限大集合/03_地下道與月台/台北地下道入口磚階__commons.wikimedia.org.jpg"
+ ],
+ "recolor_formula": "linear：sh＝mask.R×2，g＝mask.G，b＝mask.B；albedo＝mix(mix(base, colors.G, g), colors.B, b) × sh。albedo.jpg 已用預設色票烘好；換底色只改 base，髒污程度改 g、b 的倍率。",
+ "mask_notes": "mask.jpg（4:4:4）：R＝shade×0.5、G／B＝見 params.colors_srgb 的 G_／B_ 欄；凸條沿 v（貼圖垂直）＝行走方向；走道沿 x 時 UV 轉 90°。mask.jpg：R＝每塊亮度、G＝褪色、B＝污垢（凸條之間、縫、崩角）。點狀警示磚（樓梯頂、岔路口）用同一支腳本 layout=dots 出（組名 tactile-warn）。",
+ "files": {
+  "2k/albedo.jpg": 206891,
+  "2k/normal.jpg": 1268964,
+  "2k/roughness.jpg": 156667,
+  "2k/ao.jpg": 591340,
+  "2k/mask.jpg": 304224,
+  "1k/albedo.jpg": 88406,
+  "1k/normal.jpg": 195749,
+  "1k/roughness.jpg": 65049,
+  "1k/ao.jpg": 103111,
+  "1k/mask.jpg": 119599
+ },
+ "params": {
+  "span_m": 1.2,
+  "tile_m": 0.3,
+  "tiles_per_tex": 4,
+  "layout": "bars",
+  "bar_mm": {
+   "length": 270,
+   "top_w": 17,
+   "base_w": 27,
+   "height": 5,
+   "pitch": 75
+  },
+  "dot_mm": null,
+  "colors_srgb": {
+   "base": [
+    232,
+    192,
+    48
+   ],
+   "G_faded": [
+    206,
+    182,
+    104
+   ],
+   "B_dirt": [
+    96,
+    84,
+    58
+   ],
+   "grout": [
+    88,
+    84,
+    76
+   ]
+  },
+  "notes": "凸條沿 v（貼圖垂直）＝行走方向；走道沿 x 時 UV 轉 90°。mask.jpg：R＝每塊亮度、G＝褪色、B＝污垢（凸條之間、縫、崩角）。點狀警示磚（樓梯頂、岔路口）用同一支腳本 layout=dots 出（組名 tactile-warn）。",
+  "set": "tactile-guide",
+  "size": 2048
+ },
+ "verify_images": [
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/t116/c1.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/t116/c2b.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/t116/c3.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/t116/c4.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/t116/tactile-guide-s11-24m.jpg"
+ ],
+ "footprint_check": "24 m×24 m 俯視拼貼看過：髒污只沿灰縫／磚縫、往下流的水痕或整張低頻，沒有 10–40 cm 團塊，不成排、不像腳印。"
+}

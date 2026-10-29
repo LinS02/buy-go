@@ -1,0 +1,63 @@
+{
+ "title": "walk-lost PA chime B (do-sol-fa-la, vibraphone bar), dry",
+ "key": "F major",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 191040,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [
+  0.0,
+  0.46,
+  0.92,
+  1.38
+ ],
+ "risers": [],
+ "firstSoundSample": 8,
+ "lufsIn": -15.94,
+ "gainDb": -0.06,
+ "lufs": -16.0,
+ "truePeakDb": -3.15,
+ "clipped": 0,
+ "files": {
+  "ogg": "pa-chime-b.ogg",
+  "m4a": "pa-chime-b.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 106173,
+   "decoded_samples": 191040,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 8,
+   "err_db": -44.8
+  },
+  "m4a": {
+   "bytes": 98818,
+   "decoded_samples": 192448,
+   "tail_padding": 1408,
+   "offset_samples": 0,
+   "first_sound_sample": 8,
+   "err_db": -61.6
+  }
+ },
+ "kind": "pa-chime",
+ "notes_hz": [
+  698.46,
+  1046.5,
+  932.33,
+  1174.66
+ ],
+ "note": "hits＝四個音的起點（秒）。"
+}

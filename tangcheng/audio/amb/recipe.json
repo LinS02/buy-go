@@ -1,0 +1,468 @@
+{
+ "category": "sfx",
+ "theme": "tangcheng-amb",
+ "title": "《走失》空間底噪四種（中庭、走道、B2、頂樓風）",
+ "queue": "doc/design/tangcheng-asset-queue.md #17",
+ "made": "2026-10-27",
+ "brief": "空間底噪：中庭大空間（空調加上很遠的反射）、一般走道、B2 黑暗（低頻 drone，冰箱壓縮機那種）、頂樓或停車場的風。各 30 s 以上、無縫",
+ "reference_search": "art-src/_reference/audio/horror-sfx/misc/underground-parking-ambience.ogg（Joseph SARDIN，CC0）是真錄音，但有輪胎尖聲、偶有人車活動，不符合「沒有人的空間」，只拿來當 CLAP 對照組，沒有混進輸出；其他參考庫沒有中庭、走道、頂樓風的錄音 → 全部程式合成",
+ "tool": "numpy／scipy 程式合成（~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-amb/synth_amb.py）",
+ "model": "無生成模型（挑選時用 CLAP laion/larger_clap_general 打分，只評分、不產生聲音）",
+ "license": "本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型、無人聲；可商用",
+ "format": "48 kHz 立體聲（整個空間的擴散聲場，不掛單點、不走 PannerNode；低頻左右相干，單聲道混音只掉 0.2–1.8 dB、沒有抵消），40 s，Opus .ogg＋AAC .m4a＋.loop.json（tools/audio/bgm_export.py）。中庭、走道、B2 −26 LUFS，風 −24.3（真峰值限制）。相對音量由場景設定；無人聲、無語音",
+ "loop_method": "循環 40 s：週期成分都是 0.025 Hz 的整數倍；雜訊在 FFT 域生成（天生循環）；殘響是合成八度帶指數衰減 IR 做循環摺積（尾巴繞回檔頭）；離散事件（天幕嗒聲、冷媒咕嚕、帆布）放在環狀時間軸；風切哨音的相位積分調整成整數圈 → 不交叉淡，整檔即循環。驗法 seamjump.py：接點相鄰樣本差在全段的百分位，選上的 1–90（＝一般位置），對照組少切 777–9999 樣本再接全部 98.9–100；bgm_export 轉檔後 ogg／m4a 接點跳差比 0.25–0.81（<1）",
+ "pick_method": "候選 124 個（中庭 a1–a4、走道 c1–c4、B2 b1–b11、風 w1–w17，各 3–6 個種子；五輪）。CLAP 零樣本：每類目標描述＋容易混淆的描述（下雨、海浪、瀑布、白雜訊、飛機艙、吹風機、吉他音箱嗡聲……，另加「一群人說話」「有人在講話」驗沒有人聲）。對照組：白、粉紅雜訊對四類機率都 ≈0；120 Hz 正弦對 B2 0.993（CLAP 把純嗡聲當冰箱，所以 B2 改看相似度差）；真實地下停車場錄音被判中庭 0.999、B2 0.007。再看手機可聽度（300 Hz 以上能量比）、單聲道相容、頻譜圖。四類各挑 1 個。選上的四個對人聲描述的相似度都 ≤0.005（≈0，見 measure.clap.voice_sim）",
+ "listen_checklist": [
+  "四個都循環 3 圈以上，聽不出接點；中庭的天幕「嗒」聲 40 s 內 4 下，聽不聽得出在重複",
+  "中庭↔走道：已量化（RT60 4.3 vs 0.6 s、第一個反射 94 vs 5 ms、重心 202 vs 311 Hz、CLAP 大空間 0.90 vs 0.00）",
+  "B2：手機 400 Hz 高通後只掉 5.8 dB（舊 13.8）、300 Hz 以上 17%；兩台壓縮機 0.3 Hz 慢拍保留",
+  "頂樓風：陣風之間有很安靜的空檔，會不會像斷掉；哨音會不會刺耳"
+ ],
+ "rejected": {
+  "note": "落選 120 個候選 wav 已刪；配方都在 synth_amb.py（AT／CO／BB／BB2／WI／WI2 表），分數在 scores_r1–r5.json，可重出",
+  "groups": {
+   "atrium": "a1／a2／a4 同時被判成走道（機率 0.58–1.0），手機可聽度較低",
+   "corridor": "c1、c2、c4 第一名常是瀑布（出風口太亮）",
+   "b2": "b1–b8 被判成吉他音箱嗡聲；b10 太悶；b11 加冷凝器與咕嚕後音箱分數反超",
+   "wind": "w1–w4 海浪／瀑布；w5–w12、w14、w16 吹風機；w13、w15 也可用（≥0.90），w17 最穩",
+   "fix23": "中庭 A2–A4、走道 C1–C4／C6–C9、B2 m0–m4／m6–m8（理由見各 item why_picked）；舊版三個 40 s 檔留在本地庫 tangcheng-amb/*.v1.ogg"
+  }
+ },
+ "items": [
+  {
+   "file": "amb-atrium.ogg",
+   "also": [
+    "amb-atrium.m4a",
+    "amb-atrium.loop.json"
+   ],
+   "space": "中庭大空間",
+   "candidate": "atrium-A1-s12",
+   "tool": "synth2.py（numpy／scipy，延伸 synth_amb.py）",
+   "license": "本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型、無人聲；可商用",
+   "seed": 12,
+   "recipe": "A1",
+   "params": {
+    "kind": "atrium",
+    "rt_lo": 6.5,
+    "rt_hi": 2.2,
+    "pre": 60,
+    "er": [
+     [
+      95,
+      4
+     ],
+     [
+      140,
+      2
+     ],
+     [
+      185,
+      0
+     ],
+     [
+      230,
+      -2
+     ]
+    ],
+    "air_hi": 1800,
+    "air_tilt": -3,
+    "direct_air": -20,
+    "fan": -18,
+    "rumble": -18,
+    "lamps": -30,
+    "ticks": -12,
+    "ramp": 180
+   },
+   "measure": {
+    "lufs": -26.0,
+    "true_peak_db": -10.12,
+    "clipped": 0,
+    "length_s": 40.0,
+    "channels": 2,
+    "above300": 0.096,
+    "centroid_hz": 202.0,
+    "lr_corr": 0.598,
+    "clap": {
+     "target_p": 0.944,
+     "target_sim": 0.279,
+     "top": [
+      "air conditioning hum echoing in a huge empty indoor hall",
+      "the ambience of an empty large building interior"
+     ],
+     "voice_sim": {
+      "a crowd of people talking": -0.049,
+      "a person speaking": -0.029
+     },
+     "size": {
+      "a huge reverberant indoor space": 0.901,
+      "a small narrow hallway": 0.099
+     }
+    },
+    "seam": {
+     "seam_jump_pct": 16.9,
+     "control_median_pct": 99.5,
+     "control_min_pct": 91.8
+    },
+    "codec_loop": {
+     "ogg": {
+      "jump_ratio": 0.04,
+      "level_before_db": -29.0,
+      "level_after_db": -29.7
+     },
+     "m4a": {
+      "jump_ratio": 0.05,
+      "level_before_db": -29.0,
+      "level_after_db": -29.7
+     }
+    },
+    "rolloff85_hz": 201.6,
+    "phone_drop_db": 6.3,
+    "ir": {
+     "RT60_mid": 4.26,
+     "EDT_mid": 4.62,
+     "T30_125": 6.05,
+     "T30_1000": 3.91,
+     "T30_4000": 2.87,
+     "C50_db": -60.0,
+     "C80_db": -44.4,
+     "onset_ms": 93.6
+    }
+   },
+   "why_picked": "長 IR（預延遲 60 ms、密度爬升 180 ms）＋95–230 ms 四個稀疏大面反射，空氣層壓到 1.8 kHz 以下、斜率 −3 dB/oct；CLAP 中庭 0.94、『巨大殘響空間』0.90。A2 殘響更長但目標掉到 0.003（判成『空的大樓內部』）；A3/A4 換種子重心 159–223 Hz 起伏太大"
+  },
+  {
+   "file": "amb-corridor.ogg",
+   "also": [
+    "amb-corridor.m4a",
+    "amb-corridor.loop.json"
+   ],
+   "space": "一般走道",
+   "candidate": "corridor-C5-s12",
+   "tool": "synth2.py（numpy／scipy，延伸 synth_amb.py）",
+   "license": "本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型、無人聲；可商用",
+   "seed": 12,
+   "recipe": "C5",
+   "params": {
+    "kind": "corridor",
+    "rt_lo": 0.8,
+    "rt_hi": 0.4,
+    "pre": 3,
+    "w": 4.0,
+    "h": 3.0,
+    "nref": 8,
+    "vent_hi": 4500,
+    "vent_res": 1000,
+    "vent": -3,
+    "bleed": -6,
+    "rumble": -16,
+    "lamps": -10,
+    "ticks": -16,
+    "ramp": 10,
+    "er_g": 8,
+    "vent_tilt": -3.5,
+    "fan": -10
+   },
+   "measure": {
+    "lufs": -26.0,
+    "true_peak_db": -8.29,
+    "clipped": 0,
+    "length_s": 40.0,
+    "channels": 2,
+    "above300": 0.146,
+    "centroid_hz": 310.7,
+    "lr_corr": 0.722,
+    "clap": {
+     "target_p": 0.676,
+     "target_sim": 0.251,
+     "top": [
+      "ventilation hum in an empty hallway",
+      "a refrigerator humming"
+     ],
+     "voice_sim": {
+      "a crowd of people talking": -0.084,
+      "a person speaking": -0.054
+     },
+     "size": {
+      "a huge reverberant indoor space": 0.0,
+      "a small narrow hallway": 1.0
+     }
+    },
+    "seam": {
+     "seam_jump_pct": 90.8,
+     "control_median_pct": 99.9,
+     "control_min_pct": 99.4
+    },
+    "codec_loop": {
+     "ogg": {
+      "jump_ratio": 0.23,
+      "level_before_db": -27.8,
+      "level_after_db": -28.2
+     },
+     "m4a": {
+      "jump_ratio": 0.22,
+      "level_before_db": -27.8,
+      "level_after_db": -28.2
+     }
+    },
+    "rolloff85_hz": 283.2,
+    "phone_drop_db": 6.4,
+    "ir": {
+     "RT60_mid": 0.59,
+     "EDT_mid": 0.65,
+     "T30_125": 0.74,
+     "T30_1000": 0.54,
+     "T30_4000": 0.41,
+     "C50_db": 0.6,
+     "C80_db": 6.4,
+     "onset_ms": 5.2
+    }
+   },
+   "why_picked": "短 IR（預延遲 3 ms、0.8/0.4 s）＋兩面平行牆格點早期反射，近處風口 4.5 kHz 共振 1 kHz、四條風扇諧波 161–644 Hz；CLAP 走道 0.68、『窄走道』1.00。C1/C2 被判瀑布／白雜訊；C3/C4/C6–C9 更亮（重心 344–484 Hz）但走道機率掉到 0.01–0.59"
+  },
+  {
+   "file": "amb-b2-dark.ogg",
+   "also": [
+    "amb-b2-dark.m4a",
+    "amb-b2-dark.loop.json"
+   ],
+   "space": "B2 黑暗",
+   "candidate": "b2-m5-s12",
+   "tool": "synth2.py（numpy／scipy，延伸 synth_amb.py）",
+   "license": "本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型、無人聲；可商用",
+   "seed": 12,
+   "recipe": "m5",
+   "params": {
+    "kind": "b2",
+    "mid": -6,
+    "hiss": -28,
+    "pulse": true,
+    "jit": 0.03,
+    "ajit": 0.5
+   },
+   "measure": {
+    "lufs": -26.0,
+    "true_peak_db": -10.94,
+    "clipped": 0,
+    "length_s": 40.0,
+    "channels": 2,
+    "above300": 0.175,
+    "centroid_hz": 177.1,
+    "lr_corr": 0.916,
+    "clap": {
+     "target_p": 0.035,
+     "target_sim": 0.213,
+     "top": [
+      "a ship engine room",
+      "an electric fan"
+     ],
+     "voice_sim": {
+      "a crowd of people talking": -0.051,
+      "a person speaking": -0.075
+     },
+     "size": {
+      "a huge reverberant indoor space": 0.079,
+      "a small narrow hallway": 0.921
+     }
+    },
+    "seam": {
+     "seam_jump_pct": 75.9,
+     "control_median_pct": 100.0,
+     "control_min_pct": 99.9
+    },
+    "codec_loop": {
+     "ogg": {
+      "jump_ratio": 0.71,
+      "level_before_db": -28.4,
+      "level_after_db": -29.0
+     },
+     "m4a": {
+      "jump_ratio": 0.43,
+      "level_before_db": -28.3,
+      "level_after_db": -29.0
+     }
+    },
+    "rolloff85_hz": 380.5,
+    "phone_drop_db": 5.8,
+    "ir": {
+     "RT60_mid": 1.91,
+     "EDT_mid": 2.0,
+     "T30_125": 2.73,
+     "T30_1000": 1.78,
+     "T30_4000": 1.34,
+     "C50_db": -26.8,
+     "C80_db": -13.0,
+     "onset_ms": 35.5
+    }
+   },
+   "why_picked": "保留舊 b9 兩台壓縮機低頻，加閥片 2 ms 雜訊脈衝（隨轉速、抖動 3%）過 410/790/1320 Hz 外殼共振（−6 dB）＋2–6 kHz 細嘶聲（−28 dB）；手機 400 Hz 高通後響度只掉 5.8 dB（舊 13.8），重心 177 Hz 仍低於中庭 202、走道 311、風 643。m1–m4 純諧波層 CLAP 第一名變吉他音箱嗡聲；m6/m8 中頻更響但重心 213/234 比中庭亮，不再是最暗"
+  },
+  {
+   "file": "amb-roof-wind.ogg",
+   "also": [
+    "amb-roof-wind.m4a",
+    "amb-roof-wind.loop.json"
+   ],
+   "space": "頂樓／停車場的風",
+   "candidate": "wind-w17-s13",
+   "tool": "synth_amb.py（numpy／scipy）",
+   "license": "本專案程式合成（numpy／scipy）；無取樣、無參考音檔、無生成模型、無人聲；可商用",
+   "seed": 13,
+   "recipe": "w17",
+   "params": {
+    "u0": 7,
+    "sigma": 0.4,
+    "rumble": -3,
+    "hiss": -20,
+    "howl": 0,
+    "howl0": 150,
+    "howlk": 80,
+    "q": 20,
+    "bw": 0.18,
+    "whistles": [
+     [
+      0.012,
+      -14
+     ],
+     [
+      0.003,
+      -18
+     ],
+     [
+      0.02,
+      -20
+     ]
+    ],
+    "wthr": 1.05
+   },
+   "measure": {
+    "lufs": -24.29,
+    "true_peak_db": -1.0,
+    "clipped": 0,
+    "length_s": 40.0,
+    "channels": 2,
+    "above300": 0.351,
+    "centroid_hz": 643.1,
+    "lr_corr": 0.316,
+    "clap": {
+     "target_p": 0.995,
+     "target_sim": 0.175,
+     "top": [
+      "strong wind gusts outdoors",
+      "wind whistling through a metal railing"
+     ],
+     "voice_sim": {
+      "a crowd of people talking": -0.156,
+      "a person speaking": -0.17
+     }
+    },
+    "seam": {
+     "seam_jump_pct": 89.7,
+     "control_median_pct": 99.8,
+     "control_min_pct": 98.9
+    },
+    "codec_loop": {
+     "ogg": {
+      "jump_ratio": 0.25,
+      "level_before_db": -21.2,
+      "level_after_db": -29.0
+     },
+     "m4a": {
+      "jump_ratio": 0.29,
+      "level_before_db": -21.2,
+      "level_after_db": -29.1
+     }
+    }
+   },
+   "why_picked": "主選。頂樓的風：風本身不出聲，聲音來自它撞到的東西——女兒牆與水塔邊的渦流共鳴帶（Q 20 的「嗚——」，中心 150＋80u Hz 跟著風速走）、欄杆鐵條 12 mm／圍網鐵絲 3 mm／扶手管 20 mm 的風切哨音（f＝0.2u/D，只在陣風超過門檻時出現）、陣風越強越亮的嘶聲。CLAP「強陣風」機率 0.995，前兩名是「強陣風」「風吹過金屬欄杆的哨音」。第一輪（寬頻雜訊隨慢陣風起伏，w1–w4）四組都被判成「海浪／瀑布」；第二、三輪改成共鳴帶後變成「吹風機」，把共鳴 Q 拉高、嘶聲壓低、哨音加大（w13、w15、w17）才穩定判成風，w17 三個種子都 ≥0.977。陣風動態大，被真峰值 −1 dBTP 擋住，實際 −24.3 LUFS。"
+  }
+ ],
+ "fix23": {
+  "queue": "doc/design/tangcheng-asset-queue.md #23",
+  "made": "2026-10-27",
+  "problem": "中庭和走道聽起來差不多（舊走道 CLAP『巨大殘響空間』0.71，onset 兩者都 ~21 ms）；B2 手機聽不到（300 Hz 以上 3%）",
+  "compare": {
+   "atrium_vs_corridor_old": {
+    "RT60_mid_s": [
+     3.62,
+     0.86
+    ],
+    "onset_ms": [
+     21.9,
+     20.6
+    ],
+    "C50_db": [
+     -21.8,
+     -13.9
+    ],
+    "centroid_hz": [
+     350.6,
+     205.0
+    ],
+    "rolloff85_hz": [
+     467.2,
+     291.7
+    ],
+    "clap_huge": [
+     0.735,
+     0.712
+    ]
+   },
+   "atrium_vs_corridor_new": {
+    "RT60_mid_s": [
+     4.26,
+     0.59
+    ],
+    "onset_ms": [
+     93.6,
+     5.2
+    ],
+    "C50_db": [
+     -60.0,
+     0.6
+    ],
+    "C80_db": [
+     -44.4,
+     6.4
+    ],
+    "centroid_hz": [
+     202.0,
+     310.7
+    ],
+    "rolloff85_hz": [
+     201.6,
+     283.2
+    ],
+    "clap_huge": [
+     0.901,
+     0.0
+    ]
+   },
+   "gap_summary": "RT60 比 4.2×→7.2×；第一個反射 22 vs 21 ms → 94 vs 5 ms；C50 −21.8 vs −13.9 → −60 vs +0.6 dB；頻寬反過來（舊中庭比走道亮）：重心 202 vs 311 Hz（1.54×）、rolloff85 202 vs 283 Hz——中庭遠、空氣吸收高頻，走道近風口；CLAP 大空間 0.90 vs 0.00",
+   "b2_old_vs_new": {
+    "phone_drop_db": [
+     13.8,
+     5.8
+    ],
+    "above300": [
+     0.033,
+     0.175
+    ],
+    "centroid_hz": [
+     95.5,
+     177.1
+    ],
+    "clap_target_p": [
+     0.032,
+     0.035
+    ]
+   }
+  },
+  "metrics": "IR：irmeas.py（Schroeder 積分，T30／EDT 八度帶，RT60_mid＝500 Hz/1 kHz 平均；C50/C80；onset＝第一個超過峰值 −20 dB 的樣本）；舊 IR 用 synth_amb.ir_stereo 同參數重建。頻譜：measure.py（整檔平均功率譜重心、85% rolloff；phone_drop＝4 階 400 Hz 高通前後 LUFS 差）",
+  "scripts": "~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-fix23/amb/（synth2.py、V2.json、measure.py、irmeas.py；分數 c1–c3-*.json、pick-*.json）",
+  "known_limits": "B2 的 CLAP 目標機率新舊都 ~0.03（第一名『船的機艙』，冰箱壓縮機描述相似度 0.30 是三個目標描述裡最高）——那是 CLAP 對地下停車場描述的弱，不是聲音錯類"
+ },
+ "vast26": {
+  "moved_to": "audio/amb/vast/recipe.json",
+  "note": "第 26 項的 vast-abyss／vast-deep 10-27 搬到 audio/amb/vast/，配方與量測在那裡"
+ }
+}

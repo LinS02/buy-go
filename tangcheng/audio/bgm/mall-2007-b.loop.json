@@ -1,0 +1,65 @@
+{
+ "title": "walk-lost mall BGM B 2007 decline (mall-2007-b)",
+ "key": "E minor",
+ "tempo": 70.0,
+ "meter": "4/4",
+ "barSec": 3.4285714285714284,
+ "sr": 48000,
+ "samples": 5430106,
+ "oneshot": false,
+ "loopStart": 0.0,
+ "loopEnd": 113.12720833333333,
+ "loopStartSample": 0,
+ "loopEndSample": 5430106,
+ "introBars": 0.0,
+ "loopBars": 32.995,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 0,
+ "lufsIn": -13.76,
+ "gainDb": -4.24,
+ "lufs": -18.0,
+ "truePeakDb": -4.32,
+ "clipped": 0,
+ "files": {
+  "ogg": "mall-2007-b.ogg",
+  "m4a": "mall-2007-b.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 2548944,
+   "decoded_samples": 5430106,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -23.7,
+   "main_loop": {
+    "jump_ratio": 1.19,
+    "level_before_db": -17.9,
+    "level_after_db": -19.3
+   }
+  },
+  "m4a": {
+   "bytes": 2738971,
+   "decoded_samples": 5431232,
+   "tail_padding": 1126,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -29.4,
+   "main_loop": {
+    "jump_ratio": 1.33,
+    "level_before_db": -17.9,
+    "level_after_db": -19.4
+   }
+  },
+  "source_main_loop": {
+   "jump_ratio": 1.28,
+   "level_before_db": -17.9,
+   "level_after_db": -19.4
+  }
+ }
+}

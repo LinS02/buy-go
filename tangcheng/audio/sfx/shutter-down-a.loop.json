@@ -1,0 +1,56 @@
+{
+ "title": "walk-lost rolling shutter A: pulled down by hand with a hook, steel bottom bar lands + slats slide in the rails",
+ "key": "n/a (sfx)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 320075,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [
+  6.04
+ ],
+ "risers": [],
+ "firstSoundSample": 1442,
+ "lufsIn": -22.43,
+ "gainDb": 2.08,
+ "lufs": -20.35,
+ "truePeakDb": -1.0,
+ "clipped": 0,
+ "files": {
+  "ogg": "shutter-down-a.ogg",
+  "m4a": "shutter-down-a.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 134315,
+   "decoded_samples": 320075,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 1442,
+   "err_db": -27.0
+  },
+  "m4a": {
+   "bytes": 163834,
+   "decoded_samples": 321472,
+   "tail_padding": 1397,
+   "offset_samples": 0,
+   "first_sound_sample": 1442,
+   "err_db": -38.9
+  }
+ },
+ "kind": "shutter-down",
+ "endHit": 6.04,
+ "slats": 31,
+ "note": "hits／endHit＝門簾撞到底的時間（秒），門的動畫在這一刻停；slats＝經過導軌的片數（片高 75 mm）。2026-10-27 第 23 項重做：店員用鐵鉤拉著往下送（約 0.4 m/s、一把一把換手），最後 0.4 m 放手，底桿鋼板平拍落地＋片子在導軌裡塌下滑一小段；門的動畫 0.35 s 起動、endHit 停。"
+}

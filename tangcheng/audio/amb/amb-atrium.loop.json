@@ -1,0 +1,68 @@
+{
+ "title": "walk-lost room tone: empty mall atrium, distant AC + long glass-dome reverb (RT60 4.3 s, first reflection 95 ms), 40 s loop",
+ "key": "n/a (ambience)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 1920000,
+ "oneshot": false,
+ "loopStart": 0.0,
+ "loopEnd": 40.0,
+ "loopStartSample": 0,
+ "loopEndSample": 1920000,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 0,
+ "lufsIn": -18.95,
+ "gainDb": -7.05,
+ "lufs": -26.0,
+ "truePeakDb": -10.12,
+ "clipped": 0,
+ "files": {
+  "ogg": "amb-atrium.ogg",
+  "m4a": "amb-atrium.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 750417,
+   "decoded_samples": 1920000,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -24.8,
+   "main_loop": {
+    "jump_ratio": 0.04,
+    "level_before_db": -29.0,
+    "level_after_db": -29.7
+   }
+  },
+  "m4a": {
+   "bytes": 969749,
+   "decoded_samples": 1920960,
+   "tail_padding": 960,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -36.3,
+   "main_loop": {
+    "jump_ratio": 0.05,
+    "level_before_db": -29.0,
+    "level_after_db": -29.7
+   }
+  },
+  "source_main_loop": {
+   "jump_ratio": 0.04,
+   "level_before_db": -29.0,
+   "level_after_db": -29.7
+  }
+ },
+ "kind": "ambience-loop",
+ "space": "atrium",
+ "note": "第 23 項重做：中庭＝長殘響（RT60_mid 4.3 s、首個早期反射 95 ms、C50 −60 dB）、頻寬窄（重心 202 Hz）。 空間底噪（整個空間的擴散聲場，不掛單點：直接接到 destination，不走 PannerNode）。立體聲，低頻左右相干、手機單聲道混音不抵消。整檔即循環（loopStart 0）：週期成分都是 40 s 內整數週期，雜訊在頻域做、殘響是循環摺積，接縫逐樣本連續，不交叉淡。無人聲。"
+}

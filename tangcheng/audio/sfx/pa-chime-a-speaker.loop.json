@@ -1,0 +1,63 @@
+{
+ "title": "walk-lost PA chime A through ceiling speaker + atrium reverb",
+ "key": "F major",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 313306,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [
+  0.0,
+  0.46,
+  0.92,
+  1.38
+ ],
+ "risers": [],
+ "firstSoundSample": 42,
+ "lufsIn": -14.31,
+ "gainDb": -1.69,
+ "lufs": -16.0,
+ "truePeakDb": -4.77,
+ "clipped": 0,
+ "files": {
+  "ogg": "pa-chime-a-speaker.ogg",
+  "m4a": "pa-chime-a-speaker.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 155479,
+   "decoded_samples": 313306,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 42,
+   "err_db": -44.3
+  },
+  "m4a": {
+   "bytes": 160244,
+   "decoded_samples": 314304,
+   "tail_padding": 998,
+   "offset_samples": 0,
+   "first_sound_sample": 42,
+   "err_db": -50.2
+  }
+ },
+ "kind": "pa-chime",
+ "notes_hz": [
+  698.46,
+  880.0,
+  1174.66,
+  1046.5
+ ],
+ "note": "hits＝四個音的起點（秒）。"
+}

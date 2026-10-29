@@ -1,0 +1,16 @@
+{
+ "model": "RealVisXL_V5.0_fp16.safetensors（紙質貼圖 paper-a，seed 1801）",
+ "mode": "PIL 排字（STHeiti）× 生成紙質相乘、撕角",
+ "text": [
+  "清洗水塔",
+  "01-5583-2091"
+ ],
+ "phone": "01 開頭（台灣無此區碼，非真實號碼）",
+ "seed": 28,
+ "kind": "sticker",
+ "size_m": [
+  0.16,
+  0.1
+ ],
+ "license": "原創（本專案；本地生成）"
+}

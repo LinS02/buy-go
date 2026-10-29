@@ -1,0 +1,12 @@
+{
+ "model": "none（程式）",
+ "mode": "PIL 排字（Songti）＋墨跡雜訊",
+ "text": "已檢查\n11.07",
+ "seed": 28,
+ "kind": "stamp",
+ "size_m": [
+  0.08,
+  0.05
+ ],
+ "license": "原創（本專案；本地生成）"
+}

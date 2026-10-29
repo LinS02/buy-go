@@ -1,0 +1,52 @@
+{
+ "generator": "PIL 程式畫粗略構圖（色塊、層板；高斯模糊 6–8 px）→ 本地 SDXL img2img（RealVisXL V5、denoise 0.86、無 ControlNet、1536×768、32 步）→ 縮 1024×512 拼 2×4",
+ "license": "RealVisXL V5.0（CreativeML OpenRAIL++-M，可商用）、controlnet-union-sdxl-promax（Apache-2.0）；輸入只有本專案程式原稿；沒有任何照片；可商用、可公開",
+ "people_rule": "原稿只有色塊；提示詞 no people／empty；負面詞含 people, face, hands, body, mannequin, statue, sculpture, angel, cherub, doll, portrait；8 格逐張看過",
+ "brand_rule": "無字、無 logo、無花押字（負面詞 text, letters, logo, brand, monogram, label text）；逐張看過",
+ "atlas": "2 欄×4 列，一格 1024×512 橫式 2:1（u＝欄/2、v＝列/4；第 0 列在圖上方）：phone-cases、straps-charms、chargers、cables、earphones、memory-cards、batteries、cdr-packs",
+ "cell_m": "一格建議 2.0×1.0 m（攤位背面洞洞板一段；玻璃櫃擋在前面）",
+ "seed": 7,
+ "cell_seeds": {
+  "phone-cases": 700,
+  "straps-charms": 701,
+  "chargers": 702,
+  "cables": 703,
+  "earphones": 704,
+  "memory-cards": 705,
+  "batteries": 706,
+  "cdr-packs": 707
+ },
+ "title": "3C 攤位配件牆圖集（手機殼、吊飾、充電器、電線、耳機、記憶卡、電池、CD-R；空白包裝只有色塊；無人、無字、無牌）",
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-terrain/gen_themes7.py（python gen_themes7.py atlas acc --seed 7）",
+ "prompts": {
+  "phone-cases": "RAW photo, straight-on frontal view of a 2000s Taipei mobile phone accessories stall back wall, pegboard wall covered with hanging blister packs of colorful plastic mobile phone cases and flip covers, translucent clear plastic packaging, rows of metal hooks, blank packaging with only colored blocks and no printing, no text, fluorescent shelf light, shallow depth of field, layered depth, items filling the whole frame edge to edge, photorealistic, sharp focus, 35mm film",
+  "straps-charms": "RAW photo, straight-on frontal view of a 2000s Taipei mobile phone accessories stall back wall, pegboard wall with rows of hanging mobile phone straps and small beaded charms and tassels on cardboard backing cards, colorful, blank packaging with only colored blocks and no printing, no text, fluorescent shelf light, shallow depth of field, layered depth, items filling the whole frame edge to edge, photorealistic, sharp focus, 35mm film",
+  "chargers": "RAW photo, straight-on frontal view of a 2000s Taipei mobile phone accessories stall back wall, pegboard wall with rows of hanging blister packs of black and white mobile phone chargers and car chargers with coiled cords, blank packaging with only colored blocks and no printing, no text, fluorescent shelf light, shallow depth of field, layered depth, items filling the whole frame edge to edge, photorealistic, sharp focus, 35mm film",
+  "cables": "RAW photo, straight-on frontal view of a 2000s Taipei mobile phone accessories stall back wall, pegboard wall with many coiled data cables and charging cords in clear plastic bags hanging on metal hooks, black, white and grey, blank packaging with only colored blocks and no printing, no text, fluorescent shelf light, shallow depth of field, layered depth, items filling the whole frame edge to edge, photorealistic, sharp focus, 35mm film",
+  "earphones": "RAW photo, straight-on frontal view of a 2000s Taipei mobile phone accessories stall back wall, pegboard wall with rows of hanging blister packs of wired earphones and headphones, black, white, silver and pastel colors, blank packaging with only colored blocks and no printing, no text, fluorescent shelf light, shallow depth of field, layered depth, items filling the whole frame edge to edge, photorealistic, sharp focus, 35mm film",
+  "memory-cards": "RAW photo, straight-on frontal view of a 2000s Taipei mobile phone accessories stall back wall, glass display case with neat rows of small memory cards and card readers in plastic blister packs, blue, black and silver, blank packaging with only colored blocks and no printing, no text, fluorescent shelf light, shallow depth of field, layered depth, items filling the whole frame edge to edge, photorealistic, sharp focus, 35mm film",
+  "batteries": "RAW photo, straight-on frontal view of a 2000s Taipei mobile phone accessories stall back wall, pegboard wall with rows of hanging blister packs of spare mobile phone batteries, silver and black rectangular batteries, blank packaging with only colored blocks and no printing, no text, fluorescent shelf light, shallow depth of field, layered depth, items filling the whole frame edge to edge, photorealistic, sharp focus, 35mm film",
+  "cdr-packs": "RAW photo, straight-on frontal view of a 2000s Taipei mobile phone accessories stall back wall, glass shelves stacked with spindles of blank CD-R discs and shrink-wrapped jewel case packs, rainbow disc reflections, blue and silver, blank packaging with only colored blocks and no printing, no text, fluorescent shelf light, shallow depth of field, layered depth, items filling the whole frame edge to edge, photorealistic, sharp focus, 35mm film"
+ },
+ "neg": "people, person, human, figure, man, woman, child, bride, groom, face, eyes, mouth, head, hands, fingers, body, mannequin, dummy, torso, bust, statue, sculpture, angel, cherub, figurine, doll, portrait, photo of people, model, silhouette, character, mascot, cartoon character, anime, animal, creature, skull, logo, brand, trademark, monogram, designer logo pattern, watermark, signature, text, letters, words, numbers, label text, sign, illustration, drawing, vector art, flat colors, clipart, 3d render, cgi, blurry, lowres, jpeg artifacts, frame, border, tilted, dutch angle",
+ "secs": 1181,
+ "maps": "albedo 照片；roughness／ao 由亮度推的弱層次；normal 平",
+ "files": {
+  "2k/albedo.jpg": 914122,
+  "2k/normal.jpg": 115317,
+  "2k/roughness.jpg": 217894,
+  "2k/ao.jpg": 125324,
+  "1k/albedo.jpg": 313230,
+  "1k/normal.jpg": 29301,
+  "1k/roughness.jpg": 75321,
+  "1k/ao.jpg": 47359
+ },
+ "queue_item": "theme-pbr-7（10-29 第十批：清單七 #12 剛裝潢好還沒開幕、#18 3C 攤位迷宮、#19 婚紗攝影假景棚；重做清單六 #23 委託行櫥窗）",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "sizes": {
+  "2k": "2048×2048",
+  "1k": "1024×1024"
+ },
+ "set": "accessory-wall-atlas",
+ "photo_rule": "沒有使用任何照片"
+}

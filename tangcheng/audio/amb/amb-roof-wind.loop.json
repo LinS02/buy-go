@@ -1,0 +1,68 @@
+{
+ "title": "walk-lost room tone: rooftop wind, parapet howl + railing whistles, 40 s loop",
+ "key": "n/a (ambience)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 1920000,
+ "oneshot": false,
+ "loopStart": 0.0,
+ "loopEnd": 40.0,
+ "loopStartSample": 0,
+ "loopEndSample": 1920000,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 0,
+ "lufsIn": -26.38,
+ "gainDb": 2.09,
+ "lufs": -24.29,
+ "truePeakDb": -1.0,
+ "clipped": 0,
+ "files": {
+  "ogg": "amb-roof-wind.ogg",
+  "m4a": "amb-roof-wind.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 720262,
+   "decoded_samples": 1920000,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -17.3,
+   "main_loop": {
+    "jump_ratio": 0.25,
+    "level_before_db": -21.2,
+    "level_after_db": -29.0
+   }
+  },
+  "m4a": {
+   "bytes": 969899,
+   "decoded_samples": 1920960,
+   "tail_padding": 960,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -23.4,
+   "main_loop": {
+    "jump_ratio": 0.29,
+    "level_before_db": -21.2,
+    "level_after_db": -29.1
+   }
+  },
+  "source_main_loop": {
+   "jump_ratio": 0.23,
+   "level_before_db": -21.2,
+   "level_after_db": -29.1
+  }
+ },
+ "kind": "ambience-loop",
+ "space": "wind",
+ "note": "空間底噪（整個空間的擴散聲場，不掛單點：直接接到 destination，不走 PannerNode）。立體聲，低頻左右相干、手機單聲道混音不抵消。整檔即循環（loopStart 0）：週期成分都是 40 s 內整數週期，雜訊在頻域做、殘響是循環摺積，接縫逐樣本連續，不交叉淡。無人聲。"
+}

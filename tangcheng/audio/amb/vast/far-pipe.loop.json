@@ -1,0 +1,55 @@
+{
+ "title": "walk-lost far: water hammer knocking in a pipe inside the structure",
+ "key": "n/a",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 540000,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 2401,
+ "lufsIn": -19.81,
+ "gainDb": -8.19,
+ "lufs": -28.0,
+ "truePeakDb": -14.21,
+ "clipped": 0,
+ "files": {
+  "ogg": "far-pipe.ogg",
+  "m4a": "far-pipe.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 234996,
+   "decoded_samples": 540000,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 2401,
+   "err_db": -28.7
+  },
+  "m4a": {
+   "bytes": 274697,
+   "decoded_samples": 541632,
+   "tail_padding": 1632,
+   "offset_samples": 0,
+   "first_sound_sample": 2401,
+   "err_db": -41.8
+  }
+ },
+ "kind": "far-oneshot",
+ "distance_m": 60,
+ "drr_db": -14,
+ "ir": "audio/ir/vast-abyss.wav",
+ "note": "第 26 項極遠處單發：距離、空氣吸收、殘響都已烘進檔案（立體聲），不要再接 ConvolverNode；不走 PannerNode（要方向感用 StereoPannerNode）。音量已經很小（−28 LUFS 整合、直達聲比殘響低 |drr_db| dB），場景只需再決定多久放一次。無人聲。"
+}

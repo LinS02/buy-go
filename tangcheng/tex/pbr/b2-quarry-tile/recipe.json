@@ -1,0 +1,86 @@
+{
+ "generator": "CPU numpy 程式生成（scipy cKDTree 週期 Voronoi、FFT 週期濾波），無生成模型、無 GPU",
+ "license": "本專案程式生成，CPU numpy，無生成模型、無參考照進貼圖；可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色，沒有當貼圖、沒有 img2img、沒有切圖、沒有複製進專案（照片不進 repo、不進 build）",
+ "spec": "doc/design/tangcheng-site-spec.md（照片勘查規格書：尺寸、顏色以它為準）",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "所有濾波週期邊界（FFT／np.roll／mod 座標），四方連續；驗證見 verify_images",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "jpg sRGB 4:2:0",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有鐵捲門有）",
+  "mask": "見各組 mask_notes（jpg 4:4:4 或 png）",
+  "shade": "jpg 線性灰階，值×2＝亮度倍率（只有磨石子有）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化，mask.png 用最近鄰）"
+ },
+ "set": "b2-quarry-tile",
+ "title": "B2 缸磚 0.2 m",
+ "queue_item": 25,
+ "candidate": "b2-quarry-tile-s22",
+ "seed": 22,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_misc.py（指令：python gen_misc.py b2-quarry-tile 22 <out>）",
+ "span_m": 1.6,
+ "why_picked": "兩版接近；s22 的破角、裂磚較多，B2 老舊感較足。積水鏡面沒烘進來（1.6 m 一重複會成固定亮斑），交給 shader 用 G。",
+ "rejected": [
+  "b2-quarry-tile-s11"
+ ],
+ "photos_referenced": [
+  "~/Desktop/game/閾限空間台灣/05_B2黑暗/B2手電筒__yt-xfK_eVJkgCQ-t518.jpg",
+  "~/Desktop/game/閾限空間台灣/05_B2黑暗/地下停車場黃線__yt-3aHhxOTwrZQ-t830.jpg"
+ ],
+ "recolor_formula": "linear：sh＝mask.R×2，g＝mask.G，b＝mask.B；albedo＝mix(mix(base, colors.G, g), colors.B, b) × sh。albedo.jpg 已用預設色票烘好；換底色只改 base，髒污程度改 g、b 的倍率。",
+ "mask_notes": "mask.jpg（4:4:4）：R＝shade×0.5、G／B＝見 params.colors_srgb 的 G_／B_ 欄",
+ "files": {
+  "2k/albedo.jpg": 443856,
+  "2k/normal.jpg": 980974,
+  "2k/roughness.jpg": 996814,
+  "2k/ao.jpg": 662298,
+  "2k/mask.jpg": 638661,
+  "1k/albedo.jpg": 103568,
+  "1k/normal.jpg": 165825,
+  "1k/roughness.jpg": 102575,
+  "1k/ao.jpg": 101310,
+  "1k/mask.jpg": 163822
+ },
+ "params": {
+  "span_m": 1.6,
+  "tile_m": 0.2,
+  "tiles_per_tex": 8,
+  "colors_srgb": {
+   "tile": [
+    122,
+    90,
+    76
+   ],
+   "grout": [
+    64,
+    57,
+    52
+   ],
+   "dirt": [
+    52,
+    46,
+    42
+   ],
+   "patch_cement": [
+    98,
+    94,
+    88
+   ]
+  },
+  "notes": "規格書 #7a5a4c 偏暗；這裡 tile 取 #7a5a4c 附近再加每塊色差。mask.jpg：R＝亮度、G＝濕（已烘：albedo×(1−0.15G)、粗糙往 0.3 拉 60%；要鏡面水坑時 shader 用 G×世界空間低頻遮罩把粗糙壓到 0.06、normal 拉平）、B＝污垢。",
+  "set": "b2-quarry-tile",
+  "size": 2048
+ },
+ "verify_images": [
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/b2-quarry-tile-s22-floor.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/b2-quarry-tile-s22-top3x3.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/b2-quarry-tile-s22-seam.jpg"
+ ]
+}

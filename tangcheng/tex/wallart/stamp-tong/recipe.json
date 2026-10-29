@@ -1,0 +1,12 @@
+{
+ "model": "none（程式）",
+ "mode": "PIL 排字（Songti）＋墨跡雜訊",
+ "text": "通水管\n01-2648-3170",
+ "seed": 28,
+ "kind": "stamp",
+ "size_m": [
+  0.13,
+  0.07
+ ],
+ "license": "原創（本專案；本地生成）"
+}

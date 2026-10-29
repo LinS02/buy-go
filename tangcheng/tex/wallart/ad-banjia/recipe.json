@@ -1,0 +1,16 @@
+{
+ "model": "RealVisXL_V5.0_fp16.safetensors（紙質貼圖 paper-b，seed 1802）",
+ "mode": "PIL 排字（STHeiti）× 生成紙質相乘、撕角",
+ "text": [
+  "搬家 清運",
+  "廢棄家具 01-9031-6658"
+ ],
+ "phone": "01 開頭（台灣無此區碼，非真實號碼）",
+ "seed": 28,
+ "kind": "sticker",
+ "size_m": [
+  0.22,
+  0.09
+ ],
+ "license": "原創（本專案；本地生成）"
+}

@@ -1,0 +1,62 @@
+{
+ "generator": "程式生成結構（CPU numpy：週期磚格、Voronoi 骨材、FFT 週期濾波）＋本地 SDXL 加表面細節（RealVisXL V5.0 fp16 img2img＋xinsir controlnet-union-sdxl-promax tile；3×3 週期 1024 塊、Hann⁴ 權重拼回，四方連續）；低頻顏色鎖回程式底稿，只取生成圖高頻",
+ "license": "RealVisXL V5.0（CreativeML OpenRAIL++-M，可商用）、controlnet-union-sdxl-promax（Apache-2.0）；輸入只有本專案的程式底稿；可商用、可公開",
+ "photo_rule": "沒有使用任何照片（純程式底稿＋SDXL 細節）",
+ "people_rule": "生圖提示詞含 no people/no person/no figure/no face，負面詞含 people, person, human, figure, silhouette, face, eyes, footprint, shoe print, handprint, hand；9 塊逐張看過、拼好的整張與 24 m 俯視模擬再看一次",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "程式底稿全部週期；SDXL 塊從環繞的底稿切、拼回時權重週期，四方連續",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "jpg sRGB 4:2:0",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有 steel-rust-paint）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化）"
+ },
+ "set": "sand-ripple",
+ "title": "細沙風紋（淡米黃偏赭、9 cm 風紋、背風面細影、槽裡深粒；霧面）",
+ "seed": 1,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-terrain/gen_themes5.py（python gen_themes5.py all sand-ripple --seed 1；共用 tangcheng-pbr/gen_mata.py 的 stage_sdxl／stage_final）",
+ "span_m": 2.4,
+ "photos_referenced": [],
+ "sdxl": {
+  "model": "RealVisXL_V5.0_fp16.safetensors",
+  "controlnet": "controlnet-union-sdxl-promax (tile)",
+  "cn_strength": 0.6,
+  "denoise": 0.28,
+  "steps": 26,
+  "cfg": 5.0,
+  "sampler": "dpmpp_2m karras",
+  "tiles": "3x3 periodic 1024 (Hann^4 blend)",
+  "prompt": "seamless tileable texture, high resolution photograph of fine pale beige sand with small regular wind ripples, desert sand ripple pattern, tiny dark mineral grains in the troughs, soft shadows on the lee side, dry, matte, top-down flat view, orthographic flat surface filling the whole frame, even diffuse lighting, photorealistic, sharp focus, 8k, no people, no person, no figure, no face",
+  "neg": "people, person, human, figure, silhouette, face, eyes, mouth, skull, footprint, shoe print, handprint, hand, fingers, animal, text, letters, numbers, watermark, logo, signature, poster, graffiti, perspective, vanishing point, horizon, room, furniture, harsh shadow, vignette, blurry, cartoon, painting, illustration, 3d render, frame, border",
+  "secs": 385
+ },
+ "final": {
+  "lock_px": 48.0,
+  "detail": 1.0,
+  "relief_mm": 0.06,
+  "sdxl": true
+ },
+ "files": {
+  "2k/albedo.jpg": 424952,
+  "2k/normal.jpg": 2975926,
+  "2k/roughness.jpg": 692001,
+  "2k/ao.jpg": 1352880,
+  "1k/albedo.jpg": 70220,
+  "1k/normal.jpg": 149563,
+  "1k/roughness.jpg": 74288,
+  "1k/ao.jpg": 127632
+ },
+ "params": {
+  "span_m": 2.4,
+  "ripples": "26 道／2.4 m（約 9 cm），方向沿 u、微斜",
+  "ripple_mm": 6,
+  "proc_secs": 5.3
+ },
+ "queue_item": "theme-pbr-5（10-29 第七批：清單五 #12 沙、#13 乾滑水道）"
+}

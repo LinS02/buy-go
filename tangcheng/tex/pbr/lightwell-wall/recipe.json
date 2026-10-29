@@ -1,0 +1,177 @@
+{
+ "generator": "程式生成結構（CPU numpy：週期磚格、Voronoi 骨材、FFT 週期濾波）＋本地 SDXL 加表面細節（RealVisXL V5.0 fp16 img2img＋xinsir controlnet-union-sdxl-promax tile；3×3 週期 1024 塊、Hann⁴ 權重拼回，四方連續）；低頻顏色鎖回程式底稿，只取生成圖高頻",
+ "license": "RealVisXL V5.0（CreativeML OpenRAIL++-M，可商用）、controlnet-union-sdxl-promax（Apache-2.0）；輸入只有本專案的程式底稿；可商用、可公開",
+ "photo_rule": "沒有使用任何照片當輸入（純程式底稿＋SDXL 細節；天井只看過 09_公寓鐵窗樓梯間取色）",
+ "people_rule": "生圖提示詞含 no people/no person/no figure/no face，負面詞含 people, person, human, figure, silhouette, face, eyes, footprint, shoe print, handprint, hand；9 塊逐張看過、拼好的整張與 24 m 俯視模擬再看一次",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "程式底稿全部週期；SDXL 塊從環繞的底稿切、拼回時權重週期，四方連續",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "jpg sRGB 4:2:0",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有 steel-rust-paint）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化）"
+ },
+ "set": "lightwell-wall",
+ "title": "老公寓背面牆片圖集（小口磁磚、水漬、鋁窗、鐵窗、冷氣室外機、排水管）",
+ "seed": 1,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-terrain/gen_list3.py（python gen_list3.py all lightwell-wall --seed 1；共用 tangcheng-pbr/gen_mata.py 的 stage_sdxl／stage_final）",
+ "span_m": 6.0,
+ "photos_referenced": [
+  "~/Desktop/game/閾限空間台灣/台灣閾限大集合/09_公寓鐵窗樓梯間（只看、取色）"
+ ],
+ "sdxl": {
+  "model": "RealVisXL_V5.0_fp16.safetensors",
+  "controlnet": "controlnet-union-sdxl-promax (tile)",
+  "cn_strength": 0.6,
+  "denoise": 0.3,
+  "steps": 26,
+  "cfg": 5.0,
+  "sampler": "dpmpp_2m karras",
+  "tiles": "3x3 periodic 1024 (Hann^4 blend)",
+  "prompt": "seamless tileable texture, high resolution photograph of the back facade of an old taiwanese apartment building, small rectangular ceramic wall tiles, dark water stains running down, aluminium windows with curtains, rusty iron window grilles, air conditioner outdoor units, grey drain pipes, flat orthographic front view, orthographic flat surface filling the whole frame, even diffuse lighting, photorealistic, sharp focus, 8k, no people, no person, no figure, no face",
+  "neg": "people, person, human, figure, silhouette, face, eyes, mouth, skull, footprint, shoe print, handprint, hand, fingers, animal, text, letters, numbers, watermark, logo, signature, poster, graffiti, perspective, vanishing point, horizon, room, furniture, harsh shadow, vignette, blurry, cartoon, painting, illustration, 3d render, frame, border",
+  "secs": 434
+ },
+ "final": {
+  "lock_px": 48.0,
+  "detail": 1.0,
+  "relief_mm": 0.06,
+  "sdxl": true
+ },
+ "files": {
+  "2k/albedo.jpg": 772477,
+  "2k/normal.jpg": 795665,
+  "2k/roughness.jpg": 326088,
+  "2k/ao.jpg": 431900,
+  "2k/metalness.jpg": 49057,
+  "1k/albedo.jpg": 249074,
+  "1k/normal.jpg": 240032,
+  "1k/roughness.jpg": 108334,
+  "1k/ao.jpg": 131920,
+  "1k/metalness.jpg": 19921
+ },
+ "params": {
+  "span_m": 6.0,
+  "atlas": "兩條牆片：A＝u 0–0.5、B＝u 0.5–1；各 3.0 m 寬 × 6.0 m 高（兩層樓、上下接）",
+  "layout_px": {
+   "A": {
+    "x0": 0,
+    "tile": [
+     188,
+     170,
+     150
+    ],
+    "floors": [
+     {
+      "win": [
+       250,
+       300,
+       770,
+       700
+      ],
+      "grille": true,
+      "curtain": true,
+      "ac": [
+       430,
+       770,
+       700,
+       940
+      ],
+      "sill": true
+     },
+     {
+      "win": [
+       250,
+       300,
+       770,
+       700
+      ],
+      "grille": true,
+      "curtain": false,
+      "ac": [
+       300,
+       770,
+       570,
+       940
+      ],
+      "sill": true
+     }
+    ],
+    "pipes": [
+     [
+      880,
+      34
+     ]
+    ]
+   },
+   "B": {
+    "x0": 1024,
+    "tile": [
+     174,
+     176,
+     170
+    ],
+    "floors": [
+     {
+      "win": [
+       130,
+       230,
+       400,
+       470
+      ],
+      "grille": false,
+      "louver": true,
+      "curtain": false,
+      "ac": [
+       560,
+       700,
+       860,
+       880
+      ],
+      "sill": true
+     },
+     {
+      "win": [
+       130,
+       230,
+       400,
+       470
+      ],
+      "grille": false,
+      "louver": true,
+      "curtain": true,
+      "ac": [
+       600,
+       640,
+       900,
+       820
+      ],
+      "sill": true
+     }
+    ],
+    "pipes": [
+     [
+      480,
+      40
+     ],
+     [
+      540,
+      26
+     ],
+     [
+      940,
+      30
+     ]
+    ]
+   }
+  },
+  "proc_secs": 20.1
+ },
+ "queue_item": "景觀清單第三份 #7（tangcheng-landscape-list-3.md）"
+}

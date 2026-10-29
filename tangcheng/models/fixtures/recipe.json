@@ -1,0 +1,132 @@
+{
+ "tool": "comfyui (RealVisXL V5 txt2img) + clean.py 塗徽章 + Hunyuan3D-2 turbo img2glb.sh + blender finish.py",
+ "category": "《走失》主題擺設（第二輪清單 #21 網咖）",
+ "title": "網咖 CRT 螢幕、電競椅；清潔層洗地機；溜冰場冰刀鞋",
+ "model": "RealVisXL_V5.0_fp16（30 步 dpmpp_2m karras cfg 5，1024²）→ 局部塗掉徽章／車牌（clean.py）→ Hunyuan3D-2 2.0-turbo 形狀＋paint-v2-0-turbo 貼圖（4 萬面）→ Blender 5.2 PCA 擺正、減面、縮到真實長寬高、貼圖 1024 JPEG q85",
+ "license": "RealVisXL V5：CreativeML Open RAIL++-M（產出不受授權方主張權利）；Hunyuan3D-2：Tencent Hunyuan 3D 2.0 Community License（台灣可商用；歐盟、英國、南韓不適用；月活 >1M 另簽）",
+ "negative": "text, letters, words, numbers, logo, brand, emblem, badge, watermark, signature, person, people, human, face, mannequin, driver, rider, passenger, hands, helmet, character, cartoon, toy, multiple vehicles, two cars, cropped, cut off, road, street, parking lot, floor, scene, background clutter, glossy, shiny chrome, reflections, sports car, spoiler, blurry, lowres, deformed",
+ "reference_photos": "只目視取色看造型（~/Desktop/game/閾限空間台灣/、台灣閾限大集合/），沒有進 img2img／ControlNet，沒有當貼圖",
+ "orientation": "正面 +Z、寬沿 x、原點底部中心；遊戲端 _tc-fixglb.ts 等比縮進寬／高",
+ "scripts": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-props2/{gen.py,hy.sh,finish.py,rotz.py,uvtris.py,retex.py,ortho.py}",
+ "candidates": "每種 3 張（種子 11／23／37），每種挑 1；落選圖已刪",
+ "no_human": "已確認無人形、無品牌字",
+ "files": {
+  "crt.glb": {
+   "source_image": "crt_s23.png",
+   "cleaned_image": "crt_s23_clean.png",
+   "seed": 23,
+   "prompt": "a 1990s beige computer CRT monitor with a deep bulky back and a small tilt stand, blank switched-off dark grey glass screen, plain bezel with one small round power button, yellowed old plastic, single object only, entire object fully visible and centered with margin, three-quarter front view from the front left, camera at waist height, isolated on plain pure white background, soft even studio lighting, no shadow, realistic product photograph, matte dusty faded surfaces, no glossy reflections, slightly dirty, generic unbranded, no emblem, no labels",
+   "cleanup": "參考圖：框下假標牌、旋鈕旁小字、電源線抹掉；模型貼圖：框右下角 Hunyuan 畫出的假字，用 3D 區域找出 UV 多邊形後填框色（uvtris.py＋retex.py）",
+   "tris_target": 4500,
+   "why": "s23 四分之三側、機身深、有底座，像 2000 年代 15 吋 CRT；s11 前面板太雜、s37 太像電視",
+   "result": {
+    "tris_in": 40000,
+    "tris": 4500,
+    "size_gltf_xyz": [
+     0.392,
+     0.492,
+     0.42
+    ],
+    "tex": [
+     1024,
+     1024
+    ],
+    "bytes": 198656
+   },
+   "screen_rect": "正交前視圖量的玻璃範圍 x -0.165..0.100、y 0.215..0.455、玻璃最凸 z 0.188（模型座標），寫在 _tc-fixglb.ts LOOK.crt.scr",
+   "sha1": "f018226679937ea4c95f09981538765665ffcec8"
+  },
+  "chair.glb": {
+   "source_image": "chair_s23.png",
+   "cleaned_image": "chair_s23_clean.png",
+   "seed": 23,
+   "prompt": "an empty black and dark red racing style gaming office chair with high backrest and side bolsters, padded armrests, five-star black base with casters, worn faux leather, nobody sitting, single object only, entire object fully visible and centered with margin, three-quarter front view from the front left, camera at waist height, isolated on plain pure white background, soft even studio lighting, no shadow, realistic product photograph, matte dusty faded surfaces, no glossy reflections, slightly dirty, generic unbranded, no emblem, no labels",
+   "cleanup": "頭枕上的假品牌字抹掉（deglyph_inpaint thr=25）",
+   "tris_target": 5000,
+   "note_orientation": "finish.py 的 PCA 對方形的椅子擺錯向（正面朝 +X），再繞垂直軸轉 -90°（rotz.py）",
+   "why": "s23 四分之三側、扶手椅背完整；s11 純側面、s37 純正面，轉 3D 背面會猜錯",
+   "result": {
+    "tris_in": 40000,
+    "tris": 5000,
+    "size_gltf_xyz": [
+     0.684,
+     1.224,
+     0.7
+    ],
+    "tex": [
+     1024,
+     1024
+    ],
+    "bytes": 266620
+   },
+   "sha1": "1b704cecb0317d45f1cd6407a7e1ef5b94be69e4"
+  },
+  "scrubber.glb": {
+   "source_image": "scrubber_s11.png",
+   "cleaned_image": "scrubber_s11_clean.png",
+   "seed": 11,
+   "prompt": "a walk-behind commercial floor scrubber dryer machine, compact grey blue plastic body with recovery tank lid on top, round brush deck at the front bottom, curved black rubber squeegee at the rear, two small rear wheels, tubular steel push handle bar rising at the back with a small control box, worn and scuffed, single object only, entire object fully visible and centered with margin, three-quarter front view from the front left, camera at waist height, isolated on plain pure white background, soft even studio lighting, no shadow, realistic product photograph, matte dusty faded surfaces, no glossy reflections, slightly dirty, generic unbranded, no emblem, no labels",
+   "negative": "text, letters, words, numbers, logo, brand, emblem, badge, sticker, label, watermark, signature, person, people, human, face, mannequin, operator, hands, character, cartoon, toy, multiple objects, cropped, cut off, floor, scene, room, background clutter, glossy, shiny chrome, reflections, blurry, lowres, deformed",
+   "cleanup": "參考圖：前板假品牌字牌、側面貼紙整框抹掉（deglyph_inpaint all）；模型貼圖目視無字",
+   "tris_target": 7000,
+   "why": "s11 四分之三側、刷盤與後輪完整、機身厚實；s23 有假字且把手細長、s37 太正面",
+   "scripts": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-props3/{gen.py,hy.sh,finish.py,deglyph_inpaint.py}（finish.py -- in out 1.15 scrubber 7000）",
+   "result": {
+    "tris_in": 40000,
+    "tris": 7000,
+    "size_gltf_xyz": [
+     0.597,
+     1.037,
+     1.15
+    ],
+    "tex": [
+     1024,
+     1024
+    ],
+    "bytes": 384480
+   },
+   "sha1": "5f6e96c75ca9afdb3f56066cfee4aba0e0b2e400"
+  },
+  "skate.glb": {
+   "source_image": "skate_s23.png",
+   "cleaned_image": "skate_s23c.png（鞋跟圓牌抹掉）",
+   "seed": 23,
+   "prompt": "a single empty rental figure ice skate, one boot only, white scuffed leather high ankle lace-up boot with grey laces, small stacked heel, mounted on a long plain steel blade with a serrated toe pick, old worn and slightly yellowed, nobody wearing it, single object only, entire object fully visible and centered with margin, side view from the left slightly from the front, camera at waist height, isolated on plain pure white background, soft even studio lighting, no shadow, realistic product photograph, matte dusty faded surfaces, no glossy reflections, slightly dirty, generic unbranded, no emblem, no labels",
+   "negative": "text, letters, words, numbers, logo, brand, emblem, badge, sticker, label, watermark, signature, person, people, human, face, mannequin, driver, operator, passenger, hands, foot, leg, sock, helmet, character, cartoon, toy, multiple objects, cropped, cut off, floor, scene, warehouse, room, background clutter, glossy, shiny chrome, reflections, blurry, lowres, deformed",
+   "scripts": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-props4/{gen.py,hy.sh,finish.py}",
+   "tris": 1599,
+   "size_m": [
+    0.106,
+    0.278,
+    0.3
+   ],
+   "list_item": "第二輪 #28"
+  },
+  "mower.glb": {
+   "source_image": "mower_s11.png",
+   "cleaned_image": "mower_s11c.png",
+   "seed": 11,
+   "prompt": "a walk-behind petrol push lawn mower, old faded red steel deck on four plastic wheels, small engine with pull starter on top, long folding steel handle bar, grey fabric grass catcher bag at the back, grass stains and dust, nobody using it, single object only, entire object fully visible and centered with margin, three-quarter front view from the front left, camera at waist height, isolated on plain pure white background, soft even studio lighting, no shadow, realistic product photograph, matte dusty faded surfaces, no glossy reflections, slightly dirty, generic unbranded, no emblem, no labels",
+   "negative": "text, letters, words, numbers, logo, brand, emblem, badge, sticker, label, watermark, signature, person, people, human, face, mannequin, driver, operator, passenger, hands, foot, leg, sock, helmet, character, cartoon, toy, multiple objects, cropped, cut off, floor, scene, warehouse, room, background clutter, glossy, shiny chrome, reflections, blurry, lowres, deformed",
+   "cleanup": "參考圖：草地抹成白底、甲板徽章、黃標籤、集草袋字、引擎貼紙、把手紅色零件塗掉；模型：前方一片白色假鰭（背景殘影）與引擎上灰板（4 塊散件，188 面）刪掉",
+   "tris_target": 5000,
+   "why": "s11 白底四分之三側、四輪與集草袋完整；s23、s37 背景草地重、輪子被擋",
+   "scripts": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-props7/{gen.py,hy.sh,finish.py}（finish.py -- in out 0.95 mower 5000）＋去鰭腳本",
+   "result": {
+    "tris_in": 40000,
+    "tris": 4812,
+    "size_gltf_xyz": [
+     0.561,
+     0.8,
+     0.95
+    ],
+    "tex": [
+     1024,
+     1024
+    ],
+    "bytes": 297128
+   },
+   "sha1": "cc0c2e6c6d43da8848c888fe5254709b3b32d896"
+  }
+ }
+}

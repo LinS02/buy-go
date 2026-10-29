@@ -1,0 +1,52 @@
+{
+ "title": "walk-lost trace: a ceiling fluorescent tube starter flickers, then catches",
+ "key": "n/a (sfx)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 343774,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 2450,
+ "lufsIn": -19.69,
+ "gainDb": -4.31,
+ "lufs": -24.0,
+ "truePeakDb": -7.38,
+ "clipped": 0,
+ "files": {
+  "ogg": "trace-starter.ogg",
+  "m4a": "trace-starter.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 179163,
+   "decoded_samples": 343774,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 2450,
+   "err_db": -41.6
+  },
+  "m4a": {
+   "bytes": 175702,
+   "decoded_samples": 345024,
+   "tail_padding": 1250,
+   "offset_samples": 0,
+   "first_sound_sample": 2450,
+   "err_db": -35.5
+  }
+ },
+ "kind": "trace-oneshot",
+ "note": "痕跡單發（第 19 項）：天花板燈管啟動器跳 3 次（雙金屬片「叮」→預熱低鳴→跳開「叮」＋燈管閃一下的嗡），第 4 下點著，嗡聲穩住約 1.8 s 後淡出——接 lamp-hum 類循環。60 Hz 系（實錄 ×1.2）。單聲道乾聲，掛燈管；燈光閃爍可對齊 tink 時間。"
+}

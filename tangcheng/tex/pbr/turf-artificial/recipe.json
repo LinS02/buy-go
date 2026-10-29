@@ -1,0 +1,60 @@
+{
+ "generator": "程式生成結構（CPU numpy：週期磚格、Voronoi 骨材、FFT 週期濾波）＋本地 SDXL 加表面細節（RealVisXL V5.0 fp16 img2img＋xinsir controlnet-union-sdxl-promax tile；3×3 週期 1024 塊、Hann⁴ 權重拼回，四方連續）；低頻顏色鎖回程式底稿，只取生成圖高頻",
+ "license": "RealVisXL V5.0（CreativeML OpenRAIL++-M，可商用）、controlnet-union-sdxl-promax（Apache-2.0）；輸入只有本專案的程式底稿；可商用、可公開",
+ "photo_rule": "沒有使用任何照片（純程式底稿＋SDXL 細節）",
+ "people_rule": "生圖提示詞含 no people/no person/no figure/no face，負面詞含 people, person, human, figure, silhouette, face, eyes, footprint, shoe print, handprint, hand；9 塊逐張看過、拼好的整張與 24 m 俯視模擬再看一次",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "程式底稿全部週期；SDXL 塊從環繞的底稿切、拼回時權重週期，四方連續",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "jpg sRGB 4:2:0",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有 steel-rust-paint）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化）"
+ },
+ "set": "turf-artificial",
+ "title": "打擊場人工草皮（兩色草絲、壓倒、黑橡膠粒、磨禿露沙）",
+ "seed": 1,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-terrain/gen_themes.py（python gen_themes.py all turf-artificial --seed 1；共用 tangcheng-pbr/gen_mata.py 的 stage_sdxl／stage_final）",
+ "span_m": 1.0,
+ "photos_referenced": [],
+ "sdxl": {
+  "model": "RealVisXL_V5.0_fp16.safetensors",
+  "controlnet": "controlnet-union-sdxl-promax (tile)",
+  "cn_strength": 0.6,
+  "denoise": 0.34,
+  "steps": 26,
+  "cfg": 5.0,
+  "sampler": "dpmpp_2m karras",
+  "tiles": "3x3 periodic 1024 (Hann^4 blend)",
+  "prompt": "seamless tileable texture, high resolution photograph of worn artificial turf, green synthetic grass blades leaning one way, black rubber crumb infill, bald patches with sand, top-down flat view, orthographic flat surface filling the whole frame, even diffuse lighting, photorealistic, sharp focus, 8k, no people, no person, no figure, no face",
+  "neg": "people, person, human, figure, silhouette, face, eyes, mouth, skull, footprint, shoe print, handprint, hand, fingers, animal, text, letters, numbers, watermark, logo, signature, poster, graffiti, perspective, vanishing point, horizon, room, furniture, harsh shadow, vignette, blurry, cartoon, painting, illustration, 3d render, frame, border",
+  "secs": 431
+ },
+ "final": {
+  "lock_px": 48.0,
+  "detail": 1.0,
+  "relief_mm": 0.06,
+  "sdxl": true
+ },
+ "files": {
+  "2k/albedo.jpg": 1350059,
+  "2k/normal.jpg": 3929988,
+  "2k/roughness.jpg": 702364,
+  "2k/ao.jpg": 1654482,
+  "1k/albedo.jpg": 384362,
+  "1k/normal.jpg": 1023968,
+  "1k/roughness.jpg": 197334,
+  "1k/ao.jpg": 372279
+ },
+ "params": {
+  "span_m": 1.0,
+  "proc_secs": 7.1
+ },
+ "queue_item": "theme-pbr（10-29 大空間主題的純色／canvas 面換生成貼圖）"
+}

@@ -1,0 +1,61 @@
+{
+ "generator": "procedural numpy (gen_decals.py build, seed 3) + SDXL img2img high-frequency detail",
+ "license": "original, generated locally; free for commercial use",
+ "photo_rule": "閾限空間台灣 photos only viewed / colour-sampled; never used as texture or generation input",
+ "people_rule": "no people / person / figure / face / footprint / handprint; prompt + negative enforce it, every cell inspected by eye",
+ "layout": "2048 atlas, 4x4 cells of 512, row-major",
+ "encoding": "RGBA PNG, RGB = multiply/2 (0.5 = no change), A = coverage, linear (NoColorSpace)",
+ "cells": [
+  "rust-drip",
+  "water-tide",
+  "sticker-residue",
+  "tape-marks",
+  "repaint-patch",
+  "scuff-low",
+  "efflorescence",
+  "chipped-paint",
+  "dried-spill",
+  "cement-patch",
+  "rust-ring",
+  "oil-stain",
+  "drag-scratches",
+  "gum-spots",
+  "ceiling-stain",
+  "vent-soot"
+ ],
+ "rough_delta": {
+  "rust-drip": 0.1,
+  "water-tide": -0.03,
+  "sticker-residue": -0.12,
+  "tape-marks": -0.05,
+  "repaint-patch": -0.12,
+  "scuff-low": -0.05,
+  "efflorescence": 0.15,
+  "chipped-paint": 0.2,
+  "dried-spill": -0.08,
+  "cement-patch": 0.3,
+  "rust-ring": 0.1,
+  "oil-stain": -0.3,
+  "drag-scratches": 0.12,
+  "gum-spots": -0.1,
+  "ceiling-stain": 0.02,
+  "vent-soot": 0.05
+ },
+ "sdxl": {
+  "model": "RealVisXL_V5.0_fp16",
+  "controlnet": "controlnet-union-sdxl-promax (tile)",
+  "cn_strength": 0.7,
+  "denoise": 0.35,
+  "steps": 26,
+  "cfg": 5.0,
+  "prompt": "photograph of stains and wear marks on a plain flat light grey painted surface, rust streaks, water stains, glue residue, scuffs, orthographic close-up, even diffuse lighting, photorealistic surface grain, sharp focus, no people, no person, no figure, no face",
+  "neg": "people, person, human, figure, silhouette, face, eyes, mouth, skull, footprint, shoe print, handprint, hand, fingers, animal, text, letters, numbers, watermark, logo, poster, graffiti, perspective, room, object, harsh shadow, vignette, blurry, cartoon, illustration, 3d render",
+  "secs": 178
+ },
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_decals.py",
+ "files": [
+  "2k/atlas.png",
+  "1k/atlas.png"
+ ],
+ "used_by": "tools/sandbox/scenes/_tc-decals.ts"
+}

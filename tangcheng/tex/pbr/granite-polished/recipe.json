@@ -1,0 +1,32 @@
+{
+ "license": "ambientCG CC0 1.0（公有領域，可商用、可再散布；不需署名）；本專案去色／加工",
+ "photo_rule": "照片只用眼睛看＋取色，沒有當貼圖、沒有 img2img、沒有切圖、沒有複製進專案",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "seamless": "ambientCG 原圖四方連續；加工只用週期濾波（FFT／np.roll）",
+ "tiling": "UV＝世界座標 / span_m",
+ "color": "去色（灰階 albedo，平均值見 albedo_mean）：顏色一律由材質 color／withPalette 決定，貼圖不帶色",
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機）"
+ },
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/install_acg.py（python install_acg.py <ambientCG 解壓根> <tex/pbr>）",
+ "queue_item": "T1-14",
+ "set": "granite-polished",
+ "title": "拋光花崗石板（4×4 塊／張、去色）",
+ "files": {
+  "2k/albedo.jpg": 1669034,
+  "2k/normal.jpg": 90293,
+  "2k/roughness.jpg": 970703,
+  "2k/ao.jpg": 39373,
+  "1k/albedo.jpg": 498364,
+  "1k/normal.jpg": 29313,
+  "1k/roughness.jpg": 305162,
+  "1k/ao.jpg": 19043
+ },
+ "albedo_mean": 0.733,
+ "source": "ambientCG Granite002A（https://ambientcg.com/a/Granite002A）",
+ "span_m": 2.4,
+ "slabs_per_tex": 4,
+ "roughness_note": "roughness 貼圖平均 ≈0.8，乘材質 roughness（0.2–0.3）＝拋光；縫＝1.0",
+ "process": "亮度取出→16 塊各自錯位取樣、±5% 明度→平均 0.74→3 px 縫（albedo×0.5、法線溝、AO）"
+}

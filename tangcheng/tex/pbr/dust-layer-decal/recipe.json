@@ -1,0 +1,51 @@
+{
+ "generator": "CPU numpy 程式生成（無生成模型）",
+ "license": "RealVisXL V5.0（CreativeML OpenRAIL++-M，可商用）、controlnet-union-sdxl-promax（Apache-2.0）；輸入只有本專案的程式底稿；可商用、可公開",
+ "photo_rule": "沒有使用任何照片（純程式，沒有生成模型）",
+ "people_rule": "生圖提示詞含 no people/no person/no figure/no face，負面詞含 people, person, human, figure, silhouette, face, eyes, footprint, shoe print, handprint, hand；9 塊逐張看過、拼好的整張與 24 m 俯視模擬再看一次",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "程式底稿全部週期；SDXL 塊從環繞的底稿切、拼回時權重週期，四方連續",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "png sRGB＋A（A＝灰的厚度，0.22–0.95）",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有 steel-rust-paint）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化）"
+ },
+ "set": "dust-layer-decal",
+ "title": "灰塵層貼花（RGBA：薄灰均勻、雲狀厚薄、灰團、纖維；四方連續；腳印由程式在 alpha 上扣；清單六 #15）",
+ "seed": 1,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-terrain/gen_themes6b.py（python gen_themes6b.py all dust-layer-decal --seed 1；共用 tangcheng-pbr/gen_mata.py 的 stage_sdxl／stage_final）",
+ "span_m": 2.4,
+ "photos_referenced": [],
+ "sdxl": null,
+ "final": {
+  "lock_px": 48.0,
+  "detail": 1.0,
+  "relief_mm": 0.06,
+  "sdxl": false
+ },
+ "files": {
+  "2k/normal.jpg": 140697,
+  "2k/roughness.jpg": 744535,
+  "2k/ao.jpg": 188094,
+  "1k/normal.jpg": 29537,
+  "1k/roughness.jpg": 12694,
+  "1k/ao.jpg": 21914,
+  "2k/albedo.png": 9513865,
+  "1k/albedo.png": 1106426
+ },
+ "params": {
+  "span_m": 2.4,
+  "alpha": "albedo.png 的 A＝灰的厚度（0.22–0.95，平均約 0.55）",
+  "proc_secs": 6.4
+ },
+ "queue_item": "theme-pbr-6b（10-29 第九批：清單六 #12 越走越舊、#15 灰塵腳印、#21 錄影帶店、#23 委託行窄街、#24 電器行電視牆）",
+ "roughness_floor": "出圖後 roughness 夾底 0.85（JPEG 存後實測 2k min 0.745、mean 0.920）",
+ "alpha": "albedo.png 的 A＝灰的厚度（0.22–0.95，平均約 0.55）"
+}

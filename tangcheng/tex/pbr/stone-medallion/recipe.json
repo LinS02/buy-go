@@ -1,0 +1,44 @@
+{
+ "set": "stone-medallion",
+ "title": "中庭圓形石材拼花（羅盤星＋黑白放射棋盤帶＋紅褐圈＋黑邊；不鏽鋼嵌條分界）",
+ "queue_item": "錯層中庭 split 地坪升級（10-29）",
+ "generator": "純程式生成（CPU numpy：4096 算拼塊幾何（8 長尖／8 短尖羅盤星、48 格黑白放射棋盤兩排錯格、24 塊紅褐圈、黑邊、5 道不鏽鋼嵌條）→ 每種石材各自的週期顆粒場（石英／長石／雲母相）＋每塊明度色溫亂度＋拼縫 → 2×2 縮成 2048）；沒有用生成模型",
+ "license": "本專案程式生成，可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色（03_中庭與玻璃天幕：百鳥朝鳳與黑白棋盤地、噴水池俯瞰——粉米底、黑白放射棋盤帶）；沒有當貼圖、沒有 img2img、沒有切圖、沒有複製進專案",
+ "people_rule": "無生成模型、圖樣是幾何拼塊；不平鋪（每個廣場只鋪一張），24 m 俯視模擬看過無腳印／人形狀重複",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "seamless": "不平鋪：整張＝一個圓（內切圓 ρ=1 是外緣；ρ>1 的角落是粉米底）",
+ "tiling": "UV＝((x−cx)/(2R)+0.5, (cz−z)/(2R)+0.5)，R＝該廣場拼花外緣半徑（_tc-split medallion()）",
+ "layout_rho": {
+  "羅盤星": "0–0.50（中心黑圓 0.085）",
+  "粉米底": "0.52–0.70",
+  "黑白放射棋盤": "0.712–0.86（48 格×2 排）",
+  "紅褐圈": "0.874–0.944",
+  "黑邊": "0.956–1.0",
+  "不鏽鋼嵌條": [
+   0.085,
+   0.51,
+   0.706,
+   0.867,
+   0.95
+  ]
+ },
+ "color": "albedo 直接是石材色（sRGB；材質 color 用白）",
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_split_floor.py（python3 gen_split_floor.py medallion <out> --seed 23）",
+ "seed": 23,
+ "roughness_note": "roughness 貼圖：石 ≈0.8、不鏽鋼 0.55、縫 1.0；乘材質 rough（0.22）",
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化）"
+ },
+ "files": {
+  "2k/albedo.jpg": 1161344,
+  "2k/normal.jpg": 117466,
+  "2k/roughness.jpg": 598334,
+  "2k/ao.jpg": 95827,
+  "1k/albedo.jpg": 309735,
+  "1k/normal.jpg": 23060,
+  "1k/roughness.jpg": 145882,
+  "1k/ao.jpg": 38227
+ }
+}

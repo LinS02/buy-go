@@ -1,0 +1,730 @@
+{
+ "queue": "doc/design/tangcheng-asset-queue.md #26",
+ "made": "2026-10-27（10-27 中斷後續做）",
+ "tool": "numpy／scipy（CPU）；CLAP laion/larger_clap_general 只做 CPU 分析、不生成；不用 GPU",
+ "reference_search": "先翻 art-src/_reference/audio/（horror-sfx LICENSES.md、kenney-impact License.txt）：沒有現成 IR、沒有巨大空間底噪（underground-parking-ambience 有輪胎聲＝有人，不能用）；可商用的金屬實錄有 metal/falling-steel-bar（CC0）、metal/clang-bart-01（CC0）、door/metal-barrier-slam（CC0）、door/metal-door-slam-rubberduck（CC0）→ 鋼管、防火門改用實錄做候選並勝出；水錘、手扶梯煞車、鐵捲門沒有合適實錄（鐵捲門用本專案自產 sfx/shutter-down-a）→ 程式合成。本地庫 local-gen/music/sfx/ 只有本專案前幾項的產物。",
+ "scripts": "~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-vast/（ir.py、drone.py、far.py、selfecho.py＋*_params.json；量測 verify26.py（續做時的獨立驗收）、irm.py、dmeas.py、fmeas.py、clap.py＋labels.json；出檔 export.py、export_selfecho.py、export_real.py；分數 scores/）",
+ "rules": [
+  "遊戲裡不可以有別人：沒有人聲、語音、廣播、別人的腳步（10-27）",
+  "腳步回音＝玩家自己的腳步延遲回音（far-self-echo-*），不含直達聲"
+ ],
+ "category": "vast-space-audio",
+ "title": "第 26 項巨大空間的聲音：底噪 2＋極遠處單發 7（給 T1-10）",
+ "path_note": "清單第 26 項指定 audio/amb/vast/。10-27 中斷前的版本放在 audio/amb/vast-*、audio/sfx/far/，續做時搬進這裡（同名），IR 照規定放 audio/ir/（見 audio/ir/recipe.json）",
+ "verify_method": "verify26.py 直接量遊戲裡的檔（解碼 ogg 與 m4a）：e300＝300 Hz 以上能量占比、e300_1k＝300 Hz–1 kHz 占比、LUFS（BS.1770，mc.report）、phone_drop＝400 Hz 4 階高通前後 LUFS 差；循環：照 loop.json 切出循環段，seam_jump_pct＝接點跳差在全檔相鄰樣本差的百分位（隨機點應 ≈50，<99 即無喀聲）、seam_rms_step_pct＝接點兩側 20 ms RMS 差在 400 個隨機切點的百分位、seam_spec_pct＝接點兩側對數頻譜距離在 200 個隨機切點的百分位；對照組 ctl_cut777＝故意少切 777 樣本，必須量到 100 才證明量法量得出失敗。單發：tail_T30（500 Hz–2 kHz Schroeder）、c80；回音另量 pre_db（首道回音之前的能量，−∞＝沒有直達聲）、echo_prom_db",
+ "drones": {
+  "brief": "極低頻空間底噪、無縫循環 ≥40 s、含 300 Hz–1 kHz 讓手機聽得到；使用者 10-27 剛嫌嗡聲吵 → 不加任何諧波／正弦，300 Hz–1 kHz 只用寬頻氣流",
+  "format": "48 s 立體聲 Opus ogg＋AAC m4a＋loop.json（loopStart 0、loopEnd 48.0），−28 LUFS，不削峰；loop.json 有 room 欄位（vast-abyss／vast-deep），不會撞既有 amb-corridor／amb-b2-dark",
+  "loop_method": "天生循環：雜訊在 FFT 域生成（長度＝整檔）、調變週期是 48 s 的整數分之一、殘響用第 26 項 IR 做循環摺積、悶響放在環狀時間軸上 → 接縫逐樣本連續，不交叉淡",
+  "targets": {
+   "phone_drop_db": "≤ 8",
+   "e300_1k": "≥ 0.05",
+   "below120": "≥ 0.8",
+   "tonal_db": "≤ 8（嗡聲線）",
+   "seam": "接點百分位低於對照組（少切 777 樣本 ≥99）"
+  },
+  "controls": {
+   "amb_b2_dark": {
+    "tonal_db": 30.3,
+    "clap_hum": 0.981
+   },
+   "amb_corridor": {
+    "clap_hum": 0.983
+   },
+   "white_noise": {
+    "clap_vast": 0
+   }
+  },
+  "metrics_v1": "dmeas.py（measure.py 延伸：tonal_db＝Welch 1 Hz 譜÷61 Hz 中位譜在 25–1000 Hz 的最大值；e300_1k、below120＝能量比；seam_pct＝接點相鄰樣本差的百分位）；clap.py（drone 組：vast＝巨大空曠空間低沉空氣聲、hum＝電器嗡聲）。數字為出檔後解碼 ogg 重量（m4a 解碼檔含 960 樣本 tail_padding，接縫看 bgm_export 依 loopEnd 量的 jump_ratio）",
+  "rejected": {
+   "A1": "全過，但手機 phone_drop 6.3 dB、e300_1k 0.065 不如 A3（5.4、0.098）；d_vast 0.205 < 0.216",
+   "A2": "e300_1k 0.042 未達 0.05（手機聽不到中頻）",
+   "B1": "phone_drop 6.2、e300_1k 0.074、tonal 7.3 dB，三項都不如 B3（5.2、0.107、7.2）",
+   "B2": "phone_drop 7.4、e300_1k 0.051 只剛好過門檻"
+  },
+  "known_limits": "CLAP 的 vast 機率對任何低沉雜訊都高（0.99），區辨力靠 d_vast 對照與 tonal_db；遊戲 room() 預設 gain 0.16，這兩檔已經 −28 LUFS，接上後若嫌吵先降 gain，別再加低切（會失去空間感）",
+  "license": "本專案程式合成（numpy／scipy），無生成模型、無人聲；可商用",
+  "items": {
+   "vast-abyss": {
+    "candidate": "A3",
+    "params": {
+     "seed": 303,
+     "len": 48,
+     "layers": [
+      {
+       "name": "sub 18–48 Hz（巨大體積的氣壓起伏）",
+       "kind": "noise",
+       "lo": 18,
+       "hi": 48,
+       "edge": 0.3,
+       "coh": 1.0,
+       "lfo": [
+        24,
+        16,
+        48
+       ],
+       "depth": 3,
+       "db": 0
+      },
+      {
+       "name": "rumble 50–110 Hz（遠方空調主機經結構）",
+       "kind": "noise",
+       "lo": 50,
+       "hi": 110,
+       "slope": -3,
+       "coh": 0.9,
+       "lfo": [
+        12,
+        48
+       ],
+       "depth": 2.5,
+       "db": -10
+      },
+      {
+       "name": "air 280–1100 Hz（中庭裡的氣流，過無底中庭 IR）",
+       "kind": "noise",
+       "lo": 280,
+       "hi": 1100,
+       "slope": -3,
+       "coh": 0.1,
+       "lfo": [
+        48,
+        9.6,
+        6
+       ],
+       "depth": 3,
+       "ir": "cands/ir-A1.wav",
+       "db": -3
+      },
+      {
+       "name": "whisper 1.2–4 kHz（極淡的高處氣流嘶聲，過中庭 IR）",
+       "kind": "noise",
+       "lo": 1200,
+       "hi": 4000,
+       "coh": 0.0,
+       "ir": "cands/ir-A1.wav",
+       "db": -22
+      }
+     ]
+    },
+    "measured": {
+     "phone_drop_db": 5.4,
+     "e300_1k": 0.099,
+     "centroid_hz": 118,
+     "below120": 0.82,
+     "tonal_db": 4.8,
+     "seam_pct_ogg": 94.8,
+     "seam_ctl_pct": 100,
+     "bgm_export_jump_ratio": {
+      "ogg": 0.76,
+      "m4a": 0.39
+     },
+     "lufs": -28.0,
+     "truePeakDb": -13.5,
+     "clap_vast": 0.998,
+     "clap_d_vast": 0.216,
+     "clap_d_hum": -0.117
+    },
+    "file": "audio/amb/vast/vast-abyss.ogg",
+    "verify_1027": {
+     "ogg": {
+      "len_s": 48.0,
+      "centroid_hz": 118,
+      "e300": 0.112,
+      "e300_1k": 0.099,
+      "e_below120": 0.818,
+      "lufs": -28.0,
+      "phone_drop_db": 5.4,
+      "peak_db": -13.5,
+      "seam_jump_pct": 65.3,
+      "seam_rms_step_db": 0.19,
+      "seam_rms_step_pct": 6.0,
+      "seam_spec_pct": 86.0,
+      "ctl_cut777_jump_pct": 100.0,
+      "octave_share": {
+       "63": 0.289,
+       "125": 0.026,
+       "250": 0.086,
+       "500": 0.06,
+       "1000": 0.026,
+       "2000": 0.001,
+       "4000": 0.0,
+       "8000": 0.0
+      }
+     },
+     "m4a": {
+      "len_s": 48.0,
+      "centroid_hz": 117,
+      "e300": 0.111,
+      "e300_1k": 0.098,
+      "e_below120": 0.819,
+      "lufs": -28.01,
+      "phone_drop_db": 5.4,
+      "peak_db": -13.5,
+      "seam_jump_pct": 38.9,
+      "seam_rms_step_db": 0.45,
+      "seam_rms_step_pct": 13.0,
+      "seam_spec_pct": 43.0,
+      "ctl_cut777_jump_pct": 100.0
+     }
+    }
+   },
+   "vast-deep": {
+    "candidate": "B3",
+    "params": {
+     "seed": 313,
+     "len": 48,
+     "layers": [
+      {
+       "name": "sub 22–65 Hz（樓層深處的呼吸）",
+       "kind": "noise",
+       "lo": 22,
+       "hi": 65,
+       "edge": 0.3,
+       "coh": 1.0,
+       "lfo": [
+        12,
+        8
+       ],
+       "depth": 4,
+       "db": 0
+      },
+      {
+       "name": "thumps 35–55 Hz（深處結構悶響，過無限走道 IR）",
+       "kind": "thumps",
+       "n": 6,
+       "f0": [
+        35,
+        55
+       ],
+       "dur": [
+        1.2,
+        2.5
+       ],
+       "ir": "cands/ir-C4.wav",
+       "db": -5
+      },
+      {
+       "name": "shaft 320–850 Hz（風管氣流，過無限走道 IR）",
+       "kind": "noise",
+       "lo": 320,
+       "hi": 850,
+       "edge": 0.25,
+       "coh": 0.1,
+       "lfo": [
+        16,
+        6,
+        4.8
+       ],
+       "depth": 4,
+       "ir": "cands/ir-C4.wav",
+       "db": -4
+      },
+      {
+       "name": "grit 0.9–3 kHz（手扶梯井裡的金屬細聲，過手扶梯井 IR）",
+       "kind": "noise",
+       "lo": 900,
+       "hi": 3000,
+       "coh": 0.0,
+       "ir": "cands/ir-W8.wav",
+       "db": -20
+      }
+     ]
+    },
+    "measured": {
+     "phone_drop_db": 5.1,
+     "e300_1k": 0.108,
+     "centroid_hz": 113,
+     "below120": 0.88,
+     "tonal_db": 6.6,
+     "seam_pct_ogg": 86.7,
+     "seam_ctl_pct": 100,
+     "bgm_export_jump_ratio": {
+      "ogg": 0.58,
+      "m4a": 0.46
+     },
+     "lufs": -28.0,
+     "truePeakDb": -12.3,
+     "clap_vast": 0.999,
+     "clap_d_vast": 0.285
+    },
+    "file": "audio/amb/vast/vast-deep.ogg",
+    "verify_1027": {
+     "ogg": {
+      "len_s": 48.0,
+      "centroid_hz": 113,
+      "e300": 0.113,
+      "e300_1k": 0.108,
+      "e_below120": 0.876,
+      "lufs": -28.01,
+      "phone_drop_db": 5.1,
+      "peak_db": -12.3,
+      "seam_jump_pct": 78.4,
+      "seam_rms_step_db": -1.88,
+      "seam_rms_step_pct": 49.2,
+      "seam_spec_pct": 79.5,
+      "ctl_cut777_jump_pct": 100.0,
+      "octave_share": {
+       "63": 0.488,
+       "125": 0.008,
+       "250": 0.029,
+       "500": 0.065,
+       "1000": 0.028,
+       "2000": 0.001,
+       "4000": 0.0,
+       "8000": 0.0
+      }
+     },
+     "m4a": {
+      "len_s": 48.0,
+      "centroid_hz": 113,
+      "e300": 0.113,
+      "e300_1k": 0.107,
+      "e_below120": 0.877,
+      "lufs": -28.0,
+      "phone_drop_db": 5.2,
+      "peak_db": -12.3,
+      "seam_jump_pct": 27.8,
+      "seam_rms_step_db": -1.92,
+      "seam_rms_step_pct": 50.2,
+      "seam_spec_pct": 83.5,
+      "ctl_cut777_jump_pct": 100.0
+     }
+    }
+   }
+  }
+ },
+ "far": {
+  "format": "48 kHz 立體聲 Opus .ogg（主）＋AAC .m4a（Safari 備援）＋.loop.json（oneshot，firstSoundSample、tail_padding）。距離、空氣吸收、殘響全烘進檔：不要再接 ConvolverNode。整合 −28 LUFS（玩家回音 −30）（−27 附近、保守），不削峰。",
+  "method": "乾聲 → 距離 d 的空氣吸收（ISO 9613-1 20 °C/50 %RH 表，頻域）→ 繞射／隔樓板低通 occl → 輕微聲像；殘響＝乾聲另過 d×1.2 m 空氣吸收、低通 occl×1.5，再 ⊛ 第 26 項 IR；依 DRR（直達:殘響能量比）混合；低切 lowcut 讓出底噪低頻、手機聽得到；最後 1 s 淡出",
+  "metrics_v1": "fmeas.py（對照同一個乾聲 .dry.wav）：hf4k/hf8k_drop＝(4k/8k 以上能量÷500 Hz–2 kHz 能量)遠 − 乾；tail_t30＝500 Hz–2 kHz Schroeder；c80＝起音後 80 ms 對其餘能量；phone_drop＝4 階 400 Hz 高通前後 LUFS 差；CLAP d_far＝『很遠處、巨大空間、有回音』 − 『近距離、乾』，人聲群機率。表中數字為出檔後解碼 ogg 重量",
+  "targets": {
+   "hf4k_drop_db": "≤ −12",
+   "hf8k_drop_db": "≤ −25",
+   "c80_db": "≤ −8",
+   "tail_t30_s": "≥ 4.5",
+   "phone_drop_db": "≤ 10",
+   "clap": "d_far 高過自己的乾聲；人聲群 ≈0"
+  },
+  "items": {
+   "far-shutter": {
+    "title": "鐵捲門在中庭對面放下（~120 m）",
+    "candidate": "shutter-a",
+    "params": {
+     "src": "src/shutter-down-a.wav",
+     "ir": "audio/ir/vast-abyss.wav",
+     "d": 120,
+     "occl": 3800,
+     "tail": 10,
+     "pan": -0.3,
+     "seed": 400,
+     "drr": -10,
+     "lowcut": 200
+    },
+    "measured": {
+     "hf4k": -16.6,
+     "hf8k": -32.9,
+     "tail": 10.32,
+     "c80": -30.7,
+     "phone": 9.5,
+     "d_far": 0.046,
+     "d_far_dry": -0.037
+    },
+    "license": "本專案程式合成；far-shutter 的乾聲是本專案自產 sfx/shutter-down-a",
+    "verify_1027": {
+     "ogg": {
+      "len_s": 16.72,
+      "centroid_hz": 257,
+      "e300": 0.167,
+      "e300_1k": 0.153,
+      "e_below120": 0.005,
+      "lufs": -28.0,
+      "phone_drop_db": 9.5,
+      "peak_db": -14.4,
+      "onset_s": 0.08,
+      "tail_T30_s": 10.32,
+      "c80_db": -30.7
+     },
+     "m4a": {
+      "len_s": 16.75,
+      "centroid_hz": 257,
+      "e300": 0.167,
+      "e300_1k": 0.153,
+      "e_below120": 0.005,
+      "lufs": -28.0,
+      "phone_drop_db": 9.5,
+      "peak_db": -14.4,
+      "onset_s": 0.08,
+      "tail_T30_s": 10.31,
+      "c80_db": -30.7
+     }
+    }
+   },
+   "far-pipe": {
+    "title": "結構裡水管水錘敲三下（~60 m、隔樓板）",
+    "candidate": "pipe-c",
+    "params": {
+     "src": "pipe2",
+     "ir": "audio/ir/vast-abyss.wav",
+     "d": 60,
+     "occl": 2200,
+     "tail": 9,
+     "pan": -0.15,
+     "seed": 441,
+     "drr": -14,
+     "lowcut": 110
+    },
+    "measured": {
+     "hf4k": -30.0,
+     "hf8k": -41.2,
+     "tail": 9.82,
+     "c80": -14.7,
+     "phone": 5.9,
+     "d_far": 0.1065,
+     "d_far_dry": -0.072
+    },
+    "license": "本專案程式合成（numpy／scipy），無生成模型、無人聲；可商用",
+    "verify_1027": {
+     "ogg": {
+      "len_s": 11.25,
+      "centroid_hz": 241,
+      "e300": 0.219,
+      "e300_1k": 0.207,
+      "e_below120": 0.011,
+      "lufs": -27.99,
+      "phone_drop_db": 5.9,
+      "peak_db": -14.3,
+      "onset_s": 0.05,
+      "tail_T30_s": 9.82,
+      "c80_db": -14.7
+     },
+     "m4a": {
+      "len_s": 11.28,
+      "centroid_hz": 240,
+      "e300": 0.218,
+      "e300_1k": 0.207,
+      "e_below120": 0.011,
+      "lufs": -28.0,
+      "phone_drop_db": 5.9,
+      "peak_db": -14.2,
+      "onset_s": 0.05,
+      "tail_T30_s": 9.81,
+      "c80_db": -14.6
+     }
+    }
+   },
+   "far-escalator": {
+    "title": "手扶梯井深處停梯煞車＋鏈條（~130 m）",
+    "candidate": "escalator-c",
+    "params": {
+     "src": "escalator",
+     "ir": "audio/ir/vast-escalator-well.wav",
+     "d": 130,
+     "occl": 3200,
+     "tail": 6,
+     "pan": -0.4,
+     "seed": 461,
+     "drr": -11,
+     "lowcut": 120
+    },
+    "measured": {
+     "hf4k": -16.6,
+     "hf8k": -43.8,
+     "tail": 4.59,
+     "c80": -10.9,
+     "phone": 8.3,
+     "d_far": 0.033,
+     "d_far_dry": -0.093
+    },
+    "license": "本專案程式合成（numpy／scipy），無生成模型、無人聲；可商用",
+    "verify_1027": {
+     "ogg": {
+      "len_s": 8.45,
+      "centroid_hz": 209,
+      "e300": 0.07,
+      "e300_1k": 0.038,
+      "e_below120": 0.072,
+      "lufs": -27.99,
+      "phone_drop_db": 8.3,
+      "peak_db": -13.8,
+      "onset_s": 0.05,
+      "tail_T30_s": 4.59,
+      "c80_db": -10.9
+     },
+     "m4a": {
+      "len_s": 8.49,
+      "centroid_hz": 209,
+      "e300": 0.07,
+      "e300_1k": 0.038,
+      "e_below120": 0.073,
+      "lufs": -28.0,
+      "phone_drop_db": 8.3,
+      "peak_db": -13.7,
+      "onset_s": 0.05,
+      "tail_T30_s": 4.59,
+      "c80_db": -10.9
+     }
+    }
+   },
+   "far-clang": {
+    "title": "樓下深處一根鋼條掉地（~150 m，無底中庭 IR）",
+    "candidate": "clang-r1",
+    "license": "CC0 實錄再加工：Joseph SARDIN〈Falling sheet steel bar #1〉bigsoundbank.com/falling-sheet-steel-bar-1-s1771.html",
+    "params": {
+     "src": "src/falling-steel-bar.wav",
+     "ir": "audio/ir/vast-abyss.wav",
+     "d": 150,
+     "occl": 1800,
+     "tail": 10,
+     "pan": 0.35,
+     "seed": 4201,
+     "drr": -12,
+     "lowcut": 90,
+     "note": "CC0 實錄 Joseph SARDIN falling sheet steel bar"
+    },
+    "measured_vs_dry": {
+     "centroid_hz": 696,
+     "centroid_dry_hz": 1005,
+     "hf4k_drop_db": -35.6,
+     "hf8k_drop_db": -62.8,
+     "tail_t30_s": 10.36,
+     "c80_db": -14.1,
+     "lufs": -21.05,
+     "phone_drop_db": 0.0,
+     "peak_db": -6.0,
+     "len_s": 11.16
+    },
+    "clap": {
+     "far": 0.0,
+     "near": 0.0,
+     "shutter": 0.0,
+     "step": 0.0,
+     "clang": 1.0,
+     "pipe": 0.0,
+     "firedoor": 0.0,
+     "escalator": 0.0,
+     "voice": 0.0,
+     "other": 0.0,
+     "d_far": 0.1432
+    },
+    "verify_1027": {
+     "ogg": {
+      "len_s": 11.16,
+      "centroid_hz": 696,
+      "e300": 0.983,
+      "e300_1k": 0.962,
+      "e_below120": 0.0,
+      "lufs": -27.88,
+      "phone_drop_db": 0.2,
+      "peak_db": -12.9,
+      "onset_s": 0.101,
+      "tail_T30_s": 10.37,
+      "c80_db": -14.1
+     },
+     "m4a": {
+      "len_s": 11.2,
+      "centroid_hz": 696,
+      "e300": 0.983,
+      "e300_1k": 0.962,
+      "e_below120": 0.0,
+      "lufs": -27.89,
+      "phone_drop_db": 0.2,
+      "peak_db": -13.0,
+      "onset_s": 0.101,
+      "tail_T30_s": 10.36,
+      "c80_db": -14.1
+     }
+    },
+    "pick_reason": "實錄勝過 v1 合成：d_far 0.143 對 0.095、手機 phone_drop 0.0 對 6.2 dB，CLAP 身分同為鋼管"
+   },
+   "far-firedoor": {
+    "title": "走道遠端一道鋼門／金屬柵被拉上、摩擦後撞上（~110 m，無限走道 IR）",
+    "candidate": "firedoor-r2",
+    "license": "CC0 實錄再加工：Joseph SARDIN〈Metal barrier: Closure #1〉bigsoundbank.com/grinding-metal-barrier-closure-1-s2358.html",
+    "params": {
+     "src": "src/metal-barrier-slam.wav",
+     "ir": "audio/ir/vast-corridor.wav",
+     "d": 110,
+     "occl": 3500,
+     "tail": 7,
+     "pan": 0.4,
+     "seed": 4412,
+     "drr": -14,
+     "lowcut": 140,
+     "note": "CC0 實錄 Joseph SARDIN metal barrier closure"
+    },
+    "measured_vs_dry": {
+     "centroid_hz": 501,
+     "centroid_dry_hz": 865,
+     "hf4k_drop_db": -17.0,
+     "hf8k_drop_db": -41.0,
+     "tail_t30_s": 5.05,
+     "c80_db": -24.6,
+     "lufs": -21.74,
+     "phone_drop_db": 3.3,
+     "peak_db": -6.0,
+     "len_s": 11.23
+    },
+    "clap": {
+     "far": 0.0,
+     "near": 0.0,
+     "shutter": 0.0,
+     "step": 0.0,
+     "clang": 0.13,
+     "pipe": 0.0,
+     "firedoor": 0.842,
+     "escalator": 0.0,
+     "voice": 0.0,
+     "other": 0.027,
+     "d_far": 0.1398
+    },
+    "verify_1027": {
+     "ogg": {
+      "len_s": 11.23,
+      "centroid_hz": 502,
+      "e300": 0.716,
+      "e300_1k": 0.609,
+      "e_below120": 0.022,
+      "lufs": -27.5,
+      "phone_drop_db": 3.8,
+      "peak_db": -12.1,
+      "onset_s": 0.744,
+      "tail_T30_s": 5.04,
+      "c80_db": -24.6
+     },
+     "m4a": {
+      "len_s": 11.26,
+      "centroid_hz": 501,
+      "e300": 0.717,
+      "e300_1k": 0.611,
+      "e_below120": 0.022,
+      "lufs": -27.52,
+      "phone_drop_db": 3.8,
+      "peak_db": -12.3,
+      "onset_s": 0.742,
+      "tail_T30_s": 5.05,
+      "c80_db": -24.5
+     }
+    },
+    "pick_reason": "實錄勝過 v1 合成：CLAP 身分『heavy steel door slamming shut』0.84（v1 被判 gunshot 0.98）、d_far 0.140 對 0.043、phone_drop 3.3 對 7.5 dB"
+   },
+   "far-self-echo-atrium": {
+    "title": "玩家自己的腳步從無底中庭對面欄杆彈回來（~90 m，首道 0.52 s，之後在中庭兩側來回）",
+    "candidate": "echo-c",
+    "own_echo": true,
+    "license": "本專案自產 audio/sfx/steps/terrazzo-walk-3（第 16 項，CC0 Joseph SARDIN 皮鞋錄音再加工）＋程式回音列＋第 26 項 IR",
+    "note": "這是玩家自己的回音。檔內沒有直達聲：第 0 樣本＝玩家那一步腳跟落地，第一道回音在 first_echo_s 出現。不是別人的腳步。",
+    "params": {
+     "src": "terrazzo-walk-3.ogg",
+     "ir": "cands/ir-A1.wav",
+     "D": 90,
+     "D2": 45,
+     "n_echo": 3,
+     "decay_db": 8,
+     "smear_ms": 14,
+     "occl": 4500,
+     "drr": -9,
+     "pan": 0.25,
+     "tail": 9,
+     "seed": 2603,
+     "lowcut": 60,
+     "note": "無底中庭對面欄杆 90 m（t1 0.52 s），之後在中庭兩側 45 m 來回，滲進 10 s 殘響"
+    },
+    "measured_vs_step": {
+     "hf4k_drop_db": -18.7,
+     "hf8k_drop_db": -42.1
+    },
+    "clap_voice": {
+     "voice_group": 0.0,
+     "d_voice": -0.2059
+    },
+    "verify_1027": {
+     "len_s": 10.31,
+     "centroid_hz": 339,
+     "e300": 0.372,
+     "e300_1k": 0.329,
+     "e_below120": 0.122,
+     "lufs": -30.01,
+     "phone_drop_db": 2.9,
+     "peak_db": -12.0,
+     "onset_s": 0.534,
+     "tail_T30_s": 10.21,
+     "c80_db": -10.2,
+     "pre_db": -107.3,
+     "echo_prom_db": 12.7
+    },
+    "pick_reason": "首道回音最清楚（echo_prom 12.7 dB）、c80 −10.2、拖 10 s（滲進無底中庭 IR），延遲 0.52 s 不和走路步距重疊"
+   },
+   "far-self-echo-corridor": {
+    "title": "玩家自己的腳步從無限走道盡頭彈回來（~100 m，首道 0.58 s，來回 3 趟）",
+    "candidate": "echo-f",
+    "own_echo": true,
+    "license": "本專案自產 audio/sfx/steps/terrazzo-walk-3（第 16 項，CC0 Joseph SARDIN 皮鞋錄音再加工）＋程式回音列＋第 26 項 IR",
+    "note": "這是玩家自己的回音。檔內沒有直達聲：第 0 樣本＝玩家那一步腳跟落地，第一道回音在 first_echo_s 出現。不是別人的腳步。",
+    "params": {
+     "src": "terrazzo-walk-3.ogg",
+     "ir": "cands/ir-C4.wav",
+     "D": 100,
+     "D2": 100,
+     "n_echo": 3,
+     "decay_db": 6,
+     "smear_ms": 6,
+     "occl": 5000,
+     "drr": -10,
+     "pan": 0.1,
+     "tail": 7,
+     "seed": 2606,
+     "lowcut": 60,
+     "note": "走道盡頭 100 m（t1 0.58 s），殘響比 −10 dB"
+    },
+    "measured_vs_step": {
+     "hf4k_drop_db": -22.5,
+     "hf8k_drop_db": -40.8
+    },
+    "clap_voice": {
+     "voice_group": 0.0,
+     "d_voice": -0.1903
+    },
+    "verify_1027": {
+     "len_s": 9.33,
+     "centroid_hz": 454,
+     "e300": 0.543,
+     "e300_1k": 0.474,
+     "e_below120": 0.05,
+     "lufs": -29.84,
+     "phone_drop_db": 1.9,
+     "peak_db": -16.1,
+     "onset_s": 0.587,
+     "tail_T30_s": 5.07,
+     "c80_db": -11.2,
+     "pre_db": -300.0,
+     "echo_prom_db": 7.4
+    },
+    "pick_reason": "走道候選裡唯一 echo_prom ≥ 7 dB 又 c80 ≤ −8（d 6.9、e 4.9 回音被殘響吞掉；b 的 c80 −6.1 太清楚像近處）"
+   }
+  },
+  "rejected": {
+   "shutter-b": "DRR −14：phone_drop 10.2 dB 超過 10（a：9.6）",
+   "step-a": "d 70 m、DRR −8：hf4k_drop −11.0 未達 −12",
+   "step-b": "d 70 m：數字全過但 CLAP d_far 0.089，只比乾聲 0.081 高 0.008（c：0.101）",
+   "clang-b": "數字全過，DRR −16；CLAP d_far 0.082 低於 a 0.095",
+   "pipe-a": "舊鑄鐵悶敲音源：數字全過，d_far 0.105 略低於 c 0.1065；c 換鋼管音源，多了管壁環模態",
+   "pipe-b": "同 pipe-a 音源、DRR −14：d_far 0.103",
+   "firedoor-a": "DRR −10：c80 −8.2 dB 只剛好過 −8（b：−11.5）",
+   "firedoor-c": "帶油壓嘶聲的 v2 音源：CLAP d_far 只有 0.014（乾聲 −0.033），被判成 clang 0.86",
+   "escalator-a": "d 90 m：hf4k_drop −12.0 剛好在門檻、c80 −9.5；d_far 0.032",
+   "escalator-b": "d 90 m：hf4k_drop −9.6 未達 −12",
+   "far-step（v1 step-c）": "10-27 鐵律：『很遠的一聲腳步』是別人的腳步 → 整個刪除，改成 far-self-echo-*（玩家自己的回音）",
+   "clang-a（v1 合成）": "被 CC0 實錄 clang-r1 取代（見 far-clang pick_reason）",
+   "clang-r2": "clang-bart-01 實錄：hf4k 只衰減 −24 dB、CLAP 鋼管 0.91 不如 r1 的 1.0",
+   "firedoor-b（v1 合成）": "被 CC0 實錄 firedoor-r2 取代；CLAP 判成 gunshot",
+   "firedoor-r1": "rubberduck metal_slam_01：0.57 s 太短，遠處只剩一下悶響，CLAP 判 explosion 0.997",
+   "echo-a": "走道 60 m：首道 0.35 s＝走路步距，會和下一步疊在一起；c80 −7.2 未達 −8",
+   "echo-b": "走道 120 m：c80 −6.1，第一道太清楚像近處拍手",
+   "echo-d": "走道 85 m：echo_prom 6.9 dB，被 f 取代",
+   "echo-e": "d 改散射 5 ms：echo_prom 4.9 dB，回音被 IR 吞掉"
+  },
+  "known_limits": "CLAP 的身分辨識不可靠（連乾的腳步都只排第 5、乾的防火門第 6；遠處悶響常被判成 gunshot／explosion），所以身分不列通過條件，只量『遠、大空間』對比。shutter／firedoor／escalator 的 d_far 絕對值偏小（0.03–0.05），但都高過自己的乾聲 0.07–0.13。 回音組 CLAP 遠近對比（d_far）連乾腳步對照組都比較高（0.19 對 0.15–0.17），不能用；只用 CLAP 確認人聲群＝0。",
+  "clap_note": "CLAP 對腳步回音只用來確認沒有人聲（voice 群機率 0、d_voice < 0）"
+ }
+}

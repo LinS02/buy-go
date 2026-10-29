@@ -1,0 +1,52 @@
+{
+ "title": "walk-lost trace: a roller-shutter motor runs halfway by itself, stalls and stops",
+ "key": "n/a (sfx)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 304800,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 138,
+ "lufsIn": -24.65,
+ "gainDb": 0.65,
+ "lufs": -24.0,
+ "truePeakDb": -2.43,
+ "clipped": 0,
+ "files": {
+  "ogg": "trace-shutter-stall.ogg",
+  "m4a": "trace-shutter-stall.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 125026,
+   "decoded_samples": 304800,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 138,
+   "err_db": -32.5
+  },
+  "m4a": {
+   "bytes": 156094,
+   "decoded_samples": 306112,
+   "tail_padding": 1312,
+   "offset_samples": 0,
+   "first_sound_sample": 138,
+   "err_db": -37.5
+  }
+ },
+ "kind": "trace-oneshot",
+ "note": "痕跡單發（第 19 項）：某處電動鐵捲門馬達自己轉起來約 3.5 s，最後 0.35 s 轉速掉到七成（卡住），接實錄的止擋「碰」，門片在軌道裡晃幾下、捲軸彈簧一聲。和 shutter-down-a（手拉）不同：這是馬達，沒有人拉。單聲道乾聲。"
+}

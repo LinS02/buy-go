@@ -1,0 +1,170 @@
+{
+ "tool": "comfyui (RealVisXL V5 txt2img) + clean.py 塗徽章 + Hunyuan3D-2 turbo img2glb.sh + blender finish.py",
+ "category": "prop",
+ "topic": "tangcheng-vehicles",
+ "title": "《走失》停車場轎車、夜街／廟埕機車換生成模型（optimize-list #1–3，10-29）：四門房車、小掀背、125cc 速克達；#4 頂樓碰碰車（10-30）",
+ "model": "RealVisXL_V5.0_fp16（30 步 dpmpp_2m karras cfg 5，1024²）→ 局部塗掉徽章／車牌（clean.py）→ Hunyuan3D-2 2.0-turbo 形狀＋paint-v2-0-turbo 貼圖（4 萬面）→ Blender 5.2 PCA 擺正、減面、縮到真實長寬高、貼圖 1024 JPEG q85",
+ "license": "RealVisXL V5：CreativeML Open RAIL++-M（產出不受授權方主張權利）；Hunyuan3D-2：Tencent Hunyuan 3D 2.0 Community License（台灣可商用；歐盟、英國、南韓不適用；月活 >1M 另簽）",
+ "negative": "text, letters, words, numbers, logo, brand, emblem, badge, watermark, signature, person, people, human, face, mannequin, driver, rider, passenger, hands, helmet, character, cartoon, toy, multiple vehicles, two cars, cropped, cut off, road, street, parking lot, floor, scene, background clutter, glossy, shiny chrome, reflections, sports car, spoiler, blurry, lowres, deformed",
+ "reference_photos": "未使用參考照（純文字提示詞，不做 img2img）",
+ "orientation": "車頭朝 glTF +Z、寬沿 x、原點底部中心、單位公尺；材質 metallic 0 roughness 0.65，遊戲端 _tc-vehicles.ts LOOK 再覆寫成霧面（rough 0.6–0.62、env 0.2–0.25）、車色用 instanceColor",
+ "scripts": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-vehicles/{gen.py,clean.py,hy.sh,finish.py,fin_all.sh}",
+ "git": "(見 commit)",
+ "candidates": "每種 3 張（種子 11／23／37），每種挑 1；落選圖已刪",
+ "no_human": "已確認無人形、無臉、無假人、無品牌字與徽章；車牌素白，遊戲端貼虛構字（QK·0731 等）",
+ "issues": "背面、車底是 Hunyuan 猜的；寬高非等比修正，輪子略扁；機車無側柱細節；車窗不透明（深色貼圖）",
+ "files": {
+  "sedan.glb": {
+   "source_image": "sedan_s23.png",
+   "cleaned_image": "sedan_s23_clean.png",
+   "seed": 23,
+   "prompt": "a plain four-door compact family sedan car from the early 2000s, Asian market saloon, pale silver white paint, dark tinted windows with nothing visible inside, black plastic bumper trim, plain black tyres, simple steel wheels with plain covers, smooth grille without any badge, single vehicle only, entire vehicle fully visible and centered with margin, three-quarter front view from the front left, camera at waist height, isolated on plain pure white background, soft even studio lighting, no shadow, realistic product photograph, matte dusty faded paint, no glossy reflections, slightly dirty, generic unbranded, no emblem, blank plain license plate",
+   "cleanup": "車牌塗成素白 (216,216,212)；水箱罩中央徽章用旁邊格柵複製蓋掉；引擎蓋小標誌以周圍色橢圓蓋掉",
+   "target_LWH_m": [
+    4.3,
+    1.74,
+    1.45
+   ],
+   "note_scale": "長度等比縮到 L，寬、高再非等比修正到台灣常見車款尺寸（Hunyuan 出來偏寬偏高）",
+   "clip_antenna": false,
+   "tris_target": 19000,
+   "why": "s23 車身完整、四門比例像台灣常見國民房車；s11 角度太正面、s37 輪框太花",
+   "result": {
+    "tris_in": 40000,
+    "tris": 18999,
+    "size_gltf_xyz": [
+     1.74,
+     1.45,
+     4.3
+    ],
+    "tex": [
+     1024,
+     1024
+    ],
+    "bytes": 672392
+   },
+   "sha1": "a220998475b8cac61d7d3d7d90a5bb24429c7da7"
+  },
+  "hatch.glb": {
+   "source_image": "hatch_s23.png",
+   "cleaned_image": "hatch_s23_clean.png",
+   "seed": 23,
+   "prompt": "a small five-door hatchback city car from the 2000s, short rounded body, pale silver white paint, dark tinted windows with nothing visible inside, black plastic bumper trim, plain black tyres, simple plain wheels, smooth front without any badge, single vehicle only, entire vehicle fully visible and centered with margin, three-quarter front view from the front left, camera at waist height, isolated on plain pure white background, soft even studio lighting, no shadow, realistic product photograph, matte dusty faded paint, no glossy reflections, slightly dirty, generic unbranded, no emblem, blank plain license plate",
+   "cleanup": "車牌塗成素白；水箱罩徽章用格柵複製蓋掉；斜天線用周圍色線條蓋掉（3D 上殘留的再由 finish.py CLIP 切掉）",
+   "target_LWH_m": [
+    3.75,
+    1.68,
+    1.52
+   ],
+   "note_scale": "長度等比縮到 L，寬、高再非等比修正到台灣常見車款尺寸（Hunyuan 出來偏寬偏高）",
+   "clip_antenna": true,
+   "tris_target": 19000,
+   "why": "s23 五門小掀背輪廓最乾淨；天線在 Blender 由上往下切薄片刪掉",
+   "result": {
+    "tris_in": 39355,
+    "tris": 19000,
+    "size_gltf_xyz": [
+     1.68,
+     1.52,
+     3.75
+    ],
+    "tex": [
+     1024,
+     1024
+    ],
+    "bytes": 642308
+   },
+   "sha1": "17271dd295e187217ef0a759faa369836448c3e4"
+  },
+  "scooter.glb": {
+   "source_image": "scooter_s11.png",
+   "cleaned_image": "scooter_s11_clean.png",
+   "seed": 11,
+   "prompt": "a 125cc step-through motor scooter, Taiwanese commuter scooter, pale white plastic body panels, flat floorboard, black long seat, round mirrors, front basket-free apron, small rear grab rail, plain black tyres, parked on its side stand, no rider, no helmet, single vehicle only, entire vehicle fully visible and centered with margin, three-quarter front view from the front left, camera at waist height, isolated on plain pure white background, soft even studio lighting, no shadow, realistic product photograph, matte dusty faded paint, no glossy reflections, slightly dirty, generic unbranded, no emblem, blank plain license plate",
+   "cleanup": "前方徽章、側面字樣、側標都以周圍色塗掉",
+   "target_LWH_m": [
+    1.85,
+    0.72,
+    1.15
+   ],
+   "note_scale": "長度等比縮到 L，寬、高再非等比修正到台灣常見車款尺寸（Hunyuan 出來偏寬偏高）",
+   "clip_antenna": false,
+   "tris_target": 9500,
+   "why": "s11 速克達輪廓、腳踏板、後架最清楚；側面字樣與徽章已在參考圖上塗掉",
+   "result": {
+    "tris_in": 40000,
+    "tris": 9499,
+    "size_gltf_xyz": [
+     0.72,
+     1.15,
+     1.85
+    ],
+    "tex": [
+     1024,
+     1024
+    ],
+    "bytes": 468684
+   },
+   "sha1": "a928bdc916c795534e030b08cf9da9ac3b776711"
+  },
+  "bumper.glb": {
+   "source_image": "bumper_s11.png",
+   "seed": 11,
+   "prompt": "a single empty amusement park bumper car, old rooftop fairground dodgem, rounded pale cream white fiberglass shell, one empty molded seat with nothing on it, small black steering wheel, a tall thin vertical metal antenna pole rising from the rear of the car, thick black rubber bumper ring all around the base, faded matte paint with scratches and scuffs, entire vehicle fully visible and centered with margin, three-quarter front view from the front left, camera at waist height, isolated on plain pure white background, soft even studio lighting, no shadow, realistic product photograph, no glossy reflections",
+   "negative": "text, letters, words, numbers, logo, brand, emblem, badge, watermark, signature, person, people, human, face, mannequin, driver, rider, passenger, child, hands, character, cartoon, toy, eyes, headlights, multiple vehicles, cropped, cut off, floor, scene, background clutter, glossy, shiny chrome, reflections, car, go-kart, blurry, lowres, deformed",
+   "cleanup": "無（參考圖本來就沒字沒標）",
+   "finish": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-bumper/finish.py（不做 PCA：繞 Z 轉 -90° 讓方向盤那頭朝 glTF +Z，等比縮長度 1.55 m，roughness 0.7）",
+   "tris_target": 9500,
+   "why": "s11 有空座、方向盤、中後段天線桿、底部防撞圈；s23 像圓頂、s37 像游泳圈，已刪",
+   "result": {
+    "tris_in": 40000,
+    "tris": 9499,
+    "size_gltf_xyz": [
+     1.457,
+     1.464,
+     1.55
+    ],
+    "tex": [
+     1024,
+     1024
+    ],
+    "bytes": 432920
+   },
+   "game": "_tc-street8.ts 頂樓碰碰車 4 台，_tc-vehicles.ts LOOK bumper（rough 0.66、env 0.2），instanceColor 用參考照 12_頂樓遊樂場 取的褪色紅／藍／黃／綠",
+   "no_human": "已確認無人形、空座、無字無標"
+  },
+  "forklift.glb": {
+   "source_image": "forklift_s37.png",
+   "cleaned_image": "forklift_s37_clean.png",
+   "seed": 37,
+   "prompt": "a small industrial counterbalance forklift truck from the 1990s, faded orange yellow paint, black steel overhead guard cage, empty open operator seat with nobody on it, upright mast with the two forks lowered flat to the ground, solid black tyres, heavy rear counterweight, scuffed and dusty, single object only, entire object fully visible and centered with margin, three-quarter front view from the front left, camera at waist height, isolated on plain pure white background, soft even studio lighting, no shadow, realistic product photograph, matte dusty faded surfaces, no glossy reflections, slightly dirty, generic unbranded, no emblem, no labels",
+   "cleanup": "門架上的假字、車身側面假標誌用 OpenCV Telea 抹掉（deglyph_inpaint）",
+   "target_LWH_m": [
+    3.3,
+    1.12,
+    2.15
+   ],
+   "note_scale": "長度含貨叉等比縮到 L，寬、高非等比修正到 1.5 噸級台式堆高機",
+   "clip_antenna": false,
+   "tris_target": 9500,
+   "why": "s37 貨叉放下、座位空、護頂架完整；s11、s23 門架或座位不清楚（第二輪清單 #17）",
+   "queue_item": "第二輪 #17 展覽館堆高機",
+   "workdir": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-props2/",
+   "result": {
+    "tris_in": 40000,
+    "tris": 9500,
+    "size_gltf_xyz": [
+     1.12,
+     2.15,
+     3.3
+    ],
+    "tex": [
+     1024,
+     1024
+    ],
+    "bytes": 493760
+   },
+   "sha1": "1bc55148a8d5bde54caaff89f57f4801d1e30adf"
+  }
+ }
+}

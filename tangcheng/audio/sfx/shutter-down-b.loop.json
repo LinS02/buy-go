@@ -1,0 +1,56 @@
+{
+ "title": "walk-lost rolling shutter B: motorized, closing",
+ "key": "n/a (sfx)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 516213,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [
+  8.5
+ ],
+ "risers": [],
+ "firstSoundSample": 5762,
+ "lufsIn": -18.31,
+ "gainDb": 2.08,
+ "lufs": -16.24,
+ "truePeakDb": -1.0,
+ "clipped": 0,
+ "files": {
+  "ogg": "shutter-down-b.ogg",
+  "m4a": "shutter-down-b.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 229231,
+   "decoded_samples": 516213,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 5762,
+   "err_db": -25.6
+  },
+  "m4a": {
+   "bytes": 262906,
+   "decoded_samples": 518080,
+   "tail_padding": 1867,
+   "offset_samples": 0,
+   "first_sound_sample": 5762,
+   "err_db": -37.2
+  }
+ },
+ "kind": "shutter-down",
+ "endHit": 8.5,
+ "slats": 31,
+ "note": "hits／endHit＝門簾撞到底（放下）或頂到擋塊（拉起）的時間（秒），門的動畫在這一刻停；slats＝經過導軌的片數（片高 75 mm）。"
+}

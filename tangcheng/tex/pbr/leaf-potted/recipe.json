@@ -1,0 +1,58 @@
+{
+ "set": "leaf-potted",
+ "title": "走道盆栽圖集（4×4，RGBA）：發財樹葉、觀音棕竹扇葉、鵝掌藤（抄 leaf-schefflera）、盆土、白石子、樹皮",
+ "generator": "CPU numpy 程式畫葉形／葉脈／摺扇明暗／乾尖／灰塵（alpha 是程式輪廓）、盆土／白石子／樹皮的程式底稿＋本地 SDXL（RealVisXL V5.0 img2img＋union ControlNet tile，輸入只有程式底稿）取高頻",
+ "license": "RealVisXL V5.0（CreativeML OpenRAIL++-M，可商用）、controlnet-union-sdxl-promax（Apache-2.0）；輸入只有程式底稿；鵝掌藤 4 格抄自本 repo 的 leaf-schefflera；可商用、可公開",
+ "photo_rule": "照片只用眼睛看（閾限空間台灣 各資料夾的盆栽）；沒有當貼圖、沒有 img2img／ControlNet 輸入",
+ "people_rule": "提示詞含 no people, no person, no figure, no face, no hands；負面詞含 people, human, figure, silhouette, face, hand, fingers, footprint；6 張 SDXL 輸出逐張看過",
+ "layout": {
+  "i0-1 j0-1": "發財樹掌狀複葉×4（中心＝葉柄頂；i1 j1 偏黃）",
+  "i2-3 j0-1": "觀音棕竹扇葉×4（下緣中央 y=0.94＝葉柄頂；i3 j1 乾尖）",
+  "i0-1 j2-3": "鵝掌藤×4（j3 偏黃積灰）",
+  "i2 j2": "盆土",
+  "i3 j2": "白石子",
+  "i2 j3": "樹皮（沿 v＝沿樹幹）",
+  "i3 j3": "盆土＋落葉",
+  "note": "列 j 由圖上方算；three.js flipY，v＝1−(j+1)/4..1−j/4"
+ },
+ "alpha": "A 通道＝葉面覆蓋（alphaTest 0.5）；材質格 A＝1；RGB 往透明區外推",
+ "normal_convention": "OpenGL",
+ "seed": 5,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_potleaf.py all --seed 5",
+ "used_by": "tools/sandbox/scenes/_tc-plants.ts（_tc-props.ts 的 planter 盆栽）",
+ "sdxl": {
+  "model": "RealVisXL_V5.0_fp16",
+  "controlnet": "controlnet-union-sdxl-promax (tile)",
+  "leaf": {
+   "denoise": 0.45,
+   "cn_strength": 0.6,
+   "prompt_pachira": "top-down studio photograph of pachira aquatica money tree leaves, palmate compound leaves with long glossy green obovate leaflets, some dusty and yellowing, isolated on pure black background, sharp focus, photorealistic, 8k, no people, no person, no figure, no face, no hands",
+   "prompt_rhapis": "studio photograph of rhapis excelsa lady palm fronds, fan shaped palm leaves with narrow pleated dark green segments, some dry brown tips, isolated on pure black background, sharp focus, photorealistic, 8k, no people, no person, no figure, no face, no hands",
+   "neg": "people, person, human, figure, silhouette, face, eyes, mouth, skull, hand, fingers, footprint, insect, animal, flower, text, letters, watermark, logo, table, room, background objects, perspective, cartoon, painting, illustration, 3d render, frame, border"
+  },
+  "mats": {
+   "denoise": 0.55,
+   "cn_strength": 0.55,
+   "prompts": {
+    "soil": "top-down macro photograph of dark brown potting soil in a planter, peat and bark chips with small white perlite grains, slightly dry and dusty, flat even light, seamless texture, photorealistic, 8k, no people, no person, no figure, no face, no hands",
+    "pebble": "top-down photograph of white marble pebbles in a planter, small rounded white and pale grey stones, dusty, flat even light, seamless texture, photorealistic, 8k, no people, no person, no figure, no face, no hands",
+    "bark": "close-up photograph of smooth pachira money tree trunk bark, grey green brown bark with fine vertical streaks and small lenticels, flat even light, seamless texture, photorealistic, 8k, no people, no person, no figure, no face, no hands",
+    "soilleaf": "top-down macro photograph of dark potting soil with a few dry brown fallen leaves, dusty, flat even light, photorealistic, 8k, no people, no person, no figure, no face, no hands"
+   },
+   "neg": "people, person, human, figure, silhouette, face, eyes, mouth, skull, hand, fingers, footprint, insect, animal, flower, text, letters, watermark, logo, table, room, background objects, perspective, cartoon, painting, illustration, 3d render, frame, border, leaves on black, plant, pot rim, shadow of person, footprints, cigarette, trash"
+  },
+  "steps": 26,
+  "cfg": 5.0,
+  "secs": 474
+ },
+ "files": {
+  "2k/albedo.png": 4232939,
+  "2k/normal.jpg": 634898,
+  "2k/roughness.jpg": 848386,
+  "2k/ao.jpg": 525494,
+  "1k/albedo.png": 1148256,
+  "1k/normal.jpg": 164635,
+  "1k/roughness.jpg": 317334,
+  "1k/ao.jpg": 146488
+ }
+}

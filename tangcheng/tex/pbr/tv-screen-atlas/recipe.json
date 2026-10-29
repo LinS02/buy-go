@@ -1,0 +1,31 @@
+{
+ "generator": "CPU numpy 純程式（無生成模型）：色條、雪花、藍底、黑底掃描線、原創測試格、灰階；加映像管掃描線、色滲、四角暗與圓角；亮度上限 0.88",
+ "license": "本專案程式產生；可商用、可公開",
+ "people_rule": "只有色條、雜訊、純色與幾何格線；沒有節目、字幕、台徽、人物",
+ "brand_rule": "測試格是原創（格線＋圓＋色帶＋灰階），不像任何電視台測試卡；無字無台徽",
+ "atlas": "4 欄×4 列，一格 512×384＝4:3（u＝欄/4、v＝列/4；第 0 列在圖上方）：bars、bars-pluge、bars-h、grid-circle、snow-a、snow-b、snow-c、snow-d、blue、blue-dim、black-line、black-hum、bars-roll、snow-bars、grey-steps、raster-white",
+ "cell_m": "一格＝一台映像管螢幕（14／20／29 吋都用同一格，幾何自己縮）",
+ "usage": "terrainMat('tv-screen-atlas', fb, { glow })；雪花 snow-a～d 四格輪播（每 0.1–0.2 s 換一格，亮度變化本身很小，不違反 3 Hz 明暗）；black-line 偶爾切一下再回雪花",
+ "seed": 1,
+ "title": "映像管螢幕圖集（色條、PLUGE 色條、橫色條、原創測試格、雪花×4、藍底×2、黑底掃描線、滾動亮帶、滾動色條、弱訊號、灰階、白光柵）",
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-terrain/gen_themes6b.py（python gen_themes6b.py atlas tv --seed 1）",
+ "secs": 0,
+ "files": {
+  "2k/albedo.jpg": 500346,
+  "2k/normal.jpg": 86645,
+  "2k/roughness.jpg": 37579,
+  "2k/ao.jpg": 37196,
+  "1k/albedo.jpg": 150680,
+  "1k/normal.jpg": 22133,
+  "1k/roughness.jpg": 10399,
+  "1k/ao.jpg": 9548
+ },
+ "queue_item": "theme-pbr-6b（10-29 第九批：清單六 #12 越走越舊、#15 灰塵腳印、#21 錄影帶店、#23 委託行窄街、#24 電器行電視牆）",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "sizes": {
+  "2k": "2048×1536",
+  "1k": "1024×768"
+ },
+ "set": "tv-screen-atlas",
+ "photo_rule": "沒有使用任何照片"
+}

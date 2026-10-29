@@ -1,0 +1,52 @@
+{
+ "title": "walk-lost trace: freezer defrost drips and metal thermal ticks",
+ "key": "n/a (sfx)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 432000,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 13599,
+ "lufsIn": -25.27,
+ "gainDb": 1.27,
+ "lufs": -24.0,
+ "truePeakDb": -1.83,
+ "clipped": 0,
+ "files": {
+  "ogg": "trace-freezer-defrost.ogg",
+  "m4a": "trace-freezer-defrost.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 129331,
+   "decoded_samples": 432000,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 13599,
+   "err_db": -39.3
+  },
+  "m4a": {
+   "bytes": 220078,
+   "decoded_samples": 433088,
+   "tail_padding": 1088,
+   "offset_samples": 0,
+   "first_sound_sample": 13599,
+   "err_db": -40.3
+  }
+ },
+ "kind": "trace-oneshot",
+ "note": "痕跡單發（第 19 項）：超市冰櫃除霜：7 滴水（實錄滴水＋滴進鐵盤的金屬餘音），一滴落在加熱管上「嘶」，夾著鈑金熱脹冷縮的「滴」「咚」，越到後面越疏。單聲道乾聲，掛冰櫃。"
+}

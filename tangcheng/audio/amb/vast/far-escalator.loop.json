@@ -1,0 +1,55 @@
+{
+ "title": "walk-lost far: an escalator brake clunk and chain rattle deep in the escalator well",
+ "key": "n/a",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 405600,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 2399,
+ "lufsIn": -20.36,
+ "gainDb": -7.64,
+ "lufs": -28.0,
+ "truePeakDb": -13.66,
+ "clipped": 0,
+ "files": {
+  "ogg": "far-escalator.ogg",
+  "m4a": "far-escalator.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 183334,
+   "decoded_samples": 405600,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 2399,
+   "err_db": -27.5
+  },
+  "m4a": {
+   "bytes": 207101,
+   "decoded_samples": 407488,
+   "tail_padding": 1888,
+   "offset_samples": 0,
+   "first_sound_sample": 2399,
+   "err_db": -40.3
+  }
+ },
+ "kind": "far-oneshot",
+ "distance_m": 130,
+ "drr_db": -11,
+ "ir": "audio/ir/vast-escalator-well.wav",
+ "note": "第 26 項極遠處單發：距離、空氣吸收、殘響都已烘進檔案（立體聲），不要再接 ConvolverNode；不走 PannerNode（要方向感用 StereoPannerNode）。音量已經很小（−28 LUFS 整合、直達聲比殘響低 |drr_db| dB），場景只需再決定多久放一次。無人聲。"
+}

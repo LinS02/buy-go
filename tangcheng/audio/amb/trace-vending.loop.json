@@ -1,0 +1,52 @@
+{
+ "title": "walk-lost trace: vending machine compressor kicks in, runs, stops, internal click",
+ "key": "n/a (sfx)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 386400,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 2400,
+ "lufsIn": -21.64,
+ "gainDb": -2.36,
+ "lufs": -24.0,
+ "truePeakDb": -5.45,
+ "clipped": 0,
+ "files": {
+  "ogg": "trace-vending.ogg",
+  "m4a": "trace-vending.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 175796,
+   "decoded_samples": 386400,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 2396,
+   "err_db": -23.5
+  },
+  "m4a": {
+   "bytes": 197374,
+   "decoded_samples": 388032,
+   "tail_padding": 1632,
+   "offset_samples": 0,
+   "first_sound_sample": 2400,
+   "err_db": -32.7
+  }
+ },
+ "kind": "trace-oneshot",
+ "note": "痕跡單發（第 19 項）：販賣機溫控器「喀」→壓縮機起動一抖→運轉約 4.5 s（冰箱實錄 ×1.2 成 60 Hz 系＋殼體 120 Hz 諧波＋冷凝器風扇）→停機兩下抖動→冷媒回流細泡→內部塑膠件冷縮「喀」。全程無投幣、無掉罐。單聲道乾聲，掛販賣機。"
+}

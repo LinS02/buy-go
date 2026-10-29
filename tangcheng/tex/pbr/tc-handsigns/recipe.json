@@ -1,0 +1,227 @@
+{
+ "generator": "程式生成結構（CPU numpy：週期磚格、Voronoi 骨材、FFT 週期濾波）＋本地 SDXL 加表面細節（RealVisXL V5.0 fp16 img2img＋xinsir controlnet-union-sdxl-promax tile；3×3 週期 1024 塊、Hann⁴ 權重拼回，四方連續）；低頻顏色鎖回程式底稿，只取生成圖高頻",
+ "license": "RealVisXL V5.0（CreativeML OpenRAIL++-M，可商用）、controlnet-union-sdxl-promax（Apache-2.0）；輸入只有本專案的程式底稿；可商用、可公開",
+ "photo_rule": "沒有使用任何照片當輸入（純程式底稿＋SDXL 細節；天井只看過 09_公寓鐵窗樓梯間取色）",
+ "people_rule": "生圖提示詞含 no people/no person/no figure/no face，負面詞含 people, person, human, figure, silhouette, face, eyes, footprint, shoe print, handprint, hand；9 塊逐張看過、拼好的整張與 24 m 俯視模擬再看一次",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "程式底稿全部週期；SDXL 塊從環繞的底稿切、拼回時權重週期，四方連續",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "jpg sRGB 4:2:0",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有 steel-rust-paint）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化）"
+ },
+ "set": "tc-handsigns",
+ "title": "手寫價牌圖集（紙箱板／白瓦楞板＋麥克筆：數字、元、斤、假字）",
+ "seed": 1,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-terrain/gen_list3.py（python gen_list3.py all tc-handsigns --seed 1；共用 tangcheng-pbr/gen_mata.py 的 stage_sdxl／stage_final）",
+ "span_m": 1.0,
+ "photos_referenced": [],
+ "sdxl": {
+  "model": "RealVisXL_V5.0_fp16.safetensors",
+  "controlnet": "controlnet-union-sdxl-promax (tile)",
+  "cn_strength": 0.6,
+  "denoise": 0.25,
+  "steps": 26,
+  "cfg": 5.0,
+  "sampler": "dpmpp_2m karras",
+  "tiles": "3x3 periodic 1024 (Hann^4 blend)",
+  "prompt": "seamless tileable texture, high resolution photograph of blank pieces of brown corrugated cardboard and white corrugated plastic boards arranged in a grid on a dark background, paper fibers, water blots, plain, flat front view, orthographic flat surface filling the whole frame, even diffuse lighting, photorealistic, sharp focus, 8k, no people, no person, no figure, no face",
+  "neg": "people, person, human, figure, silhouette, face, eyes, mouth, skull, footprint, shoe print, handprint, hand, fingers, animal, text, letters, numbers, watermark, logo, signature, poster, graffiti, perspective, vanishing point, horizon, room, furniture, harsh shadow, vignette, blurry, cartoon, painting, illustration, 3d render, frame, border",
+  "secs": 440
+ },
+ "final": {
+  "lock_px": 48.0,
+  "detail": 1.0,
+  "relief_mm": 0.06,
+  "sdxl": true
+ },
+ "files": {
+  "2k/albedo.jpg": 493194,
+  "2k/normal.jpg": 2770025,
+  "2k/roughness.jpg": 72563,
+  "2k/ao.jpg": 725135,
+  "1k/albedo.jpg": 140672,
+  "1k/normal.jpg": 499329,
+  "1k/roughness.jpg": 28186,
+  "1k/ao.jpg": 118611
+ },
+ "params": {
+  "span_m": 1.0,
+  "atlas": "4×5 格、每格 512×408 px（u 0.25、v 0.199）；列 0–2 紙箱板、列 3–4 白色瓦楞塑膠板；筆劃在 final 後程式畫",
+  "proc_secs": 4.6
+ },
+ "queue_item": "景觀清單第三份 #6/#8（tangcheng-landscape-list-3.md）",
+ "post": {
+  "what": "final 後用程式麥克筆（折線＋壓力＋抖動＋0.8 px 暈）畫字；SDXL 沒碰過字",
+  "texts": [
+   {
+    "cell": [
+     0,
+     0
+    ],
+    "text": "80元",
+    "line1": "假字×3"
+   },
+   {
+    "cell": [
+     1,
+     0
+    ],
+    "text": "40元",
+    "line1": "假字×3"
+   },
+   {
+    "cell": [
+     2,
+     0
+    ],
+    "text": "100元",
+    "line1": "假字×3"
+   },
+   {
+    "cell": [
+     3,
+     0
+    ],
+    "text": "15元",
+    "line1": "假字×3"
+   },
+   {
+    "cell": [
+     0,
+     1
+    ],
+    "text": "斤35元",
+    "line1": "假字×4"
+   },
+   {
+    "cell": [
+     1,
+     1
+    ],
+    "text": "30元",
+    "line1": "假字×4"
+   },
+   {
+    "cell": [
+     2,
+     1
+    ],
+    "text": "斤25元",
+    "line1": "假字×4"
+   },
+   {
+    "cell": [
+     3,
+     1
+    ],
+    "text": "斤45元",
+    "line1": "假字×2"
+   },
+   {
+    "cell": [
+     0,
+     2
+    ],
+    "text": "70元",
+    "line1": "假字×3"
+   },
+   {
+    "cell": [
+     1,
+     2
+    ],
+    "text": "40元",
+    "line1": "假字×4"
+   },
+   {
+    "cell": [
+     2,
+     2
+    ],
+    "text": "100元",
+    "line1": "假字×4"
+   },
+   {
+    "cell": [
+     3,
+     2
+    ],
+    "text": "斤15元",
+    "line1": "假字×4"
+   },
+   {
+    "cell": [
+     0,
+     3
+    ],
+    "text": "300元",
+    "line1": "假字×2"
+   },
+   {
+    "cell": [
+     1,
+     3
+    ],
+    "text": "250元",
+    "line1": "假字×4"
+   },
+   {
+    "cell": [
+     2,
+     3
+    ],
+    "text": "350元",
+    "line1": "假字×4"
+   },
+   {
+    "cell": [
+     3,
+     3
+    ],
+    "text": "250元",
+    "line1": "假字×4"
+   },
+   {
+    "cell": [
+     0,
+     4
+    ],
+    "text": "800元",
+    "line1": "假字×4"
+   },
+   {
+    "cell": [
+     1,
+     4
+    ],
+    "text": "800元",
+    "line1": "假字×3"
+   },
+   {
+    "cell": [
+     2,
+     4
+    ],
+    "text": "350元",
+    "line1": "假字×4"
+   },
+   {
+    "cell": [
+     3,
+     4
+    ],
+    "text": "300元",
+    "line1": "假字×4"
+   }
+  ],
+  "rule": "只有阿拉伯數字、「元」「斤」與 4–7 筆的假字；沒有品牌、沒有英文"
+ }
+}

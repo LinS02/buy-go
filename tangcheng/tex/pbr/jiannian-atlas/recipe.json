@@ -1,0 +1,48 @@
+{
+ "generator": "本地 SDXL txt2img（RealVisXL V5.0 fp16，白底逐格 1024²）→ 四邊 flood fill 去背 → 縮 512² 拼 4×2 圖集；高度＝alpha 內縮圓鼓＋亮度高頻，normal／roughness（彩度高＝釉面亮）／ao 由高度推",
+ "license": "RealVisXL V5.0（CreativeML OpenRAIL++-M，可商用）；沒有任何照片輸入；可商用、可公開",
+ "photo_rule": "沒有使用任何照片",
+ "people_rule": "只做花鳥、龍鳳、幾何紋樣；負面詞含 people, person, human, figure, face, immortals, deity, god, goddess, buddha, warrior, opera figure, soldier, rider；8 格逐張看過",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "formats": {
+  "albedo": "png sRGB RGBA（A＝剪黏輪廓）",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階"
+ },
+ "sizes": {
+  "2k": "2048×1024",
+  "1k": "1024×512"
+ },
+ "atlas": "4 欄×2 列，一格 512²（u＝欄/4、v＝列/2；第 0 列在圖上方）：dragon、phoenix、peony、lotus、magpie、chrysanthemum、cloud、fret",
+ "cell_m": "建議一格 0.4–0.8 m（屋脊、牆堵）",
+ "set": "jiannian-atlas",
+ "seed": 1,
+ "title": "剪黏圖集（龍、鳳、牡丹、蓮、喜鵲梅枝、菊、雲紋、回紋；彩釉瓷片、RGBA；無人物神像）",
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-terrain/gen_themes4.py（python gen_themes4.py jian --seed 1）",
+ "queue_item": "theme-pbr-4（10-29 第六批：清單五 #11 落葉、#10 浮萍池、#1 廟埕）",
+ "prompts": {
+  "dragon": "close-up photograph of a Taiwanese temple roof jiannian decoration, a coiled chinese dragon with scales and whiskers, made of colorful cut glazed porcelain shards mosaic, shiny ceramic pieces in green yellow blue red and white, sculpted relief on mortar, isolated on plain white background, centered, front view, even studio lighting, sharp focus, photorealistic",
+  "phoenix": "close-up photograph of a Taiwanese temple roof jiannian decoration, a chinese phoenix bird with long flowing tail feathers, made of colorful cut glazed porcelain shards mosaic, shiny ceramic pieces in green yellow blue red and white, sculpted relief on mortar, isolated on plain white background, centered, front view, even studio lighting, sharp focus, photorealistic",
+  "peony": "close-up photograph of a Taiwanese temple roof jiannian decoration, a large blooming peony flower with leaves, made of colorful cut glazed porcelain shards mosaic, shiny ceramic pieces in green yellow blue red and white, sculpted relief on mortar, isolated on plain white background, centered, front view, even studio lighting, sharp focus, photorealistic",
+  "lotus": "close-up photograph of a Taiwanese temple roof jiannian decoration, a lotus flower with two lotus leaves, made of colorful cut glazed porcelain shards mosaic, shiny ceramic pieces in green yellow blue red and white, sculpted relief on mortar, isolated on plain white background, centered, front view, even studio lighting, sharp focus, photorealistic",
+  "magpie": "close-up photograph of a Taiwanese temple roof jiannian decoration, a magpie bird perched on a plum blossom branch, made of colorful cut glazed porcelain shards mosaic, shiny ceramic pieces in green yellow blue red and white, sculpted relief on mortar, isolated on plain white background, centered, front view, even studio lighting, sharp focus, photorealistic",
+  "chrysanthemum": "close-up photograph of a Taiwanese temple roof jiannian decoration, a round chrysanthemum flower with leaves, made of colorful cut glazed porcelain shards mosaic, shiny ceramic pieces in green yellow blue red and white, sculpted relief on mortar, isolated on plain white background, centered, front view, even studio lighting, sharp focus, photorealistic",
+  "cloud": "close-up photograph of a Taiwanese temple roof jiannian decoration, a symmetric auspicious cloud scroll ornament, made of colorful cut glazed porcelain shards mosaic, shiny ceramic pieces in green yellow blue red and white, sculpted relief on mortar, isolated on plain white background, centered, front view, even studio lighting, sharp focus, photorealistic",
+  "fret": "close-up photograph of a Taiwanese temple roof jiannian decoration, a square geometric meander fret medallion pattern, made of colorful cut glazed porcelain shards mosaic, shiny ceramic pieces in green yellow blue red and white, sculpted relief on mortar, isolated on plain white background, centered, front view, even studio lighting, sharp focus, photorealistic"
+ },
+ "neg": "people, person, human, figure, man, woman, child, face, eyes of a person, immortals, deity, god, goddess, buddha, warrior, opera figure, soldier, rider, horse rider, statue of a person, doll, text, letters, chinese characters, calligraphy, numbers, watermark, logo, signature, roof, building, sky, temple, scene, background objects, shadow, frame, border, blurry, cartoon, painting, illustration, 3d render",
+ "files": {
+  "2k/albedo.png": 4771422,
+  "2k/normal.jpg": 871106,
+  "2k/roughness.jpg": 611429,
+  "2k/ao.jpg": 183749,
+  "1k/albedo.png": 1333204,
+  "1k/normal.jpg": 245280,
+  "1k/roughness.jpg": 156986,
+  "1k/ao.jpg": 74447
+ },
+ "secs": 2,
+ "alpha": "牡丹、蓮兩格去背（白底 flood fill）；龍、鳳、喜鵲梅枝、菊、雲紋、回紋六格圖案滿版或底色不勻，alpha＝1，當方形牆堵／水車堵用",
+ "review": "8 格逐張看過：無人物、無神像、無文字、無品牌"
+}

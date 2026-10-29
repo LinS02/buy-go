@@ -1,0 +1,21 @@
+{
+ "model": "RealVisXL_V5.0_fp16.safetensors",
+ "mode": "txt2img",
+ "prompt": "graffiti words crossed out with heavy black spray paint lines and scribbled over, then rewritten next to it, on a plain smooth flat white painted concrete wall, straight-on frontal photograph, evenly lit, orthographic, wall fills the frame, empty white wall around it, high detail",
+ "negative": "person, people, human, man, woman, child, face, eyes, eye, skull, hand, hands, handprint, fingers, silhouette, figure, body, character, cartoon, mascot, anime, animal, creature, monster, portrait, logo, brand, watermark, frame, border, perspective, floor, ceiling, corner, brick, tiles, window, door, colorful background, dark background, shadow, vignette, blurry",
+ "seed": 1303,
+ "size": [
+  1152,
+  896
+ ],
+ "steps": 22,
+ "cfg": 5.5,
+ "sampler": "dpmpp_2m karras",
+ "post": "key_white 差異去背＋裁切（gen_wallart.py process）",
+ "kind": "buff",
+ "size_m": [
+  1.5,
+  0.951
+ ],
+ "license": "原創（本專案；本地生成）"
+}

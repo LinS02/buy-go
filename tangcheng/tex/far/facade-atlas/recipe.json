@@ -1,0 +1,19 @@
+{
+ "generator": "local-gen-work/tangcheng-terrain/gen_fix9.py facade",
+ "seed": 23,
+ "size": 1024,
+ "cells": "2x2，每格 6.4 m（兩層 3.2 m × 兩開間 3.2 m），四方連續",
+ "cell_names": [
+  "老公寓二丁掛＋鐵窗＋雨遮＋冷氣",
+  "商場／辦公小口馬賽克＋帶狀窗",
+  "洗石子公寓陽台內凹＋鐵窗＋浴室小窗",
+  "無窗水泥牆（預設細節乘色）"
+ ],
+ "maps": {
+  "albedo.jpg": "每格平均亮度 0.5（著色器 ×2 乘在頂點色上）",
+  "window.png": "玻璃遮罩（扣掉鐵窗格條），亮窗由著色器照開間雜湊"
+ },
+ "model": "無（numpy 程式化，CPU）",
+ "refs": "無參考照進貼圖",
+ "noHuman": "無人形、無字、無品牌"
+}

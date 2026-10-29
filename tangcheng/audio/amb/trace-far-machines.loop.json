@@ -1,0 +1,67 @@
+{
+ "title": "walk-lost trace bed: distant machines cycling on their own, 30 s loop",
+ "key": "n/a (ambience)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 1440000,
+ "oneshot": false,
+ "loopStart": 0.0,
+ "loopEnd": 30.0,
+ "loopStartSample": 0,
+ "loopEndSample": 1440000,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 363585,
+ "lufsIn": -23.08,
+ "gainDb": -12.92,
+ "lufs": -36.0,
+ "truePeakDb": -16.01,
+ "clipped": 0,
+ "files": {
+  "ogg": "trace-far-machines.ogg",
+  "m4a": "trace-far-machines.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 456524,
+   "decoded_samples": 1440000,
+   "tail_padding": 0,
+   "offset_samples": -1,
+   "first_sound_sample": 363585,
+   "err_db": -26.3,
+   "main_loop": {
+    "jump_ratio": 0.03,
+    "level_before_db": -109.1,
+    "level_after_db": -92.8
+   }
+  },
+  "m4a": {
+   "bytes": 728261,
+   "decoded_samples": 1441728,
+   "tail_padding": 1728,
+   "offset_samples": 0,
+   "first_sound_sample": 363585,
+   "err_db": -47.5,
+   "main_loop": {
+    "jump_ratio": 0.0,
+    "level_before_db": -85.6,
+    "level_after_db": -85.7
+   }
+  },
+  "source_main_loop": {
+   "jump_ratio": 0.0,
+   "level_before_db": -89.3,
+   "level_after_db": -89.3
+  }
+ },
+ "kind": "trace-loop",
+ "note": "痕跡底層循環（第 19 項）：很遠的機器自己動——一台販賣機壓縮機起動、跑約 13 s、停；燈管啟動器跳兩下沒點著；冰櫃滴三滴。低通 1.8 kHz、RT60 3.6 s。立體聲，整檔即循環（環狀放置＋循環摺積）。直接接 destination，極淡。"
+}

@@ -1,0 +1,67 @@
+{
+ "title": "walk-lost escalator A: well-kept 1996 escalator, motor hum + gear whine + steps, 16 s loop",
+ "key": "n/a (sfx)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 768000,
+ "oneshot": false,
+ "loopStart": 0.0,
+ "loopEnd": 16.0,
+ "loopStartSample": 0,
+ "loopEndSample": 768000,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 0,
+ "lufsIn": -20.56,
+ "gainDb": -1.44,
+ "lufs": -22.0,
+ "truePeakDb": -4.5,
+ "clipped": 0,
+ "files": {
+  "ogg": "escalator-a.ogg",
+  "m4a": "escalator-a.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 297933,
+   "decoded_samples": 768000,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -20.3,
+   "main_loop": {
+    "jump_ratio": 0.17,
+    "level_before_db": -18.5,
+    "level_after_db": -16.6
+   }
+  },
+  "m4a": {
+   "bytes": 389359,
+   "decoded_samples": 768960,
+   "tail_padding": 960,
+   "offset_samples": 0,
+   "first_sound_sample": 0,
+   "err_db": -37.7,
+   "main_loop": {
+    "jump_ratio": 0.13,
+    "level_before_db": -18.4,
+    "level_after_db": -16.5
+   }
+  },
+  "source_main_loop": {
+   "jump_ratio": 0.13,
+   "level_before_db": -18.4,
+   "level_after_db": -16.5
+  }
+ },
+ "kind": "escalator-loop",
+ "note": "整檔即循環（loopStart 0）。週期成分都是循環內整數週期，雜訊在頻域做、濾波是循環的，事件尾巴繞回檔頭，接縫逐樣本連續；同一種聲源多個同時放時各自從隨機位置起播，避免梳狀濾波。"
+}

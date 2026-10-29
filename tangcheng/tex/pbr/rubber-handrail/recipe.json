@@ -1,0 +1,76 @@
+{
+ "generator": "CPU numpy 程式生成（scipy cKDTree 週期 Voronoi、FFT 週期濾波），無生成模型、無 GPU",
+ "license": "本專案程式生成，CPU numpy，無生成模型、無參考照進貼圖；可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色，沒有當貼圖、沒有 img2img、沒有切圖、沒有複製進專案（照片不進 repo、不進 build）",
+ "spec": "doc/design/tangcheng-site-spec.md（照片勘查規格書：尺寸、顏色以它為準）",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "所有濾波週期邊界（FFT／np.roll／mod 座標），四方連續；驗證見 verify_images",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "jpg sRGB 4:2:0",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有鐵捲門有）",
+  "mask": "見各組 mask_notes（jpg 4:4:4 或 png）",
+  "shade": "jpg 線性灰階，值×2＝亮度倍率（只有磨石子有）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化，mask.png 用最近鄰）"
+ },
+ "set": "rubber-handrail",
+ "title": "酒紅橡膠扶手",
+ "queue_item": 25,
+ "candidate": "rubber-handrail-s11",
+ "seed": 11,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_misc.py（指令：python gen_misc.py rubber-handrail 11 <out>）",
+ "span_m": 0.6,
+ "why_picked": "s11 的褪色白霧較淡，s22 的白霧成一片片橫雲，拼起來看得出重複。",
+ "rejected": [
+  "rubber-handrail-s22"
+ ],
+ "photos_referenced": [
+  "~/Desktop/game/閾限空間台灣/04_停止的手扶梯/停用的手扶梯__yt-RFfHOelgvOE-t604.jpg",
+  "~/Desktop/game/閾限空間台灣/04_停止的手扶梯/B2全暗走道__yt-xfK_eVJkgCQ-t501.jpg"
+ ],
+ "recolor_formula": "linear：sh＝mask.R×2，g＝mask.G，b＝mask.B；albedo＝mix(mix(base, colors.G, g), colors.B, b) × sh。albedo.jpg 已用預設色票烘好；換底色只改 base，髒污程度改 g、b 的倍率。",
+ "mask_notes": "mask.jpg（4:4:4）：R＝shade×0.5、G／B＝見 params.colors_srgb 的 G_／B_ 欄",
+ "files": {
+  "2k/albedo.jpg": 259987,
+  "2k/normal.jpg": 155831,
+  "2k/roughness.jpg": 806546,
+  "2k/ao.jpg": 56965,
+  "2k/mask.jpg": 506040,
+  "1k/albedo.jpg": 25263,
+  "1k/normal.jpg": 27022,
+  "1k/roughness.jpg": 15678,
+  "1k/ao.jpg": 11133,
+  "1k/mask.jpg": 75244
+ },
+ "params": {
+  "span_m": 0.6,
+  "along": "u＝扶手長向",
+  "colors_srgb": {
+   "base": [
+    122,
+    31,
+    43
+   ],
+   "G_chalk_fade": [
+    150,
+    92,
+    96
+   ],
+   "B_polish_is_roughness_only": null
+  },
+  "notes": "mask.jpg：R＝亮度、G＝褪色粉化權重、B＝手磨亮帶（只影響粗糙度）。albedo 另含割痕積黑。",
+  "set": "rubber-handrail",
+  "size": 2048
+ },
+ "verify_images": [
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/rubber-handrail-s11-wall.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/rubber-handrail-s11-top3x3.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/rubber-handrail-s11-seam.jpg"
+ ]
+}

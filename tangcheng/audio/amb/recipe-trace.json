@@ -1,0 +1,744 @@
+{
+ "category": "ambience/sfx",
+ "theme": "tangcheng-trace",
+ "queue": "frount_demo/doc/design/tangcheng-asset-queue.md #19",
+ "brief": "物件聲『痕跡』：遊戲裡沒有其他人，每個聲音都要能用『沒有人』解釋。8 個單發＋2 條極淡 30 s 無縫循環；禁止腳步、人聲、說話、咳嗽、任何暗示有人推／拿／投幣的聲音（原清單的推車輪子、投幣聲刪除）",
+ "made": "2026-10-27",
+ "tool": "numpy／scipy 程式合成＋CC0／公有領域實錄剪接；tools/audio/bgm_export.py 匯出 Opus 160k＋AAC 192k＋loop.json",
+ "standard": "單發：48 kHz 單聲道乾聲（掛物件走 PannerNode，殘響交給場景），目標 −24 LUFS、真峰值 ≤ −1 dBTP；循環：48 kHz 立體聲、整檔即循環（loopStart 0）、−36 LUFS，直接接 destination",
+ "items": [
+  {
+   "file": "trace-hangers.ogg",
+   "also": [
+    "trace-hangers.m4a",
+    "trace-hangers.loop.json"
+   ],
+   "kind": "trace-oneshot",
+   "candidate": "hangers2-p-s13",
+   "title": "walk-lost trace: AC draft knocks clothes hangers together on a rail",
+   "tool": "~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-trace/synth_trace.py（numpy／scipy）→ export_trace.py → tools/audio/bgm_export.py --oneshot",
+   "model": "無生成模型；實錄剪接＋程式合成",
+   "sources": [],
+   "how": "全程式合成（鐵絲衣架自由梁模態 1:2.76:5.40:8.93＋塑膠衣架悶響＋掛鉤擦橫桿＋鍍鉻橫桿低鳴＋出風氣流）；本地庫與 BigSoundBank 查無衣架錄音",
+   "license": "本專案程式合成；可商用、無人聲",
+   "params": {
+    "kind": "hangers",
+    "v": 2,
+    "events": 7,
+    "plastic_frac": 0.5,
+    "params": {
+     "plastic_frac": 0.5
+    },
+    "seed": 13,
+    "name": "hangers2-p-s13",
+    "length_s": 4.5,
+    "samples": 216000,
+    "round": "r2"
+   },
+   "measure": {
+    "lufs_export": -26.97,
+    "lufs_basis": "BS.1770 單聲道（oneshot 以 LUFS_PAD 量；短而稀的單發到不了 −24 就停在 −1 dBTP）",
+    "true_peak_db": -1.0,
+    "clipped": 0,
+    "length_s": 4.5,
+    "channels": 1,
+    "phone_drop_db": 0.0,
+    "above300": 0.995,
+    "centroid_hz": 907.5,
+    "clap": {
+     "target": 0.026,
+     "footsteps": -0.043,
+     "talking": -0.231,
+     "cough": -0.043,
+     "hand_version": -0.036,
+     "hand_label": "a person taking clothes off a rack by hand",
+     "margin_vs_voice_steps": 0.069
+    }
+   },
+   "why_picked": "v1（單下乾淨的叮）CLAP 對「有人從架上拿衣服」比目標高（6/6 輸），換 v2 連碰模型；v2 八支裡 CLAP 最像的描述一律是「風鈴」（被風吹的金屬互碰），選塑膠比例 0.5 的 s13：目標 0.014 > 腳步／說話／咳嗽最高 −0.030、也贏「有人拿衣服」−0.028"
+  },
+  {
+   "file": "trace-bag.ogg",
+   "also": [
+    "trace-bag.m4a",
+    "trace-bag.loop.json"
+   ],
+   "kind": "trace-oneshot",
+   "candidate": "bag-gw-s13",
+   "title": "walk-lost trace: a plastic bag blown along the floor by a draft",
+   "tool": "~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-trace/synth_trace.py（numpy／scipy）→ export_trace.py → tools/audio/bgm_export.py --oneshot",
+   "model": "無生成模型；實錄剪接＋程式合成",
+   "sources": [
+    {
+     "file": "src/pd-plastic-bag.wav",
+     "url": "https://commons.wikimedia.org/wiki/File:Plastic_bag.ogg",
+     "author": "soerena（PDSounds #5）",
+     "license": "Public domain"
+    }
+   ],
+   "how": "實錄顆粒（15–60 ms，HP 280 Hz）按風包絡重排＋鼓起的「噗」＋地磚擦聲＋氣流（wind 0.06）",
+   "license": "Public domain；其餘本專案程式合成；可商用、無人聲",
+   "params": {
+    "kind": "bag",
+    "mode": "grain",
+    "density": 160,
+    "wind": 0.06,
+    "params": {
+     "mode": "grain",
+     "wind": 0.06
+    },
+    "seed": 13,
+    "name": "bag-gw-s13",
+    "length_s": 5.0,
+    "samples": 240000,
+    "round": "r2"
+   },
+   "measure": {
+    "lufs_export": -28.67,
+    "lufs_basis": "BS.1770 單聲道（oneshot 以 LUFS_PAD 量；短而稀的單發到不了 −24 就停在 −1 dBTP）",
+    "true_peak_db": -1.0,
+    "clipped": 0,
+    "length_s": 5.0,
+    "channels": 1,
+    "phone_drop_db": 0.0,
+    "above300": 0.969,
+    "centroid_hz": 3860.0,
+    "clap": {
+     "target": 0.237,
+     "footsteps": -0.068,
+     "talking": -0.142,
+     "cough": -0.077,
+     "hand_version": 0.228,
+     "hand_label": "a person crumpling a plastic bag in their hands",
+     "margin_vs_voice_steps": 0.305
+    }
+   },
+   "why_picked": "合成皺褶 3 支都輸給「有人在手裡揉塑膠袋」（目標 0.00–0.08 vs 0.15–0.23）；實錄顆粒版加大氣流後，8 支裡只有 s13 同時贏過「手揉」（0.240 vs 0.232），其餘都輸"
+  },
+  {
+   "file": "trace-vending.ogg",
+   "also": [
+    "trace-vending.m4a",
+    "trace-vending.loop.json"
+   ],
+   "kind": "trace-oneshot",
+   "candidate": "vending-f2-s12",
+   "title": "walk-lost trace: vending machine compressor kicks in, runs, stops, internal click",
+   "tool": "~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-trace/synth_trace.py（numpy／scipy）→ export_trace.py → tools/audio/bgm_export.py --oneshot",
+   "model": "無生成模型；實錄剪接＋程式合成",
+   "sources": [
+    {
+     "file": "src/1157.flac",
+     "url": "https://bigsoundbank.com/fridge-s1157.html",
+     "license": "BigSoundBank（Joseph SARDIN）CC0 1.0，可商用、免署名"
+    }
+   ],
+   "how": "冰箱壓縮機實錄 ×1.2 重取樣（法國 50 Hz → 台灣 60 Hz）當運轉聲；接點喀、起動抖、120 Hz 殼體諧波（buzz 0.05）、冷凝器風扇（fan 0.15）、冷媒細泡、冷縮喀是合成",
+   "license": "BigSoundBank（Joseph SARDIN）CC0 1.0，可商用、免署名；其餘本專案程式合成；可商用、無人聲",
+   "params": {
+    "kind": "vending",
+    "run_s": 4.5,
+    "gurgle": true,
+    "src": "BigSoundBank #1157 ×1.2",
+    "params": {
+     "fan": 0.15,
+     "buzz": 0.05,
+     "thud": 0.6
+    },
+    "seed": 12,
+    "name": "vending-f2-s12",
+    "length_s": 8.05,
+    "samples": 386400,
+    "round": "r3"
+   },
+   "measure": {
+    "lufs_export": -24.0,
+    "lufs_basis": "BS.1770 單聲道（oneshot 以 LUFS_PAD 量；短而稀的單發到不了 −24 就停在 −1 dBTP）",
+    "true_peak_db": -5.45,
+    "clipped": 0,
+    "length_s": 8.05,
+    "channels": 1,
+    "phone_drop_db": 2.3,
+    "above300": 0.247,
+    "centroid_hz": 648.1,
+    "clap": {
+     "target": 0.05,
+     "footsteps": -0.088,
+     "talking": -0.221,
+     "cough": -0.153,
+     "hand_version": -0.117,
+     "hand_label": "a person inserting coins and buying a drink from a vending machine",
+     "margin_vs_voice_steps": 0.138
+    }
+   },
+   "why_picked": "v1（只有實錄＋120 Hz）手機 400 Hz 高通後掉 14.1 dB、300 Hz 以上能量 2%：手機上等於沒聲音；加殼體諧波＋冷凝器風扇，fan 0.15 版掉 2.3 dB（f 0.08 版 5.9 dB），CLAP 目標從 0.24 降到 0.07 但仍贏人聲類 0.17"
+  },
+  {
+   "file": "trace-tv-static.ogg",
+   "also": [
+    "trace-tv-static.m4a",
+    "trace-tv-static.loop.json"
+   ],
+   "kind": "trace-oneshot",
+   "candidate": "tv-s11",
+   "title": "walk-lost trace: a distant electronics-store CRT TV shows static",
+   "tool": "~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-trace/synth_trace.py（numpy／scipy）→ export_trace.py → tools/audio/bgm_export.py --oneshot",
+   "model": "無生成模型；實錄剪接＋程式合成",
+   "sources": [],
+   "how": "全程式合成（白雜訊×59.94 Hz 垂直同步 AM、小喇叭 250 Hz–6 kHz 帶通＋900/2600 Hz 箱體共振、15.734 kHz 返馳尖音、短早期反射）",
+   "license": "本專案程式合成；可商用、無人聲",
+   "params": {
+    "kind": "tv",
+    "hold_s": 6.0,
+    "buzz": 0.35,
+    "whine": 0.004,
+    "params": {},
+    "seed": 11,
+    "name": "tv-s11",
+    "length_s": 7.9,
+    "samples": 379200,
+    "round": "r1"
+   },
+   "measure": {
+    "lufs_export": -24.0,
+    "lufs_basis": "BS.1770 單聲道（oneshot 以 LUFS_PAD 量；短而稀的單發到不了 −24 就停在 −1 dBTP）",
+    "true_peak_db": -8.79,
+    "clipped": 0,
+    "length_s": 7.9,
+    "channels": 1,
+    "phone_drop_db": 0.0,
+    "above300": 0.991,
+    "centroid_hz": 3828.3,
+    "clap": {
+     "target": 0.166,
+     "footsteps": -0.173,
+     "talking": -0.17,
+     "cough": -0.15,
+     "hand_version": -0.124,
+     "hand_label": "a TV news presenter speaking",
+     "margin_vs_voice_steps": 0.316
+    }
+   },
+   "why_picked": "6 支 CLAP 全過；有早期反射的 s11 目標 0.174 最高（乾版 0.11–0.13），人聲類全為負"
+  },
+  {
+   "file": "trace-shutter-stall.ogg",
+   "also": [
+    "trace-shutter-stall.m4a",
+    "trace-shutter-stall.loop.json"
+   ],
+   "kind": "trace-oneshot",
+   "candidate": "shutter-short-s13",
+   "title": "walk-lost trace: a roller-shutter motor runs halfway by itself, stalls and stops",
+   "tool": "~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-trace/synth_trace.py（numpy／scipy）→ export_trace.py → tools/audio/bgm_export.py --oneshot",
+   "model": "無生成模型；實錄剪接＋程式合成",
+   "sources": [
+    {
+     "file": "src/1498.flac",
+     "url": "https://bigsoundbank.com/electric-shutter-opening-s1498.html",
+     "license": "BigSoundBank（Joseph SARDIN）CC0 1.0，可商用、免署名"
+    }
+   ],
+   "how": "電動鐵捲門實錄前 3.75 s，最後 0.35 s 變速掉到 70%，接同一段實錄檔尾 0.55 s 的止擋聲；門片晃動、彈簧「鏘」合成",
+   "license": "BigSoundBank（Joseph SARDIN）CC0 1.0，可商用、免署名；其餘本專案程式合成；可商用、無人聲",
+   "params": {
+    "kind": "shutter",
+    "run_s": 3.5,
+    "src": "BigSoundBank #1498",
+    "params": {
+     "run": 3.5
+    },
+    "seed": 13,
+    "name": "shutter-short-s13",
+    "length_s": 6.35,
+    "samples": 304800,
+    "round": "r1"
+   },
+   "measure": {
+    "lufs_export": -24.0,
+    "lufs_basis": "BS.1770 單聲道（oneshot 以 LUFS_PAD 量；短而稀的單發到不了 −24 就停在 −1 dBTP）",
+    "true_peak_db": -2.43,
+    "clipped": 0,
+    "length_s": 6.35,
+    "channels": 1,
+    "phone_drop_db": 0.6,
+    "above300": 0.801,
+    "centroid_hz": 670.2,
+    "clap": {
+     "target": 0.32,
+     "footsteps": -0.112,
+     "talking": -0.133,
+     "cough": -0.186,
+     "hand_version": 0.296,
+     "hand_label": "a person pulling a metal shutter down by hand",
+     "margin_vs_voice_steps": 0.432
+    }
+   },
+   "why_picked": "全長 6 s 運轉版 3 支都輸給「有人手拉鐵捲門」（連原始實錄 1498 本身也輸：0.294 vs 0.370，CLAP 分不出電動和手拉）；3.5 s 版 s13 目標 0.346 贏「手拉」0.327"
+  },
+  {
+   "file": "trace-starter.ogg",
+   "also": [
+    "trace-starter.m4a",
+    "trace-starter.loop.json"
+   ],
+   "kind": "trace-oneshot",
+   "candidate": "starter-s11",
+   "title": "walk-lost trace: a ceiling fluorescent tube starter flickers, then catches",
+   "tool": "~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-trace/synth_trace.py（numpy／scipy）→ export_trace.py → tools/audio/bgm_export.py --oneshot",
+   "model": "無生成模型；實錄剪接＋程式合成",
+   "sources": [
+    {
+     "file": "src/2120.flac",
+     "url": "https://bigsoundbank.com/detail-2120-neon-or-transformer-3.html",
+     "license": "BigSoundBank（Joseph SARDIN）CC0 1.0，可商用、免署名"
+    },
+    {
+     "file": "src/2143.flac, 2144.flac, 2146.flac",
+     "url": "https://bigsoundbank.com/flashing-light-bulb-1-s2143.html（#2、#4 同系列）",
+     "license": "BigSoundBank（Joseph SARDIN）CC0 1.0，可商用、免署名"
+    }
+   ],
+   "how": "燈泡接點實錄當啟動器「叮」（HP 1.5 kHz）；燈管嗡聲實錄 ×1.2（100 → 120 Hz 系）切成閃爍段；安定器低鳴合成",
+   "license": "BigSoundBank（Joseph SARDIN）CC0 1.0，可商用、免署名；其餘本專案程式合成；可商用、無人聲",
+   "params": {
+    "kind": "starter",
+    "tries": 3,
+    "catch": true,
+    "src": "BigSoundBank #2120 ×1.2, #2143/2144/2146",
+    "params": {},
+    "seed": 11,
+    "name": "starter-s11",
+    "length_s": 7.162,
+    "samples": 343774,
+    "round": "r1"
+   },
+   "measure": {
+    "lufs_export": -24.0,
+    "lufs_basis": "BS.1770 單聲道（oneshot 以 LUFS_PAD 量；短而稀的單發到不了 −24 就停在 −1 dBTP）",
+    "true_peak_db": -7.38,
+    "clipped": 0,
+    "length_s": 7.162,
+    "channels": 1,
+    "phone_drop_db": 0.1,
+    "above300": 0.956,
+    "centroid_hz": 4928.2,
+    "clap": {
+     "target": 0.399,
+     "footsteps": -0.027,
+     "talking": -0.077,
+     "cough": -0.077,
+     "hand_version": 0.061,
+     "hand_label": "a person flipping a light switch",
+     "margin_vs_voice_steps": 0.426
+    }
+   },
+   "why_picked": "6 支 CLAP 全過且都 >0.33；3 次失敗＋點著的 s11 目標 0.357 最高，人聲類 ≤0.02"
+  },
+  {
+   "file": "trace-freezer-defrost.ogg",
+   "also": [
+    "trace-freezer-defrost.m4a",
+    "trace-freezer-defrost.loop.json"
+   ],
+   "kind": "trace-oneshot",
+   "candidate": "defrost-h2-s13",
+   "title": "walk-lost trace: freezer defrost drips and metal thermal ticks",
+   "tool": "~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-trace/synth_trace.py（numpy／scipy）→ export_trace.py → tools/audio/bgm_export.py --oneshot",
+   "model": "無生成模型；實錄剪接＋程式合成",
+   "sources": [
+    {
+     "file": "src/sardin-water-drops-01.flac",
+     "url": "art-src/_reference/audio/horror-sfx/misc（本地庫，Joseph SARDIN）",
+     "license": "CC0 1.0"
+    }
+   ],
+   "how": "水滴實錄（onset 切出、HP 300 Hz）＋鐵盤餘音、加熱管嘶聲、鈑金熱脹冷縮「滴／咚」合成（bonk 0.3）",
+   "license": "CC0 1.0；其餘本專案程式合成；可商用、無人聲",
+   "params": {
+    "kind": "defrost",
+    "drips": 7,
+    "ticks": 9,
+    "sizzle": true,
+    "src": "Sardin water-drops-01（CC0）",
+    "params": {
+     "drop_hp": 300,
+     "bonk": 0.3
+    },
+    "seed": 13,
+    "name": "defrost-h2-s13",
+    "length_s": 9.0,
+    "samples": 432000,
+    "round": "r3"
+   },
+   "measure": {
+    "lufs_export": -24.0,
+    "lufs_basis": "BS.1770 單聲道（oneshot 以 LUFS_PAD 量；短而稀的單發到不了 −24 就停在 −1 dBTP）",
+    "true_peak_db": -1.83,
+    "clipped": 0,
+    "length_s": 9.0,
+    "channels": 1,
+    "phone_drop_db": 2.8,
+    "above300": 0.996,
+    "centroid_hz": 566.5,
+    "clap": {
+     "target": 0.241,
+     "footsteps": -0.015,
+     "talking": -0.184,
+     "cough": 0.003,
+     "hand_version": -0.018,
+     "hand_label": "a person opening a freezer door",
+     "margin_vs_voice_steps": 0.238
+    }
+   },
+   "why_picked": "v1 低頻「咚」太重，手機掉 10.7–15.1 dB；水滴 HP 300 Hz、咚 ×0.3 且移高到 256–416 Hz 的 h2-s13 掉 2.8 dB、CLAP 目標 0.233"
+  },
+  {
+   "file": "trace-escalator-wake.ogg",
+   "also": [
+    "trace-escalator-wake.m4a",
+    "trace-escalator-wake.loop.json"
+   ],
+   "kind": "trace-oneshot",
+   "candidate": "escalator-c-s12",
+   "title": "walk-lost trace: an escalator wakes itself by sensor and speeds up",
+   "tool": "~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-trace/synth_trace.py（numpy／scipy）→ export_trace.py → tools/audio/bgm_export.py --oneshot",
+   "model": "無生成模型；實錄剪接＋程式合成",
+   "sources": [
+    {
+     "file": "audio/sfx/escalator-a.ogg",
+     "url": "本專案第 5 項自產",
+     "license": "本專案程式合成"
+    }
+   ],
+   "how": "接觸器喀、煞車電磁鐵咚合成（clunk 0.35）；運轉聲是 escalator-a 循環的時變變速（12% → 100%，S 曲線 2.2 s）",
+   "license": "本專案程式合成；其餘本專案程式合成；可商用、無人聲",
+   "params": {
+    "kind": "escalator",
+    "ramp_s": 2.2,
+    "run_s": 3.0,
+    "start_speed": 0.12,
+    "src": "audio/sfx/escalator-a.ogg（第 5 項合成）變速",
+    "params": {
+     "clunk": 0.35
+    },
+    "seed": 12,
+    "name": "escalator-c-s12",
+    "length_s": 6.85,
+    "samples": 328800,
+    "round": "r3"
+   },
+   "measure": {
+    "lufs_export": -25.98,
+    "lufs_basis": "BS.1770 單聲道（oneshot 以 LUFS_PAD 量；短而稀的單發到不了 −24 就停在 −1 dBTP）",
+    "true_peak_db": -1.0,
+    "clipped": 0,
+    "length_s": 6.85,
+    "channels": 1,
+    "phone_drop_db": 5.6,
+    "above300": 0.335,
+    "centroid_hz": 220.9,
+    "clap": {
+     "target": 0.208,
+     "footsteps": -0.084,
+     "talking": -0.196,
+     "cough": -0.154,
+     "hand_version": 0.076,
+     "hand_label": "people walking on an escalator",
+     "margin_vs_voice_steps": 0.292
+    }
+   },
+   "why_picked": "v1 起動的兩下咚峰值太高（峰值 0.7 時只有 −30 LUFS，匯出會被 −1 dBTP 卡住），clunk 0.35 版 −25 LUFS；s12 目標 0.200 最高。手機掉 5.6 dB 是 escalator-a 本身的頻譜（重心 220 Hz）",
+   "handoff": {
+    "handoffTo": "audio/sfx/escalator-a.ogg",
+    "handoffAt": 2.65
+   }
+  },
+  {
+   "file": "trace-far-objects.ogg",
+   "also": [
+    "trace-far-objects.m4a",
+    "trace-far-objects.loop.json"
+   ],
+   "kind": "trace-loop",
+   "candidate": "loopobj-s13",
+   "title": "walk-lost trace bed: distant objects stirred by a draft, 30 s loop",
+   "tool": "~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-trace/synth_trace.py（numpy／scipy）→ export_trace.py → tools/audio/bgm_export.py",
+   "model": "無生成模型；實錄剪接＋程式合成",
+   "sources": [
+    {
+     "file": "src/pd-plastic-bag.wav",
+     "url": "https://commons.wikimedia.org/wiki/File:Plastic_bag.ogg",
+     "license": "Public domain"
+    }
+   ],
+   "how": "用同一套衣架 v1／塑膠袋顆粒產生器做 3+2 個事件＋4 下金屬滴，環狀放置、低通 2.6 kHz、循環摺積 RT60 3.2 s",
+   "license": "Public domain；其餘本專案程式合成；可商用、無人聲",
+   "params": {
+    "kind": "loop-objects",
+    "loop": true,
+    "rt60": 3.2,
+    "lp_hz": 2600,
+    "params": {},
+    "seed": 13,
+    "name": "loopobj-s13",
+    "length_s": 30.0,
+    "samples": 1440000,
+    "round": "r1"
+   },
+   "measure": {
+    "lufs_export": -35.79,
+    "lufs_basis": "BS.1770 立體聲",
+    "true_peak_db": -20.44,
+    "clipped": 0,
+    "length_s": 30.0,
+    "channels": 2,
+    "phone_drop_db": 0.0,
+    "above300": 0.999,
+    "centroid_hz": 1609.2,
+    "clap": {
+     "target": 0.121,
+     "footsteps": 0.013,
+     "talking": -0.121,
+     "cough": 0.011,
+     "hand_version": -0.002,
+     "hand_label": "a person moving things around",
+     "margin_vs_voice_steps": 0.108
+    },
+    "seam": {
+     "seamjump_ogg": {
+      "seam_jump_pct": 51.1,
+      "control_median_pct": 70.9,
+      "control_min_pct": 51.2
+     },
+     "export_jump_ratio": {
+      "ogg": 0.01,
+      "m4a": 0.01
+     }
+    }
+   },
+   "why_picked": "3 支裡 s11 目標和人類標籤打平（0.493／0.498）落選；s13 目標機率 0.991 最高"
+  },
+  {
+   "file": "trace-far-machines.ogg",
+   "also": [
+    "trace-far-machines.m4a",
+    "trace-far-machines.loop.json"
+   ],
+   "kind": "trace-loop",
+   "candidate": "loopmach-s12",
+   "title": "walk-lost trace bed: distant machines cycling on their own, 30 s loop",
+   "tool": "~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-trace/synth_trace.py（numpy／scipy）→ export_trace.py → tools/audio/bgm_export.py",
+   "model": "無生成模型；實錄剪接＋程式合成",
+   "sources": [
+    {
+     "file": "src/1157.flac, 2120.flac, 2143/2144/2146.flac, sardin-water-drops-01.flac",
+     "url": "同上",
+     "license": "BigSoundBank（Joseph SARDIN）CC0 1.0，可商用、免署名"
+    }
+   ],
+   "how": "販賣機 v1（13 s 運轉）、啟動器 2 次沒點著、除霜 3 滴，環狀放置、低通 1.8 kHz、循環摺積 RT60 3.6 s",
+   "license": "BigSoundBank（Joseph SARDIN）CC0 1.0，可商用、免署名；其餘本專案程式合成；可商用、無人聲",
+   "params": {
+    "kind": "loop-machines",
+    "loop": true,
+    "rt60": 3.6,
+    "lp_hz": 1800,
+    "on_s": 13.0,
+    "params": {},
+    "seed": 12,
+    "name": "loopmach-s12",
+    "length_s": 30.0,
+    "samples": 1440000,
+    "round": "r1"
+   },
+   "measure": {
+    "lufs_export": -36.0,
+    "lufs_basis": "BS.1770 立體聲",
+    "true_peak_db": -16.01,
+    "clipped": 0,
+    "length_s": 30.0,
+    "channels": 2,
+    "phone_drop_db": 3.7,
+    "above300": 0.181,
+    "centroid_hz": 213.6,
+    "clap": {
+     "target": 0.168,
+     "footsteps": 0.06,
+     "talking": -0.079,
+     "cough": 0.095,
+     "hand_version": 0.081,
+     "hand_label": "a person moving things around",
+     "margin_vs_voice_steps": 0.073
+    },
+    "seam": {
+     "seamjump_ogg": {
+      "seam_jump_pct": 52.6,
+      "control_median_pct": 52.5,
+      "control_min_pct": 52.3
+     },
+     "export_jump_ratio": {
+      "ogg": 0.03,
+      "m4a": 0.0
+     }
+    }
+   },
+   "why_picked": "3 支都過；s12 目標機率 0.993 最高，手機掉 4.1 dB（s11 5.2）"
+  }
+ ],
+ "pick_method": "全靠量：每類 3–8 支候選（共 76 支，4 輪），依序看 ①CLAP（laion/larger_clap_general）每類一組 5 個描述的餘弦：目標描述 vs『腳步』『說話』『咳嗽』，外加同物件『有人在手動它』的難負例（手拉鐵捲門、手揉塑膠袋、投幣買飲料…）；②手機喇叭模擬（4 階 400 Hz 高通）前後響度差；③峰值／響度比（匯出會被 −1 dBTP 卡住的不要）；④循環接縫 seamjump（對照組＝少接 k 樣本）。最終驗收在匯出的 OGG 解碼檔上重量一次。",
+ "positive_control": {
+  "note": "驗證這個 CLAP 測試量得出失敗：拿本專案腳步聲（sfx/steps/terrazzo-walk-3 重複 8 步、14 s）和第 18 項的人聲對照曲（la-la 女聲段 15 s）丟進同 10 組標籤，數字＝人類標籤最高 − 目標（正＝抓得到人）",
+  "result": {
+   "ctl-steps-walk.wav": {
+    "trace-hangers": {
+     "target": -0.044,
+     "steps": -0.047,
+     "talk": -0.189,
+     "human_max_minus_target": 0.031
+    },
+    "trace-bag": {
+     "target": -0.104,
+     "steps": -0.047,
+     "talk": -0.189,
+     "human_max_minus_target": 0.091
+    },
+    "trace-vending": {
+     "target": 0.07,
+     "steps": -0.047,
+     "talk": -0.189,
+     "human_max_minus_target": -0.083
+    },
+    "trace-tv-static": {
+     "target": -0.062,
+     "steps": -0.047,
+     "talk": -0.189,
+     "human_max_minus_target": 0.049
+    },
+    "trace-shutter-stall": {
+     "target": -0.004,
+     "steps": -0.047,
+     "talk": -0.189,
+     "human_max_minus_target": -0.009
+    },
+    "trace-starter": {
+     "target": -0.032,
+     "steps": -0.047,
+     "talk": -0.189,
+     "human_max_minus_target": 0.019
+    },
+    "trace-freezer-defrost": {
+     "target": 0.043,
+     "steps": -0.047,
+     "talk": -0.189,
+     "human_max_minus_target": -0.056
+    },
+    "trace-escalator-wake": {
+     "target": 0.019,
+     "steps": -0.047,
+     "talk": -0.189,
+     "human_max_minus_target": -0.032
+    },
+    "trace-far-objects": {
+     "target": -0.06,
+     "steps": -0.047,
+     "talk": -0.189,
+     "human_max_minus_target": 0.047
+    },
+    "trace-far-machines": {
+     "target": -0.046,
+     "steps": -0.047,
+     "talk": -0.189,
+     "human_max_minus_target": 0.033
+    }
+   },
+   "ctl-vox.wav": {
+    "trace-hangers": {
+     "target": 0.001,
+     "steps": -0.065,
+     "talk": -0.079,
+     "human_max_minus_target": -0.066
+    },
+    "trace-bag": {
+     "target": -0.077,
+     "steps": -0.065,
+     "talk": -0.079,
+     "human_max_minus_target": 0.012
+    },
+    "trace-vending": {
+     "target": -0.083,
+     "steps": -0.065,
+     "talk": -0.079,
+     "human_max_minus_target": 0.018
+    },
+    "trace-tv-static": {
+     "target": -0.045,
+     "steps": -0.065,
+     "talk": -0.079,
+     "human_max_minus_target": -0.02
+    },
+    "trace-shutter-stall": {
+     "target": -0.036,
+     "steps": -0.065,
+     "talk": -0.079,
+     "human_max_minus_target": -0.029
+    },
+    "trace-starter": {
+     "target": -0.021,
+     "steps": -0.065,
+     "talk": -0.079,
+     "human_max_minus_target": -0.044
+    },
+    "trace-freezer-defrost": {
+     "target": -0.062,
+     "steps": -0.065,
+     "talk": -0.079,
+     "human_max_minus_target": -0.003
+    },
+    "trace-escalator-wake": {
+     "target": -0.099,
+     "steps": -0.065,
+     "talk": -0.079,
+     "human_max_minus_target": 0.034
+    },
+    "trace-far-objects": {
+     "target": -0.009,
+     "steps": -0.065,
+     "talk": -0.079,
+     "human_max_minus_target": -0.056
+    },
+    "trace-far-machines": {
+     "target": -0.02,
+     "steps": -0.065,
+     "talk": -0.079,
+     "human_max_minus_target": -0.045
+    }
+   }
+  },
+  "reading": "腳步在衣架、塑膠袋、電視、啟動器、兩條循環 6 組抓得到（+0.02～+0.09）；販賣機、鐵捲門、冰櫃、手扶梯 4 組抓不到——那 4 組的目標描述本身就和『腳步』在 CLAP 裡太近，CLAP 對它們只能當佐證；人聲對照只有 3 組抓得到（CLAP 的『說話』不等於唱歌）。所以『沒有人』主要靠構造保證：素材來源全是物件／機器，唯一有人手的來源（PD 塑膠袋實錄）切成 15–60 ms 顆粒重排去掉手的節奏，且難負例也贏"
+ },
+ "revised_list": [
+  "trace-hangers 冷氣出風吹動衣架互碰",
+  "trace-bag 塑膠袋被風吹動",
+  "trace-vending 販賣機壓縮機啟停＋內部喀",
+  "trace-tv-static 遠處電器行電視雪花（無人聲）",
+  "trace-shutter-stall 鐵捲門馬達自己轉一半停住",
+  "trace-starter 天花板燈管啟動器跳動",
+  "trace-freezer-defrost 冰櫃除霜滴水＋金屬熱脹冷縮",
+  "trace-escalator-wake 手扶梯感應自己啟動",
+  "trace-far-objects 遠處物件被風動到（30 s 循環）",
+  "trace-far-machines 遠處機器自己起停（30 s 循環）"
+ ],
+ "removed": [
+  "推車輪子（暗示有人推）",
+  "投幣聲（暗示有人投）"
+ ],
+ "weaknesses": [
+  "衣架：CLAP 對衣架沒有概念，8 支的目標餘弦都在 ±0.05，最像的描述是『風鈴』；過關差距 0.069 是 10 支裡最小，可信度最低",
+  "塑膠袋：唯一用到『有人手』的來源（PD 實錄是人在揉），顆粒化後難負例只贏 0.009",
+  "販賣機：為了手機聽得到加了風扇＋諧波，CLAP 目標餘弦降到 0.05（仍贏人類標籤 0.138）",
+  "單發 LUFS：衣架 −27.0、塑膠袋 −28.7、手扶梯 −26.0 被 −1 dBTP 卡住沒到 −24；其餘 −24.0",
+  "循環接縫：seamjump 對照組在這種低通雜訊上分辨力弱（far-machines 對照中位 52.5、接縫 52.6；far-objects 對照 70.9、接縫 51.1）；接縫靠構造（環狀放置＋循環摺積）保證逐樣本連續，bgm_export 的 jump_ratio 0.00–0.03"
+ ],
+ "files_src": "~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-trace/（synth_trace.py、export_trace.py、picks.json、labels.json、clap_*.json、meas_*.json、src/sources.tsv）"
+}

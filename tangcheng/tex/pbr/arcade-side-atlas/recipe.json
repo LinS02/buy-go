@@ -1,0 +1,49 @@
+{
+ "generator": "PIL 程式畫幾何原稿（768×1536 直式，只有形狀）→ 本地 SDXL img2img（RealVisXL V5.0 fp16＋controlnet-union-sdxl-promax tile）印刷貼紙質感 → 縮 512×1024 拼 4×2 圖集；舊化（褪色、細刮痕、格邊擦白）程式加；normal／roughness／ao 由刮痕與擦白推",
+ "license": "RealVisXL V5.0（CreativeML OpenRAIL++-M，可商用）、controlnet-union-sdxl-promax（Apache-2.0）；輸入只有本專案程式原稿；沒有任何照片；可商用、可公開",
+ "photo_rule": "沒有使用任何照片",
+ "people_rule": "原稿只有幾何形狀；負面詞含 people, person, face, character, mascot, robot, monster, creature, animal, silhouette, car, text, logo, brand；8 格逐張看過",
+ "brand_rule": "全部原創幾何圖案，不像任何真實遊戲、不放字、不放 logo",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "formats": {
+  "albedo": "jpg sRGB",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階（貼紙半霧 0.42 起，刮痕處較霧）",
+  "ao": "jpg 線性灰階"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²"
+ },
+ "atlas": "4 欄×2 列，一格 512×1024 直式（u＝欄/4、v＝列/2；第 0 列在圖上方，three 的 v=1 在上）：bolt、starfield、track、stripes、grid、shards、rays、zigzag",
+ "cell_m": "一格建議 0.6×1.2 m（機台側板上半部）",
+ "set": "arcade-side-atlas",
+ "seed": 1,
+ "title": "大型機台側板圖集（閃電、星空、賽道、速度條紋、網格夕陽、幾何碎片、放射圈、鋸齒帶；原創、無人物無字無品牌）",
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-terrain/gen_themes6.py（python gen_themes6.py atlas --seed 1）",
+ "queue_item": "theme-pbr-6（10-29 第八批：清單六 #13 門檻換地板、#14 走道長草、#20 電動玩具店）",
+ "denoise": 0.5,
+ "cn_tile": 0.55,
+ "prompts": {
+  "bolt": "1980s arcade cabinet side art, printed vinyl decal artwork, airbrushed retro vector graphic, three big yellow and orange lightning bolts with white outlines and small four point star sparkles on a deep purple to navy gradient, bold saturated colors, flat graphic design, abstract, no text, no characters",
+  "starfield": "1980s arcade cabinet side art, printed vinyl decal artwork, airbrushed retro vector graphic, a deep space starfield with many white and blue stars, diagonal comet streaks and one ringed planet near the bottom, bold saturated colors, flat graphic design, abstract, no text, no characters",
+  "track": "1980s arcade cabinet side art, printed vinyl decal artwork, airbrushed retro vector graphic, a winding top-down race track loop, grey asphalt with white dashed centre line and red and white kerb stripes, on teal green, checkered band at the top, no cars, bold saturated colors, flat graphic design, abstract, no text, no characters",
+  "stripes": "1980s arcade cabinet side art, printed vinyl decal artwork, airbrushed retro vector graphic, bold diagonal speed stripes in red orange and yellow with chevrons on black, bold saturated colors, flat graphic design, abstract, no text, no characters",
+  "grid": "1980s arcade cabinet side art, printed vinyl decal artwork, airbrushed retro vector graphic, a neon magenta perspective grid floor with a striped orange sunset sun and cyan horizon lines on dark violet, bold saturated colors, flat graphic design, abstract, no text, no characters",
+  "shards": "1980s arcade cabinet side art, printed vinyl decal artwork, airbrushed retro vector graphic, memphis style geometric shapes, triangles, squiggles, dots and zigzags in pink yellow and blue on teal, bold saturated colors, flat graphic design, abstract, no text, no characters",
+  "rays": "1980s arcade cabinet side art, printed vinyl decal artwork, airbrushed retro vector graphic, concentric rings and radial sunburst rays in red and yellow with small stars, bold saturated colors, flat graphic design, abstract, no text, no characters",
+  "zigzag": "1980s arcade cabinet side art, printed vinyl decal artwork, airbrushed retro vector graphic, stacked bold zigzag and diamond bands in cobalt blue, orange and white, bold saturated colors, flat graphic design, abstract, no text, no characters"
+ },
+ "neg": "people, person, human, figure, man, woman, child, face, eyes, mouth, head, hands, character, mascot, cartoon character, anime, robot, monster, creature, animal, alien, dragon, skull, silhouette, car, vehicle, spaceship, text, letters, words, numbers, title, logo, brand, trademark, watermark, signature, screen, joystick, buttons, cabinet, photo of arcade, room, background scene, frame, border, blurry, lowres, jpeg artifacts",
+ "files": {
+  "2k/albedo.jpg": 672478,
+  "2k/normal.jpg": 312823,
+  "2k/roughness.jpg": 453679,
+  "2k/ao.jpg": 157360,
+  "1k/albedo.jpg": 276764,
+  "1k/normal.jpg": 73344,
+  "1k/roughness.jpg": 164110,
+  "1k/ao.jpg": 54226
+ },
+ "secs": 477
+}

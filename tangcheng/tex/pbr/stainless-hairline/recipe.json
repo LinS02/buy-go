@@ -1,0 +1,70 @@
+{
+ "generator": "CPU numpy 程式生成（scipy cKDTree 週期 Voronoi、FFT 週期濾波），無生成模型、無 GPU",
+ "license": "本專案程式生成，CPU numpy，無生成模型、無參考照進貼圖；可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色，沒有當貼圖、沒有 img2img、沒有切圖、沒有複製進專案（照片不進 repo、不進 build）",
+ "spec": "doc/design/tangcheng-site-spec.md（照片勘查規格書：尺寸、顏色以它為準）",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "所有濾波週期邊界（FFT／np.roll／mod 座標），四方連續；驗證見 verify_images",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "jpg sRGB 4:2:0",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有鐵捲門有）",
+  "mask": "見各組 mask_notes（jpg 4:4:4 或 png）",
+  "shade": "jpg 線性灰階，值×2＝亮度倍率（只有磨石子有）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化，mask.png 用最近鄰）"
+ },
+ "set": "stainless-hairline",
+ "title": "髮絲紋不鏽鋼（手扶梯側板、護欄）",
+ "queue_item": 25,
+ "candidate": "stainless-hairline-s11",
+ "seed": 11,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_misc.py（指令：python gen_misc.py stainless-hairline 11 <out>）",
+ "span_m": 0.6,
+ "why_picked": "兩版幾乎一樣；s11 的指紋位置在中段，s22 剛好靠邊，拼起來指紋成對。",
+ "rejected": [
+  "stainless-hairline-s22"
+ ],
+ "photos_referenced": [
+  "~/Desktop/game/閾限空間台灣/04_停止的手扶梯/停用的手扶梯__yt-RFfHOelgvOE-t604.jpg",
+  "~/Desktop/game/閾限空間台灣/04_停止的手扶梯/B2全暗走道__yt-xfK_eVJkgCQ-t501.jpg"
+ ],
+ "recolor_formula": "linear：sh＝mask.R×2，g＝mask.G，b＝mask.B；albedo＝mix(mix(base, colors.G, g), colors.B, b) × sh。albedo.jpg 已用預設色票烘好；換底色只改 base，髒污程度改 g、b 的倍率。",
+ "mask_notes": "mask.jpg（4:4:4）：R＝shade×0.5、G／B＝見 params.colors_srgb 的 G_／B_ 欄",
+ "files": {
+  "2k/albedo.jpg": 152178,
+  "2k/normal.jpg": 80624,
+  "2k/roughness.jpg": 244543,
+  "2k/ao.jpg": 18067,
+  "1k/albedo.jpg": 54953,
+  "1k/normal.jpg": 17710,
+  "1k/roughness.jpg": 95995,
+  "1k/ao.jpg": 4644
+ },
+ "params": {
+  "span_m": 0.6,
+  "metalness": 1.0,
+  "hairline_dir": "u（貼圖水平）",
+  "colors_srgb": {
+   "base_F0": [
+    183,
+    185,
+    187
+   ]
+  },
+  "notes": "金屬度整張 1，不另出 metalness 圖。three.js 可配 MeshPhysicalMaterial.anisotropy≈0.6、anisotropyRotation=0（沿 u）。",
+  "set": "stainless-hairline",
+  "size": 2048
+ },
+ "verify_images": [
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/stainless-hairline-s11-wall.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/stainless-hairline-s11-top3x3.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/stainless-hairline-s11-seam.jpg"
+ ],
+ "metalness": "整組 metalness＝1（沒有 metalness 檔）；髮絲沿 u 方向，側板 UV 讓 u 沿扶手走向"
+}

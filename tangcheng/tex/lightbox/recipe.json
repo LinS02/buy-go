@@ -1,0 +1,297 @@
+{
+ "tool": "ComfyUI 8188（tools/art/localgen/lg.py）",
+ "queue_items": [
+  10,
+  11,
+  "第二輪 #56"
+ ],
+ "spec": "doc/design/tangcheng-asset-queue.md 第 10、11 項；褪色照 doc/design/tangcheng-sign-style.md §4",
+ "model": "flux1-dev-Q4_K_S.gguf + t5xxl_fp8_e4m3fn + clip_l + ae",
+ "sampler": {
+  "w": 1152,
+  "h": 1152,
+  "steps": 24,
+  "guidance": 3.5,
+  "cfg": 1.0,
+  "sampler": "euler/simple"
+ },
+ "post": [
+  "選上的候選（有 -dg 就用抹字版）→ 4x-UltraSharp 放大到 4608（up_cpu.py，CPU spandrel 分塊 256／重疊 32；ComfyUI MPS 版整張出橫紋已作廢）→ Lanczos 縮 2048",
+  "fade.py w=0.3（seed=100+sum(ord(name))）：HSL 去飽和＋提亮、紅掉得快、藍抬、亮部偏 #efdca2；低頻不均 ±22%＋上緣多褪 10%；CMY 褪色 C,M×(1−0.6w)、Y×(1−0.2w)；黑位抬升＋細顆粒",
+  "2k jpg q90、1k jpg q88（手機）"
+ ],
+ "game_side_fade": "已烘 w=0.3 的「輕微褪色」底。遊戲端照 sign-style 年代權重再疊 max(0, w_era − 0.3)，不要從 0 疊，否則會褪兩次",
+ "reference_photos_viewed": [
+  "~/Desktop/game/閾限空間台灣/01_童年招牌還在/美食新天地招牌__yt-U66VJjrbLKE-t292.jpg",
+  "~/Desktop/game/閾限空間台灣/01_童年招牌還在/麥當勞新學友燈箱特寫__yt-38OUom-WaiQ-t1084.jpg"
+ ],
+ "reference_use": "只目視取色（燈箱照片面板褪色、低反差、偏暖），沒有進 img2img／ControlNet／IP-Adapter，沒有複製進專案",
+ "screening": "每張放大到 2–4 倍看假字與人形；torchvision Faster R-CNN v2 person 偵測全部 clean（cd-wall-s23 有 maybe，已落選）。偵測器抓不到卡通恐龍，靠目視",
+ "license": "FLUX.1 [dev] Non-Commercial License：輸出可用（禁拿輸出訓練競品模型）；本專案為免費非營利遊戲，若改收費／掛廣告須重審。放大用 4x-UltraSharp（CC BY-NC-SA 4.0，非營利可用）",
+ "files": {
+  "ff-combo": {
+   "queue_item": 10,
+   "title": "速食：漢堡套餐",
+   "2k": "2k/ff-combo.jpg",
+   "1k": "1k/ff-combo.jpg",
+   "candidate": "ff-combo-s11.png",
+   "seed": 11,
+   "prompt": "A late 1990s printed product photograph, the kind mounted as a backlit transparency in a square acrylic lightbox above a shop counter in a Taiwanese shopping mall. Commercial studio shot with glossy flash lighting, subject centred and filling most of the frame, plain seamless backdrop. The print has aged a little: slightly lowered contrast, a faint warm yellowish cast, colours a bit washed out, fine film grain. A fast food combo meal on a red plastic tray: a tall sesame seed cheeseburger with lettuce and tomato, a red paper carton of golden french fries, and a large plain white paper soft drink cup with a lid and a straw. Backdrop is a warm orange to red gradient. Everything is completely plain and unprinted: absolutely no text, no letters, no numbers, no labels, no logos, no brand marks, no stickers. No people, no hands, no faces, no figurines, no mascots, no dolls, no characters, no human shapes anywhere, nothing with eyes. Generic, unbranded, no watermark.",
+   "why_picked": "一張就交代整份套餐（漢堡＋薯條＋杯），紅托盤＋橘紅底最像 90 年代速食燈箱；杯子全白無印，放大看沒有假字",
+   "deglyph": "無（放大檢查沒有假字）"
+  },
+  "ff-fries": {
+   "queue_item": 10,
+   "title": "速食：薯條",
+   "2k": "2k/ff-fries.jpg",
+   "1k": "1k/ff-fries.jpg",
+   "candidate": "ff-fries-s23.png",
+   "seed": 23,
+   "prompt": "A late 1990s printed product photograph, the kind mounted as a backlit transparency in a square acrylic lightbox above a shop counter in a Taiwanese shopping mall. Commercial studio shot with glossy flash lighting, subject centred and filling most of the frame, plain seamless backdrop. The print has aged a little: slightly lowered contrast, a faint warm yellowish cast, colours a bit washed out, fine film grain. A close-up of a plain bright red paper carton overflowing with golden crispy french fries, a few fries lying in front, beside a small dish of ketchup. Backdrop is a sunny yellow gradient. Everything is completely plain and unprinted: absolutely no text, no letters, no numbers, no labels, no logos, no brand marks, no stickers. No people, no hands, no faces, no figurines, no mascots, no dolls, no characters, no human shapes anywhere, nothing with eyes. Generic, unbranded, no watermark.",
+   "why_picked": "薯條粗細、焦色自然，紅紙盒無印；s11 薯條像塑膠模型",
+   "deglyph": "無（放大檢查沒有假字）"
+  },
+  "ff-soda": {
+   "queue_item": 10,
+   "title": "速食：汽水杯",
+   "2k": "2k/ff-soda.jpg",
+   "1k": "1k/ff-soda.jpg",
+   "candidate": "ff-soda-s11.png",
+   "seed": 11,
+   "prompt": "A late 1990s printed product photograph, the kind mounted as a backlit transparency in a square acrylic lightbox above a shop counter in a Taiwanese shopping mall. Commercial studio shot with glossy flash lighting, subject centred and filling most of the frame, plain seamless backdrop. The print has aged a little: slightly lowered contrast, a faint warm yellowish cast, colours a bit washed out, fine film grain. A large plain red and white striped paper soft drink cup with a domed clear plastic lid and a bent straw, cold condensation droplets, a few ice cubes and a splash of cola in front of it. Backdrop is a cool sky blue gradient. Everything is completely plain and unprinted: absolutely no text, no letters, no numbers, no labels, no logos, no brand marks, no stickers. No people, no hands, no faces, no figurines, no mascots, no dolls, no characters, no human shapes anywhere, nothing with eyes. Generic, unbranded, no watermark.",
+   "why_picked": "構圖乾淨、冰塊與水珠可信、藍底和另兩張的暖色底拉開",
+   "deglyph": "杯蓋外圈浮雕假字：deglyph_fill.py 348,430,822,454（上下邊界逐欄內插，保留條紋）"
+  },
+  "phone-a": {
+   "queue_item": 11,
+   "title": "手機行：三支直立機",
+   "2k": "2k/phone-a.jpg",
+   "1k": "1k/phone-a.jpg",
+   "candidate": "ph-trio-s11.png",
+   "seed": 11,
+   "prompt": "A late 1990s printed advertising product photograph, full bleed, the photo itself only with no frame, no box and no border around it. Commercial studio shot with glossy flash lighting, subject centred and filling most of the frame, plain seamless backdrop. The print has aged a little: slightly lowered contrast, a faint warm yellowish cast, colours a bit washed out, fine film grain. Three generic candybar mobile phones from the year 2000 standing upright side by side, chunky silver, frosted blue and dark grey plastic bodies with short stubby antennas, small monochrome green backlit screens that are completely blank, rounded rubber keypads with smooth blank keys. Backdrop is a glossy ice blue to silver gradient. Everything is completely plain and unprinted: absolutely no text, no letters, no numbers, no labels, no logos, no brand marks, no stickers. No people, no hands, no faces, no figurines, no mascots, no dolls, no characters, no human shapes anywhere, nothing with eyes. Generic, unbranded, no watermark.",
+   "why_picked": "三種千禧年直立機外形（銀、霧藍、深灰）並排，外形不像任何單一真實型號；假字抹掉後無字",
+   "deglyph": "deglyph_inpaint.py 352,333,410,353 546,336,612,356 776,341,836,358（三個面板徽章）302,957,460,993 495,954,655,973,all 720,946,868,971,all（三支機身下緣）295,1035,465,1070 358,1041,452,1063,all（倒影裡的字）"
+  },
+  "phone-b": {
+   "queue_item": 11,
+   "title": "手機行：五色外殼",
+   "2k": "2k/phone-b.jpg",
+   "1k": "1k/phone-b.jpg",
+   "candidate": "ph-row-s11.png",
+   "seed": 11,
+   "prompt": "A late 1990s printed advertising product photograph, full bleed, the photo itself only with no frame, no box and no border around it. Commercial studio shot with glossy flash lighting, subject centred and filling most of the frame, plain seamless backdrop. The print has aged a little: slightly lowered contrast, a faint warm yellowish cast, colours a bit washed out, fine film grain. A row of five generic candybar mobile phones from the year 2000 lying at an angle on a glossy surface, each with a different translucent coloured plastic faceplate: lime green, tangerine orange, aqua blue, grape purple and clear, small blank green screens, smooth keys with no numbers and no symbols, no badge, no nameplate. Backdrop is a white to aqua gradient. Everything is completely plain and unprinted: absolutely no text, no letters, no numbers, no labels, no logos, no brand marks, no stickers. No people, no hands, no faces, no figurines, no mascots, no dolls, no characters, no human shapes anywhere, nothing with eyes. Generic, unbranded, no watermark.",
+   "why_picked": "五色半透明換殼（萊姆綠、橘、水藍、葡萄紫、白）是千禧年手機行最典型的櫥窗；跟 phone-a 的金屬色系拉開。按鍵上只有糊的小點、讀不出符號",
+   "deglyph": "無（放大檢查沒有假字）"
+  },
+  "music-a": {
+   "queue_item": 11,
+   "title": "唱片行：CD 疊",
+   "2k": "2k/music-a.jpg",
+   "1k": "1k/music-a.jpg",
+   "candidate": "cd-stack-s11.png",
+   "seed": 11,
+   "prompt": "A late 1990s printed advertising product photograph, full bleed, the photo itself only with no frame, no box and no border around it. Commercial studio shot with glossy flash lighting, subject centred and filling most of the frame, plain seamless backdrop. The print has aged a little: slightly lowered contrast, a faint warm yellowish cast, colours a bit washed out, fine film grain. A tidy stack of music CD jewel cases leaning against a pile of audio cassette tapes, one shiny silver compact disc in front catching rainbow reflections, every cover and cassette inlay printed only with plain abstract colour shapes and gradients, spines solid colours, clear and smoky plastic shells. Backdrop is a magenta to purple gradient. Everything is completely plain and unprinted: absolutely no text, no letters, no numbers, no labels, no logos, no brand marks, no stickers. No people, no hands, no faces, no figurines, no mascots, no dolls, no characters, no human shapes anywhere, nothing with eyes. Generic, unbranded, no watermark.",
+   "why_picked": "CD 盒封面只有抽象色塊，前景一張彩虹反光光碟；放大看無假字",
+   "deglyph": "無（放大檢查沒有假字）"
+  },
+  "music-b": {
+   "queue_item": 11,
+   "title": "唱片行：光碟與卡帶",
+   "2k": "2k/music-b.jpg",
+   "1k": "1k/music-b.jpg",
+   "candidate": "cd-discs-s23.png",
+   "seed": 23,
+   "prompt": "A late 1990s printed advertising product photograph, full bleed, the photo itself only with no frame, no box and no border around it. Commercial studio shot with glossy flash lighting, subject centred and filling most of the frame, plain seamless backdrop. The print has aged a little: slightly lowered contrast, a faint warm yellowish cast, colours a bit washed out, fine film grain. A product shot of music media: several shiny silver compact discs fanned out with rainbow reflections, an empty clear plastic CD jewel case standing behind them, and three audio cassette tapes in clear and smoky plastic shells showing the brown tape on white reels, their label areas plain solid colours (red, yellow, blue) with no writing. Backdrop is a magenta to deep purple gradient. Everything is completely plain and unprinted: absolutely no text, no letters, no numbers, no labels, no logos, no brand marks, no stickers. No people, no hands, no faces, no figurines, no mascots, no dolls, no characters, no human shapes anywhere, nothing with eyes. Generic, unbranded, no watermark.",
+   "why_picked": "藍黃紅三卷卡帶標籤純色無字＋光碟＋空 CD 盒，補上 music-a 沒有的卡帶",
+   "deglyph": "CD 盒內側邊條的直排細字：deglyph_inpaint.py 540,345,556,458,all 861,335,879,696,all"
+  },
+  "toys-a": {
+   "queue_item": 11,
+   "title": "玩具店：玩具跑車",
+   "2k": "2k/toys-a.jpg",
+   "1k": "1k/toys-a.jpg",
+   "candidate": "ty-car-s11.png",
+   "seed": 11,
+   "prompt": "A late 1990s printed advertising product photograph, full bleed, the photo itself only with no frame, no box and no border around it. Commercial studio shot with glossy flash lighting, subject centred and filling most of the frame, plain seamless backdrop. The print has aged a little: slightly lowered contrast, a faint warm yellowish cast, colours a bit washed out, fine film grain. A shiny chunky plastic toy sports car in red and yellow with oversized wheels, next to a pile of colourful stacking building blocks and a striped rubber ball. Primary colours, glossy plastic. Backdrop is a pink to orange gradient. Everything is completely plain and unprinted: absolutely no text, no letters, no numbers, no labels, no logos, no brand marks, no stickers. No people, no hands, no faces, no figurines, no mascots, no dolls, no characters, no human shapes anywhere, nothing with eyes. Generic, unbranded, no watermark.",
+   "why_picked": "紅黃大輪跑車＋積木＋條紋球，全無人形、無臉；放大看無字",
+   "deglyph": "無（放大檢查沒有假字）"
+  },
+  "toys-b": {
+   "queue_item": 11,
+   "title": "玩具店：小火車與套圈",
+   "2k": "2k/toys-b.jpg",
+   "1k": "1k/toys-b.jpg",
+   "candidate": "ty-train-s11.png",
+   "seed": 11,
+   "prompt": "A late 1990s printed advertising product photograph, full bleed, the photo itself only with no frame, no box and no border around it. Commercial studio shot with glossy flash lighting, subject centred and filling most of the frame, plain seamless backdrop. The print has aged a little: slightly lowered contrast, a faint warm yellowish cast, colours a bit washed out, fine film grain. Bright glossy plastic toys on a plain surface: a chunky red and blue plastic toy steam train with three wagons on a short oval of yellow plastic track, a rainbow stacking ring tower on a cone, a spinning top, a yo-yo and a few chunky building blocks. No animals, no figures, no faces, nothing with eyes, the train has no face. Primary colours. Backdrop is a butter yellow to peach gradient. Everything is completely plain and unprinted: absolutely no text, no letters, no numbers, no labels, no logos, no brand marks, no stickers. No people, no hands, no faces, no figurines, no mascots, no dolls, no characters, no human shapes anywhere, nothing with eyes. Generic, unbranded, no watermark.",
+   "why_picked": "無動物、無人偶：小火車、彩虹套圈塔、陀螺、球、拱門積木，學齡前塑膠玩具感；放大看無字。ty-mix／ty-dino 兩輪恐龍都長卡通臉，改這個方向",
+   "deglyph": "無（放大檢查沒有假字）"
+  },
+  "appliance-a": {
+   "queue_item": 11,
+   "title": "電器行：電鍋、立扇、快煮壺",
+   "2k": "2k/appliance-a.jpg",
+   "1k": "1k/appliance-a.jpg",
+   "candidate": "appliance-a-s11.png",
+   "seed": 11,
+   "prompt": "A late 1990s printed advertising product photograph, full bleed, the photo itself only with no frame, no box and no border around it. Commercial studio shot with glossy flash lighting, subject centred and filling most of the frame, plain seamless backdrop. The print has aged a little: slightly lowered contrast, a faint warm yellowish cast, colours a bit washed out, fine film grain. Generic 1990s household appliances standing together: a white electric rice cooker with a domed lid, a pastel blue electric standing fan, and a chrome electric kettle, smooth plastic bodies with plain unmarked buttons, no badges, no nameplates. Backdrop is a clean mint green to white gradient. Everything is completely plain and unprinted: absolutely no text, no letters, no numbers, no labels, no logos, no brand marks, no stickers. No people, no hands, no faces, no figurines, no mascots, no dolls, no characters, no human shapes anywhere, nothing with eyes. Generic, unbranded, no watermark.",
+   "why_picked": "三件千禧年小家電外形泛用、無銘牌；薄荷綠底和其他暖色燈箱拉開（第二輪清單 #56）",
+   "deglyph": "deglyph_inpaint.py 436,820,474,838 790,682,850,704（電鍋開關上方小徽章、快煮壺握把頂的銘牌）"
+  },
+  "bakery-a": {
+   "queue_item": 11,
+   "title": "麵包店：菠蘿與芝麻餐包",
+   "2k": "2k/bakery-a.jpg",
+   "1k": "1k/bakery-a.jpg",
+   "candidate": "bakery-a-s11.png",
+   "seed": 11,
+   "prompt": "A late 1990s printed advertising product photograph, full bleed, the photo itself only with no frame, no box and no border around it. Commercial studio shot with glossy flash lighting, subject centred and filling most of the frame, plain seamless backdrop. The print has aged a little: slightly lowered contrast, a faint warm yellowish cast, colours a bit washed out, fine film grain. Freshly baked Taiwanese bakery breads on a plain wooden board: a golden pineapple bun with a crackled sugar crust, a soft milk loaf, a few round buns sprinkled with sesame and pork floss, glossy egg-washed crusts. Backdrop is a warm butter yellow to orange gradient. Everything is completely plain and unprinted: absolutely no text, no letters, no numbers, no labels, no logos, no brand marks, no stickers. No people, no hands, no faces, no figurines, no mascots, no dolls, no characters, no human shapes anywhere, nothing with eyes. Generic, unbranded, no watermark.",
+   "why_picked": "木板上的餐包、甜甜圈形麵包，黃底；放大看無字無人（第二輪清單 #56）",
+   "deglyph": "無（放大檢查沒有假字）"
+  },
+  "coffee-a": {
+   "queue_item": 11,
+   "title": "咖啡：白瓷杯與奶盅",
+   "2k": "2k/coffee-a.jpg",
+   "1k": "1k/coffee-a.jpg",
+   "candidate": "coffee-a-s11.png",
+   "seed": 11,
+   "prompt": "A late 1990s printed advertising product photograph, full bleed, the photo itself only with no frame, no box and no border around it. Commercial studio shot with glossy flash lighting, subject centred and filling most of the frame, plain seamless backdrop. The print has aged a little: slightly lowered contrast, a faint warm yellowish cast, colours a bit washed out, fine film grain. A plain white ceramic coffee cup and saucer filled with dark coffee with a light crema, a scatter of roasted coffee beans in front, a small plain glass jug of milk. Backdrop is a warm caramel brown to cream gradient. Everything is completely plain and unprinted: absolutely no text, no letters, no numbers, no labels, no logos, no brand marks, no stickers. No people, no hands, no faces, no figurines, no mascots, no dolls, no characters, no human shapes anywhere, nothing with eyes. Generic, unbranded, no watermark.",
+   "why_picked": "白瓷杯、奶盅、散落咖啡豆，暖橘底；杯盤素面無字（第二輪清單 #56）",
+   "deglyph": "無（放大檢查沒有假字）"
+  },
+  "optical-a": {
+   "queue_item": 11,
+   "title": "眼鏡行：金屬框與玳瑁框",
+   "2k": "2k/optical-a.jpg",
+   "1k": "1k/optical-a.jpg",
+   "candidate": "optical-a-s11.png",
+   "seed": 11,
+   "prompt": "A late 1990s printed advertising product photograph, full bleed, the photo itself only with no frame, no box and no border around it. Commercial studio shot with glossy flash lighting, subject centred and filling most of the frame, plain seamless backdrop. The print has aged a little: slightly lowered contrast, a faint warm yellowish cast, colours a bit washed out, fine film grain. Three pairs of 1990s eyeglasses arranged on a plain glossy surface: thin gold metal oval frames, black horn-rimmed frames, and tortoiseshell round frames, clear lenses with soft reflections, folded temples, nothing printed on them. Backdrop is a cool pale blue to white gradient. Everything is completely plain and unprinted: absolutely no text, no letters, no numbers, no labels, no logos, no brand marks, no stickers. No people, no hands, no faces, no figurines, no mascots, no dolls, no characters, no human shapes anywhere, nothing with eyes. Generic, unbranded, no watermark.",
+   "why_picked": "金框、黑框、玳瑁框散放淺藍台面；鏡腳刻字已抹（-dg）（第二輪清單 #56）",
+   "deglyph": "沿用前一輪 optical-a-s11-dg.png（鏡腳刻字）"
+  },
+  "tea-a": {
+   "queue_item": 11,
+   "title": "飲料：珍珠奶茶兩杯",
+   "2k": "2k/tea-a.jpg",
+   "1k": "1k/tea-a.jpg",
+   "candidate": "tea-a-s11.png",
+   "seed": 11,
+   "prompt": "A late 1990s printed advertising product photograph, full bleed, the photo itself only with no frame, no box and no border around it. Commercial studio shot with glossy flash lighting, subject centred and filling most of the frame, plain seamless backdrop. The print has aged a little: slightly lowered contrast, a faint warm yellowish cast, colours a bit washed out, fine film grain. Two tall clear plastic cups of Taiwanese bubble milk tea with dark tapioca pearls at the bottom, sealed with plain clear film tops and thick wide straws, beside a small heap of dry oolong tea leaves and a plain white porcelain teacup. Backdrop is a fresh jade green to cream gradient. Everything is completely plain and unprinted: absolutely no text, no letters, no numbers, no labels, no logos, no brand marks, no stickers. No people, no hands, no faces, no figurines, no mascots, no dolls, no characters, no human shapes anywhere, nothing with eyes. Generic, unbranded, no watermark.",
+   "why_picked": "雙杯珍奶＋茶葉＋小白杯，綠底；杯身全素面無印（第二輪清單 #56）",
+   "deglyph": "無（放大檢查沒有假字）"
+  },
+  "watch-a": {
+   "queue_item": 11,
+   "title": "鐘錶：三支指針錶",
+   "2k": "2k/watch-a.jpg",
+   "1k": "1k/watch-a.jpg",
+   "candidate": "watch-a-s11.png",
+   "seed": 11,
+   "prompt": "A late 1990s printed advertising product photograph, full bleed, the photo itself only with no frame, no box and no border around it. Commercial studio shot with glossy flash lighting, subject centred and filling most of the frame, plain seamless backdrop. The print has aged a little: slightly lowered contrast, a faint warm yellowish cast, colours a bit washed out, fine film grain. Three generic analogue wristwatches lying on a plain velvet surface: a gold watch with a metal bracelet, a steel diver watch with a blue bezel, a slim watch on a brown leather strap, every dial completely plain with only simple baton hour markers and hands, no numerals, no writing, no logo on the dial. Backdrop is a deep navy blue to black gradient. Everything is completely plain and unprinted: absolutely no text, no letters, no numbers, no labels, no logos, no brand marks, no stickers. No people, no hands, no faces, no figurines, no mascots, no dolls, no characters, no human shapes anywhere, nothing with eyes. Generic, unbranded, no watermark.",
+   "why_picked": "金錶、藍圈潛水錶、皮帶錶躺在深藍絨布；錶盤假字已抹，只留刻度與潛水圈數字（第二輪清單 #56）",
+   "deglyph": "deglyph_inpaint.py 三輪：錶盤上的假品牌字與小字（338,566,378,584 520,673,572,707 622,652,668,674 778–930,586–667 等）"
+  }
+ },
+ "rejected": {
+  "ff-combo-s23.png": {
+   "why": "把燈箱外框也畫進去（照片外多一圈壓克力盒），漢堡麵包形狀怪；之後 LOOK 改寫 full bleed／no frame",
+   "seed": 23,
+   "subject": "ff-combo"
+  },
+  "ff-fries-s11.png": {
+   "why": "薯條粗短像塑膠假薯，番茄醬碟太大搶畫面",
+   "seed": 11,
+   "subject": "ff-fries"
+  },
+  "ff-soda-s23.png": {
+   "why": "前景潑灑一團亂，杯蓋顏色怪（褐色）",
+   "seed": 23,
+   "subject": "ff-soda"
+  },
+  "ph-trio-s23.png": {
+   "why": "按鍵上有假字母數字，量多抹不乾淨",
+   "seed": 23,
+   "subject": "ph-trio"
+  },
+  "ph-hero-s11.png": {
+   "why": "按鍵印數字；外形太接近 Nokia 3310（真實產品）",
+   "seed": 11,
+   "subject": "ph-hero"
+  },
+  "ph-hero-s23.png": {
+   "why": "面板有假字「sapymbon」，外形同樣像 3310",
+   "seed": 23,
+   "subject": "ph-hero"
+  },
+  "ph-flip-s11.png": {
+   "why": "兩支都印假字「TDE」、螢幕下有「S28」；粉色那支頂端兩個角＋橢圓黑窗像一張臉",
+   "seed": 11,
+   "subject": "ph-flip"
+  },
+  "ph-flip-s23.png": {
+   "why": "乾淨好看（銀色機身的浮雕標誌已抹）但它是折疊機，題目要的是直立式；保留抹字版當備用",
+   "seed": 23,
+   "subject": "ph-flip"
+  },
+  "cd-wall-s11.png": {
+   "why": "滿牆假價格標籤與封面假字",
+   "seed": 11,
+   "subject": "cd-wall"
+  },
+  "cd-wall-s23.png": {
+   "why": "假專輯名、一張封面是卡通生物，人形偵測報 maybe",
+   "seed": 23,
+   "subject": "cd-wall"
+  },
+  "cd-stack-s23.png": {
+   "why": "卡帶標籤有假字「TANLDO」與條碼",
+   "seed": 23,
+   "subject": "cd-stack"
+  },
+  "cd-discs-s11.png": {
+   "why": "卡帶殼上緣有一排浮雕假字，兩卷卡帶都有，畫面也偏糊",
+   "seed": 11,
+   "subject": "cd-discs"
+  },
+  "cd-spines-s11.png": {
+   "why": "每根 CD 書背都長出直排假字，卡帶標籤也有字，抹不完",
+   "seed": 11,
+   "subject": "cd-spines"
+  },
+  "ty-mix-s11.png": {
+   "why": "站立微笑、有眼睛的卡通恐龍（角色化，違反無人形／無角色）",
+   "seed": 11,
+   "subject": "ty-mix"
+  },
+  "ty-mix-s23.png": {
+   "why": "同上，卡通恐龍有臉",
+   "seed": 23,
+   "subject": "ty-mix"
+  },
+  "ty-car-s23.png": {
+   "why": "左上與右緣有邊框殘影，輪轂有記號",
+   "seed": 23,
+   "subject": "ty-car"
+  },
+  "ty-dino-s11.png": {
+   "why": "兩隻恐龍都是卡通臉：大眼、微笑，角色感跟 ty-mix 一樣（提示詞已寫 not cartoon、no smiling faces 仍出）",
+   "seed": 11,
+   "subject": "ty-dino"
+  },
+  "ty-dino-s23.png": {
+   "why": "綠色那隻用後腳站起、前肢抬起像人站姿，兩隻都張嘴有眼神；改走沒有動物的 ty-train",
+   "seed": 23,
+   "subject": "ty-dino"
+  },
+  "ty-train-s23.png": {
+   "why": "上緣與右緣有邊框殘影；套圈塔頂端是一顆圓頭木樁，像小人偶",
+   "seed": 23,
+   "subject": "ty-train"
+  }
+ },
+ "workdir": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-lightbox/（gen.py、fade.py、finalize.py、deglyph_inpaint.py）",
+ "local_gen": "~/Desktop/ＬＬＭ/local-gen/image/texture/tangcheng-lightbox/"
+}

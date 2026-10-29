@@ -1,0 +1,63 @@
+{
+ "title": "walk-lost PA chime A (do-mi-la-sol, electronic chime), dry",
+ "key": "F major",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 191040,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [
+  0.0,
+  0.46,
+  0.92,
+  1.38
+ ],
+ "risers": [],
+ "firstSoundSample": 26,
+ "lufsIn": -15.73,
+ "gainDb": -0.27,
+ "lufs": -16.0,
+ "truePeakDb": -3.36,
+ "clipped": 0,
+ "files": {
+  "ogg": "pa-chime-a.ogg",
+  "m4a": "pa-chime-a.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 101289,
+   "decoded_samples": 191040,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 26,
+   "err_db": -44.1
+  },
+  "m4a": {
+   "bytes": 98818,
+   "decoded_samples": 192448,
+   "tail_padding": 1408,
+   "offset_samples": 0,
+   "first_sound_sample": 26,
+   "err_db": -53.7
+  }
+ },
+ "kind": "pa-chime",
+ "notes_hz": [
+  698.46,
+  880.0,
+  1174.66,
+  1046.5
+ ],
+ "note": "hits＝四個音的起點（秒）。"
+}

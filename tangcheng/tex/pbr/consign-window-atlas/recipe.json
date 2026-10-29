@@ -1,0 +1,52 @@
+{
+ "generator": "PIL 程式畫粗略構圖（色塊、層板；高斯模糊 6–8 px）→ 本地 SDXL img2img（RealVisXL V5、denoise 0.86、無 ControlNet、1536×768、32 步）→ 縮 1024×512 拼 2×4",
+ "license": "RealVisXL V5.0（CreativeML OpenRAIL++-M，可商用）、controlnet-union-sdxl-promax（Apache-2.0）；輸入只有本專案程式原稿；沒有任何照片；可商用、可公開",
+ "people_rule": "原稿只有色塊；提示詞 no people／empty；負面詞含 people, face, hands, body, mannequin, statue, sculpture, angel, cherub, doll, portrait；8 格逐張看過",
+ "brand_rule": "無字、無 logo、無花押字（負面詞 text, letters, logo, brand, monogram, label text）；逐張看過",
+ "atlas": "2 欄×4 列，一格 1024×512 橫式 2:1（u＝欄/2、v＝列/4；第 0 列在圖上方）：fabric-bolts、fabric-folded、fabric-rolls、scarves、handbags、belts-wallets、luggage、shoes",
+ "cell_m": "一格建議 2.4×1.2 m（一間 3 m 店的櫃後牆一段；玻璃櫃擋在前面）",
+ "seed": 7,
+ "cell_seeds": {
+  "fabric-bolts": 700,
+  "fabric-folded": 701,
+  "fabric-rolls": 712,
+  "scarves": 713,
+  "handbags": 704,
+  "belts-wallets": 715,
+  "luggage": 716,
+  "shoes": 707
+ },
+ "title": "委託行櫥窗圖集（重做：照片感、有景深與陳列層次；布料直卷、疊布、布捲、絲巾、皮包、皮帶皮夾、皮箱、皮鞋；無人台、無字、無牌）",
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-terrain/gen_themes7.py（python gen_themes7.py atlas consign --seed 7 --redo fabric-rolls=712,scarves=713,belts-wallets=715,luggage=716）",
+ "prompts": {
+  "fabric-bolts": "RAW photo, straight-on frontal view of a vintage 1980s Taipei consignment shop display wall, wooden pigeonhole shelves full of upright bolts of wool suiting fabric in navy, charcoal, camel, brown and grey, folded fabric ends visible, vintage 1970s fabric shop wall, bright even light, merchandise only, warm fluorescent shelf lighting, real shadows under each item, layered depth with items at different distances, shallow depth of field, items filling the whole frame edge to edge, photorealistic, sharp focus, 35mm film",
+  "fabric-folded": "RAW photo, straight-on frontal view of a vintage 1980s Taipei consignment shop display wall, glass shelves with neat stacks of folded silk and cotton fabric in pastel floral prints and solids, soft fabric folds, vintage tailor shop display case, merchandise only, warm fluorescent shelf lighting, real shadows under each item, layered depth with items at different distances, shallow depth of field, items filling the whole frame edge to edge, photorealistic, sharp focus, 35mm film",
+  "fabric-rolls": "RAW photo, straight-on frontal view of a vintage 1980s Taipei consignment shop display wall, wooden racks packed with many rolls of printed cotton cloth lying horizontally, floral, checked and striped patterns with visible weave, round spiral roll ends facing the viewer, vintage cloth shop, merchandise only, warm fluorescent shelf lighting, real shadows under each item, layered depth with items at different distances, shallow depth of field, items filling the whole frame edge to edge, photorealistic, sharp focus, 35mm film",
+  "scarves": "RAW photo, straight-on frontal view of a vintage 1980s Taipei consignment shop display wall, glass display case densely filled on every shelf with neatly folded silk scarves in red, gold, blue and green geometric and paisley patterns, many scarves hanging draped over brass rails at the top, vintage boutique, crowded display, merchandise only, warm fluorescent shelf lighting, real shadows under each item, layered depth with items at different distances, shallow depth of field, items filling the whole frame edge to edge, photorealistic, sharp focus, 35mm film",
+  "handbags": "RAW photo, straight-on frontal view of a vintage 1980s Taipei consignment shop display wall, glass shelves with real leather handbags in brown, black, oxblood and tan, some standing some lying, soft creases, worn leather, gold metal clasps, merchandise only, warm fluorescent shelf lighting, real shadows under each item, layered depth with items at different distances, shallow depth of field, items filling the whole frame edge to edge, photorealistic, sharp focus, 35mm film",
+  "belts-wallets": "RAW photo, straight-on frontal view of a vintage 1980s Taipei consignment shop display wall, small tightly rolled leather belts standing in neat rows in a glass cabinet, many leather wallets and coin purses laid out in rows on the lower glass shelves, brown, black and tan, small brass buckles, crowded display, merchandise only, warm fluorescent shelf lighting, real shadows under each item, layered depth with items at different distances, shallow depth of field, items filling the whole frame edge to edge, photorealistic, sharp focus, 35mm film",
+  "luggage": "RAW photo, straight-on frontal view of a vintage 1980s Taipei consignment shop display wall, wooden shelves completely full of stacked vintage brown, tan and black leather suitcases, briefcases and hat boxes with brass locks and straps, worn corners, crowded display, merchandise only, warm fluorescent shelf lighting, real shadows under each item, layered depth with items at different distances, shallow depth of field, items filling the whole frame edge to edge, photorealistic, sharp focus, 35mm film",
+  "shoes": "RAW photo, straight-on frontal view of a vintage 1980s Taipei consignment shop display wall, glass shelves with pairs of polished leather dress shoes and loafers in brown, oxblood and black, angled for display, reflections on the shelves, merchandise only, warm fluorescent shelf lighting, real shadows under each item, layered depth with items at different distances, shallow depth of field, items filling the whole frame edge to edge, photorealistic, sharp focus, 35mm film"
+ },
+ "neg": "people, person, human, figure, man, woman, child, bride, groom, face, eyes, mouth, head, hands, fingers, body, mannequin, dummy, torso, bust, statue, sculpture, angel, cherub, figurine, doll, portrait, photo of people, model, silhouette, character, mascot, cartoon character, anime, animal, creature, skull, logo, brand, trademark, monogram, designer logo pattern, watermark, signature, text, letters, words, numbers, label text, sign, illustration, drawing, vector art, flat colors, clipart, 3d render, cgi, blurry, lowres, jpeg artifacts, frame, border, tilted, dutch angle",
+ "secs": 508,
+ "maps": "albedo 照片；roughness／ao 由亮度推的弱層次；normal 平",
+ "files": {
+  "2k/albedo.jpg": 731737,
+  "2k/normal.jpg": 115317,
+  "2k/roughness.jpg": 160171,
+  "2k/ao.jpg": 125625,
+  "1k/albedo.jpg": 232280,
+  "1k/normal.jpg": 29301,
+  "1k/roughness.jpg": 54469,
+  "1k/ao.jpg": 46285
+ },
+ "queue_item": "theme-pbr-7（10-29 第十批：清單七 #12 剛裝潢好還沒開幕、#18 3C 攤位迷宮、#19 婚紗攝影假景棚；重做清單六 #23 委託行櫥窗）",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "sizes": {
+  "2k": "2048×2048",
+  "1k": "1024×1024"
+ },
+ "set": "consign-window-atlas",
+ "photo_rule": "沒有使用任何照片"
+}

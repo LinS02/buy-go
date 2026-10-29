@@ -1,0 +1,54 @@
+{
+ "title": "walk-lost trace: an escalator wakes itself by sensor and speeds up",
+ "key": "n/a (sfx)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 328800,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 2400,
+ "lufsIn": -28.07,
+ "gainDb": 2.09,
+ "lufs": -25.98,
+ "truePeakDb": -1.0,
+ "clipped": 0,
+ "files": {
+  "ogg": "trace-escalator-wake.ogg",
+  "m4a": "trace-escalator-wake.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 130120,
+   "decoded_samples": 328800,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 2400,
+   "err_db": -19.2
+  },
+  "m4a": {
+   "bytes": 168478,
+   "decoded_samples": 330688,
+   "tail_padding": 1888,
+   "offset_samples": 0,
+   "first_sound_sample": 2400,
+   "err_db": -39.2
+  }
+ },
+ "kind": "trace-oneshot",
+ "note": "痕跡單發（第 19 項）：手扶梯感應自己啟動：接觸器「喀–鏘」、煞車電磁鐵放開「咚」，再把 sfx/escalator-a 的運轉聲由 12% 轉速 S 曲線拉到全速（2.2 s），全速約 3 s 後淡出。接 escalator-a 循環：handoffAt 秒起交叉淡進 sfx/escalator-a.ogg。單聲道乾聲。",
+ "handoffTo": "audio/sfx/escalator-a.ogg",
+ "handoffAt": 2.65
+}

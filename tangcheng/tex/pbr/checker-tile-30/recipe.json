@@ -1,0 +1,122 @@
+{
+ "generator": "程式生成結構（CPU numpy：週期磚格、Voronoi 骨材、FFT 週期濾波）＋本地 SDXL 加表面細節（RealVisXL V5.0 fp16 img2img＋xinsir controlnet-union-sdxl-promax tile；3×3 週期 1024 塊、Hann⁴ 權重拼回，四方連續）；低頻顏色鎖回程式底稿，只取生成圖高頻",
+ "license": "RealVisXL V5.0（CreativeML OpenRAIL++-M，可商用）、controlnet-union-sdxl-promax（Apache-2.0）；輸入只有本專案的程式底稿；可商用、可公開",
+ "photo_rule": "沒有使用任何照片（純程式底稿＋SDXL 細節）",
+ "people_rule": "生圖提示詞含 no people/no person/no figure/no face，負面詞含 people, person, human, figure, silhouette, face, eyes, footprint, shoe print, handprint, hand；9 塊逐張看過、拼好的整張與 24 m 俯視模擬再看一次",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "程式底稿全部週期；SDXL 塊從環繞的底稿切、拼回時權重週期，四方連續",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "jpg sRGB 4:2:0",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有 steel-rust-paint）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化）"
+ },
+ "set": "checker-tile-30",
+ "title": "30 cm 黑白棋盤地磚（灰縫、u≈0.5 走道磨亮帶、角崩、白磚微黃；地板 roughness ≥ 0.6；model-texture-queue #5）",
+ "seed": 1,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-terrain/gen_fix8.py（python gen_fix8.py all checker-tile-30 --seed 1；共用 tangcheng-pbr/gen_mata.py 的 stage_sdxl／stage_final）",
+ "span_m": 2.4,
+ "photos_referenced": [],
+ "sdxl": {
+  "model": "RealVisXL_V5.0_fp16.safetensors",
+  "controlnet": "controlnet-union-sdxl-promax (tile)",
+  "cn_strength": 0.6,
+  "denoise": 0.3,
+  "steps": 26,
+  "cfg": 5.0,
+  "sampler": "dpmpp_2m karras",
+  "tiles": "3x3 periodic 1024 (Hann^4 blend)",
+  "prompt": "seamless tileable texture, old black and white checkerboard ceramic floor tiles 30 cm, grey grout lines, slightly yellowed white tiles, worn polished walking path, small chipped corners, top-down flat view, even light, orthographic flat surface filling the whole frame, even diffuse lighting, photorealistic, sharp focus, 8k, no people, no person, no figure, no face",
+  "neg": "people, person, human, figure, silhouette, face, eyes, mouth, skull, footprint, shoe print, handprint, hand, fingers, animal, text, letters, numbers, watermark, logo, signature, poster, graffiti, perspective, vanishing point, horizon, room, furniture, harsh shadow, vignette, blurry, cartoon, painting, illustration, 3d render, frame, border",
+  "secs": 394
+ },
+ "final": {
+  "lock_px": 12.0,
+  "detail": 1.0,
+  "relief_mm": 0.06,
+  "sdxl": true
+ },
+ "files": {
+  "2k/albedo.jpg": 284426,
+  "2k/normal.jpg": 240854,
+  "2k/roughness.jpg": 212509,
+  "2k/ao.jpg": 107924,
+  "1k/albedo.jpg": 109998,
+  "1k/normal.jpg": 70544,
+  "1k/roughness.jpg": 73948,
+  "1k/ao.jpg": 32510
+ },
+ "params": {
+  "span_m": 2.4,
+  "tile_mm": 300,
+  "grid": "8×8 棋盤",
+  "proc_secs": 5.7
+ },
+ "queue_item": "model-texture-queue 先做 #1 #5（10-29 第十一批：鐵捲門鋁片、30 cm 黑白棋盤地磚）",
+ "roughness_floor": "出圖後 roughness 夾底 0.60（JPEG 存後實測 2k min 0.553、mean 0.689）",
+ "post_fix9": {
+  "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-terrain/gen_fix9.py（python3 gen_fix9.py checker；只改 albedo，原 gen_fix8 版備份在 work/checker-tile-30/albedo_fix8_*.jpg）",
+  "why": "model-texture-queue A④（10-29 第十二批）：灰縫偏淡、黑白對比太硬",
+  "ops": "對比往中灰 0.5 收 10%；亮度>0.45 的白磚乘 (1, 0.985, 0.94) 舊黃；格線 ±1.4–3.2 px（2k）遮罩往 (64,60,54) 拉 70%",
+  "roughness": "不動（夾底 0.60，地板 ≥ 0.55）",
+  "stats": {
+   "2k": {
+    "size": 284426,
+    "white_mean": [
+     0.861,
+     0.825,
+     0.748
+    ],
+    "black_mean": [
+     0.181,
+     0.183,
+     0.188
+    ],
+    "grout_mean": [
+     0.319,
+     0.305,
+     0.281
+    ]
+   },
+   "1k": {
+    "size": 109998,
+    "white_mean": [
+     0.846,
+     0.82,
+     0.744
+    ],
+    "black_mean": [
+     0.179,
+     0.181,
+     0.188
+    ],
+    "grout_mean": [
+     0.317,
+     0.304,
+     0.28
+    ]
+   }
+  }
+ },
+ "height": {
+  "what": "POM（視差遮蔽）用的高度圖：1＝表面、0＝最深（縫、槽）；線性灰階 jpg q95 4:4:4，2k／1k",
+  "source": "由本組 2k/normal.jpg 積分（Frankot–Chellappa FFT 泊松積分，週期邊界）＋本組 ao.jpg 混合；沒有用任何外部圖",
+  "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_height.py（python3 gen_height.py <pbr> checker-tile-30 --write）",
+  "params": {
+   "knee": 0.6,
+   "top": 0.85,
+   "lowcut_mm": 60,
+   "ao_mix": 0.35,
+   "lo": 0.6,
+   "hi": 99.0,
+   "depth_mm": 3.0
+  },
+  "shader": "tools/sandbox/scenes/_tc-pom.ts（深度 depth_mm、近距離才開；?pom=0 關）"
+ }
+}

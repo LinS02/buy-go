@@ -1,0 +1,122 @@
+{
+ "generator": "CPU numpy 程式生成（scipy cKDTree 週期 Voronoi、FFT 週期濾波），無生成模型、無 GPU",
+ "license": "本專案程式生成，CPU numpy，無生成模型、無參考照進貼圖；可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色，沒有當貼圖、沒有 img2img、沒有切圖、沒有複製進專案（照片不進 repo、不進 build）",
+ "spec": "doc/design/taiwan-liminal-catalog.md（01 老舊地下街、03 地下道與月台：尺寸、顏色以它為準）",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "所有濾波週期邊界（FFT／np.roll／mod 座標），四方連續；驗證見 verify_images",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "jpg sRGB 4:2:0",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有鐵捲門有）",
+  "mask": "見各組 mask_notes（jpg 4:4:4 或 png）",
+  "shade": "jpg 線性灰階，值×2＝亮度倍率（只有磨石子有）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化，mask.png 用最近鄰）"
+ },
+ "set": "subway-brick",
+ "title": "白色長條釉面磚牆（地下道牆／拱頂）",
+ "queue_item": "T1-16",
+ "candidate": "subway-brick-s11",
+ "seed": 11,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_underpass.py（指令：python gen_underpass.py subway-brick 11 <out>）",
+ "span_m": 1.68,
+ "why_picked": "兩版接近；s11 每塊磚的亮度差較平均，s22 有一塊偏暗磚在 1.68 m 一重複時會成固定暗點。",
+ "rejected": [
+  "subway-brick-s22"
+ ],
+ "photos_referenced": [
+  "~/Desktop/game/閾限空間台灣/台灣閾限大集合/03_地下道與月台/新竹站白磚地下道日光燈__commons.wikimedia.org.jpg",
+  "~/Desktop/game/閾限空間台灣/台灣閾限大集合/03_地下道與月台/竹蓮地下道白磚雙樓梯__commons.wikimedia.org.jpg",
+  "~/Desktop/game/閾限空間台灣/台灣閾限大集合/03_地下道與月台/新竹站長地下道__commons.wikimedia.org.jpg"
+ ],
+ "recolor_formula": "linear：sh＝mask.R×2，g＝mask.G，b＝mask.B；albedo＝mix(mix(base, colors.G, g), colors.B, b) × sh。albedo.jpg 已用預設色票烘好；換底色只改 base，髒污程度改 g、b 的倍率。",
+ "mask_notes": "mask.jpg（4:4:4）：R＝shade×0.5、G／B＝見 params.colors_srgb 的 G_／B_ 欄；u＝磚的長向（水平）。mask.jpg：R＝亮度、G＝灰縫髒＋灰水痕、B＝鏽水痕。水痕只往下流（v 減少方向＝貼圖下方），1.68 m 一重複，已壓到 4 條；要更多鏽痕交給 shader 用 B×世界空間遮罩。拱頂也可貼（照片：新竹站白磚地下道）。",
+ "files": {
+  "2k/albedo.jpg": 293228,
+  "2k/normal.jpg": 733320,
+  "2k/roughness.jpg": 313243,
+  "2k/ao.jpg": 328053,
+  "2k/mask.jpg": 438097,
+  "1k/albedo.jpg": 102648,
+  "1k/normal.jpg": 161997,
+  "1k/roughness.jpg": 121194,
+  "1k/ao.jpg": 61321,
+  "1k/mask.jpg": 161497
+ },
+ "params": {
+  "span_m": 1.68,
+  "brick_mm": [
+   232,
+   62
+  ],
+  "joint_mm": 8,
+  "module_m": [
+   0.24,
+   0.07
+  ],
+  "bricks_per_tex": [
+   7,
+   24
+  ],
+  "bond": "半磚錯縫（橫向）",
+  "colors_srgb": {
+   "base": [
+    232,
+    230,
+    224
+   ],
+   "grout": [
+    168,
+    168,
+    164
+   ],
+   "G_grime": [
+    118,
+    114,
+    106
+   ],
+   "B_rust": [
+    146,
+    92,
+    54
+   ],
+   "chip_body": [
+    196,
+    190,
+    178
+   ]
+  },
+  "notes": "u＝磚的長向（水平）。mask.jpg：R＝亮度、G＝灰縫髒＋灰水痕、B＝鏽水痕。水痕只往下流（v 減少方向＝貼圖下方），1.68 m 一重複，已壓到 4 條；要更多鏽痕交給 shader 用 B×世界空間遮罩。拱頂也可貼（照片：新竹站白磚地下道）。",
+  "set": "subway-brick",
+  "size": 2048
+ },
+ "verify_images": [
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/t116/c1.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/t116/c2b.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/t116/c3.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/t116/c4.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/t116/subway-brick-s11-24m.jpg"
+ ],
+ "footprint_check": "24 m×24 m 俯視拼貼看過：髒污只沿灰縫／磚縫、往下流的水痕或整張低頻，沒有 10–40 cm 團塊，不成排、不像腳印。",
+ "height": {
+  "what": "POM（視差遮蔽）用的高度圖：1＝表面、0＝最深（縫、槽）；線性灰階 jpg q95 4:4:4，2k／1k",
+  "source": "由本組 2k/normal.jpg 積分（Frankot–Chellappa FFT 泊松積分，週期邊界）＋本組 ao.jpg 混合；沒有用任何外部圖",
+  "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_height.py（python3 gen_height.py <pbr> subway-brick --write）",
+  "params": {
+   "knee": 0.55,
+   "top": 0.85,
+   "lowcut_mm": 40,
+   "ao_mix": 0.35,
+   "lo": 1.0,
+   "hi": 99.0,
+   "depth_mm": 4.0
+  },
+  "shader": "tools/sandbox/scenes/_tc-pom.ts（深度 depth_mm、近距離才開；?pom=0 關）"
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "model": "none（程式）",
+ "mode": "PIL 排字（Songti）＋墨跡雜訊",
+ "text": "抓漏\n01-3159",
+ "seed": 28,
+ "kind": "stamp",
+ "size_m": [
+  0.09,
+  0.06
+ ],
+ "license": "原創（本專案；本地生成）"
+}

@@ -1,0 +1,1668 @@
+{
+ "note": "地下街商店商品。只收本機模型產出、無第三方原作成分者；逐件看過無人形（含 Q 版、擬人動物、人偶、人台、包裝人像）。圖集由 tools/build_goods.py 產生，3D 小模型由 tools/decimate.py（Blender 背景）減面。hunyuan:true 的檔在 publish --public 剔除。",
+ "files": [
+  {
+   "path": "tangcheng/goods/atlas-2k.webp",
+   "license": "各格來源見 items；本專案合成",
+   "hunyuan": false
+  },
+  {
+   "path": "tangcheng/goods/atlas-1k.webp",
+   "license": "同上（縮圖）",
+   "hunyuan": false
+  },
+  {
+   "path": "tangcheng/goods/atlas.json",
+   "license": "本專案",
+   "hunyuan": false
+  },
+  {
+   "path": "tangcheng/goods/models/toy-ant.glb",
+   "license": "Hunyuan3D 2.x 本機生成（Tencent Hunyuan Community License：不得在歐盟／英國／南韓展示；公開版 --public 剔除）",
+   "hunyuan": true
+  },
+  {
+   "path": "tangcheng/goods/models/toy-grasshopper.glb",
+   "license": "Hunyuan3D 2.x 本機生成（Tencent Hunyuan Community License：不得在歐盟／英國／南韓展示；公開版 --public 剔除）",
+   "hunyuan": true
+  },
+  {
+   "path": "tangcheng/goods/models/toy-rat.glb",
+   "license": "Hunyuan3D 2.x 本機生成（Tencent Hunyuan Community License：不得在歐盟／英國／南韓展示；公開版 --public 剔除）",
+   "hunyuan": true
+  },
+  {
+   "path": "tangcheng/goods/models/toy-bakery.glb",
+   "license": "Hunyuan3D 2.x 本機生成（Tencent Hunyuan Community License：不得在歐盟／英國／南韓展示；公開版 --public 剔除）",
+   "hunyuan": true
+  },
+  {
+   "path": "tangcheng/goods/models/toy-car.glb",
+   "license": "Hunyuan3D 2.x 本機生成（Tencent Hunyuan Community License：不得在歐盟／英國／南韓展示；公開版 --public 剔除）",
+   "hunyuan": true
+  },
+  {
+   "path": "tangcheng/goods/models/toy-train.glb",
+   "license": "Hunyuan3D 2.x 本機生成（Tencent Hunyuan Community License：不得在歐盟／英國／南韓展示；公開版 --public 剔除）",
+   "hunyuan": true
+  },
+  {
+   "path": "tangcheng/goods/models/toy-knot.glb",
+   "license": "Hunyuan3D 2.x 本機生成（Tencent Hunyuan Community License：不得在歐盟／英國／南韓展示；公開版 --public 剔除）",
+   "hunyuan": true
+  }
+ ],
+ "counts": {
+  "items": 102,
+  "models": 7,
+  "excludedEntries": 35
+ },
+ "items": [
+  {
+   "id": "card-ic-22_02",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-2/item-icons-2_icon_paint2_02.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-22_06",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-2/item-icons-2_icon_paint2_06.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-22_07",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-2/item-icons-2_icon_paint2_07.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-22_11",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-2/item-icons-2_icon_paint2_11.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-22_12",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-2/item-icons-2_icon_paint2_12.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-22_15",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-2/item-icons-2_icon_paint2_15.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-22_16",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-2/item-icons-2_icon_paint2_16.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-22_17",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-2/item-icons-2_icon_paint2_17.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-22_19",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-2/item-icons-2_icon_paint2_19.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-22_22",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-2/item-icons-2_icon_paint2_22.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-22_24",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-2/item-icons-2_icon_paint2_24.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-33_04",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-3/item-icons-3_icon_paint3_04.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-33_11",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-3/item-icons-3_icon_paint3_11.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-33_19",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-3/item-icons-3_icon_paint3_19.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-33_23",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-3/item-icons-3_icon_paint3_23.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-33_24",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-3/item-icons-3_icon_paint3_24.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-33_32",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-3/item-icons-3_icon_paint3_32.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-43_10",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-4/item-icons-4_icon_paint3_10.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-43_23",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-4/item-icons-4_icon_paint3_23.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-4b3b_05",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-4/item-icons-4b_icon_paint3b_05.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-4b3b_07",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-4/item-icons-4b_icon_paint3b_07.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-4b3b_08",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-4/item-icons-4b_icon_paint3b_08.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-53b_11",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-5/item-icons-5_icon_paint3b_11.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-53b_12",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-5/item-icons-5_icon_paint3b_12.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-53b_19",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-5/item-icons-5_icon_paint3b_19.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic-53b_20",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons-5/item-icons-5_icon_paint3b_20.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic_02",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons/item-icons_icon_paint_02.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic_03",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons/item-icons_icon_paint_03.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "card-ic_06",
+   "kind": "card",
+   "shops": [
+    "toy",
+    "accessory",
+    "stationery"
+   ],
+   "src": "local-gen/image/icon/item-icons/item-icons_icon_paint_06.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL／Illustrious 物品圖示（器物，非人形）做成吊卡",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "stick-00",
+   "kind": "sticker",
+   "shops": [
+    "stationery",
+    "toy"
+   ],
+   "src": null,
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL 技能圖示（符號：火、雷、冰、磁、盾、葉，無人）做成貼紙板",
+   "noHuman": "已確認無人形",
+   "hunyuan": false,
+   "srcs": [
+    "local-gen/image/icon/skill-icons-2/skill-icons-2_cure.png",
+    "local-gen/image/icon/skill-icons-2/skill-icons-2_fire.png",
+    "local-gen/image/icon/skill-icons-2/skill-icons-2_thunder.png",
+    "local-gen/image/icon/skill-icons-3/skill-icons-3_blizzard.png"
+   ]
+  },
+  {
+   "id": "stick-01",
+   "kind": "sticker",
+   "shops": [
+    "stationery",
+    "toy"
+   ],
+   "src": null,
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL 技能圖示（符號：火、雷、冰、磁、盾、葉，無人）做成貼紙板",
+   "noHuman": "已確認無人形",
+   "hunyuan": false,
+   "srcs": [
+    "local-gen/image/icon/skill-icons-3/skill-icons-3_cure.png",
+    "local-gen/image/icon/skill-icons-3/skill-icons-3_fire.png",
+    "local-gen/image/icon/skill-icons-3/skill-icons-3_magnet.png",
+    "local-gen/image/icon/skill-icons-3/skill-icons-3_reflect.png"
+   ]
+  },
+  {
+   "id": "stick-02",
+   "kind": "sticker",
+   "shops": [
+    "stationery",
+    "toy"
+   ],
+   "src": null,
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL 技能圖示（符號：火、雷、冰、磁、盾、葉，無人）做成貼紙板",
+   "noHuman": "已確認無人形",
+   "hunyuan": false,
+   "srcs": [
+    "local-gen/image/icon/skill-icons-3/skill-icons-3_thunder.png",
+    "local-gen/image/icon/skill-icons-4/skill-icons-4_blizzard.png",
+    "local-gen/image/icon/skill-icons-4/skill-icons-4_cure.png",
+    "local-gen/image/icon/skill-icons-4/skill-icons-4_fire.png"
+   ]
+  },
+  {
+   "id": "stick-03",
+   "kind": "sticker",
+   "shops": [
+    "stationery",
+    "toy"
+   ],
+   "src": null,
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL 技能圖示（符號：火、雷、冰、磁、盾、葉，無人）做成貼紙板",
+   "noHuman": "已確認無人形",
+   "hunyuan": false,
+   "srcs": [
+    "local-gen/image/icon/skill-icons-4/skill-icons-4_magnet.png",
+    "local-gen/image/icon/skill-icons-4/skill-icons-4_reflect.png",
+    "local-gen/image/icon/skill-icons-4/skill-icons-4_thunder.png",
+    "local-gen/image/icon/skill-icons/skill-icons_skill_paint_01.png"
+   ]
+  },
+  {
+   "id": "stick-04",
+   "kind": "sticker",
+   "shops": [
+    "stationery",
+    "toy"
+   ],
+   "src": null,
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL 技能圖示（符號：火、雷、冰、磁、盾、葉，無人）做成貼紙板",
+   "noHuman": "已確認無人形",
+   "hunyuan": false,
+   "srcs": [
+    "local-gen/image/icon/skill-icons/skill-icons_skill_paint_02.png",
+    "local-gen/image/icon/skill-icons/skill-icons_skill_paint_06.png"
+   ]
+  },
+  {
+   "id": "post-ants",
+   "kind": "poster",
+   "shops": [
+    "stationery",
+    "records",
+    "poster"
+   ],
+   "src": "local-gen/image/card/wick-realms/art-ants.png",
+   "license": "Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "本機 Illustrious 原畫：螞蟻群；童話題材為公有領域",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "post-birch",
+   "kind": "poster",
+   "shops": [
+    "stationery",
+    "records",
+    "poster"
+   ],
+   "src": "local-gen/image/card/wick-realms/art-birch.png",
+   "license": "Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "本機 Illustrious 原畫：白樺林與獨角獸；童話題材為公有領域",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "post-cloud",
+   "kind": "poster",
+   "shops": [
+    "stationery",
+    "records",
+    "poster"
+   ],
+   "src": "local-gen/image/card/wick-realms/art-cloud.png",
+   "license": "Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "本機 Illustrious 原畫：雲上豎琴；童話題材為公有領域",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "post-coast",
+   "kind": "poster",
+   "shops": [
+    "stationery",
+    "records",
+    "poster"
+   ],
+   "src": "local-gen/image/card/wick-realms/art-coast.png",
+   "license": "Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "本機 Illustrious 原畫：海岸與鯨；童話題材為公有領域",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "post-fafnir",
+   "kind": "poster",
+   "shops": [
+    "stationery",
+    "records",
+    "poster"
+   ],
+   "src": "local-gen/image/card/wick-realms/art-fafnir.png",
+   "license": "Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "本機 Illustrious 原畫：巨龍；童話題材為公有領域",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "post-fells",
+   "kind": "poster",
+   "shops": [
+    "stationery",
+    "records",
+    "poster"
+   ],
+   "src": "local-gen/image/card/wick-realms/art-fells.png",
+   "license": "Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "本機 Illustrious 原畫：荒原山丘；童話題材為公有領域",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "post-griffin",
+   "kind": "poster",
+   "shops": [
+    "stationery",
+    "records",
+    "poster"
+   ],
+   "src": "local-gen/image/card/wick-realms/art-griffin.png",
+   "license": "Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "本機 Illustrious 原畫：獅鷲；童話題材為公有領域",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "post-kraken",
+   "kind": "poster",
+   "shops": [
+    "stationery",
+    "records",
+    "poster"
+   ],
+   "src": "local-gen/image/card/wick-realms/art-kraken.png",
+   "license": "Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "本機 Illustrious 原畫：海怪觸手；童話題材為公有領域",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "post-nidhogg",
+   "kind": "poster",
+   "shops": [
+    "stationery",
+    "records",
+    "poster"
+   ],
+   "src": "local-gen/image/card/wick-realms/art-nidhogg.png",
+   "license": "Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "本機 Illustrious 原畫：樹根下的龍；童話題材為公有領域",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "post-orchard",
+   "kind": "poster",
+   "shops": [
+    "stationery",
+    "records",
+    "poster"
+   ],
+   "src": "local-gen/image/card/wick-realms/art-orchard.png",
+   "license": "Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "本機 Illustrious 原畫：火鳥與金蘋果；童話題材為公有領域",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "post-river",
+   "kind": "poster",
+   "shops": [
+    "stationery",
+    "records",
+    "poster"
+   ],
+   "src": "local-gen/image/card/wick-realms/art-river.png",
+   "license": "Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "本機 Illustrious 原畫：河與洞螈；童話題材為公有領域",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "post-roots",
+   "kind": "poster",
+   "shops": [
+    "stationery",
+    "records",
+    "poster"
+   ],
+   "src": "local-gen/image/card/wick-realms/art-roots.png",
+   "license": "Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "本機 Illustrious 原畫：樹根與松鼠；童話題材為公有領域",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "post-snowqueen",
+   "kind": "poster",
+   "shops": [
+    "stationery",
+    "records",
+    "poster"
+   ],
+   "src": "local-gen/image/card/wick-realms/art-snowqueen.png",
+   "license": "Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "本機 Illustrious 原畫：冰鏡（無人）；童話題材為公有領域",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "post-swans",
+   "kind": "poster",
+   "shops": [
+    "stationery",
+    "records",
+    "poster"
+   ],
+   "src": "local-gen/image/card/wick-realms/art-swans.png",
+   "license": "Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "本機 Illustrious 原畫：天鵝湖；童話題材為公有領域",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "land-nda_painterly_04",
+   "kind": "landscape",
+   "shops": [
+    "stationery",
+    "poster"
+   ],
+   "src": "local-gen/image/concept/north-dark-age/north-dark-age_painterly_04.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL 風景：雪地木屋",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "land-sm-2_storybook_01",
+   "kind": "landscape",
+   "shops": [
+    "stationery",
+    "poster"
+   ],
+   "src": "local-gen/image/concept/south-medieval-2/south-medieval-2_storybook_01.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL 風景：無人小鎮街景",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "land-sm_painterly_02",
+   "kind": "landscape",
+   "shops": [
+    "stationery",
+    "poster"
+   ],
+   "src": "local-gen/image/concept/south-medieval/south-medieval_painterly_02.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL 風景：港口",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "land-sm_storybook_11",
+   "kind": "landscape",
+   "shops": [
+    "stationery",
+    "poster"
+   ],
+   "src": "local-gen/image/concept/south-medieval/south-medieval_storybook_11.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL 風景：城堡風景",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "land-sc-2_arch_real_03",
+   "kind": "landscape",
+   "shops": [
+    "stationery",
+    "poster"
+   ],
+   "src": "local-gen/image/concept/sunken-castle-2/sunken-castle-2_arch_real_03.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL 風景：柱廊大廳",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "land-sc-3_castle_paint_04",
+   "kind": "landscape",
+   "shops": [
+    "stationery",
+    "poster"
+   ],
+   "src": "local-gen/image/concept/sunken-castle-3/sunken-castle-3_castle_paint_04.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL 風景：城堡窗",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "land-sc-3_castle_real_07",
+   "kind": "landscape",
+   "shops": [
+    "stationery",
+    "poster"
+   ],
+   "src": "local-gen/image/concept/sunken-castle-3/sunken-castle-3_castle_real_07.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL 風景：城堡內景",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "land-sc_realistic_10",
+   "kind": "landscape",
+   "shops": [
+    "stationery",
+    "poster"
+   ],
+   "src": "local-gen/image/concept/sunken-castle/sunken-castle_realistic_10.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL 風景：長廊",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "land-sc_realistic_12",
+   "kind": "landscape",
+   "shops": [
+    "stationery",
+    "poster"
+   ],
+   "src": "local-gen/image/concept/sunken-castle/sunken-castle_realistic_12.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL 風景：夜城",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "land-tk_painterly_02",
+   "kind": "landscape",
+   "shops": [
+    "stationery",
+    "poster"
+   ],
+   "src": "local-gen/image/ui/title-keyart/title-keyart_painterly_02.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL 風景：月下城堡山路（全解析度看過，無小人）",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "land-tk_painterly_03",
+   "kind": "landscape",
+   "shops": [
+    "stationery",
+    "poster"
+   ],
+   "src": "local-gen/image/ui/title-keyart/title-keyart_painterly_03.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL 風景：雪山石拱門（全解析度看過，無小人）",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "land-bc_storybook_09",
+   "kind": "landscape",
+   "shops": [
+    "stationery",
+    "poster"
+   ],
+   "src": "local-gen/image/concept/boss-creatures/boss-creatures_storybook_09.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL 風景：鹿角狼（動物，非擬人）",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "box-toys-a",
+   "kind": "box",
+   "shops": [
+    "toy"
+   ],
+   "src": "local-gen/image/texture/tangcheng-lightbox/tangcheng-lightbox_toys-a.png",
+   "license": "FLUX.1 [dev] 本機生成（Non-Commercial License：輸出可用；本專案為免費非營利遊戲）",
+   "reason": "玩具產品照做成盒面",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "box-toys-b",
+   "kind": "box",
+   "shops": [
+    "toy"
+   ],
+   "src": "local-gen/image/texture/tangcheng-lightbox/tangcheng-lightbox_toys-b.png",
+   "license": "FLUX.1 [dev] 本機生成（Non-Commercial License：輸出可用；本專案為免費非營利遊戲）",
+   "reason": "玩具產品照做成盒面",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "box-music-a",
+   "kind": "box",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/image/texture/tangcheng-lightbox/tangcheng-lightbox_music-a.png",
+   "license": "FLUX.1 [dev] 本機生成（Non-Commercial License：輸出可用；本專案為免費非營利遊戲）",
+   "reason": "音響／唱片產品照做成盒面",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "box-music-b",
+   "kind": "box",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/image/texture/tangcheng-lightbox/tangcheng-lightbox_music-b.png",
+   "license": "FLUX.1 [dev] 本機生成（Non-Commercial License：輸出可用；本專案為免費非營利遊戲）",
+   "reason": "音響／唱片產品照做成盒面",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "box-phone-a",
+   "kind": "box",
+   "shops": [
+    "accessory"
+   ],
+   "src": "local-gen/image/texture/tangcheng-lightbox/tangcheng-lightbox_phone-a.png",
+   "license": "FLUX.1 [dev] 本機生成（Non-Commercial License：輸出可用；本專案為免費非營利遊戲）",
+   "reason": "手機產品照做成盒面",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "box-phone-b",
+   "kind": "box",
+   "shops": [
+    "accessory"
+   ],
+   "src": "local-gen/image/texture/tangcheng-lightbox/tangcheng-lightbox_phone-b.png",
+   "license": "FLUX.1 [dev] 本機生成（Non-Commercial License：輸出可用；本專案為免費非營利遊戲）",
+   "reason": "手機產品照做成盒面",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "box-ride-car",
+   "kind": "box",
+   "shops": [
+    "toy"
+   ],
+   "src": "local-gen/image/concept/tangcheng-ride/tangcheng-ride_ride-car.png",
+   "license": "FLUX.1 [dev] 本機生成（Non-Commercial License：輸出可用；本專案為免費非營利遊戲）",
+   "reason": "搖搖車產品照（無人乘坐）做成盒面",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "box-ride-train",
+   "kind": "box",
+   "shops": [
+    "toy"
+   ],
+   "src": "local-gen/image/concept/tangcheng-ride/tangcheng-ride_ride-train.png",
+   "license": "FLUX.1 [dev] 本機生成（Non-Commercial License：輸出可用；本專案為免費非營利遊戲）",
+   "reason": "搖搖火車產品照（無人乘坐）做成盒面",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "box-sculpture-a",
+   "kind": "box",
+   "shops": [
+    "toy"
+   ],
+   "src": "local-gen/image/concept/tangcheng-sculpture/atrium-sculpture-a.png",
+   "license": "FLUX.1 [dev] 本機生成（Non-Commercial License：輸出可用；本專案為免費非營利遊戲）",
+   "reason": "金屬緞帶雕塑做成盒面",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "box-sculpture-b",
+   "kind": "box",
+   "shops": [
+    "toy"
+   ],
+   "src": "local-gen/image/concept/tangcheng-sculpture/atrium-sculpture-b.png",
+   "license": "FLUX.1 [dev] 本機生成（Non-Commercial License：輸出可用；本專案為免費非營利遊戲）",
+   "reason": "金屬緞帶雕塑做成盒面",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "frame-01",
+   "kind": "frame",
+   "shops": [
+    "stationery",
+    "accessory"
+   ],
+   "src": "local-gen/image/ui/ui-ornaments/ui-ornaments_painterly_01.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL 花紋飾框：花紋相框",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "frame-03",
+   "kind": "frame",
+   "shops": [
+    "stationery",
+    "accessory"
+   ],
+   "src": "local-gen/image/ui/ui-ornaments/ui-ornaments_painterly_03.png",
+   "license": "SDXL base 1.0／Illustrious-XL v1.1 本機生成（CreativeML Open RAIL++-M／sdxl-license，輸出可商用）",
+   "reason": "本機 SDXL 花紋飾框：花紋相框",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "fab-terrazzo-mint",
+   "kind": "fabric",
+   "shops": [
+    "accessory"
+   ],
+   "src": "local-gen/image/texture/tangcheng-pbr/terrazzo-mint/1k/albedo.jpg",
+   "license": "本專案程式生成（無生成模型、無參考照），可公開",
+   "reason": "程式生成花紋做成摺疊手帕／絲巾（平放與掛架，不用人台）",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "fab-terrazzo-blue",
+   "kind": "fabric",
+   "shops": [
+    "accessory"
+   ],
+   "src": "local-gen/image/texture/tangcheng-pbr/terrazzo-blue/1k/albedo.jpg",
+   "license": "本專案程式生成（無生成模型、無參考照），可公開",
+   "reason": "程式生成花紋做成摺疊手帕／絲巾（平放與掛架，不用人台）",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "fab-terrazzo-bw",
+   "kind": "fabric",
+   "shops": [
+    "accessory"
+   ],
+   "src": "local-gen/image/texture/tangcheng-pbr/terrazzo-bw/1k/albedo.jpg",
+   "license": "本專案程式生成（無生成模型、無參考照），可公開",
+   "reason": "程式生成花紋做成摺疊手帕／絲巾（平放與掛架，不用人台）",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "fab-mosaic",
+   "kind": "fabric",
+   "shops": [
+    "accessory"
+   ],
+   "src": "local-gen/image/texture/tangcheng-pbr/mosaic/1k/albedo.jpg",
+   "license": "本專案程式生成（無生成模型、無參考照），可公開",
+   "reason": "程式生成花紋做成摺疊手帕／絲巾（平放與掛架，不用人台）",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "cd-tangcheng-mall-1996",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/bgm/tangcheng-mall-1996",
+   "license": "自產 ACE-Step（MIT）；封面為程式生成",
+   "reason": "自產曲做成 CD（不放音），封面程式生成、無字無人",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "cd-tangcheng-mall-2000",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/bgm/tangcheng-mall-2000",
+   "license": "自產 ACE-Step（MIT）；封面為程式生成",
+   "reason": "自產曲做成 CD（不放音），封面程式生成、無字無人",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "cd-tangcheng-mall-2007",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/bgm/tangcheng-mall-2007",
+   "license": "自產 ACE-Step（MIT）；封面為程式生成",
+   "reason": "自產曲做成 CD（不放音），封面程式生成、無字無人",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "cd-tangcheng-mall-2026",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/bgm/tangcheng-mall-2026",
+   "license": "自產（DSP 後製）；封面為程式生成",
+   "reason": "自產曲做成 CD（不放音），封面程式生成、無字無人",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "cd-cq-dungeon",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/bgm/cq-dungeon",
+   "license": "自產 musicctl／VSCO-2 CC0；封面為程式生成",
+   "reason": "自產曲做成 CD（不放音），封面程式生成、無字無人",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "cd-cq-spire",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/bgm/cq-spire",
+   "license": "自產 musicctl／VSCO-2 CC0；封面為程式生成",
+   "reason": "自產曲做成 CD（不放音），封面程式生成、無字無人",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "cd-cq-spire-boss",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/boss/cq-spire-boss",
+   "license": "自產 musicctl／VSCO-2 CC0；封面為程式生成",
+   "reason": "自產曲做成 CD（不放音），封面程式生成、無字無人",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "cd-north-snow",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/bgm/north-snow",
+   "license": "自產 musicctl／VSCO-2 CC0；封面為程式生成",
+   "reason": "自產曲做成 CD（不放音），封面程式生成、無字無人",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "cd-north-village",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/bgm/north-village",
+   "license": "自產 musicctl／VSCO-2 CC0；封面為程式生成",
+   "reason": "自產曲做成 CD（不放音），封面程式生成、無字無人",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "cd-south-harbor",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/bgm/south-harbor",
+   "license": "自產 musicctl／VSCO-2 CC0；封面為程式生成",
+   "reason": "自產曲做成 CD（不放音），封面程式生成、無字無人",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "cd-south-town",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/bgm/south-town",
+   "license": "自產 musicctl／VSCO-2 CC0；封面為程式生成",
+   "reason": "自產曲做成 CD（不放音），封面程式生成、無字無人",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "cd-stingers",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/stinger/stingers",
+   "license": "自產 musicctl／VSCO-2 CC0；封面為程式生成",
+   "reason": "自產曲做成 CD（不放音），封面程式生成、無字無人",
+   "noHuman": "已確認無人形",
+   "hunyuan": false
+  },
+  {
+   "id": "cd-realm-ants",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/wick/realm-ants",
+   "license": "自產曲（VSCO-2 CC0／VPO3 可商用）；封面 Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "燈芯區域曲做成 CD（不放音），封面用通過的卡片原畫：螞蟻群",
+   "noHuman": "已確認無人形",
+   "hunyuan": false,
+   "cover": "local-gen/image/card/wick-realms/art-ants.png"
+  },
+  {
+   "id": "cd-realm-birch",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/wick/realm-birch",
+   "license": "自產曲（VSCO-2 CC0／VPO3 可商用）；封面 Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "燈芯區域曲做成 CD（不放音），封面用通過的卡片原畫：白樺林與獨角獸",
+   "noHuman": "已確認無人形",
+   "hunyuan": false,
+   "cover": "local-gen/image/card/wick-realms/art-birch.png"
+  },
+  {
+   "id": "cd-realm-cloud",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/wick/realm-cloud",
+   "license": "自產曲（VSCO-2 CC0／VPO3 可商用）；封面 Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "燈芯區域曲做成 CD（不放音），封面用通過的卡片原畫：雲上豎琴",
+   "noHuman": "已確認無人形",
+   "hunyuan": false,
+   "cover": "local-gen/image/card/wick-realms/art-cloud.png"
+  },
+  {
+   "id": "cd-realm-coast",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/wick/realm-coast",
+   "license": "自產曲（VSCO-2 CC0／VPO3 可商用）；封面 Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "燈芯區域曲做成 CD（不放音），封面用通過的卡片原畫：海岸與鯨",
+   "noHuman": "已確認無人形",
+   "hunyuan": false,
+   "cover": "local-gen/image/card/wick-realms/art-coast.png"
+  },
+  {
+   "id": "cd-realm-fafnir",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/wick/realm-fafnir",
+   "license": "自產曲（VSCO-2 CC0／VPO3 可商用）；封面 Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "燈芯區域曲做成 CD（不放音），封面用通過的卡片原畫：巨龍",
+   "noHuman": "已確認無人形",
+   "hunyuan": false,
+   "cover": "local-gen/image/card/wick-realms/art-fafnir.png"
+  },
+  {
+   "id": "cd-realm-fells",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/wick/realm-fells",
+   "license": "自產曲（VSCO-2 CC0／VPO3 可商用）；封面 Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "燈芯區域曲做成 CD（不放音），封面用通過的卡片原畫：荒原山丘",
+   "noHuman": "已確認無人形",
+   "hunyuan": false,
+   "cover": "local-gen/image/card/wick-realms/art-fells.png"
+  },
+  {
+   "id": "cd-realm-griffin",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/wick/realm-griffin",
+   "license": "自產曲（VSCO-2 CC0／VPO3 可商用）；封面 Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "燈芯區域曲做成 CD（不放音），封面用通過的卡片原畫：獅鷲",
+   "noHuman": "已確認無人形",
+   "hunyuan": false,
+   "cover": "local-gen/image/card/wick-realms/art-griffin.png"
+  },
+  {
+   "id": "cd-realm-kraken",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/wick/realm-kraken",
+   "license": "自產曲（VSCO-2 CC0／VPO3 可商用）；封面 Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "燈芯區域曲做成 CD（不放音），封面用通過的卡片原畫：海怪觸手",
+   "noHuman": "已確認無人形",
+   "hunyuan": false,
+   "cover": "local-gen/image/card/wick-realms/art-kraken.png"
+  },
+  {
+   "id": "cd-realm-nidhogg",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/wick/realm-nidhogg",
+   "license": "自產曲（VSCO-2 CC0／VPO3 可商用）；封面 Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "燈芯區域曲做成 CD（不放音），封面用通過的卡片原畫：樹根下的龍",
+   "noHuman": "已確認無人形",
+   "hunyuan": false,
+   "cover": "local-gen/image/card/wick-realms/art-nidhogg.png"
+  },
+  {
+   "id": "cd-realm-orchard",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/wick/realm-orchard",
+   "license": "自產曲（VSCO-2 CC0／VPO3 可商用）；封面 Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "燈芯區域曲做成 CD（不放音），封面用通過的卡片原畫：火鳥與金蘋果",
+   "noHuman": "已確認無人形",
+   "hunyuan": false,
+   "cover": "local-gen/image/card/wick-realms/art-orchard.png"
+  },
+  {
+   "id": "cd-realm-river",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/wick/realm-river",
+   "license": "自產曲（VSCO-2 CC0／VPO3 可商用）；封面 Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "燈芯區域曲做成 CD（不放音），封面用通過的卡片原畫：河與洞螈",
+   "noHuman": "已確認無人形",
+   "hunyuan": false,
+   "cover": "local-gen/image/card/wick-realms/art-river.png"
+  },
+  {
+   "id": "cd-realm-roots",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/wick/realm-roots",
+   "license": "自產曲（VSCO-2 CC0／VPO3 可商用）；封面 Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "燈芯區域曲做成 CD（不放音），封面用通過的卡片原畫：樹根與松鼠",
+   "noHuman": "已確認無人形",
+   "hunyuan": false,
+   "cover": "local-gen/image/card/wick-realms/art-roots.png"
+  },
+  {
+   "id": "cd-realm-snowqueen",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/wick/realm-snowqueen",
+   "license": "自產曲（VSCO-2 CC0／VPO3 可商用）；封面 Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "燈芯區域曲做成 CD（不放音），封面用通過的卡片原畫：冰鏡（無人）",
+   "noHuman": "已確認無人形",
+   "hunyuan": false,
+   "cover": "local-gen/image/card/wick-realms/art-snowqueen.png"
+  },
+  {
+   "id": "cd-realm-swans",
+   "kind": "cd",
+   "shops": [
+    "records"
+   ],
+   "src": "local-gen/music/wick/realm-swans",
+   "license": "自產曲（VSCO-2 CC0／VPO3 可商用）；封面 Illustrious-XL v1.1 本機生成（sdxl-license，輸出可商用）；只取圖、不取卡框與字",
+   "reason": "燈芯區域曲做成 CD（不放音），封面用通過的卡片原畫：天鵝湖",
+   "noHuman": "已確認無人形",
+   "hunyuan": false,
+   "cover": "local-gen/image/card/wick-realms/art-swans.png"
+  }
+ ],
+ "models": [
+  {
+   "id": "toy-ant",
+   "kind": "toy3d",
+   "shops": [
+    "toy"
+   ],
+   "file": "models/toy-ant.glb",
+   "src": "local-gen/model/character/sw-ant/sw-ant_hunyuan_mv4.glb",
+   "license": "Hunyuan3D 2.x 本機生成（Tencent Hunyuan Community License：不得在歐盟／英國／南韓展示；公開版 --public 剔除）",
+   "reason": "圓滾滾螞蟻玩偶（動物眼睛，無人臉、不站立、不穿衣）；Blender 減面 2.5k 三角、貼圖 256²",
+   "noHuman": "已確認無人形",
+   "hunyuan": true
+  },
+  {
+   "id": "toy-grasshopper",
+   "kind": "toy3d",
+   "shops": [
+    "toy"
+   ],
+   "file": "models/toy-grasshopper.glb",
+   "src": "local-gen/model/character/sw-grasshopper/sw-grasshopper_hunyuan_mv4.glb",
+   "license": "Hunyuan3D 2.x 本機生成（Tencent Hunyuan Community License：不得在歐盟／英國／南韓展示；公開版 --public 剔除）",
+   "reason": "蚱蜢玩偶（動物）；Blender 減面 2.5k 三角、貼圖 256²",
+   "noHuman": "已確認無人形",
+   "hunyuan": true
+  },
+  {
+   "id": "toy-rat",
+   "kind": "toy3d",
+   "shops": [
+    "toy"
+   ],
+   "file": "models/toy-rat.glb",
+   "src": "local-gen/model/character/sw-rat/sw-rat_hunyuan_mv4.glb",
+   "license": "Hunyuan3D 2.x 本機生成（Tencent Hunyuan Community License：不得在歐盟／英國／南韓展示；公開版 --public 剔除）",
+   "reason": "圓老鼠玩偶（動物，無人臉）；Blender 減面 2.5k 三角、貼圖 256²",
+   "noHuman": "已確認無人形",
+   "hunyuan": true
+  },
+  {
+   "id": "toy-bakery",
+   "kind": "toy3d",
+   "shops": [
+    "toy"
+   ],
+   "file": "models/toy-bakery.glb",
+   "src": "local-gen/model/character/sw-bakery/sw-bakery_hunyuan_mv4.glb",
+   "license": "Hunyuan3D 2.x 本機生成（Tencent Hunyuan Community License：不得在歐盟／英國／南韓展示；公開版 --public 剔除）",
+   "reason": "麵包店小屋模型（建築）；Blender 減面 2.5k 三角、貼圖 256²",
+   "noHuman": "已確認無人形",
+   "hunyuan": true
+  },
+  {
+   "id": "toy-car",
+   "kind": "toy3d",
+   "shops": [
+    "toy"
+   ],
+   "file": "models/toy-car.glb",
+   "src": "local-gen/model/prop/tangcheng-ride/ride-car.glb",
+   "license": "Hunyuan3D 2.x 本機生成（Tencent Hunyuan Community License：不得在歐盟／英國／南韓展示；公開版 --public 剔除）",
+   "reason": "小汽車模型（無人乘坐）；Blender 減面 2.5k 三角、貼圖 256²",
+   "noHuman": "已確認無人形",
+   "hunyuan": true
+  },
+  {
+   "id": "toy-train",
+   "kind": "toy3d",
+   "shops": [
+    "toy"
+   ],
+   "file": "models/toy-train.glb",
+   "src": "local-gen/model/prop/tangcheng-ride/ride-train.glb",
+   "license": "Hunyuan3D 2.x 本機生成（Tencent Hunyuan Community License：不得在歐盟／英國／南韓展示；公開版 --public 剔除）",
+   "reason": "小火車模型（無人乘坐）；Blender 減面 2.5k 三角、貼圖 256²",
+   "noHuman": "已確認無人形",
+   "hunyuan": true
+  },
+  {
+   "id": "toy-knot",
+   "kind": "toy3d",
+   "shops": [
+    "toy"
+   ],
+   "file": "models/toy-knot.glb",
+   "src": "local-gen/model/prop/tangcheng-sculpture/atrium-sculpture.glb",
+   "license": "Hunyuan3D 2.x 本機生成（Tencent Hunyuan Community License：不得在歐盟／英國／南韓展示；公開版 --public 剔除）",
+   "reason": "金屬緞帶擺飾；Blender 減面 2.5k 三角、貼圖 256²",
+   "noHuman": "已確認無人形",
+   "hunyuan": true
+  }
+ ],
+ "excluded": [
+  {
+   "src": "local-gen/image/icon/item-icons-4b_icon_paint3b_06",
+   "reason": "骷髏杖：骷髏頭＝臉"
+  },
+  {
+   "src": "local-gen/image/icon/item-icons-5_icon_paint3b_07",
+   "reason": "胸甲：人體軀幹輪廓"
+  },
+  {
+   "src": "local-gen/image/icon/item-icons-5_icon_paint3b_08",
+   "reason": "胸甲：人體軀幹輪廓"
+  },
+  {
+   "src": "local-gen/image/icon/item-icons-5_icon_paint3b_10",
+   "reason": "護手：人手形狀"
+  },
+  {
+   "src": "local-gen/image/icon/item-icons-5_icon_paint3b_14",
+   "reason": "連帽斗篷：像站著的人影"
+  },
+  {
+   "src": "local-gen/image/icon/item-icons_icon_paint_07",
+   "reason": "騎士頭盔：人頭形狀"
+  },
+  {
+   "src": "local-gen/image/card/wick-realms/art-dunes.png",
+   "reason": "沙人（人形）"
+  },
+  {
+   "src": "local-gen/image/card/wick-realms/art-fairy.png",
+   "reason": "仙子（人形）"
+  },
+  {
+   "src": "local-gen/image/card/wick-realms/art-forest.png",
+   "reason": "綠人（人臉）"
+  },
+  {
+   "src": "local-gen/image/card/wick-realms/art-forge.png",
+   "reason": "矮人（人形）"
+  },
+  {
+   "src": "local-gen/image/card/wick-realms/art-gem.png",
+   "reason": "狗頭人（人形）"
+  },
+  {
+   "src": "local-gen/image/card/wick-realms/art-mouse.png",
+   "reason": "鼠王（擬人、戴冠）"
+  },
+  {
+   "src": "local-gen/image/card/wick-realms/art-marsh.png",
+   "reason": "青蛙國王（擬人、戴冠）"
+  },
+  {
+   "src": "local-gen/image/card/wick-realms/art-lagoon.png",
+   "reason": "人魚雕像（人形）"
+  },
+  {
+   "src": "local-gen/image/card/wick-realms/art-village.png",
+   "reason": "井上的小生物看不清，拿不準排除"
+  },
+  {
+   "src": "local-gen/image/card/wick-realms/art-mines.png",
+   "reason": "礦車裡的小生物看不清，拿不準排除"
+  },
+  {
+   "src": "local-gen/image/concept/boss-creatures-2/*、boss-creatures-3/*",
+   "reason": "袍裝人形魔物"
+  },
+  {
+   "src": "local-gen/image/concept/boss-creatures/boss-creatures_painterly_03.png",
+   "reason": "海蛇＋船上有人"
+  },
+  {
+   "src": "local-gen/image/concept/costume-*/*、heroine-*/*",
+   "reason": "人物服裝／主角"
+  },
+  {
+   "src": "local-gen/image/concept/north-dark-age/north-dark-age_painterly_03.png",
+   "reason": "畫中有小人"
+  },
+  {
+   "src": "local-gen/image/concept/north-dark-age/north-dark-age_storybook_11.png",
+   "reason": "畫中有小人"
+  },
+  {
+   "src": "local-gen/image/concept/sunken-castle/sunken-castle_painterly_01.png",
+   "reason": "遠處疑似人影，拿不準排除"
+  },
+  {
+   "src": "local-gen/image/concept/sunken-castle-3/sunken-castle-3_castle_paint_02.png",
+   "reason": "王座廳（疑似人影、且數量夠了）"
+  },
+  {
+   "src": "local-gen/image/concept/sunken-castle-3/sunken-castle-3_castle_real_06.png",
+   "reason": "王座廳（同上）"
+  },
+  {
+   "src": "local-gen/image/ui/title-keyart-2/*",
+   "reason": "主視覺有人物"
+  },
+  {
+   "src": "local-gen/image/concept/tangcheng-signs/*、tangcheng-site/*",
+   "reason": "商場招牌／場景照，不是商品"
+  },
+  {
+   "src": "local-gen/image/texture/tangcheng-lightbox/*ff-*",
+   "reason": "速食燈箱，不是這幾類店的貨"
+  },
+  {
+   "src": "local-gen/image/monster/ro-survivor/*、ro-style-mobs/*",
+   "reason": "RO 仿作衍生（jelly_slime＝波利翻版等）"
+  },
+  {
+   "src": "local-gen/model/character/heroine-north、ro-novice、sw-shopkeeper、sw-toysoldier",
+   "reason": "人形角色"
+  },
+  {
+   "src": "local-gen/model/character/sa-boar、sa-trex",
+   "reason": "石器時代衍生"
+  },
+  {
+   "src": "local-gen/model/motion/*",
+   "reason": "動作資料（Mixamo／人體動捕衍生）"
+  },
+  {
+   "src": "local-gen/music/bgm/sa-village",
+   "reason": "石器風參考曲"
+  },
+  {
+   "src": "local-gen/asset-lib/*（kuo-3d、samugiru-3d、nature-3d、kh-cast、vroid-samples、中世紀遊戲素材）",
+   "reason": "石器衍生／人形角色／第三方素材"
+  },
+  {
+   "src": "local-gen/image/card/wick-realms/card-*.png",
+   "reason": "卡框版面（含字）；只用 art-* 純圖"
+  },
+  {
+   "src": "local-gen/image/icon/*/_rejected、px256",
+   "reason": "落選稿／縮小重複"
+  }
+ ]
+}

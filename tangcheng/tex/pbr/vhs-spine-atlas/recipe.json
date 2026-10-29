@@ -1,0 +1,32 @@
+{
+ "generator": "PIL 程式畫書背原稿（色帶／幾何、假方塊字、租片貼紙、原創小廠標）→ 本地 SDXL img2img 四塊 1024（RealVisXL V5＋tile ControlNet 0.7、denoise 0.26）印刷質感 → 低頻鎖回原稿；磨損程式加",
+ "license": "RealVisXL V5.0（CreativeML OpenRAIL++-M，可商用）、controlnet-union-sdxl-promax（Apache-2.0）；輸入只有本專案程式原稿；沒有任何照片；可商用、可公開",
+ "people_rule": "原稿只有色帶、圓三角星菱、假字；負面詞含 people, person, face, hands, silhouette, character, mascot, animal；4 塊逐張看過",
+ "brand_rule": "假方塊字是隨機橫豎筆畫，不是任何字、不是任何片名；廠標、貼紙原創；不諧仿真實電影",
+ "atlas": "16 欄×2 列，一格 128×1024 直式（u＝欄/16、v＝列/2；第 0 列在圖上方）；32 格各是一個隨機書背，沒有固定名字",
+ "cell_m": "一格＝書背 2.6×20.8 cm（錄影帶盒側面）",
+ "seed": 1,
+ "title": "錄影帶盒書背圖集（色帶／幾何＋假方塊字＋租片貼紙；原創、無人、無真片名）",
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-terrain/gen_themes6b.py（python gen_themes6b.py atlas vhs --seed 1）",
+ "prompt": "close-up straight-on photo of printed cardboard sleeves of 1990s video cassette boxes, narrow vertical spines side by side, bold flat graphic print design, slightly glossy plastic sleeve, subtle print halftone, sharp focus, even light",
+ "neg": "people, person, human, figure, man, woman, child, face, eyes, mouth, head, hands, fingers, body, mannequin, dummy, torso, bust, model, silhouette, character, mascot, cartoon character, anime, animal, creature, skull, logo, brand, trademark, monogram, designer logo pattern, watermark, signature, english text, readable words, blurry, lowres, jpeg artifacts, frame, border, text, letters",
+ "secs": 173,
+ "files": {
+  "2k/albedo.jpg": 718758,
+  "2k/normal.jpg": 249829,
+  "2k/roughness.jpg": 223729,
+  "2k/ao.jpg": 179941,
+  "1k/albedo.jpg": 296654,
+  "1k/normal.jpg": 64879,
+  "1k/roughness.jpg": 90334,
+  "1k/ao.jpg": 69588
+ },
+ "queue_item": "theme-pbr-6b（10-29 第九批：清單六 #12 越走越舊、#15 灰塵腳印、#21 錄影帶店、#23 委託行窄街、#24 電器行電視牆）",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "sizes": {
+  "2k": "2048×2048",
+  "1k": "1024×1024"
+ },
+ "set": "vhs-spine-atlas",
+ "photo_rule": "沒有使用任何照片"
+}

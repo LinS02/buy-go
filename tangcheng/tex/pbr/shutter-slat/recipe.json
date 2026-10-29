@@ -1,0 +1,80 @@
+{
+ "generator": "程式生成結構（CPU numpy：週期磚格、Voronoi 骨材、FFT 週期濾波）＋本地 SDXL 加表面細節（RealVisXL V5.0 fp16 img2img＋xinsir controlnet-union-sdxl-promax tile；3×3 週期 1024 塊、Hann⁴ 權重拼回，四方連續）；低頻顏色鎖回程式底稿，只取生成圖高頻",
+ "license": "RealVisXL V5.0（CreativeML OpenRAIL++-M，可商用）、controlnet-union-sdxl-promax（Apache-2.0）；輸入只有本專案的程式底稿；可商用、可公開",
+ "photo_rule": "沒有使用任何照片（純程式底稿＋SDXL 細節）",
+ "people_rule": "生圖提示詞含 no people/no person/no figure/no face，負面詞含 people, person, human, figure, silhouette, face, eyes, footprint, shoe print, handprint, hand；9 塊逐張看過、拼好的整張與 24 m 俯視模擬再看一次",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "程式底稿全部週期；SDXL 塊從環繞的底稿切、拼回時權重週期，四方連續",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "jpg sRGB 4:2:0",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有 steel-rust-paint）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化）"
+ },
+ "set": "shutter-slat",
+ "title": "鐵捲門鋁片（75 mm 一片、折線在 v=k/16；淺灰烤漆靠 tint、折線與下緣有鏽、橫刮痕露鋼、雨水垂流；model-texture-queue #1）",
+ "seed": 1,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-terrain/gen_fix8.py（python gen_fix8.py all shutter-slat --seed 1；共用 tangcheng-pbr/gen_mata.py 的 stage_sdxl／stage_final）",
+ "span_m": 1.2,
+ "photos_referenced": [],
+ "sdxl": {
+  "model": "RealVisXL_V5.0_fp16.safetensors",
+  "controlnet": "controlnet-union-sdxl-promax (tile)",
+  "cn_strength": 0.6,
+  "denoise": 0.28,
+  "steps": 26,
+  "cfg": 5.0,
+  "sampler": "dpmpp_2m karras",
+  "tiles": "3x3 periodic 1024 (Hann^4 blend)",
+  "prompt": "seamless tileable texture, close-up of an old painted steel roller shutter door, horizontal interlocking slats, light grey enamel paint, thin rust lines only along the slat folds, horizontal scratches, faint vertical rain stains, flat front view, even light, orthographic flat surface filling the whole frame, even diffuse lighting, photorealistic, sharp focus, 8k, no people, no person, no figure, no face",
+  "neg": "people, person, human, figure, silhouette, face, eyes, mouth, skull, footprint, shoe print, handprint, hand, fingers, animal, text, letters, numbers, watermark, logo, signature, poster, graffiti, perspective, vanishing point, horizon, room, furniture, harsh shadow, vignette, blurry, cartoon, painting, illustration, 3d render, frame, border",
+  "secs": 395
+ },
+ "final": {
+  "lock_px": 6.0,
+  "detail": 1.0,
+  "relief_mm": 0.06,
+  "sdxl": true
+ },
+ "files": {
+  "2k/albedo.jpg": 597876,
+  "2k/normal.jpg": 645320,
+  "2k/roughness.jpg": 374721,
+  "2k/ao.jpg": 109107,
+  "2k/metalness.jpg": 77149,
+  "1k/albedo.jpg": 183961,
+  "1k/normal.jpg": 152766,
+  "1k/roughness.jpg": 120698,
+  "1k/ao.jpg": 41518,
+  "1k/metalness.jpg": 32158
+ },
+ "params": {
+  "span_m": 1.2,
+  "slat_mm": 75,
+  "layout": "v 一張＝1.2 m＝16 片；折線（暗縫）在 v=k/16，幾何波谷在世界 y≡0 (mod 0.075)",
+  "proc_secs": 4.5
+ },
+ "queue_item": "model-texture-queue 先做 #1 #5（10-29 第十一批：鐵捲門鋁片、30 cm 黑白棋盤地磚）",
+ "roughness_floor": "出圖後 roughness 夾底 0.55（JPEG 存後實測 2k min 0.502、mean 0.627）",
+ "height": {
+  "what": "POM（視差遮蔽）用的高度圖：1＝表面、0＝最深（縫、槽）；線性灰階 jpg q95 4:4:4，2k／1k",
+  "source": "由本組 2k/normal.jpg 積分（Frankot–Chellappa FFT 泊松積分，週期邊界）＋本組 ao.jpg 混合；沒有用任何外部圖",
+  "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_height.py（python3 gen_height.py <pbr> shutter-slat --write）",
+  "params": {
+   "knee": 0,
+   "top": 1,
+   "lowcut_mm": 0,
+   "ao_mix": 0.25,
+   "lo": 0.5,
+   "hi": 99.5,
+   "depth_mm": 5.0
+  },
+  "shader": "tools/sandbox/scenes/_tc-pom.ts（深度 depth_mm、近距離才開；?pom=0 關）"
+ }
+}

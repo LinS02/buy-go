@@ -1,0 +1,146 @@
+{
+ "generator": "CPU numpy 程式生成（scipy cKDTree 週期 Voronoi、FFT 週期濾波），無生成模型、無 GPU",
+ "license": "本專案程式生成，CPU numpy，無生成模型、無參考照進貼圖；可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色，沒有當貼圖、沒有 img2img、沒有切圖、沒有複製進專案（照片不進 repo、不進 build）",
+ "spec": "doc/design/tangcheng-site-spec.md（照片勘查規格書：尺寸、顏色以它為準）",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）；8-bit、JPEG 4:4:4 不抖動",
+ "seamless": "所有濾波週期邊界（FFT／np.roll／mod 座標），四方連續；驗證見 verify_images",
+ "tiling": "UV＝世界座標 / span_m",
+ "formats": {
+  "albedo": "jpg sRGB 4:2:0",
+  "normal": "jpg 線性 4:4:4",
+  "roughness": "jpg 線性灰階",
+  "ao": "jpg 線性灰階（不抖動）",
+  "metalness": "jpg 線性灰階（只有鐵捲門有）",
+  "mask": "見各組 mask_notes（jpg 4:4:4 或 png）",
+  "shade": "jpg 線性灰階，值×2＝亮度倍率（只有磨石子有）"
+ },
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化，mask.png 用最近鄰）"
+ },
+ "set": "mosaic",
+ "title": "小口馬賽克 25 mm（B2 柱腳黑白棋盤／B1 門柱藍色）",
+ "queue_item": 25,
+ "candidate": "mosaic-s11",
+ "seed": 11,
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_misc.py（指令：python gen_misc.py mosaic 11 <out>）",
+ "span_m": 0.8,
+ "why_picked": "兩版都好；s11 的灰色補磚分布較散。合成一組（RGBA mask 兩種排法）省 4 MB 預算。",
+ "rejected": [
+  "mosaic-s22",
+  "mosaic-bw-s11/s22、mosaic-blue-s11/s22（舊的分開兩組，已併）"
+ ],
+ "photos_referenced": [
+  "~/Desktop/game/閾限空間台灣/02_亮著燈但沒人/家樂福鐵捲門__yt-xfK_eVJkgCQ-t466.jpg",
+  "~/Desktop/game/閾限空間台灣/05_B2黑暗/B2手電筒__yt-xfK_eVJkgCQ-t518.jpg"
+ ],
+ "recolor_formula": "linear：棋盤排法 idx＝round(mask.R/85)，隨機藍排法 idx＝round(mask.A/85)，配 palette 對應組；tile_sh＝mask.G×2；grout＝mask.B/255；albedo＝mix(palette[idx]×tile_sh, grout_color, grout)。albedo.jpg 預設是黑白棋盤；B1 門柱藍色版在 shader 改讀 A 通道＋palette.blue。",
+ "mask_notes": "mask.png（RGBA）：R＝棋盤排法色票編號×85（配 palette bw），A＝隨機群聚排法編號×85（配 palette blue），G＝每顆亮度×0.5，B＝灰縫權重（6 階）。灰縫髒污在 albedo 內。",
+ "files": {
+  "2k/albedo.jpg": 576433,
+  "2k/normal.jpg": 1774261,
+  "2k/roughness.jpg": 439681,
+  "2k/ao.jpg": 939990,
+  "2k/mask.png": 101789,
+  "1k/albedo.jpg": 230015,
+  "1k/normal.jpg": 339402,
+  "1k/roughness.jpg": 220893,
+  "1k/ao.jpg": 227016,
+  "1k/mask.png": 47104
+ },
+ "params": {
+  "span_m": 0.8,
+  "tile_pitch_mm": 25,
+  "tiles_per_tex": 32,
+  "layout": "checker",
+  "palette_srgb": [
+   [
+    236,
+    236,
+    232
+   ],
+   [
+    40,
+    40,
+    42
+   ],
+   [
+    150,
+    150,
+    148
+   ],
+   [
+    236,
+    236,
+    232
+   ]
+  ],
+  "palette_alt": {
+   "bw": [
+    [
+     236,
+     236,
+     232
+    ],
+    [
+     40,
+     40,
+     42
+    ],
+    [
+     150,
+     150,
+     148
+    ],
+    [
+     236,
+     236,
+     232
+    ]
+   ],
+   "blue": [
+    [
+     236,
+     238,
+     236
+    ],
+    [
+     150,
+     182,
+     214
+    ],
+    [
+     52,
+     92,
+     170
+    ],
+    [
+     30,
+     40,
+     84
+    ]
+   ]
+  },
+  "grout_srgb": {
+   "clean": [
+    196,
+    194,
+    186
+   ],
+   "dirty": [
+    110,
+    106,
+    98
+   ]
+  },
+  "notes": "mask.png（RGBA）：R＝棋盤排法色票編號×85（配 palette bw），A＝隨機群聚排法編號×85（配 palette blue），G＝每顆亮度×0.5，B＝灰縫權重（6 階）。灰縫髒污在 albedo 內。",
+  "set": "mosaic",
+  "size": 2048
+ },
+ "verify_images": [
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/mosaic-s11-wall.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/mosaic-s11-top3x3.jpg",
+  "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/verify/mosaic-s11-seam.jpg"
+ ]
+}

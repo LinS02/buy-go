@@ -1,0 +1,814 @@
+{
+ "category": "sfx",
+ "theme": "tangcheng-pa-and-lamps",
+ "queue": "frount_demo/doc/design/tangcheng-asset-queue.md #4",
+ "brief": "程式合成：叮咚提示音（四個音、原創旋律、像商場廣播開頭）；日光燈嗡嗡聲循環（120 Hz 加諧波，三種變化）；壞燈管啪啪聲 5 個",
+ "made": "2026-10-26",
+ "tool": "numpy／scipy 程式合成（~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-sfx/synth.py）",
+ "model": "無生成模型",
+ "license": "本專案程式合成（numpy／scipy 波形＋pedalboard 0.9.25 內建效果；喇叭版另用 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無取樣、無參考音檔、無生成模型；可商用",
+ "format": "48 kHz 單聲道（每個聲音掛在看得到的物件上：喇叭、燈管），Opus 160k .ogg＋AAC 192k .m4a＋.loop.json（tools/audio/bgm_export.py）。提示音 −16 LUFS；燈管循環 −24 LUFS；啪聲以真峰值 −1 dBTP 為準（−26～−29 LUFS）。相對音量由場景設定。",
+ "physics": "台灣市電 60 Hz → 電感式安定器矽鋼片磁致伸縮每秒 120 次 → 基頻 120 Hz＋整數倍諧波；燈罩鬆動＝每週期一個小脈衝過 1.2–4 kHz 金屬共振；電弧嘶聲＝2–9 kHz 雜訊被電流過零（120 Hz）調變；啪聲＝0.3–0.8 ms 寬頻爆點＋燈罩共振（衰減 4–25 ms）＋安定器湧浪的掃頻悶響；起動器＝5 kHz 小喀。",
+ "loop_method": "循環長 12 s＝576000 樣本＝1440 個 120 Hz 週期；諧波、調變（循環內整數週期）與雜訊（FFT 域上造、循環卷積、頻域濾波）全部天生首尾相接，不交叉淡。接縫驗法 seamcheck.py：用接點前 100 ms 擬合 120 Hz 諧波外插到接點後 50 ms，誤差和循環內 24 個一般位置比；對照組少切 777 樣本（非整數週期）要明顯變大（+9.5～+44 dB），選上的三支在 −9～+2 dB，代表量得出失敗、且選上的無縫。",
+ "chime_method": "四個音，起點 0／0.46／0.92／1.38 s，主音 F5（698 Hz），力度 1.0／0.86／0.9／0.95。原創性：只和已知公共提示音比音程（移調不變 L1 距離；西敏寺五句、TOA 式四音上行／下行琶音、兩音叮咚重複），選上的 L1≥7。好聽的可量部分：Sethares 粗糙度（分音兩兩、隨衰減）。",
+ "pick_method": "提示音 8 選 2（各附喇叭版）；燈管循環 7 選 3（A 型 3 個、B 型 2 個、C 型 2 個，每型挑 1）；啪聲 10 選 5（5 種樣式×2 種子，每樣挑 1）。依上列各 why_picked 的量測挑。拼板 _sheet.png（頻譜，0–8 kHz）在 local-gen。未經人耳試聽：手感與音量交給使用者。",
+ "listen_checklist": [
+  "戴耳機放 pa-chime-a-speaker：像不像商場廣播開頭、會不會像某首聽過的提示音",
+  "手機喇叭放 lamp-hum-a/b/c：三種聽得出差別嗎、A 在手機上聽得到嗎",
+  "lamp-hum 循環放 1 分鐘：接縫有沒有喀一聲",
+  "lamp-pop-1～5：像燈管壞掉還是像別的（鞭炮、電線短路）"
+ ],
+ "items": [
+  {
+   "file": "pa-chime-a.ogg",
+   "also": [
+    "pa-chime-a.m4a",
+    "pa-chime-a.loop.json"
+   ],
+   "candidate": "chime-m1-elec",
+   "tool": "synth.py（numpy／scipy）",
+   "license": "本專案程式合成（numpy／scipy 波形＋pedalboard 0.9.25 內建效果；喇叭版另用 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": null,
+   "params": {
+    "melody_semitones_from_F5": [
+     0,
+     4,
+     9,
+     7
+    ],
+    "notes_hz": [
+     698.46,
+     880.0,
+     1174.66,
+     1046.5
+    ],
+    "timbre": {
+     "ratios": [
+      1.0,
+      2.0,
+      3.0,
+      5.01
+     ],
+     "amps": [
+      1.0,
+      0.16,
+      0.08,
+      0.025
+     ],
+     "taus": [
+      1.15,
+      0.55,
+      0.35,
+      0.16
+     ],
+     "attack": 0.005,
+     "click": 0.0
+    },
+    "onsets_s": [
+     0.0,
+     0.46,
+     0.92,
+     1.38
+    ],
+    "velocity": [
+     1.0,
+     0.86,
+     0.9,
+     0.95
+    ],
+    "roughness_mean": 0.013,
+    "roughness_peak": 0.0482,
+    "nearest_known_chime": "westminster-3",
+    "nearest_known_L1": 7,
+    "ends_on": "7 semitones"
+   },
+   "measure": {
+    "lufs": -16.0,
+    "true_peak_db": -3.36,
+    "clipped": 0,
+    "length_s": 3.98
+   },
+   "why_picked": "主選。8 個候選（4 段原創旋律×顫音琴／電子提示音機兩種音色）裡，重疊時的粗糙度（Sethares 模型，逐 20 ms 積分）最低（0.013，次低 0.0166）；旋律 do-mi-la-sol 跳上六度再停在五度，聽起來是「請注意，後面還有話」；和已知公共提示音（西敏寺五句、四音上行／下行琶音、兩音叮咚）的音程距離 L1=7，不是任何一首。電子音色像 90 年代商場廣播用的提示音機。"
+  },
+  {
+   "file": "pa-chime-a-speaker.ogg",
+   "also": [
+    "pa-chime-a-speaker.m4a",
+    "pa-chime-a-speaker.loop.json"
+   ],
+   "candidate": "chime-m1-elec-pa",
+   "tool": "synth.py（numpy／scipy）＋post_pa.py（pedalboard＋Dragonfly Hall VST3）",
+   "license": "本專案程式合成（numpy／scipy 波形＋pedalboard 0.9.25 內建效果；喇叭版另用 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": null,
+   "params": {
+    "melody_semitones_from_F5": [
+     0,
+     4,
+     9,
+     7
+    ],
+    "notes_hz": [
+     698.46,
+     880.0,
+     1174.66,
+     1046.5
+    ],
+    "timbre": {
+     "ratios": [
+      1.0,
+      2.0,
+      3.0,
+      5.01
+     ],
+     "amps": [
+      1.0,
+      0.16,
+      0.08,
+      0.025
+     ],
+     "taus": [
+      1.15,
+      0.55,
+      0.35,
+      0.16
+     ],
+     "attack": 0.005,
+     "click": 0.0
+    },
+    "onsets_s": [
+     0.0,
+     0.46,
+     0.92,
+     1.38
+    ],
+    "velocity": [
+     1.0,
+     0.86,
+     0.9,
+     0.95
+    ],
+    "roughness_mean": 0.013,
+    "roughness_peak": 0.0482,
+    "nearest_known_chime": "westminster-3",
+    "nearest_known_L1": 7,
+    "ends_on": "7 semitones",
+    "speaker_chain": {
+     "drive_db": 3,
+     "hp_hz": 330,
+     "lp_hz": 4200,
+     "res1_hz": 1150,
+     "res1_db": 4,
+     "res2_hz": 2600,
+     "res2_db": 3,
+     "size_m": 48,
+     "decay_s": 3.2,
+     "predelay_ms": 20,
+     "early": 25,
+     "rev_hicut": 5000,
+     "drr_db": -3,
+     "tail_s": 3.5
+    }
+   },
+   "measure": {
+    "lufs": -16.0,
+    "true_peak_db": -4.77,
+    "clipped": 0,
+    "length_s": 6.527
+   },
+   "why_picked": "pa-chime-a 經過天花板喇叭（擴大機壓縮、330 Hz–4.2 kHz、紙盆共振 1150／2600 Hz，同第 3 項 c6 參數）＋中庭殘響（Dragonfly Hall，3.2 s，直達對殘響 −3 dB）。遊戲裡從喇叭物件放這個版本。"
+  },
+  {
+   "file": "pa-chime-b.ogg",
+   "also": [
+    "pa-chime-b.m4a",
+    "pa-chime-b.loop.json"
+   ],
+   "candidate": "chime-m5-vib",
+   "tool": "synth.py（numpy／scipy）",
+   "license": "本專案程式合成（numpy／scipy 波形＋pedalboard 0.9.25 內建效果；喇叭版另用 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": null,
+   "params": {
+    "melody_semitones_from_F5": [
+     0,
+     7,
+     5,
+     9
+    ],
+    "notes_hz": [
+     698.46,
+     1046.5,
+     932.33,
+     1174.66
+    ],
+    "timbre": {
+     "ratios": [
+      1.0,
+      3.98,
+      9.93
+     ],
+     "amps": [
+      1.0,
+      0.22,
+      0.05
+     ],
+     "taus": [
+      1.5,
+      0.32,
+      0.07
+     ],
+     "attack": 0.0015,
+     "click": 0.05
+    },
+    "onsets_s": [
+     0.0,
+     0.46,
+     0.92,
+     1.38
+    ],
+    "velocity": [
+     1.0,
+     0.86,
+     0.9,
+     0.95
+    ],
+    "roughness_mean": 0.0224,
+    "roughness_peak": 0.0601,
+    "nearest_known_chime": "4tone-up",
+    "nearest_known_L1": 9,
+    "ends_on": "9 semitones"
+   },
+   "measure": {
+    "lufs": -16.0,
+    "true_peak_db": -3.15,
+    "clipped": 0,
+    "length_s": 3.98
+   },
+   "why_picked": "備選，旋律和音色都跟 A 不同：do-sol-fa-la、顫音琴木條音色（1:4:10 調音、琴槌敲擊）。顫音琴四段旋律裡粗糙度第二低（0.0224；最低的 m1-vib 和主選同旋律，留它就沒有選擇）；和已知提示音距離 L1=9。"
+  },
+  {
+   "file": "pa-chime-b-speaker.ogg",
+   "also": [
+    "pa-chime-b-speaker.m4a",
+    "pa-chime-b-speaker.loop.json"
+   ],
+   "candidate": "chime-m5-vib-pa",
+   "tool": "synth.py（numpy／scipy）＋post_pa.py（pedalboard＋Dragonfly Hall VST3）",
+   "license": "本專案程式合成（numpy／scipy 波形＋pedalboard 0.9.25 內建效果；喇叭版另用 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": null,
+   "params": {
+    "melody_semitones_from_F5": [
+     0,
+     7,
+     5,
+     9
+    ],
+    "notes_hz": [
+     698.46,
+     1046.5,
+     932.33,
+     1174.66
+    ],
+    "timbre": {
+     "ratios": [
+      1.0,
+      3.98,
+      9.93
+     ],
+     "amps": [
+      1.0,
+      0.22,
+      0.05
+     ],
+     "taus": [
+      1.5,
+      0.32,
+      0.07
+     ],
+     "attack": 0.0015,
+     "click": 0.05
+    },
+    "onsets_s": [
+     0.0,
+     0.46,
+     0.92,
+     1.38
+    ],
+    "velocity": [
+     1.0,
+     0.86,
+     0.9,
+     0.95
+    ],
+    "roughness_mean": 0.0224,
+    "roughness_peak": 0.0601,
+    "nearest_known_chime": "4tone-up",
+    "nearest_known_L1": 9,
+    "ends_on": "9 semitones",
+    "speaker_chain": {
+     "drive_db": 3,
+     "hp_hz": 330,
+     "lp_hz": 4200,
+     "res1_hz": 1150,
+     "res1_db": 4,
+     "res2_hz": 2600,
+     "res2_db": 3,
+     "size_m": 48,
+     "decay_s": 3.2,
+     "predelay_ms": 20,
+     "early": 25,
+     "rev_hicut": 5000,
+     "drr_db": -3,
+     "tail_s": 3.5
+    }
+   },
+   "measure": {
+    "lufs": -16.0,
+    "true_peak_db": -4.01,
+    "clipped": 0,
+    "length_s": 6.899
+   },
+   "why_picked": "pa-chime-b 的天花板喇叭版，參數同 pa-chime-a-speaker。"
+  },
+  {
+   "file": "lamp-hum-a.ogg",
+   "also": [
+    "lamp-hum-a.m4a",
+    "lamp-hum-a.loop.json"
+   ],
+   "candidate": "hum-a3",
+   "tool": "synth.py（numpy／scipy）",
+   "license": "本專案程式合成（numpy／scipy 波形＋pedalboard 0.9.25 內建效果；喇叭版另用 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": 13,
+   "params": {
+    "loop_s": 12.0,
+    "fundamental_hz": 120,
+    "harmonics": 10,
+    "waver": 0.035,
+    "rattle": 0.03,
+    "surge": 0,
+    "hiss": 0.008,
+    "flicker": 0,
+    "resonances": [
+     [
+      2100,
+      1,
+      0.001
+     ]
+    ],
+    "seed": 13,
+    "share_120hz": 0.617,
+    "share_above_300hz": 0.159,
+    "centroid_hz": 200,
+    "envelope_mod_depth": 0.025,
+    "seam_jump_vs_p99": 0.72,
+    "seam_jump_vs_max": 0.292,
+    "control_cut777_vs_p99": 14.24
+   },
+   "measure": {
+    "lufs": -24.0,
+    "true_peak_db": -16.22,
+    "clipped": 0,
+    "length_s": 12.0,
+    "seam_err_vs_interior_db": 2.6,
+    "seam_control_cut777_db": 39.3,
+    "seam_jump_ratio_ogg": 0.4
+   },
+   "why_picked": "「穩定的新安定器」。3 個候選裡 120 Hz 仍佔 62% 能量、包絡起伏最小（0.025），但 300 Hz 以上佔 16%（a1 只有 3%、a2 5%）——手機喇叭放不出 120 Hz，靠 360–1200 Hz 的諧波才聽得到。"
+  },
+  {
+   "file": "lamp-hum-b.ogg",
+   "also": [
+    "lamp-hum-b.m4a",
+    "lamp-hum-b.loop.json"
+   ],
+   "candidate": "hum-b1",
+   "tool": "synth.py（numpy／scipy）",
+   "license": "本專案程式合成（numpy／scipy 波形＋pedalboard 0.9.25 內建效果；喇叭版另用 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": 21,
+   "params": {
+    "loop_s": 12.0,
+    "fundamental_hz": 120,
+    "harmonics": 18,
+    "waver": 0.14,
+    "rattle": 0.45,
+    "surge": 0,
+    "hiss": 0.03,
+    "flicker": 0,
+    "resonances": [
+     [
+      1450,
+      1,
+      0.0016
+     ],
+     [
+      2750,
+      0.6,
+      0.0009
+     ]
+    ],
+    "seed": 21,
+    "share_120hz": 0.516,
+    "share_above_300hz": 0.334,
+    "centroid_hz": 498,
+    "envelope_mod_depth": 0.089,
+    "seam_jump_vs_p99": 0.08,
+    "seam_jump_vs_max": 0.017,
+    "control_cut777_vs_p99": 1.36
+   },
+   "measure": {
+    "lufs": -24.0,
+    "true_peak_db": -6.61,
+    "clipped": 0,
+    "length_s": 12.0,
+    "seam_err_vs_interior_db": 1.6,
+    "seam_control_cut777_db": 12.3,
+    "seam_jump_ratio_ogg": 0.05
+   },
+   "why_picked": "「老安定器」。諧波到 2 kHz＋燈罩鬆動的拍打（1450／2750 Hz 金屬共振），慢慢起伏（0.089）。b2 拍打更兇、奇次諧波重，跟 C 太近；b1 和 A、C 的質心（200／498／893 Hz）拉得最開。"
+  },
+  {
+   "file": "lamp-hum-c.ogg",
+   "also": [
+    "lamp-hum-c.m4a",
+    "lamp-hum-c.loop.json"
+   ],
+   "candidate": "hum-c1",
+   "tool": "synth.py（numpy／scipy）",
+   "license": "本專案程式合成（numpy／scipy 波形＋pedalboard 0.9.25 內建效果；喇叭版另用 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": 31,
+   "params": {
+    "loop_s": 12.0,
+    "fundamental_hz": 120,
+    "harmonics": 18,
+    "waver": 0.18,
+    "rattle": 0.5,
+    "surge": 1.6,
+    "hiss": 0.35,
+    "flicker": 0.1,
+    "resonances": [
+     [
+      1500,
+      1,
+      0.0016
+     ],
+     [
+      2900,
+      0.7,
+      0.0009
+     ]
+    ],
+    "seed": 31,
+    "share_120hz": 0.484,
+    "share_above_300hz": 0.373,
+    "centroid_hz": 893,
+    "envelope_mod_depth": 0.163,
+    "seam_jump_vs_p99": 0.03,
+    "seam_jump_vs_max": 0.01,
+    "control_cut777_vs_p99": 0.3
+   },
+   "measure": {
+    "lufs": -24.0,
+    "true_peak_db": -6.96,
+    "clipped": 0,
+    "length_s": 12.0,
+    "seam_err_vs_interior_db": -8.5,
+    "seam_control_cut777_db": 9.5,
+    "seam_jump_ratio_ogg": 0.02
+   },
+   "why_picked": "「快壞的燈管」。電弧嘶聲（被 120 Hz 調變）＋拍打一陣一陣變強＋亮度抖動（包絡起伏 0.163）。c2 嘶聲佔一半以上（300 Hz 以上 55%、質心 1.7 kHz），聽起來像雜訊不像燈；c1 仍以 120 Hz 為主（48%）。"
+  },
+  {
+   "file": "lamp-pop-1.ogg",
+   "also": [
+    "lamp-pop-1.m4a",
+    "lamp-pop-1.loop.json"
+   ],
+   "candidate": "pop-p1-s1",
+   "tool": "synth.py（numpy／scipy）",
+   "license": "本專案程式合成（numpy／scipy 波形＋pedalboard 0.9.25 內建效果；喇叭版另用 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": 411,
+   "params": {
+    "pattern": "p1",
+    "seed": 411,
+    "snaps_s": [
+     0.015
+    ],
+    "lamp_on_s": [
+     [
+      0.015,
+      0.1552
+     ]
+    ],
+    "fixture_res": [
+     [
+      1982,
+      1,
+      0.0237
+     ],
+     [
+      4598,
+      0.7,
+      0.014
+     ],
+     [
+      7339,
+      0.4,
+      0.0057
+     ]
+    ],
+    "crest_db": 21.9,
+    "rise_ms": 0.12,
+    "ring_60_90ms_db": -21.3,
+    "centroid_hz": 1091
+   },
+   "measure": {
+    "lufs": -27.45,
+    "true_peak_db": -1.0,
+    "clipped": 0,
+    "length_s": 0.178
+   },
+   "why_picked": "一聲大啪、亮一下（約 0.13 s 嗡）就滅。兩個種子裡上升較快（0.12 vs 0.23 ms）、質心較高（1091 vs 797 Hz），比較脆；另一個悶響太重。"
+  },
+  {
+   "file": "lamp-pop-2.ogg",
+   "also": [
+    "lamp-pop-2.m4a",
+    "lamp-pop-2.loop.json"
+   ],
+   "candidate": "pop-p2-s1",
+   "tool": "synth.py（numpy／scipy）",
+   "license": "本專案程式合成（numpy／scipy 波形＋pedalboard 0.9.25 內建效果；喇叭版另用 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": 421,
+   "params": {
+    "pattern": "p2",
+    "seed": 421,
+    "snaps_s": [
+     0.015,
+     0.1211
+    ],
+    "lamp_on_s": [
+     [
+      0.015,
+      0.1111
+     ],
+     [
+      0.1211,
+      0.1911
+     ]
+    ],
+    "fixture_res": [
+     [
+      2028,
+      1,
+      0.0146
+     ],
+     [
+      3870,
+      0.7,
+      0.0147
+     ],
+     [
+      6117,
+      0.4,
+      0.0044
+     ]
+    ],
+    "crest_db": 23.5,
+    "rise_ms": 0.15,
+    "ring_60_90ms_db": -54.6,
+    "centroid_hz": 2233
+   },
+   "measure": {
+    "lufs": -26.65,
+    "true_peak_db": -1.0,
+    "clipped": 0,
+    "length_s": 0.231
+   },
+   "why_picked": "啪啪兩聲（相隔約 0.1 s）。兩個種子裡峰值因數較高（23.5 vs 21.7 dB），兩聲分得比較開。"
+  },
+  {
+   "file": "lamp-pop-3.ogg",
+   "also": [
+    "lamp-pop-3.m4a",
+    "lamp-pop-3.loop.json"
+   ],
+   "candidate": "pop-p3-s2",
+   "tool": "synth.py（numpy／scipy）",
+   "license": "本專案程式合成（numpy／scipy 波形＋pedalboard 0.9.25 內建效果；喇叭版另用 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": 432,
+   "params": {
+    "pattern": "p3",
+    "seed": 432,
+    "snaps_s": [
+     0.01,
+     0.1367,
+     0.31,
+     0.4737,
+     0.7293
+    ],
+    "lamp_on_s": [
+     [
+      0.01,
+      0.0546
+     ],
+     [
+      0.1367,
+      0.2697
+     ],
+     [
+      0.31,
+      0.3975
+     ],
+     [
+      0.4737,
+      0.6388
+     ]
+    ],
+    "fixture_res": [
+     [
+      2361,
+      1,
+      0.0197
+     ],
+     [
+      3713,
+      0.7,
+      0.014
+     ],
+     [
+      6386,
+      0.4,
+      0.0057
+     ]
+    ],
+    "crest_db": 26.5,
+    "rise_ms": 0.1,
+    "ring_60_90ms_db": -48.4,
+    "centroid_hz": 2052
+   },
+   "measure": {
+    "lufs": -25.79,
+    "true_peak_db": -1.0,
+    "clipped": 0,
+    "length_s": 0.841
+   },
+   "why_picked": "一閃一閃：起動器一喀、四段嗡（每段開頭一個小啪），最後一聲大啪。選 s2：比 s1 長（0.84 s），質心 2052 Hz 和 5 號劈哩啪啦（3014 Hz）分得開。"
+  },
+  {
+   "file": "lamp-pop-4.ogg",
+   "also": [
+    "lamp-pop-4.m4a",
+    "lamp-pop-4.loop.json"
+   ],
+   "candidate": "pop-p4-s1",
+   "tool": "synth.py（numpy／scipy）",
+   "license": "本專案程式合成（numpy／scipy 波形＋pedalboard 0.9.25 內建效果；喇叭版另用 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": 441,
+   "params": {
+    "pattern": "p4",
+    "seed": 441,
+    "snaps_s": [
+     0.6499,
+     0.9303
+    ],
+    "lamp_on_s": [
+     [
+      0.6499,
+      0.9303
+     ]
+    ],
+    "fixture_res": [
+     [
+      2044,
+      1,
+      0.0191
+     ],
+     [
+      4159,
+      0.7,
+      0.0153
+     ],
+     [
+      6708,
+      0.4,
+      0.0046
+     ]
+    ],
+    "crest_db": 26.0,
+    "rise_ms": 0.1,
+    "ring_60_90ms_db": -52.0,
+    "centroid_hz": 1404
+   },
+   "measure": {
+    "lufs": -28.74,
+    "true_peak_db": -1.0,
+    "clipped": 0,
+    "length_s": 1.04
+   },
+   "why_picked": "起動器試了幾次：喀…喀喀，悶一聲點著，嗡 0.25 s 又啪地滅。兩個種子裡上升較快（0.10 vs 0.21 ms），悶響沒蓋過啪聲。"
+  },
+  {
+   "file": "lamp-pop-5.ogg",
+   "also": [
+    "lamp-pop-5.m4a",
+    "lamp-pop-5.loop.json"
+   ],
+   "candidate": "pop-p5-s1",
+   "tool": "synth.py（numpy／scipy）",
+   "license": "本專案程式合成（numpy／scipy 波形＋pedalboard 0.9.25 內建效果；喇叭版另用 Dragonfly Hall Reverb VST3，GPL-3，只處理音訊、輸出不受 GPL 約束）；無取樣、無參考音檔、無生成模型；可商用",
+   "seed": 451,
+   "params": {
+    "pattern": "p5",
+    "seed": 451,
+    "snaps_s": [
+     0.0237,
+     0.0296,
+     0.0394,
+     0.0646,
+     0.1091,
+     0.1279,
+     0.1403,
+     0.2605,
+     0.265,
+     0.3614,
+     0.3664,
+     0.3929,
+     0.4599
+    ],
+    "lamp_on_s": [
+     [
+      0.0237,
+      0.3929
+     ]
+    ],
+    "fixture_res": [
+     [
+      2181,
+      1,
+      0.0145
+     ],
+     [
+      4513,
+      0.7,
+      0.0142
+     ],
+     [
+      6814,
+      0.4,
+      0.0062
+     ]
+    ],
+    "crest_db": 26.1,
+    "rise_ms": 0.04,
+    "ring_60_90ms_db": -56.3,
+    "centroid_hz": 3014
+   },
+   "measure": {
+    "lufs": -26.97,
+    "true_peak_db": -1.0,
+    "clipped": 0,
+    "length_s": 0.57
+   },
+   "why_picked": "劈哩啪啦一串小電弧（約 10 聲）＋底下低低的嗡，最後一聲大的。兩個種子裡起音最尖（0.04 ms）。"
+  }
+ ],
+ "rejected": [
+  {
+   "candidate": "chime-m1-vib",
+   "note": "同旋律的顫音琴版，粗糙度 0.0171；和主選同旋律，留 B 換旋律"
+  },
+  {
+   "candidate": "chime-m3-elec/vib",
+   "note": "sol-mi-la-do，重疊時粗糙度最高（0.046／0.060）"
+  },
+  {
+   "candidate": "chime-m5-elec",
+   "note": "和 B 同旋律，B 改用顫音琴音色以便和 A 拉開"
+  },
+  {
+   "candidate": "chime-m6-elec/vib",
+   "note": "la-sol-re-mi，粗糙度 0.026／0.034，介於中間"
+  },
+  {
+   "candidate": "hum-a1",
+   "note": "300 Hz 以上只有 3%，手機上聽不到"
+  },
+  {
+   "candidate": "hum-a2",
+   "note": "300 Hz 以上 5%"
+  },
+  {
+   "candidate": "hum-b2",
+   "note": "拍打太兇、奇次諧波重，和 C 太近"
+  },
+  {
+   "candidate": "hum-c2",
+   "note": "嘶聲過半（質心 1.7 kHz），像雜訊不像燈"
+  },
+  {
+   "candidate": "pop-*-另一個種子",
+   "note": "見各 why_picked"
+  }
+ ],
+ "work_dir": "~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-sfx/（synth.py、post_pa.py、seamcheck.py、sheet.py、export_all.py、recipe.py、scores/、picked/ 24-bit wav、cands/*.meta.json＋summary.json）"
+}

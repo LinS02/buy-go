@@ -1,0 +1,30 @@
+{
+ "set": "rubber-mat-ribbed",
+ "title": "黑色橫肋橡膠止滑墊（25 mm 圓頂肋、溝裡積灰、肋頂磨亮一點；可平鋪；地板 roughness ≥ 0.62）",
+ "generator": "CPU numpy 程式生成（無生成模型、無照片）",
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-terrain/gen_fix9.py（python3 gen_fix9.py rubber；seed 11）",
+ "license": "本專案程式生成，可商用、可公開",
+ "photo_rule": "沒有使用任何照片",
+ "people_rule": "不畫人形、字、品牌（純紋理）",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "seamless": "四方連續（週期雜訊、肋 24 道整除）",
+ "tiling": "UV＝世界座標 / span_m",
+ "span_m": 0.6,
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 縮後重新正規化）"
+ },
+ "seed": 11,
+ "queue_item": "model-texture-queue #14／#15（10-29 第十二批：手扶梯踏墊、梯口橡膠條）",
+ "roughness_floor": "夾底 0.62（JPEG 存後實測 2k min 0.643、mean 0.833）",
+ "files": {
+  "2k/albedo.jpg": 198313,
+  "2k/normal.jpg": 1171158,
+  "2k/roughness.jpg": 419684,
+  "2k/ao.jpg": 226296,
+  "1k/albedo.jpg": 58264,
+  "1k/normal.jpg": 281953,
+  "1k/roughness.jpg": 125199,
+  "1k/ao.jpg": 81901
+ }
+}

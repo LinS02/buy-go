@@ -1,0 +1,809 @@
+{
+ "category": "bgm",
+ "theme": "tangcheng-mall-1996",
+ "queue": "frount_demo/doc/design/tangcheng-asset-queue.md #1",
+ "brief": "90 年代末台灣百貨、商場輕音樂，明亮：電子琴、薩克斯風、合成弦樂，鼓很輕或不要鼓，約 90 BPM，2–3 分鐘無縫循環 ogg",
+ "made": "2026-10-26",
+ "tool": "ACE-Step 1.5",
+ "model": "ACE-Step 1.5 turbo（acestep-v15-turbo）＋ 5Hz LM 1.7B，MLX，text2music，steps 8，shift 3.0",
+ "license": "ACE-Step 1.5（MIT）本機生成，輸出可商用；無取樣、無參考音檔",
+ "items": [
+  {
+   "file": "mall-1996-a.ogg",
+   "also": [
+    "mall-1996-a.m4a",
+    "mall-1996-a.loop.json"
+   ],
+   "tool": "ACE-Step 1.5 text2music（~/Desktop/ＬＬＭ/bgm-gen/gen.py，run_locked.sh）",
+   "model": "ACE-Step 1.5 turbo（acestep-v15-turbo）＋ 5Hz LM 1.7B，MLX，text2music，steps 8，shift 3.0",
+   "license": "ACE-Step 1.5（MIT）本機生成，輸出可商用；無取樣、無參考音檔",
+   "prompt": "Bright, cheerful late-1990s Taiwanese department store background music, easy listening instrumental. Warm FM electric piano chords, smooth alto saxophone lead melody, lush synthesizer string pad, soft synth bass, very light brushed percussion. Grand opening day of a new shopping mall, sunny atrium, smooth jazz-pop muzak. No vocals, no heavy drums. Polished, optimistic, clean studio production, smooth and continuous, background music for shoppers.",
+   "lyrics": "[Intro - soft synth strings]\n[Verse - saxophone melody]\n[Chorus - electric piano and saxophone]\n[Instrumental - keyboard solo]\n[Verse - saxophone melody]\n[Chorus - full and bright]\n[Bridge - gentle]\n[Chorus - electric piano and saxophone]\n[Outro]",
+   "seed": 1996,
+   "params": {
+    "bpm": 90,
+    "key": "F major",
+    "ts": 4,
+    "duration": 190,
+    "instrumental": true,
+    "steps": 8,
+    "shift": 3.0
+   },
+   "source_take": "tc_mall_1996_a_s1996_turbo.wav",
+   "loop_cut": {
+    "tool": "~/Desktop/ＬＬＭ/bgm-gen/loop.py <wav> 90 4 <out> 128 175（交叉淡 120 ms）",
+    "start_s": 28.72,
+    "end_s": 167.392,
+    "bars": 52.0
+   },
+   "export": "tools/audio/bgm_export.py export … --lufs -18（Opus 160k＋AAC 192k；檔頭＝循環起點，loopStart 0，無前奏）",
+   "measure": {
+    "lufs": -18.0,
+    "true_peak_db": -5.14,
+    "clipped": 0,
+    "loop_s": 138.672375,
+    "tempo": 90.0,
+    "seam_jump_ratio_ogg": 0.33
+   },
+   "why_picked": "主選。8 個候選裡打擊最輕（HPSS 打擊/和聲 -7.0 dB，其他 -3～-5）、低頻鼓最少（-17.2 dB），符合「鼓很輕」；11–15 kHz 金屬細線 0、高頻尖峰最低（15.6 dB）；實測 90.0 BPM 正中；52 小節 138.7 秒循環，接縫電平差 0.1 dB、頻譜通量在全曲起音中第 44 百分位（不突出）。"
+  },
+  {
+   "file": "mall-1996-b.ogg",
+   "also": [
+    "mall-1996-b.m4a",
+    "mall-1996-b.loop.json"
+   ],
+   "tool": "ACE-Step 1.5 text2music（~/Desktop/ＬＬＭ/bgm-gen/gen.py，run_locked.sh）",
+   "model": "ACE-Step 1.5 turbo（acestep-v15-turbo）＋ 5Hz LM 1.7B，MLX，text2music，steps 8，shift 3.0",
+   "license": "ACE-Step 1.5（MIT）本機生成，輸出可商用；無取樣、無參考音檔",
+   "prompt": "1990s Asian shopping mall instrumental muzak, light and happy. Home electronic keyboard with gentle auto-accompaniment, bossa nova feel, soprano saxophone melody, airy synth strings, round electric bass, soft shaker and rim click only. Escalators, glass skylight, fountain in the atrium, new and shiny. No vocals, no heavy drums. Polished, optimistic, clean studio production, smooth and continuous, background music for shoppers.",
+   "lyrics": "[Intro - soft synth strings]\n[Verse - saxophone melody]\n[Chorus - electric piano and saxophone]\n[Instrumental - keyboard solo]\n[Verse - saxophone melody]\n[Chorus - full and bright]\n[Bridge - gentle]\n[Chorus - electric piano and saxophone]\n[Outro]",
+   "seed": 3296,
+   "params": {
+    "bpm": 90,
+    "key": "C major",
+    "ts": 4,
+    "duration": 190,
+    "instrumental": true,
+    "steps": 8,
+    "shift": 3.0
+   },
+   "source_take": "tc_mall_1996_b_s3296_turbo.wav",
+   "loop_cut": {
+    "tool": "~/Desktop/ＬＬＭ/bgm-gen/loop.py <wav> 90 4 <out> 128 175（交叉淡 120 ms）",
+    "start_s": 28.85,
+    "end_s": 161.277,
+    "bars": 50.01
+   },
+   "export": "tools/audio/bgm_export.py export … --lufs -18（Opus 160k＋AAC 192k；檔頭＝循環起點，loopStart 0，無前奏）",
+   "measure": {
+    "lufs": -18.0,
+    "true_peak_db": -2.03,
+    "clipped": 0,
+    "loop_s": 132.4275,
+    "tempo": 90.63,
+    "seam_jump_ratio_ogg": 0.33
+   },
+   "why_picked": "備選。bossa nova 電子琴伴奏＋高音薩克斯風，8 個裡最亮（頻譜重心 2165 Hz），整首電平最平（4 秒窗起伏 2.6 dB）；實測 90.6 BPM；50 小節 132.4 秒循環，接縫電平差 0.3 dB。打擊比 a 重一點（-4.3 dB）。"
+  },
+  {
+   "file": "mall-2007-a.ogg",
+   "also": [
+    "mall-2007-a.m4a",
+    "mall-2007-a.loop.json"
+   ],
+   "tool": "ACE-Step 1.5 text2music（~/Desktop/ＬＬＭ/bgm-gen/gen.py，run_locked.sh）",
+   "model": "ACE-Step 1.5 turbo（acestep-v15-turbo）＋ 5Hz LM 1.7B，MLX，text2music，steps 8，shift 3.0",
+   "license": "ACE-Step 1.5（MIT）本機生成，輸出可商用；無取樣、無參考音檔",
+   "prompt": "Slow, wistful mid-2000s Taiwanese department store background music, easy listening instrumental in a minor key. Mellow Rhodes electric piano chords, melancholy alto saxophone melody, warm synthesizer string pad, soft fretless bass, no drums. The last hour before the shopping mall closes, half the shops shuttered, nostalgic and a little lonely, late evening muzak. No vocals, no heavy drums. Gentle, wistful, soft and continuous, background music playing through a store PA system.",
+   "lyrics": "[Intro - soft electric piano]\n[Verse - melancholy saxophone]\n[Chorus - strings and saxophone]\n[Instrumental - piano solo]\n[Verse - melancholy saxophone]\n[Chorus - warm strings]\n[Bridge - quiet]\n[Chorus - strings and saxophone]\n[Outro - fading]",
+   "seed": 2007,
+   "params": {
+    "bpm": 72,
+    "key": "A minor",
+    "ts": 4,
+    "duration": 190,
+    "instrumental": true,
+    "steps": 8,
+    "shift": 3.0
+   },
+   "source_take": "tc_mall_2007_a_s2007_turbo.wav",
+   "loop_cut": {
+    "tool": "先切掉原曲前 33 秒（Rhodes 獨奏的弱前奏，−7～−9 dB），再 ~/Desktop/ＬＬＭ/bgm-gen/loop.py <trim.wav> 72 4 <out> 118 150（交叉淡 120 ms）",
+    "trim_head_s": 33.0,
+    "start_s": 39.711,
+    "end_s": 159.709,
+    "bars": 36.0
+   },
+   "export": "tools/audio/bgm_export.py export … --lufs -18（Opus 160k＋AAC 192k；檔頭＝循環起點，loopStart 0，無前奏）",
+   "measure": {
+    "lufs": -18.0,
+    "true_peak_db": -4.34,
+    "clipped": 0,
+    "loop_s": 119.99727083333333,
+    "tempo": 72.0,
+    "key_est": "A 小調（Krumhansl r 0.89，相對大調 C 只有 0.64）",
+    "seam_jump_ratio_ogg": 1.04,
+    "seam_level_step_4s_db": 0.4,
+    "seam_note": "接縫前後 0.25 秒電平 −19.9 → −25.9 dB：原曲在同一個點（樂句尾→弱拍）本來就降 4.9 dB，是音樂本身的換氣；循環內小節線 p90 3.2 dB、最大 6.0，門檻 max(6, p90+3)=6.2 內"
+   },
+   "why_picked": "主選。指定的電子琴（Rhodes）＋中音薩克斯風＋合成弦樂、無鼓，和第 1 項同配器、換成 A 小調 72 BPM（比 1996 慢 20%）：12 個候選裡小調傾向最明確之一（0.89）、實測 72.0 BPM 正中、11–15 kHz 細線 1 條以下；切掉弱前奏後循環內 4 秒窗電平 p90–p10 只差 2.9 dB、最低窗只低中位數 1.7 dB（廣播不斷）；36 小節剛好 120.0 秒，接縫 4 秒窗電平差 0.4 dB、拍距偏差 1%。"
+  },
+  {
+   "file": "mall-2007-b.ogg",
+   "also": [
+    "mall-2007-b.m4a",
+    "mall-2007-b.loop.json"
+   ],
+   "tool": "ACE-Step 1.5 text2music（~/Desktop/ＬＬＭ/bgm-gen/gen.py，run_locked.sh）",
+   "model": "ACE-Step 1.5 turbo（acestep-v15-turbo）＋ 5Hz LM 1.7B，MLX，text2music，steps 8，shift 3.0",
+   "license": "ACE-Step 1.5（MIT）本機生成，輸出可商用；無取樣、無參考音檔",
+   "prompt": "Mellow late-2000s Asian adult contemporary instrumental, slow and sentimental, minor key. Soft grand piano melody with lush string ensemble, gentle soprano saxophone answering the piano, warm synth pad, soft bass, no drums. An old department store in its final hour of business, dim lights, wistful memories of better days. No vocals, no heavy drums. Gentle, wistful, soft and continuous, background music playing through a store PA system.",
+   "lyrics": "[Intro - soft electric piano]\n[Verse - melancholy saxophone]\n[Chorus - strings and saxophone]\n[Instrumental - piano solo]\n[Verse - melancholy saxophone]\n[Chorus - warm strings]\n[Bridge - quiet]\n[Chorus - strings and saxophone]\n[Outro - fading]",
+   "seed": 4207,
+   "params": {
+    "bpm": 70,
+    "key": "E minor",
+    "ts": 4,
+    "duration": 190,
+    "instrumental": true,
+    "steps": 8,
+    "shift": 3.0
+   },
+   "source_take": "tc_mall_2007_c_s4207_turbo.wav",
+   "loop_cut": {
+    "tool": "~/Desktop/ＬＬＭ/bgm-gen/loop.py <wav> 70 4 <out> 110 170（交叉淡 120 ms）",
+    "start_s": 38.66,
+    "end_s": 151.787,
+    "bars": 33.0
+   },
+   "export": "tools/audio/bgm_export.py export … --lufs -18（Opus 160k＋AAC 192k；檔頭＝循環起點，loopStart 0，無前奏）",
+   "measure": {
+    "lufs": -18.0,
+    "true_peak_db": -4.32,
+    "clipped": 0,
+    "loop_s": 113.12720833333333,
+    "tempo": 70.0,
+    "key_est": "E 小調（r 0.87，相對大調 G 0.62）",
+    "seam_jump_ratio_ogg": 1.19,
+    "seam_level_step_4s_db": 0.3,
+    "seam_note": "接縫前後 0.25 秒 −17.9 → −19.3 dB"
+   },
+   "why_picked": "備選。鋼琴主奏＋弦樂＋高音薩克斯風應答、無鼓，E 小調 70 BPM，比主選更像收店前的抒情曲。整首電平最平的小調候選之一（循環內 p90–p10 3.6 dB、最低窗低 2.2 dB）、11–15 kHz 細線 0；33 小節 113.1 秒，接縫電平差 0.3 dB。缺點：配器是鋼琴不是電子琴、循環 1 分 53 秒略短於 2 分鐘（拉到 123 秒的版本接縫電平跳 2.5 dB、第 84 百分位，所以不用）。"
+  },
+  {
+   "file": "mall-2026-pa-a.ogg",
+   "also": [
+    "mall-2026-pa-a.m4a",
+    "mall-2026-pa-a.loop.json"
+   ],
+   "tool": "後製（不重新生成）：~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-2026/post.py，pedalboard 0.9.25 內建 Compressor／Distortion／PeakFilter＋Dragonfly Hall Reverb 3.2.10（VST3，GPL-3）＋numpy/scipy 重取樣與濾波",
+   "model": "無生成模型（DSP 後製）",
+   "license": "來源 mall-1996-a（ACE-Step 1.5 MIT 本機生成，可商用）；後製外掛 Dragonfly Reverb（GPL-3，只用來處理音訊，輸出不受 GPL 約束）；無取樣、無參考音檔",
+   "source": "mall-1996-a（第 1 項主選）的 24-bit 循環 wav：~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng/picked/long_a_s1996.wav",
+   "candidate": "c6-atrium-gentle",
+   "params": {
+    "detune_cents": -20,
+    "wow_cents": 5,
+    "wow_hz": 0.6,
+    "flutter_cents": 1.5,
+    "flutter_hz": 7.3,
+    "drift_cents": 2,
+    "seed": 22,
+    "drive_db": 5,
+    "hp_hz": 330,
+    "lp_hz": 4200,
+    "res1_hz": 1150,
+    "res1_db": 4,
+    "res2_hz": 2600,
+    "res2_db": 3,
+    "speakers": [
+     [
+      12,
+      -0.3
+     ],
+     [
+      19,
+      0.45
+     ],
+     [
+      27,
+      -0.6
+     ]
+    ],
+    "size_m": 48,
+    "decay_s": 3.6,
+    "predelay_ms": 20,
+    "early": 25,
+    "rev_hicut": 5000,
+    "drr_db": -8
+   },
+   "chain": "① L+R 混單聲道（商場廣播是單聲道）→ ② 走音：定值偏低＋wow（兩個正弦）＋flutter＋0.03–0.25 Hz 慢漂，全部在循環長度內整數週期，Catmull-Rom 循環重取樣（音高和速度一起慢，像轉速不足）→ ③ 擴大機：Compressor −22 dB 3:1、前級 +drive dB 進 tanh 軟削 → ④ 天花板小喇叭：紙盆共振兩個 PeakFilter、700 Hz −2 dB、4 階 Butterworth 高通＋低通 → ⑤ 幾支距離不同的天花板喇叭：每支循環延遲（距離/343 m/s）、1/距離衰減、1 階空氣吸收、左右擺位 → ⑥ Dragonfly Hall（dry 0、late 100、low cut 120 Hz、high cross 2.5 kHz×0.4、modulation 10%）→ ⑦ 直達聲對殘響 drr_db 混合。濾波、壓縮、殘響都跑在『循環接三份』上取中間那份，殘響尾巴自然繞回檔頭；Dragonfly 的 spin/wander 調變不是循環週期的，第二、三份的殘響尾不一樣（相關 0.5–0.7），所以只對『濕』的檔頭 3 秒做等能量交叉（a²+b²+2ρab=1，起點＝真正接在檔尾後的殘響），乾的逐樣本循環不動。",
+   "export": "tools/audio/bgm_export.py export … --lufs -18（Opus 160k＋AAC 192k；檔頭＝循環起點，loopStart 0，無前奏）",
+   "measure": {
+    "lufs": -18.0,
+    "true_peak_db": -1.69,
+    "clipped": 0,
+    "loop_s": 140.28366666666668,
+    "tempo": 88.966,
+    "cents_mean": -20.0,
+    "cents_p2p": 26.71,
+    "rt60_s": 3.4,
+    "c50_db": -4.4,
+    "band_db": {
+     "<200": -26.2,
+     "300-3k": -0.2,
+     ">5k": -30.1,
+     ">8k": -51.9
+    },
+    "seam_head5ms_vs_true_continuation_db": -56.5,
+    "wet_xfade_energy_db": 0.05,
+    "seam_jump_ratio_ogg": 0.5,
+    "seam_jump_ratio_m4a": 0.66
+   },
+   "why_picked": "主選。中庭裡三支天花板喇叭（12／19／27 m）：限頻 330 Hz–4.2 kHz（<200 Hz 剩 −26 dB、>8 kHz −52 dB），平均偏低 20 音分、wow＋flutter＋慢漂峰對峰 27 音分（7 個候選裡最接近「輕微」又聽得出來的那檔），殘響 RT60 3.4 s、C50 −4.4 dB：遠、但旋律還讀得出來（逐小節 chroma 對原曲 0.91）。接縫：檔頭 5 ms 對真實接續 −56.5 dB、濕交叉能量差 +0.05 dB、ogg 跳動比 0.50。"
+  },
+  {
+   "file": "mall-2026-pa-b.ogg",
+   "also": [
+    "mall-2026-pa-b.m4a",
+    "mall-2026-pa-b.loop.json"
+   ],
+   "tool": "後製（不重新生成）：~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng-2026/post.py，pedalboard 0.9.25 內建 Compressor／Distortion／PeakFilter＋Dragonfly Hall Reverb 3.2.10（VST3，GPL-3）＋numpy/scipy 重取樣與濾波",
+   "model": "無生成模型（DSP 後製）",
+   "license": "來源 mall-1996-a（ACE-Step 1.5 MIT 本機生成，可商用）；後製外掛 Dragonfly Reverb（GPL-3，只用來處理音訊，輸出不受 GPL 約束）；無取樣、無參考音檔",
+   "source": "mall-1996-a（第 1 項主選）的 24-bit 循環 wav：~/Desktop/ＬＬＭ/local-gen-work/music/tangcheng/picked/long_a_s1996.wav",
+   "candidate": "c7-far-gentle",
+   "params": {
+    "detune_cents": -25,
+    "wow_cents": 6,
+    "wow_hz": 0.5,
+    "flutter_cents": 2.0,
+    "flutter_hz": 8.1,
+    "drift_cents": 3,
+    "seed": 33,
+    "drive_db": 7,
+    "hp_hz": 400,
+    "lp_hz": 3500,
+    "res1_hz": 1200,
+    "res1_db": 4.5,
+    "res2_hz": 2400,
+    "res2_db": 3.5,
+    "speakers": [
+     [
+      16,
+      0.2
+     ],
+     [
+      24,
+      -0.5
+     ],
+     [
+      33,
+      0.6
+     ],
+     [
+      45,
+      -0.2
+     ]
+    ],
+    "size_m": 58,
+    "decay_s": 4.8,
+    "predelay_ms": 28,
+    "early": 20,
+    "rev_hicut": 4200,
+    "drr_db": -13
+   },
+   "chain": "① L+R 混單聲道（商場廣播是單聲道）→ ② 走音：定值偏低＋wow（兩個正弦）＋flutter＋0.03–0.25 Hz 慢漂，全部在循環長度內整數週期，Catmull-Rom 循環重取樣（音高和速度一起慢，像轉速不足）→ ③ 擴大機：Compressor −22 dB 3:1、前級 +drive dB 進 tanh 軟削 → ④ 天花板小喇叭：紙盆共振兩個 PeakFilter、700 Hz −2 dB、4 階 Butterworth 高通＋低通 → ⑤ 幾支距離不同的天花板喇叭：每支循環延遲（距離/343 m/s）、1/距離衰減、1 階空氣吸收、左右擺位 → ⑥ Dragonfly Hall（dry 0、late 100、low cut 120 Hz、high cross 2.5 kHz×0.4、modulation 10%）→ ⑦ 直達聲對殘響 drr_db 混合。濾波、壓縮、殘響都跑在『循環接三份』上取中間那份，殘響尾巴自然繞回檔頭；Dragonfly 的 spin/wander 調變不是循環週期的，第二、三份的殘響尾不一樣（相關 0.5–0.7），所以只對『濕』的檔頭 3 秒做等能量交叉（a²+b²+2ρab=1，起點＝真正接在檔尾後的殘響），乾的逐樣本循環不動。",
+   "export": "tools/audio/bgm_export.py export … --lufs -18（Opus 160k＋AAC 192k；檔頭＝循環起點，loopStart 0，無前奏）",
+   "measure": {
+    "lufs": -18.0,
+    "true_peak_db": -3.38,
+    "clipped": 0,
+    "loop_s": 140.68941666666666,
+    "tempo": 88.71,
+    "cents_mean": -25.0,
+    "cents_p2p": 33.15,
+    "rt60_s": 4.52,
+    "c50_db": -9.9,
+    "band_db": {
+     "<200": -32.5,
+     "300-3k": -0.1,
+     ">5k": -38.1,
+     ">8k": -61.2
+    },
+    "seam_head5ms_vs_true_continuation_db": -63.9,
+    "wet_xfade_energy_db": 0.07,
+    "seam_jump_ratio_ogg": 0.41,
+    "seam_jump_ratio_m4a": 0.45
+   },
+   "why_picked": "備選（更遠）。四支喇叭 16–45 m、限頻 400 Hz–3.5 kHz、前級過載多一點，偏低 25 音分、峰對峰 33 音分，RT60 4.5 s、C50 −9.9 dB：幾乎只剩殘響裡的旋律輪廓，適合離喇叭更遠的區域或更深的年代層入口。接縫 −63.9 dB、濕交叉 +0.07 dB、ogg 跳動比 0.41。"
+  },
+  {
+   "file": "mall-2000-a.ogg",
+   "also": [
+    "mall-2000-a.m4a",
+    "mall-2000-a.loop.json"
+   ],
+   "tool": "ACE-Step 1.5 text2music（~/Desktop/ＬＬＭ/bgm-gen/gen.py，run_locked.sh）",
+   "model": "ACE-Step 1.5 turbo（acestep-v15-turbo）＋ 5Hz LM 1.7B，MLX，text2music，steps 8，shift 3.0",
+   "license": "ACE-Step 1.5（MIT）本機生成，輸出可商用；無取樣、無參考音檔",
+   "prompt": "Gentle Y2K synth-pop instrumental for a shopping mall PA, year 2000. Warm digital electric piano, airy synth strings, catchy bright synth lead, rolling eurobeat-flavored synth bass line, soft electronic shaker and light kick, no heavy drums. Clean, bouncy, nostalgic millennium pop, background music that stays out of the way. Purely instrumental, no vocals, no singing, no humming, no choir, no vocal chops. Clean, polished, cheerful background music for shoppers, smooth and continuous.",
+   "lyrics": "[Intro - synth pad and electric piano]\n[Verse - bright synth lead melody]\n[Chorus - full synth and electric piano]\n[Instrumental - keyboard solo]\n[Verse - bright synth lead melody]\n[Chorus - full synth and electric piano]\n[Bridge - gentle arpeggio]\n[Chorus - full synth and electric piano]\n[Outro]",
+   "seed": 2600,
+   "params": {
+    "bpm": 108,
+    "key": "C major",
+    "ts": 4,
+    "duration": 170,
+    "instrumental": true,
+    "steps": 8,
+    "shift": 3.0
+   },
+   "source_take": "tc_mall_2000_d_s2600_turbo.wav",
+   "loop_cut": {
+    "tool": "~/Desktop/ＬＬＭ/bgm-gen/loop.py <take> 106 4 <out> 128 170（交叉淡 120 ms）",
+    "start_s": 29.661,
+    "end_s": 158.724,
+    "bars": 57.0
+   },
+   "export": "tools/audio/bgm_export.py export … --lufs -18（Opus 160k＋AAC 192k；檔頭＝循環起點，loopStart 0，無前奏）",
+   "measure": {
+    "lufs": -18.0,
+    "true_peak_db": -6.16,
+    "clipped": 0,
+    "loop_s": 129.0625,
+    "tempo": 106.0,
+    "tempo_measured": "解碼後的 OGG：librosa 106.1、自相關 4/8/16/32 拍延遲全是 106.0",
+    "key_est": "C 大調（Krumhansl r 0.72，整首；提示詞寫 C major）",
+    "seam_jump_ratio_ogg": 0.81,
+    "seam": "seam.py：拍距偏差 1%、接縫通量在 onset 中第 11 百分位、電平差 1.4 dB（第 47 百分位）；loop.py wrap_step 0.2 dB",
+    "vocal_demucs_ogg": {
+     "vocal_to_rest_db": -63.1,
+     "vocal_sec": 0,
+     "secs": 129,
+     "vocal_frac": 0.0,
+     "rel_p95_db": -59.4,
+     "rel_max_db": -53.2,
+     "vocal_sec_at": []
+    },
+    "vocal_demucs_take": {
+     "vocal_to_rest_db": -57.9,
+     "vocal_sec": 0,
+     "secs": 170,
+     "vocal_frac": 0.0,
+     "rel_p95_db": -50.5,
+     "rel_max_db": -23.3,
+     "vocal_sec_at": []
+    },
+    "clap_style": {
+     "Y2K synth-pop instrumental with bright synthesizers and electric piano": 1.0,
+     "eurobeat dance music": 0.0,
+     "smooth jazz with saxophone": 0.0,
+     "slow sad piano ballad": 0.0,
+     "orchestral film score": 0.0,
+     "heavy rock with distorted guitars": 0.0,
+     "elevator music easy listening": 0.0,
+     "chiptune 8-bit video game music": 0.0
+    },
+    "clap_voice": {
+     "instrumental music with no vocals": 1.0,
+     "a singer singing a song with lyrics": 0.0007,
+     "a person humming or singing la la la": 0.0,
+     "a choir singing": 0.0,
+     "a person talking": 0.0,
+     "vocal chops and vocal samples in a dance track": 0.9997
+    }
+   },
+   "why_picked": "主選。8 支裡人聲最乾淨的兩支之一（demucs 人聲軌比其他三軌合低 57.9 dB、0 秒越過 −12 dB 門檻；解碼後的 OGG 再量一次 −63.1 dB、0 秒），CLAP『歌手』0.0007 是 8 支最低；qc 不連續點只有 1 個、細線 0、實測 106.0 BPM（100–110 正中）；CLAP 風格『Y2K synth-pop＋亮的合成器和電鋼琴』1.0、eurobeat 0.0（有八度貝斯味但不是舞曲）；57 小節 129.06 s 循環，接縫電平差 1.4 dB"
+  }
+ ],
+ "candidates": [
+  {
+   "job": "tc_mall_1996_a",
+   "seed": 1996,
+   "result": "選上 → mall-1996-a",
+   "prompt": "Bright, cheerful late-1990s Taiwanese department store background music, easy listening instrumental. Warm FM electric piano chords, smooth alto saxophone lead melody, lush synthesizer string pad, soft synth bass, very light brushed percussion. Grand opening day of a new shopping mall, sunny atrium, smooth jazz-pop muzak. No vocals, no heavy drums. Polished, optimistic, clean studio production, smooth and continuous, background music for shoppers."
+  },
+  {
+   "job": "tc_mall_1996_a",
+   "seed": 2196,
+   "result": "落選：循環接縫電平跳 5.4 dB",
+   "prompt": "Bright, cheerful late-1990s Taiwanese department store background music, easy listening instrumental. Warm FM electric piano chords, smooth alto saxophone lead melody, lush synthesizer string pad, soft synth bass, very light brushed percussion. Grand opening day of a new shopping mall, sunny atrium, smooth jazz-pop muzak. No vocals, no heavy drums. Polished, optimistic, clean studio production, smooth and continuous, background music for shoppers."
+  },
+  {
+   "job": "tc_mall_1996_b",
+   "seed": 3196,
+   "result": "落選：打擊偏重、亮度最低（1668 Hz）",
+   "prompt": "1990s Asian shopping mall instrumental muzak, light and happy. Home electronic keyboard with gentle auto-accompaniment, bossa nova feel, soprano saxophone melody, airy synth strings, round electric bass, soft shaker and rim click only. Escalators, glass skylight, fountain in the atrium, new and shiny. No vocals, no heavy drums. Polished, optimistic, clean studio production, smooth and continuous, background music for shoppers."
+  },
+  {
+   "job": "tc_mall_1996_b",
+   "seed": 3296,
+   "result": "選上 → mall-1996-b",
+   "prompt": "1990s Asian shopping mall instrumental muzak, light and happy. Home electronic keyboard with gentle auto-accompaniment, bossa nova feel, soprano saxophone melody, airy synth strings, round electric bass, soft shaker and rim click only. Escalators, glass skylight, fountain in the atrium, new and shiny. No vocals, no heavy drums. Polished, optimistic, clean studio production, smooth and continuous, background music for shoppers."
+  },
+  {
+   "job": "tc_mall_1996_c",
+   "seed": 4196,
+   "result": "落選：跑成 92 BPM、接縫樣本跳動大（0.12）",
+   "prompt": "Easy listening elevator music from the late 1990s, bright major key. Electric piano and digital organ, warm tenor saxophone melody, sweeping synth strings, fretless synth bass, no drums, only very soft hand percussion. Department store opening, clean, hopeful, nostalgic Asian adult contemporary instrumental. No vocals, no heavy drums. Polished, optimistic, clean studio production, smooth and continuous, background music for shoppers."
+  },
+  {
+   "job": "tc_mall_1996_c",
+   "seed": 4296,
+   "result": "落選：92 BPM、打擊最重（-3.0 dB）",
+   "prompt": "Easy listening elevator music from the late 1990s, bright major key. Electric piano and digital organ, warm tenor saxophone melody, sweeping synth strings, fretless synth bass, no drums, only very soft hand percussion. Department store opening, clean, hopeful, nostalgic Asian adult contemporary instrumental. No vocals, no heavy drums. Polished, optimistic, clean studio production, smooth and continuous, background music for shoppers."
+  },
+  {
+   "job": "tc_mall_1996_d",
+   "seed": 5196,
+   "result": "落選：92 BPM、中段掉到近乎無聲的間奏（4 秒電平起伏 12.5 dB），商場廣播不該斷",
+   "prompt": "Cheerful 1990s smooth jazz instrumental for a shopping plaza PA system. Bell-like DX electric piano, alto saxophone lead, synth string ensemble, light synth marimba accents, soft bass, gentle quiet drum machine with brushes. Bright fluorescent-lit mall on its first day, polished and friendly. No vocals, no heavy drums. Polished, optimistic, clean studio production, smooth and continuous, background music for shoppers."
+  },
+  {
+   "job": "tc_mall_1996_d",
+   "seed": 5296,
+   "result": "落選：長循環接縫電平跳 5.2 dB、11–15 kHz 有 1 條細線",
+   "prompt": "Cheerful 1990s smooth jazz instrumental for a shopping plaza PA system. Bell-like DX electric piano, alto saxophone lead, synth string ensemble, light synth marimba accents, soft bass, gentle quiet drum machine with brushes. Bright fluorescent-lit mall on its first day, polished and friendly. No vocals, no heavy drums. Polished, optimistic, clean studio production, smooth and continuous, background music for shoppers."
+  }
+ ],
+ "pick_method": "聽不到，靠量：qc.py（削波、11–15 kHz 細線、高頻尖峰）、HPSS 打擊/和聲比、頻譜重心、4 秒窗電平起伏、loop.py＋seam.py 接縫（電平差、通量百分位）、實測 BPM。聽感交使用者裁決。",
+ "note": "key 欄是要求值；鍵盤調性估計 a、b 都落在 C 大調附近。ACE 有 lyrics 段落標籤但 instrumental=True，沒有人聲歌詞。",
+ "brief_2007": "同第 1 項，換曲：比較慢、小調，帶一點懷舊，像營業最後一小時的廣播",
+ "queue_2007": "frount_demo/doc/design/tangcheng-asset-queue.md #2",
+ "made_2007": "2026-10-26",
+ "candidates_2007": [
+  {
+   "job": "tc_mall_2007_a",
+   "seed": 2007,
+   "result": "選上 → mall-2007-a",
+   "prompt": "Slow, wistful mid-2000s Taiwanese department store background music, easy listening instrumental in a minor key. Mellow Rhodes electric piano chords, melancholy alto saxophone melody, warm synthesizer string pad, soft fretless bass, no drums. The last hour before the shopping mall closes, half the shops shuttered, nostalgic and a little lonely, late evening muzak. No vocals, no heavy drums. Gentle, wistful, soft and continuous, background music playing through a store PA system."
+  },
+  {
+   "job": "tc_mall_2007_a",
+   "seed": 2107,
+   "result": "落選：調性偏 C 大調（大 0.85／小 0.66），不夠衰退；接縫通量第 84 百分位、細線 5 條",
+   "prompt": "Slow, wistful mid-2000s Taiwanese department store background music, easy listening instrumental in a minor key. Mellow Rhodes electric piano chords, melancholy alto saxophone melody, warm synthesizer string pad, soft fretless bass, no drums. The last hour before the shopping mall closes, half the shops shuttered, nostalgic and a little lonely, late evening muzak. No vocals, no heavy drums. Gentle, wistful, soft and continuous, background music playing through a store PA system."
+  },
+  {
+   "job": "tc_mall_2007_a",
+   "seed": 2207,
+   "result": "落選：大小調不分（C 大 0.85／A 小 0.83）、細線 3 條、接縫電平跳 1.6 dB（第 81 百分位）",
+   "prompt": "Slow, wistful mid-2000s Taiwanese department store background music, easy listening instrumental in a minor key. Mellow Rhodes electric piano chords, melancholy alto saxophone melody, warm synthesizer string pad, soft fretless bass, no drums. The last hour before the shopping mall closes, half the shops shuttered, nostalgic and a little lonely, late evening muzak. No vocals, no heavy drums. Gentle, wistful, soft and continuous, background music playing through a store PA system."
+  },
+  {
+   "job": "tc_mall_2007_b",
+   "seed": 3007,
+   "result": "落選：11–15 kHz 細線 11 條（最多），循環內有一段低 15.7 dB 的空檔",
+   "prompt": "Late 2000s Asian shopping mall instrumental, slow minor-key bossa nova ballad. Nylon-string guitar and soft digital piano, breathy tenor saxophone melody, airy synth strings, round electric bass, only a very soft shaker. Closing time on a rainy weekday evening, an aging mall with fewer customers, nostalgic and bittersweet. No vocals, no heavy drums. Gentle, wistful, soft and continuous, background music playing through a store PA system."
+  },
+  {
+   "job": "tc_mall_2007_b",
+   "seed": 3107,
+   "result": "落選：調性模糊（G 小 0.72）、電平起伏 p90–p10 11.8 dB、接縫跳 2.6 dB",
+   "prompt": "Late 2000s Asian shopping mall instrumental, slow minor-key bossa nova ballad. Nylon-string guitar and soft digital piano, breathy tenor saxophone melody, airy synth strings, round electric bass, only a very soft shaker. Closing time on a rainy weekday evening, an aging mall with fewer customers, nostalgic and bittersweet. No vocals, no heavy drums. Gentle, wistful, soft and continuous, background music playing through a store PA system."
+  },
+  {
+   "job": "tc_mall_2007_b",
+   "seed": 3207,
+   "result": "落選：偏 C／F 大調（0.81），打擊最重（−4.5 dB），有一段低 12.8 dB 的空檔",
+   "prompt": "Late 2000s Asian shopping mall instrumental, slow minor-key bossa nova ballad. Nylon-string guitar and soft digital piano, breathy tenor saxophone melody, airy synth strings, round electric bass, only a very soft shaker. Closing time on a rainy weekday evening, an aging mall with fewer customers, nostalgic and bittersweet. No vocals, no heavy drums. Gentle, wistful, soft and continuous, background music playing through a store PA system."
+  },
+  {
+   "job": "tc_mall_2007_c",
+   "seed": 4007,
+   "result": "落選：前 20 秒前奏低 8–10 dB 會在每圈重來，低頻打擊偏重（−12.2 dB）",
+   "prompt": "Mellow late-2000s Asian adult contemporary instrumental, slow and sentimental, minor key. Soft grand piano melody with lush string ensemble, gentle soprano saxophone answering the piano, warm synth pad, soft bass, no drums. An old department store in its final hour of business, dim lights, wistful memories of better days. No vocals, no heavy drums. Gentle, wistful, soft and continuous, background music playing through a store PA system."
+  },
+  {
+   "job": "tc_mall_2007_c",
+   "seed": 4107,
+   "result": "落選：小調最強（0.94），但前奏低 12 dB、中段又掉 6–8 dB，商場廣播會斷",
+   "prompt": "Mellow late-2000s Asian adult contemporary instrumental, slow and sentimental, minor key. Soft grand piano melody with lush string ensemble, gentle soprano saxophone answering the piano, warm synth pad, soft bass, no drums. An old department store in its final hour of business, dim lights, wistful memories of better days. No vocals, no heavy drums. Gentle, wistful, soft and continuous, background music playing through a store PA system."
+  },
+  {
+   "job": "tc_mall_2007_c",
+   "seed": 4207,
+   "result": "選上 → mall-2007-b",
+   "prompt": "Mellow late-2000s Asian adult contemporary instrumental, slow and sentimental, minor key. Soft grand piano melody with lush string ensemble, gentle soprano saxophone answering the piano, warm synth pad, soft bass, no drums. An old department store in its final hour of business, dim lights, wistful memories of better days. No vocals, no heavy drums. Gentle, wistful, soft and continuous, background music playing through a store PA system."
+  },
+  {
+   "job": "tc_mall_2007_d",
+   "seed": 5007,
+   "result": "落選：聽起來是 G 大調（0.77），不是小調",
+   "prompt": "Quiet smooth jazz lounge instrumental from the 2000s, minor key, slow and nostalgic. Warm electric piano, muted alto saxophone lead, soft synth strings, fretless bass, very soft brushed drums far in the background. A fading shopping plaza after dark, the last announcement before closing, melancholic and calm. No vocals, no heavy drums. Gentle, wistful, soft and continuous, background music playing through a store PA system."
+  },
+  {
+   "job": "tc_mall_2007_d",
+   "seed": 5107,
+   "result": "落選：響度最低（−20.3 dBFS）、主旋律音域最低（B3）、大小調不明（A# 大 0.63）",
+   "prompt": "Quiet smooth jazz lounge instrumental from the 2000s, minor key, slow and nostalgic. Warm electric piano, muted alto saxophone lead, soft synth strings, fretless bass, very soft brushed drums far in the background. A fading shopping plaza after dark, the last announcement before closing, melancholic and calm. No vocals, no heavy drums. Gentle, wistful, soft and continuous, background music playing through a store PA system."
+  },
+  {
+   "job": "tc_mall_2007_d",
+   "seed": 5207,
+   "result": "落選：偏 F 大調（0.80），接縫電平跳 4.9 dB（第 90 百分位）",
+   "prompt": "Quiet smooth jazz lounge instrumental from the 2000s, minor key, slow and nostalgic. Warm electric piano, muted alto saxophone lead, soft synth strings, fretless bass, very soft brushed drums far in the background. A fading shopping plaza after dark, the last announcement before closing, melancholic and calm. No vocals, no heavy drums. Gentle, wistful, soft and continuous, background music playing through a store PA system."
+  }
+ ],
+ "pick_method_2007": "聽不到，靠量：12 個候選（4 組提示詞×3 種子）。先看循環段內大小調（Krumhansl，小調要明顯高於相對大調）、4 秒窗電平分佈（不能有空檔）、qc.py 細線、HPSS 打擊比；再看 loop.py＋seam.py 接縫（電平差、通量百分位、拍距）與實測 BPM。聽感交使用者裁決。",
+ "note_2007": "mall-2007-b 用的是第 c 組提示詞（tc_mall_2007_c），檔名 b 只代表備選。key 欄是要求值，key_est 是量到的。",
+ "brief_2026": "背景音樂 A 的「2026 遠處喇叭版」：不重新生成，拿第 1 項做後製：限頻（天花板小喇叭）、輕微走音、wow-flutter、空間殘響；pedalboard，只用 VST3",
+ "queue_2026": "frount_demo/doc/design/tangcheng-asset-queue.md #3",
+ "made_2026": "2026-10-26",
+ "candidates_2026": {
+  "c1-near": "落選：單支 6 m 喇叭、C50 +2 dB，太近太乾淨，不像『遠處』。",
+  "c2-atrium": "落選：空間同主選，但走音峰對峰 35.5 音分，超過『輕微』；調小後成為 c6（主選）。",
+  "c3-far": "落選：空間同備選，但走音峰對峰 38.4 音分；調小後成為 c7（備選）。",
+  "c4-tape": "落選（故意做過頭的對照組）：偏低 35 音分、峰對峰 67 音分，暈船感，明顯不是『輕微』。",
+  "c5-far-steady": "落選：遠的空間（RT60 4.7 s），但只偏低 8 音分，走音幾乎聽不出來；和 c7 重疊。",
+  "c6-atrium-gentle": "選上 → mall-2026-pa-a",
+  "c7-far-gentle": "選上 → mall-2026-pa-b"
+ },
+ "pick_method_2026": "7 組參數候選（c1–c7，同一支 post.py），依：限頻是否到位（頻帶能量）、走音量是否『輕微』（音分峰對峰 25–35）、距離感（脈衝過整條鏈量 RT60、C50）、旋律可辨（逐小節 chroma 對原曲）、接縫（檔頭 5 ms 對真實接續的誤差；對照組：不做濕交叉時同一量是 +0.3 dB，代表量得出失敗）、交叉後能量不掉、bgm_export 解碼回來的長度／位移／跳動比。頻譜圖拼板 _sheet.png（30–50 秒）。未經人耳試聽：手感交給使用者。",
+ "note_2026": "2026 層用：同一首 1996 開幕曲，從遠處天花板喇叭放出來。速度跟著走音一起慢（88.97／88.71 BPM），循環長 140.3／140.7 秒，所以不能和 mall-1996-a 逐樣本同步交叉；若要年代層之間無縫換，換的時候用時間比例 1996→2026 ×(1996 長/2026 長) 對位。響度照探索曲 −18 LUFS，遠近由引擎音量決定。",
+ "chain_2026": "① L+R 混單聲道（商場廣播是單聲道）→ ② 走音：定值偏低＋wow（兩個正弦）＋flutter＋0.03–0.25 Hz 慢漂，全部在循環長度內整數週期，Catmull-Rom 循環重取樣（音高和速度一起慢，像轉速不足）→ ③ 擴大機：Compressor −22 dB 3:1、前級 +drive dB 進 tanh 軟削 → ④ 天花板小喇叭：紙盆共振兩個 PeakFilter、700 Hz −2 dB、4 階 Butterworth 高通＋低通 → ⑤ 幾支距離不同的天花板喇叭：每支循環延遲（距離/343 m/s）、1/距離衰減、1 階空氣吸收、左右擺位 → ⑥ Dragonfly Hall（dry 0、late 100、low cut 120 Hz、high cross 2.5 kHz×0.4、modulation 10%）→ ⑦ 直達聲對殘響 drr_db 混合。濾波、壓縮、殘響都跑在『循環接三份』上取中間那份，殘響尾巴自然繞回檔頭；Dragonfly 的 spin/wander 調變不是循環週期的，第二、三份的殘響尾不一樣（相關 0.5–0.7），所以只對『濕』的檔頭 3 秒做等能量交叉（a²+b²+2ρab=1，起點＝真正接在檔尾後的殘響），乾的逐樣本循環不動。",
+ "brief_2000": "BGM C『2000 綜藝年代』：2000 年前後台灣商場、Y2K 感——合成器、亮的電鋼琴、一點 eurobeat 味但不吵；純音樂、人聲偵測要是 0、不准 la-la 哼唱；100–110 BPM 實測；2–3 分鐘無縫循環",
+ "queue_2000": "frount_demo/doc/design/tangcheng-asset-queue.md #18",
+ "made_2000": "2026-10-27",
+ "candidates_2000": [
+  {
+   "job": "tc_mall_2000_a",
+   "seed": 2000,
+   "result": "次選：人聲軌 −60.7 dB、0 秒，但『歌手』CLAP 最高 0.057（選上的 0.0007）、qc 不連續點 11 個；循環 132.8 s 可用",
+   "bpm_req": 104,
+   "key_req": "D major",
+   "bpm_measured": 103.0,
+   "vocal": {
+    "vocal_to_rest_db": -60.7,
+    "vocal_sec": 0,
+    "secs": 170,
+    "vocal_frac": 0.0,
+    "rel_p95_db": -49.2,
+    "rel_max_db": -26.7,
+    "vocal_sec_at": []
+   },
+   "qc": {
+    "disc": 11,
+    "hf_lines": 0,
+    "head_db": -25.0,
+    "clip": 0
+   },
+   "clap_singer": 0.057,
+   "prompt": "Upbeat Y2K-era Taiwanese shopping mall background music, around the year 2000, instrumental synth-pop. Shiny digital synthesizer lead, bright FM electric piano chords, bubbly arpeggiated synth, light eurobeat-style octave synth bass, soft four-on-the-floor kick kept low in the mix, crisp but quiet hi-hats. Variety TV show era optimism, glossy and playful, not loud. Purely instrumental, no vocals, no singing, no humming, no choir, no vocal chops. Clean, polished, cheerful background music for shoppers, smooth and continuous."
+  },
+  {
+   "job": "tc_mall_2000_a",
+   "seed": 2100,
+   "result": "落選：qc 不連續點 79 個；人聲軌 −30.1 dB（rel_max −13.7，接近門檻）",
+   "bpm_req": 104,
+   "key_req": "D major",
+   "bpm_measured": 105.0,
+   "vocal": {
+    "vocal_to_rest_db": -30.1,
+    "vocal_sec": 0,
+    "secs": 170,
+    "vocal_frac": 0.0,
+    "rel_p95_db": -14.7,
+    "rel_max_db": -13.7,
+    "vocal_sec_at": []
+   },
+   "qc": {
+    "disc": 79,
+    "hf_lines": 0,
+    "head_db": -33.2,
+    "clip": 0
+   },
+   "clap_singer": 0.0004,
+   "prompt": "Upbeat Y2K-era Taiwanese shopping mall background music, around the year 2000, instrumental synth-pop. Shiny digital synthesizer lead, bright FM electric piano chords, bubbly arpeggiated synth, light eurobeat-style octave synth bass, soft four-on-the-floor kick kept low in the mix, crisp but quiet hi-hats. Variety TV show era optimism, glossy and playful, not loud. Purely instrumental, no vocals, no singing, no humming, no choir, no vocal chops. Clean, polished, cheerful background music for shoppers, smooth and continuous."
+  },
+  {
+   "job": "tc_mall_2000_b",
+   "seed": 2200,
+   "result": "落選：11–15 kHz 細線 6 條；人聲軌 −29.7 dB",
+   "bpm_req": 106,
+   "key_req": "E major",
+   "bpm_measured": 107.77,
+   "vocal": {
+    "vocal_to_rest_db": -29.7,
+    "vocal_sec": 0,
+    "secs": 170,
+    "vocal_frac": 0.0,
+    "rel_p95_db": -21.3,
+    "rel_max_db": -13.2,
+    "vocal_sec_at": []
+   },
+   "qc": {
+    "disc": 10,
+    "hf_lines": 6,
+    "head_db": -23.8,
+    "clip": 0
+   },
+   "clap_singer": 0.0001,
+   "prompt": "Millennium-era Asian department store muzak, cheerful instrumental. Home keyboard workstation sound: sparkly digital electric piano, bell-like synth lead, glassy pad, bouncy synth bass with a gentle eurobeat pulse, light electronic drums, very soft. Bright atrium with escalators, new millennium, futuristic and friendly, easy listening dance-pop at low volume. Purely instrumental, no vocals, no singing, no humming, no choir, no vocal chops. Clean, polished, cheerful background music for shoppers, smooth and continuous."
+  },
+  {
+   "job": "tc_mall_2000_b",
+   "seed": 2300,
+   "result": "落選：demucs 抓到 6 秒人聲（127–139 s，rel_max −9.5 dB），細線 4 條",
+   "bpm_req": 106,
+   "key_req": "E major",
+   "bpm_measured": 107.98,
+   "vocal": {
+    "vocal_to_rest_db": -20.4,
+    "vocal_sec": 6,
+    "secs": 170,
+    "vocal_frac": 0.035,
+    "rel_p95_db": -12.6,
+    "rel_max_db": -9.5,
+    "vocal_sec_at": [
+     127,
+     130,
+     133,
+     136,
+     137,
+     139
+    ]
+   },
+   "qc": {
+    "disc": 36,
+    "hf_lines": 4,
+    "head_db": -38.5,
+    "clip": 0
+   },
+   "clap_singer": 0.037,
+   "prompt": "Millennium-era Asian department store muzak, cheerful instrumental. Home keyboard workstation sound: sparkly digital electric piano, bell-like synth lead, glassy pad, bouncy synth bass with a gentle eurobeat pulse, light electronic drums, very soft. Bright atrium with escalators, new millennium, futuristic and friendly, easy listening dance-pop at low volume. Purely instrumental, no vocals, no singing, no humming, no choir, no vocal chops. Clean, polished, cheerful background music for shoppers, smooth and continuous."
+  },
+  {
+   "job": "tc_mall_2000_c",
+   "seed": 2400,
+   "result": "落選：demucs 抓到 3 秒人聲（72/74/126 s，rel_max −7.8 dB），不連續點 86 個",
+   "bpm_req": 102,
+   "key_req": "F major",
+   "bpm_measured": 102.0,
+   "vocal": {
+    "vocal_to_rest_db": -26.4,
+    "vocal_sec": 3,
+    "secs": 170,
+    "vocal_frac": 0.018,
+    "rel_p95_db": -19.9,
+    "rel_max_db": -7.8,
+    "vocal_sec_at": [
+     72,
+     74,
+     126
+    ]
+   },
+   "qc": {
+    "disc": 86,
+    "hf_lines": 0,
+    "head_db": -35.2,
+    "clip": 0
+   },
+   "clap_singer": 0.0019,
+   "prompt": "Late-1990s to 2000 Japanese and Taiwanese TV variety show style background music, instrumental. Bright square-wave and supersaw synth melody, clean electric piano comping, sequenced arpeggios, punchy but soft synth bass, light dance beat, cheerful key changes. Glossy Y2K shopping mall, playful and optimistic, polished studio production. Purely instrumental, no vocals, no singing, no humming, no choir, no vocal chops. Clean, polished, cheerful background music for shoppers, smooth and continuous."
+  },
+  {
+   "job": "tc_mall_2000_c",
+   "seed": 2500,
+   "result": "落選：4 秒窗電平只差 3.4 dB（一路平、打擊比 −2.9 dB 偏吵），不連續點 25 個",
+   "bpm_req": 102,
+   "key_req": "F major",
+   "bpm_measured": 102.0,
+   "vocal": {
+    "vocal_to_rest_db": -36.7,
+    "vocal_sec": 0,
+    "secs": 170,
+    "vocal_frac": 0.0,
+    "rel_p95_db": -32.9,
+    "rel_max_db": -13.9,
+    "vocal_sec_at": []
+   },
+   "qc": {
+    "disc": 25,
+    "hf_lines": 0,
+    "head_db": -22.1,
+    "clip": 0
+   },
+   "clap_singer": 0.0,
+   "prompt": "Late-1990s to 2000 Japanese and Taiwanese TV variety show style background music, instrumental. Bright square-wave and supersaw synth melody, clean electric piano comping, sequenced arpeggios, punchy but soft synth bass, light dance beat, cheerful key changes. Glossy Y2K shopping mall, playful and optimistic, polished studio production. Purely instrumental, no vocals, no singing, no humming, no choir, no vocal chops. Clean, polished, cheerful background music for shoppers, smooth and continuous."
+  },
+  {
+   "job": "tc_mall_2000_d",
+   "seed": 2600,
+   "result": "選上 → mall-2000-a",
+   "bpm_req": 108,
+   "key_req": "C major",
+   "bpm_measured": 106.0,
+   "vocal": {
+    "vocal_to_rest_db": -57.9,
+    "vocal_sec": 0,
+    "secs": 170,
+    "vocal_frac": 0.0,
+    "rel_p95_db": -50.5,
+    "rel_max_db": -23.3,
+    "vocal_sec_at": []
+   },
+   "qc": {
+    "disc": 1,
+    "hf_lines": 0,
+    "head_db": -46.5,
+    "clip": 0
+   },
+   "clap_singer": 0.0007,
+   "prompt": "Gentle Y2K synth-pop instrumental for a shopping mall PA, year 2000. Warm digital electric piano, airy synth strings, catchy bright synth lead, rolling eurobeat-flavored synth bass line, soft electronic shaker and light kick, no heavy drums. Clean, bouncy, nostalgic millennium pop, background music that stays out of the way. Purely instrumental, no vocals, no singing, no humming, no choir, no vocal chops. Clean, polished, cheerful background music for shoppers, smooth and continuous."
+  },
+  {
+   "job": "tc_mall_2000_d",
+   "seed": 2700,
+   "result": "落選：demucs 抓到 5 秒人聲（64–130 s，rel_max −8.6 dB）；開頭 4.11 s 才有聲",
+   "bpm_req": 108,
+   "key_req": "C major",
+   "bpm_measured": 106.5,
+   "vocal": {
+    "vocal_to_rest_db": -20.8,
+    "vocal_sec": 5,
+    "secs": 170,
+    "vocal_frac": 0.029,
+    "rel_p95_db": -12.4,
+    "rel_max_db": -8.6,
+    "vocal_sec_at": [
+     64,
+     67,
+     127,
+     129,
+     130
+    ]
+   },
+   "qc": {
+    "disc": 8,
+    "hf_lines": 0,
+    "head_db": -59.1,
+    "clip": 0
+   },
+   "clap_singer": 0.0,
+   "prompt": "Gentle Y2K synth-pop instrumental for a shopping mall PA, year 2000. Warm digital electric piano, airy synth strings, catchy bright synth lead, rolling eurobeat-flavored synth bass line, soft electronic shaker and light kick, no heavy drums. Clean, bouncy, nostalgic millennium pop, background music that stays out of the way. Purely instrumental, no vocals, no singing, no humming, no choir, no vocal chops. Clean, polished, cheerful background music for shoppers, smooth and continuous."
+  }
+ ],
+ "pick_method_2000": "靠量，只選一支：8 個候選（4 組提示詞×2 種子，BPM 102–108）。①人聲：CLAP 的『vocal chops』標籤對所有舞曲都打 1.0（和曲風混淆），不能當人聲偵測，改用 htdemucs（CPU）分出 vocals 軌，逐 1 s 窗量 vocals 比其他三軌合，超過 −12 dB 算一秒人聲；先用對照組證明量得出失敗：同提示詞＋la-la 歌詞、instrumental=False 的 60 s 曲，抓到 21 秒人聲（19–37 s 連續，vocals 比其他 −12.3 dB），8 個候選裡 3 個抓到 3–6 秒被淘汰。②qc.py 不連續點／11–15 kHz 細線／削波；③實測 BPM（librosa＋自相關多延遲中位）；④CLAP 風格 8 選 1；⑤loop.py＋seam.py 接縫；⑥匯出後解碼 OGG 重量人聲與 BPM。",
+ "control_2000": {
+  "job": "tc_mall_2000_ctl_vox",
+  "seed": 2000,
+  "duration": 60,
+  "instrumental": false,
+  "lyrics": "la-la 歌詞＋『Female pop vocals singing and humming la la la』",
+  "result": {
+   "vocal_to_rest_db": -12.3,
+   "vocal_sec": 21,
+   "secs": 60,
+   "vocal_frac": 0.35,
+   "rel_p95_db": -5.9,
+   "rel_max_db": -3.7,
+   "vocal_sec_at": [
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    52
+   ]
+  },
+  "note": "只為驗證偵測器量得出人聲，不進遊戲；已刪"
+ },
+ "note_2000": "已知弱點：①循環內 80–93 s 有一段 14 秒的弱段（Bridge 琶音，1 秒窗比中位數低 10–17 dB；4 秒窗 p90–p10 只差 4.3 dB，但最低窗低中位數 13.9 dB），比 2007-a 起伏大，廣播不會斷但會有明顯的段落感；次選 a_s2000 的弱段只低 9.9 dB，但 qc 不連續點 11 個，取捨後選 d；②循環 129 s 從原曲 29.7 s 開始，原曲的前奏不在檔內；③Krumhansl 只有 0.72，大調傾向不算強；④『不吵』靠 CLAP eurobeat 0.0、打擊比 −4.0 dB（諧波大於打擊）判斷，沒有量化門檻。"
+}

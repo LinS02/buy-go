@@ -1,0 +1,32 @@
+{
+ "set": "tile-10-mix",
+ "title": "灰白混拼 10 cm 釉面小方磚（12×12 塊／張；學校樓梯間、電梯間、洗手槽；可染色）",
+ "queue_item": "學校主題照片細節第二輪（10-29）",
+ "generator": "純程式生成（CPU numpy：12×12 方格、三色亂拼＋每塊明度亂度、2 mm 縫倒角、每塊微傾斜）；沒有用生成模型",
+ "license": "本專案程式生成，可商用、可公開",
+ "photo_rule": "照片只用眼睛看＋取色（07_學校與泳池：健康國小三樓電梯樓梯、健康國小樓梯消防栓）；沒有當貼圖、沒有 img2img、沒有切圖、沒有複製進專案",
+ "people_rule": "無生成模型、純方格，無人形／臉／腳印／手印",
+ "normal_convention": "OpenGL（three.js 預設）：G 正＝貼圖上方（+v）",
+ "seamless": "方格整除 2048、雜訊全部 FFT 週期，四方連續",
+ "tiling": "UV＝世界座標 / span_m",
+ "color": "白 #E6E7E3 55%、淺灰 #C6C9C7 32%、中灰 #A2A6A6 13%；縫 #B3B3AD",
+ "script": "~/Desktop/ＬＬＭ/local-gen-work/tangcheng-pbr/gen_tile10_mix.py（ComfyUI/venv/bin/python gen_tile10_mix.py <out> --seed 5）",
+ "seed": 5,
+ "span_m": 1.2,
+ "tiles_per_tex": 12,
+ "roughness_note": "roughness 貼圖釉面 ≈0.35、縫 1.0，乘材質 roughness",
+ "sizes": {
+  "2k": "2048²",
+  "1k": "1024²（手機；normal 在向量空間縮再正規化）"
+ },
+ "files": {
+  "2k/albedo.jpg": 379338,
+  "2k/normal.jpg": 645261,
+  "2k/roughness.jpg": 303620,
+  "2k/ao.jpg": 92953,
+  "1k/albedo.jpg": 134866,
+  "1k/normal.jpg": 199258,
+  "1k/roughness.jpg": 123613,
+  "1k/ao.jpg": 37143
+ }
+}

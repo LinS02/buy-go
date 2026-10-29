@@ -1,0 +1,17 @@
+{
+ "model": "RealVisXL_V5.0_fp16.safetensors",
+ "mode": "img2img denoise 0.5",
+ "template": "stencil_template('dirarrows')（PIL 畫）",
+ "prompt": "blue stencil spray painted double arrows and numbers, construction marking, overspray, on a plain smooth flat white painted concrete wall, straight-on frontal photograph, evenly lit, orthographic, wall fills the frame, empty white wall around it, high detail",
+ "negative": "person, people, human, man, woman, child, face, eyes, eye, skull, hand, hands, handprint, fingers, silhouette, figure, body, character, cartoon, mascot, anime, animal, creature, monster, portrait, logo, brand, watermark, frame, border, perspective, floor, ceiling, corner, brick, tiles, window, door, colorful background, dark background, shadow, vignette, blurry",
+ "seed": 1705,
+ "steps": 24,
+ "cfg": 5.5,
+ "post": "key_white＋裁切",
+ "kind": "stencil",
+ "size_m": [
+  0.9,
+  0.689
+ ],
+ "license": "原創（本專案；本地生成）"
+}

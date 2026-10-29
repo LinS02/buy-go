@@ -1,0 +1,211 @@
+{
+ "tool": "comfyui (Qwen-Image-Edit) + hunyuan3d-2mv + blender",
+ "category": "prop",
+ "topic": "tangcheng-sculpture",
+ "queue_item": 7,
+ "title": "《走失》原創中庭不鏽鋼雕塑 3D（佇列第 7 項，取第 6 項素材 A）",
+ "model": "Qwen-Image-Edit-2511 Q4_K_M GGUF＋Lightning 4 步 LoRA（＋fal Multiple-Angles LoRA 生側背）；Hunyuan3D-2mv hunyuan3d-dit-v2-mv-turbo（只要形狀，不烤貼圖）；Blender 5.2 減面",
+ "license": "Qwen 系列與兩個 LoRA：Apache-2.0；Hunyuan3D-2／2mv：Tencent Hunyuan 3D 2.0 Community License（台灣可商用；歐盟、英國、南韓不適用；月活 >1M 另簽）；來源概念圖 FLUX.1 [dev] 輸出（見 art-src/tangcheng/concepts/recipe.json）",
+ "style": "原圖 art-src/tangcheng/concepts/atrium-sculpture-a.png（A：交錯閉合圓環帶）",
+ "why_A": "先試 A（帶子薄、交錯多）。Qwen 改成霧面拉絲金屬、白底正面後，Hunyuan 四視角版成品是一整塊封閉網格（0 個非流形邊、1 個島），四個閉合圓環互穿讀得出來，只有背面下方一片帶子邊緣毛糙；判斷不算「破」，所以沒改用 B。",
+ "steps": {
+  "1_front": {
+   "prompts": {
+    "p1": "Show only the stainless steel ribbon sculpture with its conical metal pedestal, isolated. Remove the fountain basin, water, atrium, glass roof, balconies, columns, shops and floor. The whole sculpture fully visible and centered, front view at eye level, plain pure white background, flat even studio lighting, no shadow on the ground. Keep exactly the same shape, the same interlocking closed ring bands, their widths, crossings and gaps.",
+    "p2": "Turn this into a clean 3D modeling reference of the sculpture only: the interlocking closed rings of wide flat metal bands on the conical pedestal, isolated on a plain pure white background, front view at eye level, entire sculpture visible and centered. Matte brushed light gray metal with soft even shading and no mirror reflections, so every band edge and every crossing is clearly readable. Remove the fountain, water, building and floor. Keep the same overall shape and band layout. No shadow on the ground."
+   },
+   "seeds": [
+    1,
+    7
+   ],
+   "candidates": 4,
+   "picked": "p2 seed 1",
+   "why": "p1（保留鏡面反光）帶子邊緣被反光吃掉、交錯處分不清；p2 指定霧面拉絲金屬、柔和均勻光，每條帶子的邊和每個交叉都讀得出來。p2 種子 1 比種子 7 更接近原圖的帶子排法。原圖的錐形座被改成扁圓盤座。"
+  },
+  "2_views": {
+   "prompt": "<sks> {left side view|back view|right side view} eye-level shot medium shot. Same abstract metal ribbon sculpture on the same round pedestal, same interlocking closed ring bands, entire sculpture visible, matte brushed light gray metal, plain pure white background, flat even lighting, no shadow.",
+   "seed": 1,
+   "note": "多角度 LoRA 各自補猜側背的帶子排法（不是真正同一件），但大形一致；Qwen left side view → Hunyuan right。"
+  },
+  "3_shape": {
+   "pipeline": "Hunyuan3D-2mv turbo，5 步，flashvdm merge，num_chunks 20000，背景用 hy3dgen BackgroundRemover（不用 fill_holes，帶子之間的洞要留）",
+   "candidates": "單張版（Hunyuan3D-2 turbo）與四視角版 × octree 380／512，四視角 o512 再加種子 7、2024，共 6 個",
+   "picked": "四視角 octree 512 種子 12345（1,609,730 面）",
+   "why": "單張版背面變成一整片布、圓環沒閉合（_sheet.png 第二列）；四視角版圓環閉合。o512 比 o380 邊緣稍乾淨；種子 7 正面下方多一團、2024 側面帶子破碎，12345 最乾淨。"
+  },
+  "4_finish": {
+   "script": "local-gen-work/tangcheng-sculpture3d/finish.py",
+   "decimate": "Blender Decimate collapse 到 19,000 三角形",
+   "scale": "高 7.0 m（從每一層往中庭都要看得到），原點在底部中心，+Y 朝上（glTF）；佔地約 5.6 × 4.6 m",
+   "materials": "兩個材質、無貼圖、顏色可換：ribbon（帶子，#C7C9CC 金屬 1.0 粗糙 0.32）、pedestal（底座＝高度 0.49 m 以下的面，金屬 1.0 粗糙 0.45）。夢境配色直接改 baseColorFactor 即可",
+   "shading": "平面著色（每面一色），合 3D 世界的低多邊形規範",
+   "check": {
+    "tris": 19000,
+    "pedestal_tris": 1429,
+    "non_manifold_edges": 0,
+    "boundary_edges": 0,
+    "islands": 1
+   }
+  }
+ },
+ "rejected_deleted": "Qwen 正面落選 3 張、Hunyuan 落選 5 個 GLB 已刪；轉台圖與對照拼板留在 local-gen-work/tangcheng-sculpture3d/",
+ "issues": "背面下方一片帶子邊緣毛糙、側背的帶子排法是 LoRA 猜的；未經使用者看過",
+ "files": {
+  "atrium-sculpture.glb": {
+   "note": "選上的成品"
+  },
+  "view_front.png": {
+   "note": "Qwen 正面整理圖（去背）"
+  },
+  "view_left.png": {
+   "note": "Hunyuan left 視角"
+  },
+  "view_back.png": {
+   "note": "背面"
+  },
+  "view_right.png": {
+   "note": "Hunyuan right 視角"
+  },
+  "_sheet.png": {
+   "note": "第一列輸入、第二列單張版（落選代表）、第三列成品四角度"
+  }
+ },
+ "items": {
+  "ride-car.glb": {
+   "tool": "comfyui (Qwen-Image-Edit, 8189 bf16 實例) + hunyuan3d-2mv + hunyuan3d-paint + blender",
+   "category": "prop",
+   "queue_item": 9,
+   "model": "Qwen-Image-Edit-2511 Q4_K_M GGUF＋Lightning 4 步 LoRA（＋fal Multiple-Angles LoRA 生側背）；Hunyuan3D-2mv hunyuan3d-dit-v2-mv-turbo（形狀）＋Hunyuan3D-2 hunyuan3d-paint-v2-0-turbo（貼圖）；Blender 5.2",
+   "license": "Qwen 系列與兩個 LoRA：Apache-2.0；Hunyuan3D-2／2mv（含 paint）：Tencent Hunyuan 3D 2.0 Community License（台灣可商用；歐盟、英國、南韓不適用；月活 >1M 另簽）；來源概念圖 FLUX.1 [dev] 輸出（見 art-src/tangcheng/concepts/recipe.json）",
+   "scripts": "local-gen-work/tangcheng-ride3d/：front.py、nolamp.py、views.py、shape.py、paint.py、recolor.py、finish.py、shots.py",
+   "shape": "Hunyuan3D-2mv turbo，5 步，octree 512，flashvdm merge，num_chunks 20000，hy3dgen BackgroundRemover 去背；FloaterRemover＋DegenerateFaceRemover",
+   "texture": "先 FaceReducer 減到 19,000 面再 paint-v2-0-turbo 烤貼圖（參考圖＝Qwen 側面去背圖，2048²）→ recolor.py：概念圖 rembg 去背取前景，Lab 均值／標準差轉移（倍率夾 0.7–1.4）→ 降飽和＋黑色抬成霧灰（褪色）→ 縮 1024²",
+   "finish": "Blender：車頭朝 glTF +Z、+Y 朝上、原點在底座底部中心，單位公尺；車身長（底座以上 25% 高度的頂點範圍）縮到指定長度；材質 metallic 0、roughness 0.82（霧面塑膠），平面著色；貼圖 JPEG q90",
+   "orientation": "車頭朝 glTF +Z（three.js lookAt 方向），側面朝 ±X",
+   "title": "《走失》投幣搖搖車：薄荷綠復古敞篷車（佇列第 9 項）",
+   "topic": "tangcheng-ride-car",
+   "style": "原圖 art-src/tangcheng/concepts/ride/ride-car.png",
+   "steps": {
+    "1_front": {
+     "prompt": "Turn this into a clean 3D modeling reference of the coin-operated kiddie ride only: the mint green retro open-top toy car standing on its flat rectangular green base platform, exact side view at eye level, the entire car and the whole base visible and centered. Keep exactly the same shape: rounded fenders, windshield frame, black steering wheel, black and tan seat, both black tyres with chrome hubcaps, chrome bumpers. Remove the wall, the skirting board and the floor. Plain pure white background, flat even studio lighting, no shadow on the ground. Faded sun-bleached matte plastic, chalky and slightly dusty, no glossy highlights, dull chrome. Remove all text, numbers, badges and logos. No people, no faces.",
+     "seeds": [
+      1,
+      7
+     ],
+     "picked": "seed 1",
+     "why": "種子 7 車身滿是褐色鏽斑；種子 1 褪色霧面、細節對得上原圖"
+    },
+    "1b_nolamp": {
+     "prompt": "Remove the headlights completely: the front fenders are smooth, rounded and painted the same faded mint green, with no lamps and no round lights anywhere. Keep everything else exactly the same: the car shape, steering wheel, seat, tyres, hubcaps, bumpers and the green base. Plain pure white background.",
+     "input": "front_car_s1.png",
+     "seeds": [
+      1,
+      7
+     ],
+     "picked": "seed 7",
+     "why": "第 1 輪成品的車頭＝兩顆圓頭燈＋直條水箱罩＋保險桿，正面看像臉（違反鐵律）；Blender 塗色＋抹平燈座失敗（翼子板融成一團）。改從參考圖拿掉頭燈重跑。種子 1 頭燈還在，種子 7 車頭乾淨"
+    },
+    "2_views": {
+     "prompt": "<sks> {left side view|back view|right side view} eye-level shot medium shot. Same mint green retro open-top toy car kiddie ride on the same flat rectangular green base platform, same steering wheel, seat, tyres and chrome bumpers, smooth rounded front fenders and hood with no headlights, no lamps and no grille, entire ride visible, faded matte plastic, plain pure white background, flat even lighting, no shadow, no text, no face.",
+     "seed": 1
+    },
+    "3_shape": {
+     "seeds": [
+      12345,
+      7
+     ],
+     "picked": 7,
+     "why": "12345 底座左端翹起變形；7 底座平直、方向盤清楚"
+    }
+   },
+   "check": {
+    "tris": 19000,
+    "non_manifold_edges": 0,
+    "boundary_edges": 0,
+    "islands": 1,
+    "island_faces": [
+     19000
+    ],
+    "bbox_m_xyz_blender": [
+     0.765,
+     1.3,
+     0.652
+    ],
+    "bbox_gltf": {
+     "x_width": 0.765,
+     "y_height": 0.652,
+     "z_length": 1.3
+    },
+    "tex": [
+     1024,
+     1024
+    ],
+    "bytes": 2003772
+   }
+  },
+  "ride-train.glb": {
+   "tool": "comfyui (Qwen-Image-Edit, 8189 bf16 實例) + hunyuan3d-2mv + hunyuan3d-paint + blender",
+   "category": "prop",
+   "queue_item": 9,
+   "model": "Qwen-Image-Edit-2511 Q4_K_M GGUF＋Lightning 4 步 LoRA（＋fal Multiple-Angles LoRA 生側背）；Hunyuan3D-2mv hunyuan3d-dit-v2-mv-turbo（形狀）＋Hunyuan3D-2 hunyuan3d-paint-v2-0-turbo（貼圖）；Blender 5.2",
+   "license": "Qwen 系列與兩個 LoRA：Apache-2.0；Hunyuan3D-2／2mv（含 paint）：Tencent Hunyuan 3D 2.0 Community License（台灣可商用；歐盟、英國、南韓不適用；月活 >1M 另簽）；來源概念圖 FLUX.1 [dev] 輸出（見 art-src/tangcheng/concepts/recipe.json）",
+   "scripts": "local-gen-work/tangcheng-ride3d/：front.py、nolamp.py、views.py、shape.py、paint.py、recolor.py、finish.py、shots.py",
+   "shape": "Hunyuan3D-2mv turbo，5 步，octree 512，flashvdm merge，num_chunks 20000，hy3dgen BackgroundRemover 去背；FloaterRemover＋DegenerateFaceRemover",
+   "texture": "先 FaceReducer 減到 19,000 面再 paint-v2-0-turbo 烤貼圖（參考圖＝Qwen 側面去背圖，2048²）→ recolor.py：概念圖 rembg 去背取前景，Lab 均值／標準差轉移（倍率夾 0.7–1.4）→ 降飽和＋黑色抬成霧灰（褪色）→ 縮 1024²",
+   "finish": "Blender：車頭朝 glTF +Z、+Y 朝上、原點在底座底部中心，單位公尺；車身長（底座以上 25% 高度的頂點範圍）縮到指定長度；材質 metallic 0、roughness 0.82（霧面塑膠），平面著色；貼圖 JPEG q90",
+   "orientation": "車頭朝 glTF +Z（three.js lookAt 方向），側面朝 ±X",
+   "title": "《走失》投幣搖搖車：橘紅蒸汽火車頭（佇列第 9 項）",
+   "topic": "tangcheng-ride-train",
+   "style": "原圖 art-src/tangcheng/concepts/ride/ride-train.png",
+   "steps": {
+    "1_front": {
+     "prompt": "Turn this into a clean 3D modeling reference of the coin-operated kiddie ride only: the orange-red toy steam locomotive standing on its flat light gray wooden base board, exact side view at eye level, the entire locomotive and the whole base visible and centered. Keep exactly the same shape: tall yellow chimney, small yellow dome, round boiler with yellow bands, steering wheel, seat, cab with square window and curved roof, red spoked wheels with gray tyres. The front of the boiler is a plain flat round disc. Remove the wall, the skirting board and the floor. Plain pure white background, flat even studio lighting, no shadow on the ground. Faded sun-bleached matte plastic, chalky and slightly dusty, no glossy highlights, dull chrome. Remove all text, numbers, badges and logos. No people, no faces.",
+     "seeds": [
+      1,
+      7
+     ],
+     "picked": "seed 7",
+     "why": "種子 7 的銀色方向盤、輪轂蓋和原圖一致；種子 1 方向盤變紅"
+    },
+    "2_views": {
+     "prompt": "<sks> {left side view|back view|right side view} eye-level shot medium shot. Same orange-red toy steam locomotive kiddie ride on the same flat light gray base board, same yellow chimney, cab, seat, steering wheel and spoked wheels, entire ride visible, faded matte plastic, plain pure white background, flat even lighting, no shadow, no text, no face.",
+     "seed": 1
+    },
+    "3_shape": {
+     "candidates": "四視角版 vs 只給正＋背兩視角版（種子 12345）",
+     "picked": "四視角",
+     "why": "兩版差不多，四視角版鍋爐前圓盤與輪輻較乾淨"
+    },
+    "4_recolor": {
+     "desat": 0.08,
+     "lift": 0.05,
+     "why": "第一版（0.12／0.10）褪成粉紅，離原圖的橘紅太遠"
+    }
+   },
+   "check": {
+    "tris": 19000,
+    "non_manifold_edges": 0,
+    "boundary_edges": 0,
+    "islands": 1,
+    "island_faces": [
+     19000
+    ],
+    "bbox_m_xyz_blender": [
+     0.7,
+     1.4,
+     1.021
+    ],
+    "bbox_gltf": {
+     "x_width": 0.7,
+     "y_height": 1.021,
+     "z_length": 1.4
+    },
+    "tex": [
+     1024,
+     1024
+    ],
+    "bytes": 2037792
+   }
+  }
+ }
+}

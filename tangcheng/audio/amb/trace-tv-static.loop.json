@@ -1,0 +1,52 @@
+{
+ "title": "walk-lost trace: a distant electronics-store CRT TV shows static",
+ "key": "n/a (sfx)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 379200,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 156,
+ "lufsIn": -18.03,
+ "gainDb": -5.97,
+ "lufs": -24.0,
+ "truePeakDb": -8.79,
+ "clipped": 0,
+ "files": {
+  "ogg": "trace-tv-static.ogg",
+  "m4a": "trace-tv-static.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 148591,
+   "decoded_samples": 379200,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 156,
+   "err_db": -21.4
+  },
+  "m4a": {
+   "bytes": 193762,
+   "decoded_samples": 380864,
+   "tail_padding": 1664,
+   "offset_samples": 0,
+   "first_sound_sample": 156,
+   "err_db": -24.5
+  }
+ },
+ "kind": "trace-oneshot",
+ "note": "痕跡單發（第 19 項）：電器行展示電視沒訊號的雪花（小喇叭 250 Hz–6 kHz、59.94 Hz 垂直同步嗡、15.734 kHz 返馳尖音很淡）：0.4 s 湧上、約 6 s、1.5 s 退掉。沒有任何人聲／節目聲。單聲道乾聲，掛電器行；遠近交給 PannerNode。"
+}

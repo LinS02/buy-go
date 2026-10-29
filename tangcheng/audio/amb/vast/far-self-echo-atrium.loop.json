@@ -1,0 +1,60 @@
+{
+ "title": "walk-lost: the player's OWN footstep echoing back from across the bottomless atrium (~90 m), no direct sound",
+ "key": "n/a",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 494973,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [],
+ "risers": [],
+ "firstSoundSample": 25325,
+ "lufsIn": -24.21,
+ "gainDb": -5.79,
+ "lufs": -30.0,
+ "truePeakDb": -11.8,
+ "clipped": 0,
+ "files": {
+  "ogg": "far-self-echo-atrium.ogg",
+  "m4a": "far-self-echo-atrium.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 175138,
+   "decoded_samples": 494973,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 25325,
+   "err_db": -26.0
+  },
+  "m4a": {
+   "bytes": 251993,
+   "decoded_samples": 496576,
+   "tail_padding": 1603,
+   "offset_samples": 0,
+   "first_sound_sample": 25325,
+   "err_db": -36.0
+  }
+ },
+ "kind": "self-echo-oneshot",
+ "own_echo": true,
+ "distance_m": 90,
+ "first_echo_s": 0.525,
+ "echo_period_s": 0.262,
+ "n_echo": 3,
+ "drr_db": -9,
+ "ir": "audio/ir/vast-abyss.wav",
+ "source_step": "audio/sfx/steps/terrazzo-walk-3.ogg",
+ "note": "這是玩家自己的回音，不是別人的腳步。檔案裡沒有直達聲：第 0 樣本＝玩家那一步腳跟落地的時刻，第一道回音在 first_echo_s 才出現。引擎在玩家某一步落地時（對齊那一步 terrazzo loop.json 的 heel）同時起播本檔；建議只在玩家停下來的最後一步、或走路時每 6–10 步隨機一次放，不要每步都放。距離、空氣吸收、殘響已烘進檔：不要再接 ConvolverNode、不走 PannerNode。無人聲。"
+}

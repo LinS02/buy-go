@@ -1,0 +1,57 @@
+{
+ "title": "walk-lost footstep: shop carpet, muffled (walk 7)",
+ "key": "n/a (sfx)",
+ "tempo": null,
+ "meter": null,
+ "barSec": null,
+ "sr": 48000,
+ "samples": 20619,
+ "oneshot": true,
+ "loopStart": null,
+ "loopEnd": null,
+ "loopStartSample": null,
+ "loopEndSample": null,
+ "introBars": null,
+ "loopBars": null,
+ "phase2": null,
+ "phase1End": null,
+ "pairWith": null,
+ "sections": null,
+ "hits": [
+  0.0279
+ ],
+ "risers": [],
+ "firstSoundSample": 184,
+ "lufsIn": -22.89,
+ "gainDb": -7.11,
+ "lufs": -30.0,
+ "truePeakDb": -10.2,
+ "clipped": 0,
+ "files": {
+  "ogg": "carpet-walk-7.ogg",
+  "m4a": "carpet-walk-7.m4a"
+ },
+ "check": {
+  "ogg": {
+   "bytes": 9340,
+   "decoded_samples": 20619,
+   "tail_padding": 0,
+   "offset_samples": 0,
+   "first_sound_sample": 184,
+   "err_db": -28.3
+  },
+  "m4a": {
+   "bytes": 13162,
+   "decoded_samples": 22464,
+   "tail_padding": 1845,
+   "offset_samples": 0,
+   "first_sound_sample": 185,
+   "err_db": -34.9
+  }
+ },
+ "kind": "footstep",
+ "surface": "carpet",
+ "mode": "walk",
+ "heel": 0.0279,
+ "note": "單發腳步聲。heel＝腳跟落地（最大振幅）的時間（秒）：引擎在腳落地那一刻減掉 heel 起播，才對得上步伐。同一地面的 1–8（跑步 1–4）隨機輪流放、不連續重複同一個，每次再隨機 ±1.5 dB、±3% 播放速率。乾聲（地毯店內吸音）。"
+}
